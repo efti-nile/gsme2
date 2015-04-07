@@ -2,66 +2,86 @@
 
 <project>
   <fileVersion>2</fileVersion>
-  <fileChecksum>3802450175</fileChecksum>
+  <fileChecksum>3395269803</fileChecksum>
   <configuration>
     <name>Debug</name>
     <outputs>
-      <file>$PROJ_DIR$\Debug\Exe\gsme2.d43</file>
+      <file>$PROJ_DIR$\src\powmeas.h</file>
+      <file>$PROJ_DIR$\src\main.h</file>
+      <file>$PROJ_DIR$\src\delay.h</file>
+      <file>$PROJ_DIR$\src\sim900.h</file>
+      <file>$PROJ_DIR$\src\sms_queue.h</file>
+      <file>$PROJ_DIR$\src\teldir.h</file>
+      <file>$PROJ_DIR$\src\delay.c</file>
+      <file>$PROJ_DIR$\src\main.c</file>
+      <file>$PROJ_DIR$\src\main_blank.c</file>
+      <file>$PROJ_DIR$\src\powmeas.c</file>
+      <file>$PROJ_DIR$\src\sim900.c</file>
+      <file>$PROJ_DIR$\src\sms_queue.c</file>
+      <file>$PROJ_DIR$\src\teldir.c</file>
       <file>$PROJ_DIR$\Debug\Obj\main.r43</file>
+      <file>$PROJ_DIR$\Debug\Exe\gsme2.d43</file>
       <file>$PROJ_DIR$\main.c</file>
-      <file>$PROJ_DIR$\Debug\Obj\main.pbi</file>
+      <file>$PROJ_DIR$\Debug\Obj\gsme2.pbd</file>
       <file>$TOOLKIT_DIR$\inc\intrinsics.h</file>
       <file>$TOOLKIT_DIR$\inc\io430.h</file>
-      <file>$PROJ_DIR$\Debug\Obj\gsme2.pbd</file>
       <file>$TOOLKIT_DIR$\lib\dlib\dl430xsfn.r43</file>
-      <file>$TOOLKIT_DIR$\config\multiplier32_loc2.xcl</file>
       <file>$TOOLKIT_DIR$\inc\io430f5508.h</file>
       <file>$TOOLKIT_DIR$\config\lnk430F5508.xcl</file>
-      <file>$PROJ_DIR$\src\main.c</file>
+      <file>$TOOLKIT_DIR$\config\multiplier32_loc2.xcl</file>
+      <file>$PROJ_DIR$\Debug\Obj\main.pbi</file>
+      <file>$TOOLKIT_DIR$\lib\dlib\dl430xsfn.h</file>
+      <file>$PROJ_DIR$\Debug\Obj\delay.r43</file>
+      <file>$PROJ_DIR$\Debug\Obj\main_blank.r43</file>
+      <file>$PROJ_DIR$\Debug\Obj\sim900.r43</file>
+      <file>$PROJ_DIR$\Debug\Obj\sms_queue.r43</file>
+      <file>$PROJ_DIR$\Debug\Obj\powmeas.r43</file>
+      <file>$PROJ_DIR$\Debug\Obj\teldir.r43</file>
+      <file>$PROJ_DIR$\Debug\Obj\delay.pbi</file>
+      <file>$PROJ_DIR$\Debug\Obj\main_blank.pbi</file>
+      <file>$PROJ_DIR$\Debug\Obj\powmeas.pbi</file>
+      <file>$PROJ_DIR$\Debug\Obj\sim900.pbi</file>
+      <file>$PROJ_DIR$\Debug\Obj\sms_queue.pbi</file>
+      <file>$PROJ_DIR$\Debug\Obj\teldir.pbi</file>
+      <file>$TOOLKIT_DIR$\inc\dlib\c\string.h</file>
+      <file>$TOOLKIT_DIR$\inc\dlib\c\yvals.h</file>
+      <file>$TOOLKIT_DIR$\inc\dlib\c\ycheck.h</file>
+      <file>$TOOLKIT_DIR$\inc\dlib\c\DLib_Defaults.h</file>
+      <file>$TOOLKIT_DIR$\inc\dlib\c\DLib_Product.h</file>
+      <file>$TOOLKIT_DIR$\inc\dlib\c\ysizet.h</file>
+      <file>$TOOLKIT_DIR$\inc\dlib\c\xencoding_limits.h</file>
+      <file>$TOOLKIT_DIR$\inc\dlib\c\DLib_Threads.h</file>
+      <file>$PROJ_DIR$\src\types.h</file>
+      <file>$PROJ_DIR$\src\msp430_uart.c</file>
+      <file>$PROJ_DIR$\src\msp430_uart.h</file>
+      <file>$PROJ_DIR$\Debug\Obj\msp430_uart.r43</file>
+      <file>$PROJ_DIR$\Debug\Obj\msp430_uart.pbi</file>
     </outputs>
     <file>
       <name>[ROOT_NODE]</name>
       <outputs>
         <tool>
           <name>XLINK</name>
-          <file> 0</file>
+          <file> 14</file>
         </tool>
       </outputs>
     </file>
     <file>
-      <name>$PROJ_DIR$\Debug\Exe\gsme2.d43</name>
-      <inputs>
-        <tool>
-          <name>XLINK</name>
-          <file> 10 8 1 7</file>
-        </tool>
-      </inputs>
-    </file>
-    <file>
-      <name>$PROJ_DIR$\main.c</name>
+      <name>$PROJ_DIR$\src\delay.c</name>
       <outputs>
         <tool>
+          <name>BICOMP</name>
+          <file> 31</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
           <name>ICC430</name>
-          <file> 1</file>
+          <file> 2 18 20 17 45</file>
         </tool>
         <tool>
           <name>BICOMP</name>
-          <file> 3</file>
-        </tool>
-      </outputs>
-      <inputs>
-        <tool>
-          <name>ICC430</name>
-          <file> 5 9 4</file>
-        </tool>
-      </inputs>
-    </file>
-    <file>
-      <name>$PROJ_DIR$\Debug\Obj\gsme2.pbd</name>
-      <inputs>
-        <tool>
-          <name>BILINK</name>
-          <file> 3</file>
+          <file> 2 18 20 17 45</file>
         </tool>
       </inputs>
     </file>
@@ -70,13 +90,198 @@
       <outputs>
         <tool>
           <name>ICC430</name>
-          <file> 1</file>
+          <file> 13</file>
         </tool>
         <tool>
           <name>BICOMP</name>
-          <file> 3</file>
+          <file> 23</file>
         </tool>
       </outputs>
+      <inputs>
+        <tool>
+          <name>ICC430</name>
+          <file> 1 18 20 17 45 47 2 3 4 37 39 38 40 24 41 43 44 42 5 0</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 1 18 20 17 45 47 2 3 4 37 39 38 40 41 43 44 42 5 0</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\src\main_blank.c</name>
+      <outputs>
+        <tool>
+          <name>ICC430</name>
+          <file> 26</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 32</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICC430</name>
+          <file> 18 20 17</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 18 20 17</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\src\powmeas.c</name>
+      <outputs>
+        <tool>
+          <name>ICC430</name>
+          <file> 29</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 33</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICC430</name>
+          <file> 0 18 20 17 45</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 0 18 20 17 45</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\src\sim900.c</name>
+      <outputs>
+        <tool>
+          <name>ICC430</name>
+          <file> 27</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 34</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICC430</name>
+          <file> 3 18 20 17 45 2</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 3 18 20 17 45 2</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\src\sms_queue.c</name>
+      <outputs>
+        <tool>
+          <name>ICC430</name>
+          <file> 28</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 35</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICC430</name>
+          <file> 4 18 20 17 45 37 39 38 40 24 41 43 44 42</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 4 18 20 17 45 37 39 38 40 41 43 44 42</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\src\teldir.c</name>
+      <outputs>
+        <tool>
+          <name>ICC430</name>
+          <file> 30</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 36</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICC430</name>
+          <file> 5 18 20 17 45 37 39 38 40 24 41 43 44 42</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 5 18 20 17 45 37 39 38 40 41 43 44 42</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\Debug\Exe\gsme2.d43</name>
+      <inputs>
+        <tool>
+          <name>XLINK</name>
+          <file> 21 22 13 48 19</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\main.c</name>
+      <outputs>
+        <tool>
+          <name>ICC430</name>
+          <file> 13</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 23</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICC430</name>
+          <file> 18 20 17</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\Debug\Obj\gsme2.pbd</name>
+      <inputs>
+        <tool>
+          <name>BILINK</name>
+          <file> 23 49</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\src\msp430_uart.c</name>
+      <outputs>
+        <tool>
+          <name>ICC430</name>
+          <file> 48</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 49</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICC430</name>
+          <file> 47 18 20 17 45</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 47 18 20 17 45</file>
+        </tool>
+      </inputs>
     </file>
   </configuration>
   <configuration>

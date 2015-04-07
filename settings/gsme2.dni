@@ -30,7 +30,7 @@ ActionState=1
 Enabled=0
 ShowSource=1
 [DebugChecksum]
-Checksum=-1582692565
+Checksum=-1963418494
 [State Storage]
 Control Register=0
 [Sequencer]
@@ -44,6 +44,8 @@ State Storage=0
 ShowArgs=0
 [Disassembly]
 MixedMode=1
+[watch_formats]
+Fmt0={W}0:UCSCTL0	4	0
 [Log file]
 LoggingEnabled=_ 0
 LogFile=_ ""

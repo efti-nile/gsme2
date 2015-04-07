@@ -714,7 +714,7 @@
         </option>
         <option>
           <name>XclFile</name>
-          <state>$TOOLKIT_DIR$\CONFIG\lnk430F149.xcl</state>
+          <state>$TOOLKIT_DIR$\CONFIG\lnk430F5508.xcl</state>
         </option>
         <option>
           <name>XclFileSlave</name>
@@ -842,7 +842,7 @@
         </option>
         <option>
           <name>ExtraOutputFile</name>
-          <state>templproj.a43</state>
+          <state>gsme2.a43</state>
         </option>
         <option>
           <name>ExtraOutputFormat</name>
@@ -1884,9 +1884,75 @@
       <data/>
     </settings>
   </configuration>
-  <file>
-    <name>$PROJ_DIR$\src\main.c</name>
-  </file>
+  <group>
+    <name>inc</name>
+    <file>
+      <name>$PROJ_DIR$\src\delay.h</name>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\src\main.h</name>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\src\powmeas.h</name>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\src\sim900.h</name>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\src\sms_queue.h</name>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\src\teldir.h</name>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\src\types.h</name>
+    </file>
+  </group>
+  <group>
+    <name>src</name>
+    <file>
+      <name>$PROJ_DIR$\src\delay.c</name>
+      <excluded>
+        <configuration>Debug</configuration>
+      </excluded>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\src\main.c</name>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\src\main_blank.c</name>
+      <excluded>
+        <configuration>Debug</configuration>
+      </excluded>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\src\msp430_uart.c</name>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\src\powmeas.c</name>
+      <excluded>
+        <configuration>Debug</configuration>
+      </excluded>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\src\sim900.c</name>
+      <excluded>
+        <configuration>Debug</configuration>
+      </excluded>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\src\sms_queue.c</name>
+      <excluded>
+        <configuration>Debug</configuration>
+      </excluded>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\src\teldir.c</name>
+      <excluded>
+        <configuration>Debug</configuration>
+      </excluded>
+    </file>
+  </group>
 </project>
 
 
