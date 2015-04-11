@@ -1930,9 +1930,6 @@
     </file>
     <file>
       <name>$PROJ_DIR$\src\powmeas.c</name>
-      <excluded>
-        <configuration>Debug</configuration>
-      </excluded>
     </file>
     <file>
       <name>$PROJ_DIR$\src\sim900.c</name>

@@ -1,7 +1,5 @@
 #include "main.h"
 
-
-
 int main(void)
 {
     // Stop watchdog timer to prevent time out reset

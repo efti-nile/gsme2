@@ -12,7 +12,7 @@
           
           
           
-        <Column0>124</Column0><Column1>27</Column1><Column2>27</Column2><Column3>27</Column3></ColumnWidths>
+        <Column0>177</Column0><Column1>27</Column1><Column2>27</Column2><Column3>27</Column3></ColumnWidths>
       </Workspace>
       <Build>
         
@@ -52,14 +52,14 @@
       
       
       
-    <Pane><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\src\main.h</Filename><XPos>0</XPos><YPos>110</YPos><SelStart>2935</SelStart><SelEnd>2935</SelEnd></Tab><ActiveTab>0</ActiveTab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\src\main.c</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>340</SelStart><SelEnd>340</SelEnd></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\src\msp430_uart.c</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>687</SelStart><SelEnd>687</SelEnd></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\src\msp430_uart.h</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>305</SelStart><SelEnd>305</SelEnd></Tab></Pane><ActivePane>0</ActivePane><Sizes><Pane><X>1000000</X><Y>1000000</Y></Pane></Sizes><SplitMode>1</SplitMode></Editor>
+    <Pane><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\src\main.h</Filename><XPos>0</XPos><YPos>92</YPos><SelStart>2935</SelStart><SelEnd>2935</SelEnd></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\src\main.c</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>27960</SelStart><SelEnd>27960</SelEnd></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\src\msp430_uart.c</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>590</SelStart><SelEnd>632</SelEnd></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\src\msp430_uart.h</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>313</SelStart><SelEnd>313</SelEnd></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\src\powmeas.h</Filename><XPos>0</XPos><YPos>15</YPos><SelStart>980</SelStart><SelEnd>980</SelEnd></Tab><ActiveTab>4</ActiveTab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\src\powmeas.c</Filename><XPos>0</XPos><YPos>62</YPos><SelStart>2145</SelStart><SelEnd>2145</SelEnd></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\src\sim900.h</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>376</SelStart><SelEnd>377</SelEnd></Tab></Pane><ActivePane>0</ActivePane><Sizes><Pane><X>1000000</X><Y>1000000</Y></Pane></Sizes><SplitMode>1</SplitMode></Editor>
     <Positions>
       
       
       
       
       
-    <Top><Row0><Sizes><Toolbar-02781b68><key>iaridepm.enu1</key></Toolbar-02781b68></Sizes></Row0><Row1><Sizes/></Row1><Row2><Sizes/></Row2><Row3><Sizes/></Row3><Row4><Sizes/></Row4></Top><Left><Row0><Sizes><Wnd2><Rect><Top>-2</Top><Left>-2</Left><Bottom>488</Bottom><Right>198</Right><x>-2</x><y>-2</y><xscreen>200</xscreen><yscreen>200</yscreen><sizeHorzCX>146413</sizeHorzCX><sizeHorzCY>273973</sizeHorzCY><sizeVertCX>146413</sizeVertCX><sizeVertCY>671233</sizeVertCY></Rect></Wnd2></Sizes></Row0></Left><Right><Row0><Sizes/></Row0></Right><Bottom><Row0><Sizes><Wnd3><Rect><Top>-2</Top><Left>-2</Left><Bottom>198</Bottom><Right>1368</Right><x>-2</x><y>-2</y><xscreen>1370</xscreen><yscreen>200</yscreen><sizeHorzCX>1002928</sizeHorzCX><sizeHorzCY>273973</sizeHorzCY><sizeVertCX>146413</sizeVertCX><sizeVertCY>273973</sizeVertCY></Rect></Wnd3></Sizes></Row0></Bottom><Float><Sizes/></Float></Positions>
+    <Top><Row0><Sizes><Toolbar-01131b68><key>iaridepm.enu1</key></Toolbar-01131b68></Sizes></Row0></Top><Left><Row0><Sizes><Wnd2><Rect><Top>-2</Top><Left>-2</Left><Bottom>434</Bottom><Right>251</Right><x>-2</x><y>-2</y><xscreen>200</xscreen><yscreen>200</yscreen><sizeHorzCX>146413</sizeHorzCX><sizeHorzCY>273973</sizeHorzCY><sizeVertCX>185212</sizeVertCX><sizeVertCY>597260</sizeVertCY></Rect></Wnd2></Sizes></Row0></Left><Right><Row0><Sizes/></Row0></Right><Bottom><Row0><Sizes><Wnd3><Rect><Top>-2</Top><Left>-2</Left><Bottom>252</Bottom><Right>1368</Right><x>-2</x><y>-2</y><xscreen>1370</xscreen><yscreen>254</yscreen><sizeHorzCX>1002928</sizeHorzCX><sizeHorzCY>347945</sizeHorzCY><sizeVertCX>146413</sizeVertCX><sizeVertCY>273973</sizeVertCY></Rect></Wnd3></Sizes></Row0></Bottom><Float><Sizes/></Float></Positions>
   </Desktop>
 </Workspace>
 
