@@ -1939,15 +1939,9 @@
     </file>
     <file>
       <name>$PROJ_DIR$\src\sms_queue.c</name>
-      <excluded>
-        <configuration>Debug</configuration>
-      </excluded>
     </file>
     <file>
       <name>$PROJ_DIR$\src\teldir.c</name>
-      <excluded>
-        <configuration>Debug</configuration>
-      </excluded>
     </file>
   </group>
 </project>
