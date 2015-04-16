@@ -17,7 +17,7 @@ int main(void)
     }
 
 
-    /*
+
     Init();
 
     State.sim900_initialized = 1;
@@ -53,7 +53,7 @@ int main(void)
             !State.battery_ok_in_gsm_extender_now )
         {
             u8 TelNum[SMS_TELNUM_LEN];
-            TelDir_Iterator_Init();
+            TelDir_Iterator();
             while(TelDir_GetNextTelNum(TelNum)){
                 SMS_Queue_Push(TelNum, SIM900_SMS_REPORT_BATTERY_LOW_IN_GSM_EXTENDER, SMS_LIFETIME);
             }
@@ -72,9 +72,9 @@ int main(void)
             }
         }
 
-    }*/
+    }
 }
-/*
+
 void SIM900_ReadSms(void){
     u8 TelNum[SMS_TELNUM_LEN], TelNum_Balance[SMS_TELNUM_LEN];
 
@@ -97,7 +97,7 @@ void SIM900_ReadSms(void){
     // Extract telephone number which sent the SMS
     SIM900_CircularBuffer_ExtractTelNum(TelNum);
 
-    TelNum[3] = '8'; // Change '7' to '8'
+    TelNum[3] = '8'; // Change '7' to '8' TODO: WTF?
 
     // Add the telephone number to the telephone dictionary
     if(SIM900_CircularBuf_Search(SIM900_SMS_CMD_ADD)){
@@ -212,6 +212,7 @@ void SIM900_ReadSms(void){
         // Check if user set the telephone number for balance check
         if(TelDir_IfBalanceTelNumSet()){
             // Make up command to request balance
+            // TODO: Why do not send this long command seperately?
             u8 CMD[sizeof("AT+CUSD=1,\"AAAABBBBCCCCDDDDEEEE\"\r") + 8] = "AT+CUSD=1,\""; // 8 for just in case
             strcat(CMD, TelDir_GetBalanceNumber());
             strcat(CMD, "\"\r");
@@ -277,8 +278,8 @@ void SIM900_SendSms(void){
     }
 }
 
-u32 SIM900_CircularBuf_Search(const u8 pattern[]){
-    u32 i, j, k, l, p;
+u8 SIM900_CircularBuf_Search(const u8 pattern[]){
+    u16 i, j, k, l, p;
 
     // Find length of given pattern
     for(l = 0; pattern[l] != '\0'; ++l);
@@ -314,8 +315,8 @@ u32 SIM900_CircularBuf_Search(const u8 pattern[]){
     return 0;
 }
 
-u32 SIM900_CircularBuffer_Extract(const u8 Pattern[], u8 *Dst, u32 Num, u8 DelChar){
-    u32 i, j, k, l, p, q;
+u16 SIM900_CircularBuffer_Extract(const u8 Pattern[], u8 *Dst, u32 Num, u8 DelChar){
+    u16 i, j, k, l, p, q;
 
     // Find length of given pattern
     for(l = 0; Pattern[l]; ++l);
@@ -352,8 +353,8 @@ u32 SIM900_CircularBuffer_Extract(const u8 Pattern[], u8 *Dst, u32 Num, u8 DelCh
     return 0;
 }
 
-u32 SIM900_CircularBuffer_ExtractTelNum(u8 *Dst){
-    u32 i, j, k, l, p, q;
+u8 SIM900_CircularBuffer_ExtractTelNum(u8 *Dst){
+    u16 i, j, k, l, p, q;
     u8 pattern[] = "\",\"002B";
 
     // Find length of the pattern
@@ -396,8 +397,8 @@ u32 SIM900_CircularBuffer_ExtractTelNum(u8 *Dst){
     return 0;
 }
 
-u32 SIM900_CircularBuffer_ExtractBalanceNum(const u8 Pattern[], u8 *Dst, u32 Num){
-    u32 i, j, k, l, p, q;
+u8 SIM900_CircularBuffer_ExtractBalanceNum(const u8 Pattern[], u8 *Dst, u32 Num){
+    u16 i, j, k, l, p, q;
 
     // Find length of given pattern
     for(l = 0; Pattern[l]; ++l);
@@ -445,8 +446,8 @@ u32 SIM900_CircularBuffer_ExtractBalanceNum(const u8 Pattern[], u8 *Dst, u32 Num
     return 0;
 }
 
-u32 SIM900_WaitForResponse(u8 *pos_resp, u8 *neg_resp){
-    u32 timeout = SIM900_WAIT_FOR_RESPONSE_TIMEOUT;
+u8 SIM900_WaitForResponse(u8 *pos_resp, u8 *neg_resp){
+    u32 timeout = SIM900_WAIT_FOR_RESPONSE_TIMEOUT; // TODO: may be not u42?
     while(timeout--){
         Delay_DelayMs(100);
         if(SIM900_CircularBuf_Search(pos_resp)){
@@ -908,7 +909,7 @@ u8 CRC_Calc(u8* src, u32 num){
     u8 crc = 0xAA;
     while(num--) crc ^= *src++;
     return crc;
-}*/
+}
 
 /*!
     \brief Configures UCS for GSME2 needs

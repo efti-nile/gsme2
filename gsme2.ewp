@@ -1912,9 +1912,6 @@
     <name>src</name>
     <file>
       <name>$PROJ_DIR$\src\delay.c</name>
-      <excluded>
-        <configuration>Debug</configuration>
-      </excluded>
     </file>
     <file>
       <name>$PROJ_DIR$\src\main.c</name>
@@ -1933,9 +1930,6 @@
     </file>
     <file>
       <name>$PROJ_DIR$\src\sim900.c</name>
-      <excluded>
-        <configuration>Debug</configuration>
-      </excluded>
     </file>
     <file>
       <name>$PROJ_DIR$\src\sms_queue.c</name>

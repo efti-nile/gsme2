@@ -12,10 +12,9 @@
 // Pins description //////////////////////////////////////////////////
 
 // R\E\ RS485
-#define RxTx_RS485_GPIO GPIOA
-#define RxTx_RS485_Pin GPIO_Pin_8
-#define RxTx_RS485_RxEnable Bit_RESET
-#define RxTx_RS485_TxEnable Bit_SET
+#define RxTx_RS485_INIT {P3OUT &= BIT2^0xFF; P3DIR |= BIT2; P3REN &= BIT2^0xFF; P3SEL &= BIT2^0xFF; P3DS &= BIT2^0xFF}
+#define RxTx_RS485_RxEnable (P3OUT &= BIT2^0xFF)
+#define RxTx_RS485_TxEnable (P3OUT |= BIT2)
 
 #define LED_GPIO GPIOB
 #define LED_Pin GPIO_Pin_5
@@ -28,23 +27,23 @@ struct State_TypeDef{
     // Controller address in the RS-485 network
     u8 controller_address;
     // Flags
-    u32 sim900_initialized;
-    u32 request_close_all_valves;
-    u32 request_open_all_valves;
-    u32 leak_prev;
-    u32 leak_now;
-    u32 check_battery_prev;
-    u32 check_battery_now;
-    u32 link_lost_prev;
-    u32 link_lost_now;
-    u32 leak_removed_prev;
-    u32 leak_removed_now;
-    u32 link_ok_with_main_controller_prev;
-    u32 link_ok_with_main_controller_now;
-    u32 battery_ok_in_gsm_extender_prev;
-    u32 battery_ok_in_gsm_extender_now;
-    u32 ext_supply_ok_prev;
-    u32 ext_supply_ok_now;
+    u8 sim900_initialized;
+    u8 request_close_all_valves;
+    u8 request_open_all_valves;
+    u8 leak_prev;
+    u8 leak_now;
+    u8 check_battery_prev;
+    u8 check_battery_now;
+    u8 link_lost_prev;
+    u8 link_lost_now;
+    u8 leak_removed_prev;
+    u8 leak_removed_now;
+    u8 link_ok_with_main_controller_prev;
+    u8 link_ok_with_main_controller_now;
+    u8 battery_ok_in_gsm_extender_prev;
+    u8 battery_ok_in_gsm_extender_now;
+    u8 ext_supply_ok_prev;
+    u8 ext_supply_ok_now;
     // Timers and timeouts
     u32 sms_timer;
     u32 close_valves_timeout;
@@ -117,7 +116,7 @@ u32 CirBuf_NumBytes = 0;
 
 // Simple buffer for SMS with information about balance //////////////
 
-u8 SMS_Balance[SMS_TEXT_MAXLEN];
+u8 SMS_Balance[SMS_TEXT_MAXLEN]; // TODO: maybe put it in stack?
 
 // Functions prototypes //////////////////////////////////////////////
 

@@ -17,6 +17,8 @@ void MSP430_UART_Init(void){
     UCA1IE |= UCRXIE | UCTXIE; // Enable interrupts
 }
 
+void
+
 #pragma vector=USCI_A1_VECTOR
 __interrupt void USCI_A1_ISR(void){
       switch(__even_in_range(UCA0IV,4))
