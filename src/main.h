@@ -11,13 +11,15 @@
 
 // Pins description //////////////////////////////////////////////////
 
-// R\E\ RS485
+// R\E\ RS485 - P3.2
 #define RxTx_RS485_INIT {P3OUT &= BIT2^0xFF; P3DIR |= BIT2; P3REN &= BIT2^0xFF; P3SEL &= BIT2^0xFF; P3DS &= BIT2^0xFF}
 #define RxTx_RS485_RxEnable (P3OUT &= BIT2^0xFF)
 #define RxTx_RS485_TxEnable (P3OUT |= BIT2)
 
-#define LED_GPIO GPIOB
-#define LED_Pin GPIO_Pin_5
+// Indicating LED - P5.3
+#define LED_INIT {P5OUT &= BIT3^0xFF; P5DIR |= BIT3; P5REN &= BIT3^0xFF; P5SEL &= BIT3^0xFF; P5DS &= BIT3^0xFF}
+#define LED_ON P5OUT |= BIT3
+#define LED_OFF P5OUT &= ~BIT3
 
 // State variables ///////////////////////////////////////////////////
 
@@ -103,17 +105,6 @@ struct OutPack_TypeDef OutPack;
 #define OPEN_VALVES_TIMEOUT 10
 #define OK_TIMEOUT 5
 
-//u8 buf[10];
-//u32 cnt = 0;
-
-// Circular buffer for USART connected to SIM900 /////////////////////
-
-#define CIRBUF_SIZE 300
-u8 CirBuf[CIRBUF_SIZE];
-u32 CirBuf_Tail = 0;
-u32 CirBuf_Head = 0;
-u32 CirBuf_NumBytes = 0;
-
 // Simple buffer for SMS with information about balance //////////////
 
 u8 SMS_Balance[SMS_TEXT_MAXLEN]; // TODO: maybe put it in stack?
@@ -123,8 +114,6 @@ u8 SMS_Balance[SMS_TEXT_MAXLEN]; // TODO: maybe put it in stack?
 void MSP430_UCS_Init(void);
 
 void ErrorHandler(u32 ErrNum);
-void USART1_IRQHandler(void);
-void USART2_IRQHandler(void);
 void TIM3_IRQHandler(void);
 void SendCmd(u8 cmd);
 void OkStatus_Update(void);
@@ -133,15 +122,5 @@ u32 CirBuf_Str(const u8 *template);
 void SIM900_ReInit(void);
 u32 Init(void);
 u32 TIM3_Start(u16 timeout);
-void LED_On(void);
-void LED_Off(void);
-void SIM900_SendStr(u8* str);
-u32 SIM900_CircularBuf_Search(const u8 pattern[]);
-void SIM900_CircularBuffer_Purge(void);
-void SIM900_ReadSms(void);
-void SIM900_SendSms(void);
 u32 IsTelNumberSymbol(const u8 symbol[]);
-u32 SIM900_WaitForResponse(u8 *pos_resp, u8 *neg_resp);
-u32 SIM900_CircularBuffer_ExtractTelNum(u8 *Dst);
-u32 SIM900_CircularBuffer_ExtractBalanceNum(const u8 Pattern[], u8 *Dst, u32 Num);
-u32 SIM900_CircularBuffer_Extract(const u8 Pattern[], u8 *Dst, u32 Num, u8 DelChar);
+__interrupt void T_A1_ISR(void);

@@ -68,8 +68,17 @@ static const u8 SIM900_SMS_REPORT_BALANCE_ERROR[] = "041E044804380431043A0430002
 
 #define SIM900_WAIT_FOR_RESPONSE_TIMEOUT 150
 
+void SIM900_ReInit(void);
+void SIM900_ReadSms(void);
+void SIM900_SendSms(void);
 u8 SIM900_PowerOn(void);
 u8 SIM900_PowerOff(void);
 u8 SIM900_SoftReset(void);
 u8 SIM900_HoldReset(void);
 u8 SIM900_GetStatus(void);
+void SIM900_CircularBuffer_Purge(void);
+u8 SIM900_CircularBuf_Search(const u8 pattern[]);
+u8 SIM900_CircularBuffer_Extract(const u8 Pattern[], u8 *Dst, u16 Num, u8 DelChar);
+u8 SIM900_CircularBuffer_ExtractTelNum(u8 *Dst);
+u8 SIM900_CircularBuffer_ExtractBalanceNum(const u8 Pattern[], u8 *Dst, u16 Num);
+u8 SIM900_WaitForResponse(u8 *pos_resp, u8 *neg_resp);
