@@ -1,20 +1,37 @@
-#include "io430.h"
-#include "types.h"
+#ifndef _MSP430_SIM900_H_
+#define _MSP430_SIM900_H_
 
+#include "io430.h"
+
+// Local headers ///////////////////////////////////////////////////////////////
+
+#include "types.h"
 #include "delay.h"
+#include "msp430_uart.h"
+#include "sms_queue.h"
+#include "teldir.h"
+
+// Circular buffer for SIM900 communication
+
+extern u8 CirBuf[CIRBUF_SIZE];
+extern u16 CirBuf_Tail;
+extern u16 CirBuf_Head;
+extern u16 CirBuf_NumBytes;
+
+
+// Simple buffer for SMS with information about balance //////////////
 
 // Power SIM900
-#define g_HPWR_INIT {P2OUT &= BIT6^0xFF; P2DIR |= BIT6; P2REN &= BIT6^0xFF; P2SEL &= BIT6^0xFF; P2DS &= BIT6^0xFF}
+#define g_HPWR_INIT {P2OUT &= BIT6^0xFF; P2DIR |= BIT6; P2REN &= BIT6^0xFF; P2SEL &= BIT6^0xFF; P2DS &= BIT6^0xFF;}
 #define g_HPWR_SET (P2OUT |= BIT6)
 #define g_HPWR_CLEAR (P2OUT &= BIT6^0xFF)
-
 // Reset SIM900 (PWRKEY)
-#define g_PWR_INIT {P3OUT &= BIT0^0xFF; P3DIR |= BIT0; P3REN &= BIT0^0xFF; P3SEL &= BIT0^0xFF; P3DS &= BIT0^0xFF}
+#define g_PWR_INIT {P3OUT &= BIT0^0xFF; P3DIR |= BIT0; P3REN &= BIT0^0xFF; P3SEL &= BIT0^0xFF; P3DS &= BIT0^0xFF;}
 #define g_PWR_SET (P3OUT |= BIT0)
 #define g_PWR_CLEAR (P3OUT &= BIT0^0xFF)
 
 // State SIM900 (STS)
-#define g_STS_INIT {P3OUT &= BIT1^0xFF; P3DIR &= BIT1^0xFF; P3REN &= BIT1^0xFF; P3SEL &= BIT1^0xFF; P3DS &= BIT1^0xFF}
+#define g_STS_INIT {P3OUT &= BIT1^0xFF; P3DIR &= BIT1^0xFF; P3REN &= BIT1^0xFF; P3SEL &= BIT1^0xFF; P3DS &= BIT1^0xFF;}
 #define g_STS_READ (P3OUT & BIT1)
 
 static const u8 SIM900_SMS_CMD_ADD[] = "043E04310430043204380442044C";
@@ -82,3 +99,7 @@ u8 SIM900_CircularBuffer_Extract(const u8 Pattern[], u8 *Dst, u16 Num, u8 DelCha
 u8 SIM900_CircularBuffer_ExtractTelNum(u8 *Dst);
 u8 SIM900_CircularBuffer_ExtractBalanceNum(const u8 Pattern[], u8 *Dst, u16 Num);
 u8 SIM900_WaitForResponse(u8 *pos_resp, u8 *neg_resp);
+u8 IsTelNumberSymbol(const u8 symbol[]);
+void SIM900_SendStr(u8* str);
+
+#endif

@@ -1,5 +1,10 @@
 #include "msp430_uart.h"
 
+u8 CirBuf[CIRBUF_SIZE];
+u16 CirBuf_Tail = 0;
+u16 CirBuf_Head = 0;
+u16 CirBuf_NumBytes = 0;
+
 /*!
     \brief Initializes USCI_A0 (for RS486) and USCI_A1 (for SIM900) as UARTs
 */
@@ -41,12 +46,9 @@ void MSP430_UART_Init(void){
 void MSP430_UART_SendAddress(u8 interface, u8 address){
     switch(interface){
         case UART_RS485: // USCI_A0
-            while(num){
-                num--;
-                UCA0CTL1 |= UCTXADDR; // To send the next byte as address
-                UCA0TXBUF = address;
-                while (!(UCA0IFG&UCTXIFG));
-            }
+            UCA0CTL1 |= UCTXADDR; // To send the next byte as address
+            UCA0TXBUF = address;
+            while (!(UCA0IFG&UCTXIFG));
             break;
         case UART_SIM900: // USCI_A1 doesn't use the address bytes in this application
             break;
@@ -63,14 +65,14 @@ void MSP430_UART_Send(u8 interface, u8 *src, u16 num){
         case UART_RS485: // USCI_A0
             while(num){
                 num--;
-                UCA0TXBUF = *(src+num)
+                UCA0TXBUF = *(src+num);
                 while (!(UCA0IFG&UCTXIFG));
             }
             break;
         case UART_SIM900: // USCI_A1
             while(num){
                 num--;
-                UCA1TXBUF = *(src+num)
+                UCA1TXBUF = *(src+num);
                 while (!(UCA1IFG&UCTXIFG));
             }
             break;
@@ -82,16 +84,15 @@ void MSP430_UART_Send(u8 interface, u8 *src, u16 num){
 /*!
     \brief USCI_A0 ISR (Used for RS485 communication)
 */
-#pragma vector=USCI_A1_VECTOR
-__interrupt void USCI_A1_ISR(void){
-      switch(__even_in_range(UCA0IV,4))
+#pragma vector=USCI_A0_VECTOR
+__interrupt void USCI_A0_ISR(void){
+    static u8 num_received_bytes = 0; // TODO: Can it be u8?
+    volatile u8 tmp, if_address;
+    switch(__even_in_range(UCA0IV,4))
     {
     case 0: // Vector 0 - no interrupt
         break;
     case 2: // Vector 2 - RXIFG
-        static u8 num_received_bytes = 0; // TODO: Can it be u8?
-        volatile u8 tmp, if_address;
-
         tmp = UCA0RXBUF;
         if_address = UCA0STAT & UCADDR;
 
@@ -231,12 +232,13 @@ __interrupt void USCI_A1_ISR(void){
 */
 #pragma vector=USCI_A1_VECTOR
 __interrupt void USCI_A1_ISR(void){
-      switch(__even_in_range(UCA0IV,4))
+    u8 tmp;
+    switch(__even_in_range(UCA0IV,4))
     {
     case 0: // Vector 0 - no interrupt
         break;
     case 2: // Vector 2 - RXIFG
-        u8 tmp = UCA1TXBUF & 0x00FF;
+        tmp = UCA1TXBUF & 0x00FF;
 
         CirBuf[CirBuf_Head++] = tmp;
 

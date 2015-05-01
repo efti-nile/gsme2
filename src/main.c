@@ -1,5 +1,9 @@
 #include "main.h"
 
+struct State_TypeDef State;
+struct InPack_TypeDef InPack;
+struct OutPack_TypeDef OutPack;
+
 int main(void)
 {
     // Stop watchdog timer to prevent time out reset
@@ -75,8 +79,11 @@ int main(void)
     }
 }
 
+/*!
+    \brief Blinkes the error and restarts SIM900
 
-
+    The function blinks out the number of the error by the LED.
+*/
 void ErrorHandler(u32 ErrNum){
     u32 i;
 
@@ -94,25 +101,9 @@ void ErrorHandler(u32 ErrNum){
     SIM900_ReInit();
 }
 
-
-
-u32 IsTelNumberSymbol(const u8 symbol[]){
-    // Returns if symbol[5] is telephone number symbol,
-    // i.e. if it is representation of 0..9, * or #
-    // symbol in UCS2 code table.
-    if(symbol[0] == '0' && symbol[1] == '0'){
-        if(symbol[2] == '3'){
-            return 1;
-        }else
-        if(symbol[2] == '2'){
-            if(symbol[3] == '3' || symbol[3] == 'A'){
-                return 1;
-            }
-        }
-    }
-    return 0;
-}
-
+/*!
+    \brief Updates global OK-flag and turns on the LED
+*/
 void OkStatus_Update(void){
 	State.ok_timeout = OK_TIMEOUT;
 	LED_ON;
@@ -151,8 +142,8 @@ void SysTimer_Start(u16 timeout){
     This timeout is reset each time WaterLeak controller riches us. If timeout
     eventually expired that's concerned as the WaterLeak controller lost.
 */
-#pragma vector=Timer_A1_VECTOR
-__interrupt void Timer_A1_ISR(void){
+#pragma vector=TIMER0_A0_VECTOR
+__interrupt void TIMER0_A0_ISR(void){
     if(TA1CTL & TAIFG){
         TA1R = 0x0000;
         if(State.close_valves_timeout > 0){
@@ -204,7 +195,7 @@ void SendCmd(u8 cmd){
     MSP430_UART_SendAddress(UART_RS485, OutPack.DevID);
 
     // Send the rest of the outgoing packet - data bytes
-    MSP430_UART_Send(UART_RS485, (u8 *)&OutPack + 1, sizeof(OutPack - 1));
+    MSP430_UART_Send(UART_RS485, (u8 *)&OutPack + 1, sizeof(OutPack) - 1);
 
     i = 7000*3; // TODO: Bljad!
     while(i--);

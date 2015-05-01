@@ -1,6 +1,15 @@
 #ifndef _TYPES_H_
 #define _TYPES_H_
 
+#define CIRBUF_SIZE 300
+
+#define SMS_QUEUE_MAXSIZE (10+1)
+#define SMS_TEXT_MAXLEN (200+1)
+#define SMS_TELNUM_LEN (44+1)
+
+#define LED_ON P5OUT |= BIT3
+#define LED_OFF P5OUT &= ~BIT3
+
 typedef unsigned long int u32;
 typedef signed long int s32;
 
@@ -8,5 +17,77 @@ typedef unsigned long int u16;
 
 typedef unsigned char u8;
 typedef signed char s8;
+
+struct State_TypeDef{
+    // Telephone number of the last received SMS command
+    u8 TelNumOfSourceOfRequest[SMS_TELNUM_LEN];
+    // Controller address in the RS-485 network
+    u8 controller_address;
+    // Flags
+    u8 sim900_initialized;
+    u8 request_close_all_valves;
+    u8 request_open_all_valves;
+    u8 leak_prev;
+    u8 leak_now;
+    u8 check_battery_prev;
+    u8 check_battery_now;
+    u8 link_lost_prev;
+    u8 link_lost_now;
+    u8 leak_removed_prev;
+    u8 leak_removed_now;
+    u8 link_ok_with_main_controller_prev;
+    u8 link_ok_with_main_controller_now;
+    u8 battery_ok_in_gsm_extender_prev;
+    u8 battery_ok_in_gsm_extender_now;
+    u8 ext_supply_ok_prev;
+    u8 ext_supply_ok_now;
+    // Timers and timeouts
+    u32 sms_timer;
+    u32 close_valves_timeout;
+    u32 open_valves_timeout;
+    u32 ok_timeout;
+};
+
+struct InPack_TypeDef{
+    u8 DevID;
+    u8 Length;
+    u8 SourceAddress;
+    u8 TID;
+    u8 COMMAND;
+    u8 crc;
+};
+
+struct OutPack_TypeDef{
+    u8 DevID;
+    u8 Length;
+    u8 SourceAddress;
+    u8 TID;
+    u8 COMMAND;
+    u8 crc;
+};
+
+struct SMS_Queque_TypeDef{
+    struct SMS_TypeDef{
+        u8 LifeTime;
+        u8 TelNum[SMS_TELNUM_LEN];
+        u8 *SmsText;
+    }List[SMS_QUEUE_MAXSIZE];
+    u8 FirstItem;
+    u8 LastItem;
+    u8 NumItems;
+};
+
+// Telephone dirictory size
+#define TELDIR_TELNUM_LEN (44+1) // Length of the one telephone number (UCS2 coding)
+#define TELDIR_SIZE 10 // Number of slots for telephone numbers
+
+struct TelDir_TypeDef{
+    u8 List[TELDIR_SIZE][TELDIR_TELNUM_LEN];
+	u8 BalanceTelNum[TELDIR_TELNUM_LEN];
+    u8 isBalanceTelNumSet;
+    u8 NumItems;
+    u8 Iterator;
+};
+
 
 #endif

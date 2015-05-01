@@ -1,14 +1,16 @@
 #include "sim900.h"
 
+u8 SMS_Balance[SMS_TEXT_MAXLEN]; // TODO: maybe put it in stack?
+
 void SIM900_ReInit(void){
 func_begin:
     SIM900_PowerOff(); // Power-off SIM900
 
-    LED_Off();
+    LED_OFF;
     Delay_DelayMs(500);
-    LED_On();
+    LED_ON;
     Delay_DelayMs(500);
-    LED_Off();
+    LED_OFF;
 
     SIM900_PowerOn(); // Start SIM900
 
@@ -203,7 +205,7 @@ void SIM900_ReadSms(void){
     // Request balance
     if(SIM900_CircularBuf_Search(SIM900_SMS_CMD_CHECK_BALANCE) && TelDir_FindTelNumber(TelNum) != -1){
         // Check if user set the telephone number for balance check
-        if(TelDir_IfBalanceTelNumSet()){
+        if(TelDir_IsBalanceTelNumSet()){
             // Make up command to request balance
             // TODO: Why do not send this long command seperately?
             u8 CMD[sizeof("AT+CUSD=1,\"AAAABBBBCCCCDDDDEEEE\"\r") + 8] = "AT+CUSD=1,\""; // 8 for just in case
@@ -298,11 +300,7 @@ u8 SIM900_GetStatus(void){
 }
 
 void SIM900_SendStr(u8* str){
-    while( *str != '\0' ){
-        USART_SendData(USART2, *str);
-        while(!(USART2->SR & USART_SR_TXE));
-        str++;
-    }
+    MSP430_UART_Send(UART_SIM900, str, strlen((const char *)str));
 }
 
 void SIM900_CircularBuffer_Purge(void){
@@ -487,6 +485,26 @@ u8 SIM900_WaitForResponse(u8 *pos_resp, u8 *neg_resp){
         }
         if(SIM900_CircularBuf_Search(neg_resp)){
             return 0;
+        }
+    }
+    return 0;
+}
+
+/*!
+    \brief Returns true if given UCS2-symbol may be in tel. number
+
+    The function returns true if spcified UCS2-symbol may be
+    in telephone number. I.e. if the symbol is 0..9, * or #.
+*/
+u8 IsTelNumberSymbol(const u8 symbol[]){
+    if(symbol[0] == '0' && symbol[1] == '0'){
+        if(symbol[2] == '3'){
+            return 1;
+        }else
+        if(symbol[2] == '2'){
+            if(symbol[3] == '3' || symbol[3] == 'A'){
+                return 1;
+            }
         }
     }
     return 0;
