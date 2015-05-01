@@ -64,16 +64,14 @@ void MSP430_UART_SendAddress(u8 interface, u8 address){
 void MSP430_UART_Send(u8 interface, u8 *src, u16 num){
     switch(interface){
         case UART_RS485: // USCI_A0
-            while(num){
-                num--;
-                UCA0TXBUF = *(src+num);
+            for(; num != 0; num--){
+                UCA0TXBUF = *(src++);
                 while (!(UCA0IFG&UCTXIFG));
             }
             break;
         case UART_SIM900: // USCI_A1
-            while(num){
-                num--;
-                UCA1TXBUF = *(src+num);
+            for(; num != 0; num--){
+                UCA1TXBUF = *(src++);
                 while (!(UCA1IFG&UCTXIFG));
             }
             break;

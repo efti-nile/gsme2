@@ -20,9 +20,8 @@ int main(void)
     __bis_SR_register(GIE);
 
     while(1){
-        while (!(UCA1IFG&UCTXIFG));
-        UCA1TXBUF = 0xAA;
-        for(u16 i = 0; i < 10000; ++i);
+        MSP430_UART_Send(UART_SIM900, "Alien Cristopher", sizeof("Alien Cristopher"));
+        for(u32 i = 0; i < 1000000; ++i);
     }
 
 
