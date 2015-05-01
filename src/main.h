@@ -74,4 +74,6 @@ u32 CirBuf_Str(const u8 *template);
 void SIM900_ReInit(void);
 u32 Init(void);
 u32 TIM3_Start(u16 timeout);
-__interrupt void TIMER0_A0_ISR(void);
+void SysTimer_Start();
+__interrupt void TIMER1_A1_ISR(void);
+

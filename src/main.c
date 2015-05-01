@@ -14,6 +14,11 @@ int main(void)
     //TelDir_SetBalanceNumber("002A0031003000300023"); // Delete in production
     MSP430_UCS_Init();
     MSP430_UART_Init();
+    Delay_Init();
+    LED_INIT;
+    SysTimer_Start();
+    __bis_SR_register(GIE);
+
     while(1){
         while (!(UCA1IFG&UCTXIFG));
         UCA1TXBUF = 0xAA;
@@ -116,7 +121,7 @@ void SysTimer_Start(u16 timeout){
     TA1CTL = 0x0000; // Hault the timer
     TA1CTL = 0X00C0; // ID = 8 (i.e. /8 divider)
     TA1CTL |= 0X2 << 8; // Use SMCLK as a source clock
-    TA1EX0 = 0X8; // Set /8 additional divider
+    TA1EX0 = 0X7; // Set /8 additional divider
     TA1R = 0x0000; // Zero the timer
     TA1CCR0 = 58650; // Set period 58650 is 150 ms period with SMCLK == 25MHz, IDEX = 8, ID = 8
     TA1CTL |= 0X1 << 4; // Launch the timer in up mode
@@ -142,8 +147,18 @@ void SysTimer_Start(u16 timeout){
     This timeout is reset each time WaterLeak controller riches us. If timeout
     eventually expired that's concerned as the WaterLeak controller lost.
 */
-#pragma vector=TIMER0_A0_VECTOR
-__interrupt void TIMER0_A0_ISR(void){
+#pragma vector=TIMER1_A1_VECTOR
+__interrupt void TIMER1_A1_ISR(void){
+
+    static u8 cnt = 0;
+    if(cnt++ % 2){
+        LED_OFF;
+    }else{
+        LED_ON;
+    };
+    TA1CTL &= ~TAIFG;
+    return;
+
     if(TA1CTL & TAIFG){
         TA1R = 0x0000;
         if(State.close_valves_timeout > 0){

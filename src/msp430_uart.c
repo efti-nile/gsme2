@@ -22,7 +22,7 @@ void MSP430_UART_Init(void){
 
     UCA0CTL1 &= ~UCSWRST; // Release UART
 
-    UCA0IE |= UCRXIE | UCTXIE; // Enable interrupts
+    //UCA0IE |= UCRXIE | UCTXIE; // Enable interrupts
 
     // USCI_A1 Initialization //////////////////////////////////////////////////
     UCA1CTL1 |= UCSWRST; // Hault UART
@@ -33,11 +33,12 @@ void MSP430_UART_Init(void){
     /*P4OUT &= BIT4^0xFF; P4DIR |= BIT4; P4REN &= BIT4^0xFF;*/ P4SEL |= BIT4; /*P4DS &= BIT4^0xFF;*/ // UCA1TXD
     /*P4OUT &= BIT5^0xFF; P4DIR |= BIT5; P4REN &= BIT5^0xFF;*/ P4SEL |= BIT5; /*P4DS &= BIT5^0xFF;*/ // UCA1RXD
 
-    UCA1BRW = 0x04E2; // Baud rate configuring. 0x04E2 for 9600 @ 12MHz BRCLK
+    UCA1BRW = 219; // Baud rate configuring. 219 for 115200 @ 25MHz BRCLK
 
     UCA1CTL1 &= ~UCSWRST; // Release UART
 
-    UCA1IE |= UCRXIE | UCTXIE; // Enable interrupts
+    UCA1IE |= UCRXIE;
+    //UCA1IE |= UCRXIE | UCTXIE; // Enable interrupts
 }
 
 /*!
@@ -232,15 +233,12 @@ __interrupt void USCI_A0_ISR(void){
 */
 #pragma vector=USCI_A1_VECTOR
 __interrupt void USCI_A1_ISR(void){
-    u8 tmp;
-    switch(__even_in_range(UCA0IV,4))
+    switch(__even_in_range(UCA1IV,4))
     {
     case 0: // Vector 0 - no interrupt
         break;
     case 2: // Vector 2 - RXIFG
-        tmp = UCA1TXBUF & 0x00FF;
-
-        CirBuf[CirBuf_Head++] = tmp;
+        CirBuf[CirBuf_Head++] = UCA1RXBUF;
 
         if(CirBuf_Head >= CIRBUF_SIZE){
             CirBuf_Head = 0;
