@@ -1917,12 +1917,6 @@
       <name>$PROJ_DIR$\src\main.c</name>
     </file>
     <file>
-      <name>$PROJ_DIR$\src\main_blank.c</name>
-      <excluded>
-        <configuration>Debug</configuration>
-      </excluded>
-    </file>
-    <file>
       <name>$PROJ_DIR$\src\msp430_uart.c</name>
     </file>
     <file>

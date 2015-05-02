@@ -20,8 +20,8 @@ static u8 PowMeas_PrevBatteryStatus;
 void PowMeas_Init(void){
     // IO Inintialization
     ENBAT_INIT; // Enable battery measurement circuit
-    INBAT_INIT; // External power measurement ADC channel
-    INPWR_INIT; // Battery power measurement  ADC channel
+    INBAT_INIT; // Battery power measurement ADC channel
+    INPWR_INIT; // External power measurement  ADC channel
 
     // ADC_10A Initialization
     ADC10CTL0 &= ~ ADC10ON; // Switch ADC_10A off
@@ -42,9 +42,12 @@ void PowMeas_Init(void){
     \brief Returns 1 if battery is OK
 */
 u8 PowMeas_BatteryStatus(void){
-    u32 retval;
+    u8 retval;
 
     ENBAT_SET;
+
+    // TODO: Check if is it necessary to introduce some delay here. It may
+    // allow to charge the ADC input capacitor fully.
 
     retval = (
         PowMeas_PrevBatteryStatus = (

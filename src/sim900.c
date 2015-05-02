@@ -2,6 +2,12 @@
 
 u8 SMS_Balance[SMS_TEXT_MAXLEN]; // TODO: maybe put it in stack?
 
+/*!
+    \brief Tryes to initialize SIM900 untill success.
+
+    LED switched on for 0.5 second on eache attemption to initialize
+    SIM900.
+*/
 void SIM900_ReInit(void){
 func_begin:
     SIM900_PowerOff(); // Power-off SIM900
@@ -14,7 +20,7 @@ func_begin:
 
     SIM900_PowerOn(); // Start SIM900
 
-    Delay_DelayMs(10);
+    Delay_DelayMs(10); // To have in concern that this time may be not enough
 
     SIM900_SoftReset();
 
@@ -41,7 +47,7 @@ func_begin:
     }
     SIM900_CircularBuffer_Purge();
 
-    // Character Set
+    // Choose character Set
     SIM900_SendStr("AT+CSCS=\"UCS2\"\r");
     if(!SIM900_WaitForResponse("OK", "ERROR")){
         goto func_begin;

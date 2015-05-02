@@ -236,7 +236,7 @@ void SendCmd(u8 cmd){
     8. SIM900 Start
     9. Main timer start
 */
-u32 Init(void){
+void Init(void){
     // TODO: USCI_A0 initialization call
     // TODO: USCI_A1 initialization call
 
@@ -249,13 +249,9 @@ u32 Init(void){
 
     Delay_Init();
     SMS_Queue_Init();
-    TelDir_Init();
+    // TelDir_Init(); TODO: Port it.
     PowMeas_Init();
     SIM900_ReInit();
-
-    TIM3_Start(1000); // GSM Extender System Timer
-
-    return 0;
 }
 
 /*!

@@ -69,11 +69,9 @@ void ErrorHandler(u32 ErrNum);
 void TIM3_IRQHandler(void);
 void SendCmd(u8 cmd);
 void OkStatus_Update(void);
-u8 CRC_Calc(u8* src, u32 num);
-u32 CirBuf_Str(const u8 *template);
+u8 CRC_Calc(u8* src, u16 num);
 void SIM900_ReInit(void);
-u32 Init(void);
-u32 TIM3_Start(u16 timeout);
+void Init(void);
 void SysTimer_Start();
 __interrupt void TIMER1_A1_ISR(void);
 
