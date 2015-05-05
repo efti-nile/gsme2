@@ -9,6 +9,7 @@
 #include "sms_queue.h"
 #include "teldir.h"
 #include "powmeas.h"
+#include "msp430_flash.h"
 
 // Pins description ////////////////////////////////////////////////////////////
 

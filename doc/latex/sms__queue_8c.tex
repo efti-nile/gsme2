@@ -1,0 +1,108 @@
+\hypertarget{sms__queue_8c}{}\section{src/sms\+\_\+queue.c File Reference}
+\label{sms__queue_8c}\index{src/sms\+\_\+queue.\+c@{src/sms\+\_\+queue.\+c}}
+{\ttfamily \#include \char`\"{}sms\+\_\+queue.\+h\char`\"{}}\\*
+Include dependency graph for sms\+\_\+queue.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=263pt]{sms__queue_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{sms__queue_8c_a44330a40d6fe6fa3f96ee0af604e05d8}{S\+M\+S\+\_\+\+Queue\+\_\+\+Init} (void)
+\item 
+void \hyperlink{sms__queue_8c_a5844f14bd0b7ada5b4c0a5a0be414d98}{S\+M\+S\+\_\+\+Queue\+\_\+\+Push} (\hyperlink{types_8h_aed742c436da53c1080638ce6ef7d13de}{u8} $\ast$Tel\+Num, const \hyperlink{types_8h_aed742c436da53c1080638ce6ef7d13de}{u8} $\ast$Sms\+Text, \hyperlink{types_8h_aed742c436da53c1080638ce6ef7d13de}{u8} Life\+Time)
+\item 
+\hyperlink{types_8h_aed742c436da53c1080638ce6ef7d13de}{u8} \hyperlink{sms__queue_8c_a48ae4a9d51c532b5bb8309221cb89148}{S\+M\+S\+\_\+\+Queue\+\_\+\+Pop} (\hyperlink{types_8h_aed742c436da53c1080638ce6ef7d13de}{u8} $\ast$Tel\+Num, \hyperlink{types_8h_aed742c436da53c1080638ce6ef7d13de}{u8} $\ast$$\ast$Sms\+Text)
+\item 
+\hyperlink{types_8h_aed742c436da53c1080638ce6ef7d13de}{u8} \hyperlink{sms__queue_8c_aca35b159a6a87f738ac878bbd440a3ba}{S\+M\+S\+\_\+\+Queue\+\_\+\+Num\+Items} (void)
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\hypertarget{sms__queue_8c_a44330a40d6fe6fa3f96ee0af604e05d8}{}\index{sms\+\_\+queue.\+c@{sms\+\_\+queue.\+c}!S\+M\+S\+\_\+\+Queue\+\_\+\+Init@{S\+M\+S\+\_\+\+Queue\+\_\+\+Init}}
+\index{S\+M\+S\+\_\+\+Queue\+\_\+\+Init@{S\+M\+S\+\_\+\+Queue\+\_\+\+Init}!sms\+\_\+queue.\+c@{sms\+\_\+queue.\+c}}
+\subsubsection[{S\+M\+S\+\_\+\+Queue\+\_\+\+Init}]{\setlength{\rightskip}{0pt plus 5cm}void S\+M\+S\+\_\+\+Queue\+\_\+\+Init (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\label{sms__queue_8c_a44330a40d6fe6fa3f96ee0af604e05d8}
+
+
+Definition at line 5 of file sms\+\_\+queue.\+c.
+
+
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=309pt]{sms__queue_8c_a44330a40d6fe6fa3f96ee0af604e05d8_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{sms__queue_8c_aca35b159a6a87f738ac878bbd440a3ba}{}\index{sms\+\_\+queue.\+c@{sms\+\_\+queue.\+c}!S\+M\+S\+\_\+\+Queue\+\_\+\+Num\+Items@{S\+M\+S\+\_\+\+Queue\+\_\+\+Num\+Items}}
+\index{S\+M\+S\+\_\+\+Queue\+\_\+\+Num\+Items@{S\+M\+S\+\_\+\+Queue\+\_\+\+Num\+Items}!sms\+\_\+queue.\+c@{sms\+\_\+queue.\+c}}
+\subsubsection[{S\+M\+S\+\_\+\+Queue\+\_\+\+Num\+Items}]{\setlength{\rightskip}{0pt plus 5cm}{\bf u8} S\+M\+S\+\_\+\+Queue\+\_\+\+Num\+Items (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\label{sms__queue_8c_aca35b159a6a87f738ac878bbd440a3ba}
+
+
+Definition at line 37 of file sms\+\_\+queue.\+c.
+
+\hypertarget{sms__queue_8c_a48ae4a9d51c532b5bb8309221cb89148}{}\index{sms\+\_\+queue.\+c@{sms\+\_\+queue.\+c}!S\+M\+S\+\_\+\+Queue\+\_\+\+Pop@{S\+M\+S\+\_\+\+Queue\+\_\+\+Pop}}
+\index{S\+M\+S\+\_\+\+Queue\+\_\+\+Pop@{S\+M\+S\+\_\+\+Queue\+\_\+\+Pop}!sms\+\_\+queue.\+c@{sms\+\_\+queue.\+c}}
+\subsubsection[{S\+M\+S\+\_\+\+Queue\+\_\+\+Pop}]{\setlength{\rightskip}{0pt plus 5cm}{\bf u8} S\+M\+S\+\_\+\+Queue\+\_\+\+Pop (
+\begin{DoxyParamCaption}
+\item[{{\bf u8} $\ast$}]{Tel\+Num, }
+\item[{{\bf u8} $\ast$$\ast$}]{Sms\+Text}
+\end{DoxyParamCaption}
+)}\label{sms__queue_8c_a48ae4a9d51c532b5bb8309221cb89148}
+
+
+Definition at line 23 of file sms\+\_\+queue.\+c.
+
+
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{sms__queue_8c_a48ae4a9d51c532b5bb8309221cb89148_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{sms__queue_8c_a5844f14bd0b7ada5b4c0a5a0be414d98}{}\index{sms\+\_\+queue.\+c@{sms\+\_\+queue.\+c}!S\+M\+S\+\_\+\+Queue\+\_\+\+Push@{S\+M\+S\+\_\+\+Queue\+\_\+\+Push}}
+\index{S\+M\+S\+\_\+\+Queue\+\_\+\+Push@{S\+M\+S\+\_\+\+Queue\+\_\+\+Push}!sms\+\_\+queue.\+c@{sms\+\_\+queue.\+c}}
+\subsubsection[{S\+M\+S\+\_\+\+Queue\+\_\+\+Push}]{\setlength{\rightskip}{0pt plus 5cm}void S\+M\+S\+\_\+\+Queue\+\_\+\+Push (
+\begin{DoxyParamCaption}
+\item[{{\bf u8} $\ast$}]{Tel\+Num, }
+\item[{const {\bf u8} $\ast$}]{Sms\+Text, }
+\item[{{\bf u8}}]{Life\+Time}
+\end{DoxyParamCaption}
+)}\label{sms__queue_8c_a5844f14bd0b7ada5b4c0a5a0be414d98}
+
+
+Definition at line 11 of file sms\+\_\+queue.\+c.
+
+
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{sms__queue_8c_a5844f14bd0b7ada5b4c0a5a0be414d98_icgraph}
+\end{center}
+\end{figure}
+
+

@@ -40,6 +40,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="annotated.html"><span>Data&#160;Structures</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
       <li>
         <div id="MSearchBox" class="MSearchBoxInactive">
@@ -86,18 +87,19 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!-- top -->
 <div class="header">
   <div class="summary">
-<a href="#func-members">Functions</a>  </div>
+<a href="#func-members">Functions</a> &#124;
+<a href="#var-members">Variables</a>  </div>
   <div class="headertitle">
 <div class="title">main.c File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &quot;io430.h&quot;</code><br />
+<div class="textblock"><code>#include &quot;<a class="el" href="main_8h_source.html">main.h</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for main.c:</div>
 <div class="dyncontent">
 <div class="center"><img src="main_8c__incl.png" border="0" usemap="#src_2main_8c" alt=""/></div>
 <map name="src_2main_8c" id="src_2main_8c">
-</map>
+<area shape="rect" id="node2" href="main_8h.html" title="main.h" alt="" coords="255,80,317,107"/><area shape="rect" id="node4" href="types_8h.html" title="types.h" alt="" coords="253,304,319,331"/><area shape="rect" id="node5" href="msp430__uart_8h.html" title="msp430_uart.h" alt="" coords="232,229,340,256"/><area shape="rect" id="node6" href="delay_8h.html" title="delay.h" alt="" coords="143,229,207,256"/><area shape="rect" id="node7" href="sim900_8h.html" title="sim900.h" alt="" coords="341,155,415,181"/><area shape="rect" id="node8" href="sms__queue_8h.html" title="sms_queue.h" alt="" coords="467,229,567,256"/><area shape="rect" id="node10" href="teldir_8h.html" title="teldir.h" alt="" coords="591,229,653,256"/><area shape="rect" id="node11" href="powmeas_8h.html" title="powmeas.h" alt="" coords="31,229,119,256"/></map>
 </div>
 </div>
 <p><a href="main_8c_source.html">Go to the source code of this file.</a></p>
@@ -106,8 +108,168 @@ Include dependency graph for main.c:</div>
 Functions</h2></td></tr>
 <tr class="memitem:a840291bc02cba5474a4cb46a9b9566fe"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8c.html#a840291bc02cba5474a4cb46a9b9566fe">main</a> (void)</td></tr>
 <tr class="separator:a840291bc02cba5474a4cb46a9b9566fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a471f177dfdefd35621d02eea75c3f6d6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8c.html#a471f177dfdefd35621d02eea75c3f6d6">ErrorHandler</a> (<a class="el" href="types_8h.html#a0ceed739f3b2b55ee8d4d2a79a82cdea">u32</a> ErrNum)</td></tr>
+<tr class="memdesc:a471f177dfdefd35621d02eea75c3f6d6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Blinkes the error and restarts SIM900.  <a href="#a471f177dfdefd35621d02eea75c3f6d6">More...</a><br /></td></tr>
+<tr class="separator:a471f177dfdefd35621d02eea75c3f6d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afc3855c9d4720a0bc37839912655a51b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8c.html#afc3855c9d4720a0bc37839912655a51b">OkStatus_Update</a> (void)</td></tr>
+<tr class="memdesc:afc3855c9d4720a0bc37839912655a51b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Updates global OK-flag and turns on the LED.  <a href="#afc3855c9d4720a0bc37839912655a51b">More...</a><br /></td></tr>
+<tr class="separator:afc3855c9d4720a0bc37839912655a51b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:addd5924d71057cfa18f55f84acf743de"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8c.html#addd5924d71057cfa18f55f84acf743de">SysTimer_Start</a> (<a class="el" href="types_8h.html#a482359d73191c2bd0ce23a8d9b8f523f">u16</a> timeout)</td></tr>
+<tr class="memdesc:addd5924d71057cfa18f55f84acf743de"><td class="mdescLeft">&#160;</td><td class="mdescRight">Starts 150ms system timer, enables interrupt uppon timer every 150ms.  <a href="#addd5924d71057cfa18f55f84acf743de">More...</a><br /></td></tr>
+<tr class="separator:addd5924d71057cfa18f55f84acf743de"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad1a4adc0c6240eb3e90e902dd11ed467"><td class="memItemLeft" align="right" valign="top">__interrupt void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8c.html#ad1a4adc0c6240eb3e90e902dd11ed467">TIMER1_A1_ISR</a> (void)</td></tr>
+<tr class="memdesc:ad1a4adc0c6240eb3e90e902dd11ed467"><td class="mdescLeft">&#160;</td><td class="mdescRight">TIMER_A1 ISR counts down timeouts in the system.  <a href="#ad1a4adc0c6240eb3e90e902dd11ed467">More...</a><br /></td></tr>
+<tr class="separator:ad1a4adc0c6240eb3e90e902dd11ed467"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac5fdf3b2940157c9d81b8a938a279eae"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8c.html#ac5fdf3b2940157c9d81b8a938a279eae">SendCmd</a> (<a class="el" href="types_8h.html#aed742c436da53c1080638ce6ef7d13de">u8</a> cmd)</td></tr>
+<tr class="memdesc:ac5fdf3b2940157c9d81b8a938a279eae"><td class="mdescLeft">&#160;</td><td class="mdescRight">The function sends 1 byte command to a main WaterLeak controller.  <a href="#ac5fdf3b2940157c9d81b8a938a279eae">More...</a><br /></td></tr>
+<tr class="separator:ac5fdf3b2940157c9d81b8a938a279eae"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7ce0a14b6e7779fbb2d9a05333792c41"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8c.html#a7ce0a14b6e7779fbb2d9a05333792c41">Init</a> (void)</td></tr>
+<tr class="memdesc:a7ce0a14b6e7779fbb2d9a05333792c41"><td class="mdescLeft">&#160;</td><td class="mdescRight">MCU peripheral initialization.  <a href="#a7ce0a14b6e7779fbb2d9a05333792c41">More...</a><br /></td></tr>
+<tr class="separator:a7ce0a14b6e7779fbb2d9a05333792c41"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae4ce845498558ce8962f23b80045e72d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="types_8h.html#aed742c436da53c1080638ce6ef7d13de">u8</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8c.html#ae4ce845498558ce8962f23b80045e72d">CRC_Calc</a> (<a class="el" href="types_8h.html#aed742c436da53c1080638ce6ef7d13de">u8</a> *src, <a class="el" href="types_8h.html#a482359d73191c2bd0ce23a8d9b8f523f">u16</a> num)</td></tr>
+<tr class="memdesc:ae4ce845498558ce8962f23b80045e72d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates simple control sum via XOR with 0xAA.  <a href="#ae4ce845498558ce8962f23b80045e72d">More...</a><br /></td></tr>
+<tr class="separator:ae4ce845498558ce8962f23b80045e72d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad6c3dd7111bf701431f13cbce565b874"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8c.html#ad6c3dd7111bf701431f13cbce565b874">MSP430_UCS_Init</a> (void)</td></tr>
+<tr class="memdesc:ad6c3dd7111bf701431f13cbce565b874"><td class="mdescLeft">&#160;</td><td class="mdescRight">Configures UCS for GSME2 needs.  <a href="#ad6c3dd7111bf701431f13cbce565b874">More...</a><br /></td></tr>
+<tr class="separator:ad6c3dd7111bf701431f13cbce565b874"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:a8fffca79f23706b77ec688ec9144fbf2"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="struct_state___type_def.html">State_TypeDef</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8c.html#a8fffca79f23706b77ec688ec9144fbf2">State</a></td></tr>
+<tr class="separator:a8fffca79f23706b77ec688ec9144fbf2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1e355aed5ee123977647172c50a0b50b"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="struct_in_pack___type_def.html">InPack_TypeDef</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8c.html#a1e355aed5ee123977647172c50a0b50b">InPack</a></td></tr>
+<tr class="separator:a1e355aed5ee123977647172c50a0b50b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a13cd5ce063acb4886ef8b13cdf215d0a"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="struct_out_pack___type_def.html">OutPack_TypeDef</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8c.html#a13cd5ce063acb4886ef8b13cdf215d0a">OutPack</a></td></tr>
+<tr class="separator:a13cd5ce063acb4886ef8b13cdf215d0a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
+<a class="anchor" id="ae4ce845498558ce8962f23b80045e72d"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="types_8h.html#aed742c436da53c1080638ce6ef7d13de">u8</a> CRC_Calc </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="types_8h.html#aed742c436da53c1080638ce6ef7d13de">u8</a> *&#160;</td>
+          <td class="paramname"><em>src</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="types_8h.html#a482359d73191c2bd0ce23a8d9b8f523f">u16</a>&#160;</td>
+          <td class="paramname"><em>num</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Calculates simple control sum via XOR with 0xAA. </p>
+
+<p>Definition at line <a class="el" href="main_8c_source.html#l00260">260</a> of file <a class="el" href="main_8c_source.html">main.c</a>.</p>
+
+<p><div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="main_8c_ae4ce845498558ce8962f23b80045e72d_icgraph.png" border="0" usemap="#main_8c_ae4ce845498558ce8962f23b80045e72d_icgraph" alt=""/></div>
+<map name="main_8c_ae4ce845498558ce8962f23b80045e72d_icgraph" id="main_8c_ae4ce845498558ce8962f23b80045e72d_icgraph">
+<area shape="rect" id="node2" href="main_8h.html#ac5fdf3b2940157c9d81b8a938a279eae" title="The function sends 1 byte command to a main WaterLeak controller. " alt="" coords="136,5,215,32"/><area shape="rect" id="node3" href="msp430__uart_8h.html#a87dabcea0809b0bb16559075ecffffa7" title="USCI_A0 ISR (Used for RS485 communication) " alt="" coords="263,31,365,57"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a471f177dfdefd35621d02eea75c3f6d6"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ErrorHandler </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="types_8h.html#a0ceed739f3b2b55ee8d4d2a79a82cdea">u32</a>&#160;</td>
+          <td class="paramname"><em>ErrNum</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Blinkes the error and restarts SIM900. </p>
+<p>The function blinks out the number of the error by the LED. </p>
+
+<p>Definition at line <a class="el" href="main_8c_source.html#l00091">91</a> of file <a class="el" href="main_8c_source.html">main.c</a>.</p>
+
+<p><div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="main_8c_a471f177dfdefd35621d02eea75c3f6d6_cgraph.png" border="0" usemap="#main_8c_a471f177dfdefd35621d02eea75c3f6d6_cgraph" alt=""/></div>
+<map name="main_8c_a471f177dfdefd35621d02eea75c3f6d6_cgraph" id="main_8c_a471f177dfdefd35621d02eea75c3f6d6_cgraph">
+<area shape="rect" id="node2" href="delay_8c.html#aa39b42eb02ce8c7916b6cbb85a59e02a" title="Delay_DelayMs" alt="" coords="148,5,261,32"/><area shape="rect" id="node3" href="main_8h.html#a0abb74e5d0038e5aac34542060af12bb" title="Tryes to initialize SIM900 untill success. " alt="" coords="151,56,258,83"/></map>
+</div>
+</p>
+
+<p><div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="main_8c_a471f177dfdefd35621d02eea75c3f6d6_icgraph.png" border="0" usemap="#main_8c_a471f177dfdefd35621d02eea75c3f6d6_icgraph" alt=""/></div>
+<map name="main_8c_a471f177dfdefd35621d02eea75c3f6d6_icgraph" id="main_8c_a471f177dfdefd35621d02eea75c3f6d6_icgraph">
+<area shape="rect" id="node2" href="sim900_8h.html#ae1e3f727860246949a7be1981da0b885" title="SIM900_ReadSms" alt="" coords="148,5,279,32"/><area shape="rect" id="node4" href="sim900_8h.html#a314bc551db817cb204992fad603d53fb" title="SIM900_SendSms" alt="" coords="148,56,279,83"/><area shape="rect" id="node3" href="main_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title="main" alt="" coords="327,31,377,57"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a7ce0a14b6e7779fbb2d9a05333792c41"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Init </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>MCU peripheral initialization. </p>
+<p>The function configures the following modules:</p><ol type="1">
+<li>USCI_AO for RS-485 communication</li>
+<li>USCI_A1 for SIM900 communication</li>
+<li>GPIO 3.1 Power switch pin for SIM900 3.2 Off/on SIM900 pin 3.3 Input pin to obtain SIM900 status 3.4 R\ RS485 (Toggling between Rx and Tx) 3.5 LED pin initialization</li>
+<li>Delay module initialization</li>
+<li>SMS Queue module initialization</li>
+<li>Talephone Directory module initialzation</li>
+<li>Power measurements initialization</li>
+<li>SIM900 Start</li>
+<li>Main timer start </li>
+</ol>
+
+<p>Definition at line <a class="el" href="main_8c_source.html#l00239">239</a> of file <a class="el" href="main_8c_source.html">main.c</a>.</p>
+
+<p><div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="main_8c_a7ce0a14b6e7779fbb2d9a05333792c41_cgraph.png" border="0" usemap="#main_8c_a7ce0a14b6e7779fbb2d9a05333792c41_cgraph" alt=""/></div>
+<map name="main_8c_a7ce0a14b6e7779fbb2d9a05333792c41_cgraph" id="main_8c_a7ce0a14b6e7779fbb2d9a05333792c41_cgraph">
+<area shape="rect" id="node2" href="delay_8c.html#a1f9ba0e7f4446d7da193a3e348c086e3" title="Delay_Init" alt="" coords="113,5,191,32"/><area shape="rect" id="node3" href="sms__queue_8c.html#a44330a40d6fe6fa3f96ee0af604e05d8" title="SMS_Queue_Init" alt="" coords="92,56,212,83"/><area shape="rect" id="node4" href="powmeas_8c.html#a68cd2ed196008b08a7d7189e3054f36a" title="Initializes IO, ADC_10A and REF for power measurement. " alt="" coords="101,107,203,133"/><area shape="rect" id="node6" href="main_8h.html#a0abb74e5d0038e5aac34542060af12bb" title="Tryes to initialize SIM900 untill success. " alt="" coords="99,157,205,184"/><area shape="rect" id="node5" href="powmeas_8c.html#a4746c9b329b9639fe9ecd8eb1a24fb9b" title="Returns ADC value of specified channel. " alt="" coords="260,107,391,133"/></map>
+</div>
+</p>
+
+<p><div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="main_8c_a7ce0a14b6e7779fbb2d9a05333792c41_icgraph.png" border="0" usemap="#main_8c_a7ce0a14b6e7779fbb2d9a05333792c41_icgraph" alt=""/></div>
+<map name="main_8c_a7ce0a14b6e7779fbb2d9a05333792c41_icgraph" id="main_8c_a7ce0a14b6e7779fbb2d9a05333792c41_icgraph">
+<area shape="rect" id="node2" href="main_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title="main" alt="" coords="92,5,143,32"/></map>
+</div>
+</p>
+
+</div>
+</div>
 <a class="anchor" id="a840291bc02cba5474a4cb46a9b9566fe"></a>
 <div class="memitem">
 <div class="memproto">
@@ -122,14 +284,229 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Definition at line <a class="el" href="main_8c_source.html#l00007">7</a> of file <a class="el" href="main_8c_source.html">main.c</a>.</p>
+
+<p><div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="main_8c_a840291bc02cba5474a4cb46a9b9566fe_cgraph.png" border="0" usemap="#main_8c_a840291bc02cba5474a4cb46a9b9566fe_cgraph" alt=""/></div>
+<map name="main_8c_a840291bc02cba5474a4cb46a9b9566fe_cgraph" id="main_8c_a840291bc02cba5474a4cb46a9b9566fe_cgraph">
+<area shape="rect" id="node2" href="main_8c.html#ad6c3dd7111bf701431f13cbce565b874" title="Configures UCS for GSME2 needs. " alt="" coords="140,5,271,32"/><area shape="rect" id="node3" href="msp430__uart_8c.html#ac4e8d86f9f454144efcdfaddb63ef0c8" title="Initializes USCI_A0 (for RS486) and USCI_A1 (for SIM900) as UARTs. " alt="" coords="137,56,274,83"/><area shape="rect" id="node4" href="delay_8c.html#a1f9ba0e7f4446d7da193a3e348c086e3" title="Delay_Init" alt="" coords="404,5,483,32"/><area shape="rect" id="node5" href="main_8c.html#addd5924d71057cfa18f55f84acf743de" title="Starts 150ms system timer, enables interrupt uppon timer every 150ms. " alt="" coords="149,933,261,960"/><area shape="rect" id="node6" href="msp430__uart_8c.html#a8922f574c57852ff52086ee18da90583" title="Sends data via specified USCI. " alt="" coords="580,411,731,437"/><area shape="rect" id="node7" href="main_8c.html#a7ce0a14b6e7779fbb2d9a05333792c41" title="MCU peripheral initialization. " alt="" coords="186,157,225,184"/><area shape="rect" id="node12" href="sim900_8c.html#a8204483925a5c4cd8af720ebd199817d" title="SIM900_GetStatus" alt="" coords="139,984,271,1011"/><area shape="rect" id="node13" href="delay_8c.html#aa39b42eb02ce8c7916b6cbb85a59e02a" title="Delay_DelayMs" alt="" coords="599,680,712,707"/><area shape="rect" id="node14" href="sim900_8c.html#a95422cc0eaac2a87eee78f848f8de4d9" title="SIM900_CircularBuf\l_Search" alt="" coords="587,825,723,866"/><area shape="rect" id="node15" href="sim900_8c.html#ae1e3f727860246949a7be1981da0b885" title="SIM900_ReadSms" alt="" coords="140,883,271,909"/><area shape="rect" id="node23" href="sms__queue_8c.html#a5844f14bd0b7ada5b4c0a5a0be414d98" title="SMS_Queue_Push" alt="" coords="377,461,510,488"/><area shape="rect" id="node32" href="sim900_8c.html#a314bc551db817cb204992fad603d53fb" title="SIM900_SendSms" alt="" coords="140,537,271,564"/><area shape="rect" id="node34" href="teldir_8c.html#afce5dc883ff00abed4fe489b336d3bdb" title="TelDir_Iterator_Init" alt="" coords="142,1035,269,1061"/><area shape="rect" id="node35" href="teldir_8c.html#a728a882c9557910c0c10bd580fc4db72" title="TelDir_GetNextTelNum" alt="" coords="128,1085,283,1112"/><area shape="rect" id="node36" href="powmeas_8c.html#a75928d4dc21ce58a6d4d290f92d7aaef" title="Returns 1 if battery is OK. " alt="" coords="122,208,289,235"/><area shape="rect" id="node37" href="powmeas_8c.html#a735d0fc2eee4e02e0d6c457ea00a57af" title="Returns 1 if external power supply is OK. " alt="" coords="104,259,307,285"/><area shape="rect" id="node8" href="sms__queue_8c.html#a44330a40d6fe6fa3f96ee0af604e05d8" title="SMS_Queue_Init" alt="" coords="383,56,503,83"/><area shape="rect" id="node9" href="powmeas_8c.html#a68cd2ed196008b08a7d7189e3054f36a" title="Initializes IO, ADC_10A and REF for power measurement. " alt="" coords="392,107,495,133"/><area shape="rect" id="node11" href="main_8h.html#a0abb74e5d0038e5aac34542060af12bb" title="Tryes to initialize SIM900 untill success. " alt="" coords="602,495,709,521"/><area shape="rect" id="node10" href="powmeas_8c.html#a4746c9b329b9639fe9ecd8eb1a24fb9b" title="Returns ADC value of specified channel. " alt="" coords="590,157,721,184"/><area shape="rect" id="node16" href="sim900_8c.html#a5e0999fbb9eaaa4c976c3b0fbd95f9ff" title="SIM900_CircularBuffer\l_Purge" alt="" coords="368,614,519,655"/><area shape="rect" id="node17" href="sim900_8c.html#a2145897f7764b988be14bc4a530c9326" title="SIM900_SendStr" alt="" coords="383,512,503,539"/><area shape="rect" id="node18" href="sim900_8c.html#a7191db3b8eab5819179ff80be9f27529" title="SIM900_WaitForResponse" alt="" coords="355,731,532,757"/><area shape="rect" id="node19" href="main_8c.html#a471f177dfdefd35621d02eea75c3f6d6" title="Blinkes the error and restarts SIM900. " alt="" coords="396,680,491,707"/><area shape="rect" id="node20" href="sim900_8c.html#ae21a8d691c2fbae338567ac00097f515" title="SIM900_CircularBuffer\l_ExtractTelNum" alt="" coords="368,1253,519,1294"/><area shape="rect" id="node21" href="teldir_8c.html#a4646bad3b1c8c9012bb8d69f76f23415" title="TelDir_Push" alt="" coords="397,1319,489,1345"/><area shape="rect" id="node24" href="teldir_8c.html#a6bd23eb9d8de630a5f0a8bd96007457b" title="TelDir_Del" alt="" coords="403,984,484,1011"/><area shape="rect" id="node25" href="teldir_8c.html#aac98e4f64e7d986fad0dd17c263ddaa0" title="TelDir_FindTelNumber" alt="" coords="369,1035,518,1061"/><area shape="rect" id="node26" href="teldir_8c.html#a9b65e7bbc73732a18f3336f450fed706" title="TelDir_Clean" alt="" coords="396,1085,491,1112"/><area shape="rect" id="node27" href="sim900_8c.html#a1fb2052563a5f094dd2ee59e047e88d8" title="SIM900_CircularBuffer\l_ExtractBalanceNum" alt="" coords="368,1370,519,1411"/><area shape="rect" id="node29" href="teldir_8c.html#a16f9616bb0bff34b1f289b5fb841e0a9" title="TelDir_SetBalanceNumber" alt="" coords="356,933,531,960"/><area shape="rect" id="node30" href="teldir_8c.html#a9149473eeb7aab1097e62206c7af88fa" title="TelDir_GetBalanceNumber" alt="" coords="356,1136,531,1163"/><area shape="rect" id="node31" href="sim900_8c.html#a3e9195e1ce5716d2e71b480a18da4721" title="SIM900_CircularBuffer\l_Extract" alt="" coords="368,1187,519,1229"/><area shape="rect" id="node22" href="teldir_8c.html#a61d7eae375875f4f3b1cb08084146157" title="TelDir_WriteToFlash" alt="" coords="586,1035,725,1061"/><area shape="rect" id="node28" href="sim900_8c.html#aa05aa60a1b0a8f4d660365c7d4ff122b" title="Returns true if given UCS2&#45;symbol may be in tel. number. " alt="" coords="586,1377,725,1404"/><area shape="rect" id="node33" href="sms__queue_8c.html#a48ae4a9d51c532b5bb8309221cb89148" title="SMS_Queue_Pop" alt="" coords="380,411,507,437"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="ad6c3dd7111bf701431f13cbce565b874"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void MSP430_UCS_Init </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Configures UCS for GSME2 needs. </p>
+<p>The function sets DCOCLK and DCOCLKDIV to 25MHz</p>
+<p>Source clock for FFL: REFOCLK 32768Hz FLLREFDIV = 1 FLLN = 762 DCORSEL = 6 DCO = 15 FLLD = 1 </p>
+
+<p>Definition at line <a class="el" href="main_8c_source.html#l00278">278</a> of file <a class="el" href="main_8c_source.html">main.c</a>.</p>
+
+<p><div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="main_8c_ad6c3dd7111bf701431f13cbce565b874_icgraph.png" border="0" usemap="#main_8c_ad6c3dd7111bf701431f13cbce565b874_icgraph" alt=""/></div>
+<map name="main_8c_ad6c3dd7111bf701431f13cbce565b874_icgraph" id="main_8c_ad6c3dd7111bf701431f13cbce565b874_icgraph">
+<area shape="rect" id="node2" href="main_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title="main" alt="" coords="184,5,235,32"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="afc3855c9d4720a0bc37839912655a51b"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void OkStatus_Update </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Updates global OK-flag and turns on the LED. </p>
+
+<p>Definition at line <a class="el" href="main_8c_source.html#l00111">111</a> of file <a class="el" href="main_8c_source.html">main.c</a>.</p>
+
+<p><div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="main_8c_afc3855c9d4720a0bc37839912655a51b_icgraph.png" border="0" usemap="#main_8c_afc3855c9d4720a0bc37839912655a51b_icgraph" alt=""/></div>
+<map name="main_8c_afc3855c9d4720a0bc37839912655a51b_icgraph" id="main_8c_afc3855c9d4720a0bc37839912655a51b_icgraph">
+<area shape="rect" id="node2" href="msp430__uart_8h.html#a87dabcea0809b0bb16559075ecffffa7" title="USCI_A0 ISR (Used for RS485 communication) " alt="" coords="179,5,281,32"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="ac5fdf3b2940157c9d81b8a938a279eae"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SendCmd </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="types_8h.html#aed742c436da53c1080638ce6ef7d13de">u8</a>&#160;</td>
+          <td class="paramname"><em>cmd</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>The function sends 1 byte command to a main WaterLeak controller. </p>
+<p>The function builds the outgoing packet, calculates the check sum and sends all that. </p>
+
+<p>Definition at line <a class="el" href="main_8c_source.html#l00192">192</a> of file <a class="el" href="main_8c_source.html">main.c</a>.</p>
+
+<p><div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="main_8c_ac5fdf3b2940157c9d81b8a938a279eae_cgraph.png" border="0" usemap="#main_8c_ac5fdf3b2940157c9d81b8a938a279eae_cgraph" alt=""/></div>
+<map name="main_8c_ac5fdf3b2940157c9d81b8a938a279eae_cgraph" id="main_8c_ac5fdf3b2940157c9d81b8a938a279eae_cgraph">
+<area shape="rect" id="node2" href="main_8c.html#ae4ce845498558ce8962f23b80045e72d" title="Calculates simple control sum via XOR with 0xAA. " alt="" coords="190,5,273,32"/><area shape="rect" id="node3" href="msp430__uart_8c.html#aa74f7a14edaebaeedbd7b5f3dc710068" title="Sends address&#45;byte via specified USCI. " alt="" coords="132,56,331,83"/><area shape="rect" id="node4" href="msp430__uart_8c.html#a8922f574c57852ff52086ee18da90583" title="Sends data via specified USCI. " alt="" coords="156,107,307,133"/></map>
+</div>
+</p>
+
+<p><div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="main_8c_ac5fdf3b2940157c9d81b8a938a279eae_icgraph.png" border="0" usemap="#main_8c_ac5fdf3b2940157c9d81b8a938a279eae_icgraph" alt=""/></div>
+<map name="main_8c_ac5fdf3b2940157c9d81b8a938a279eae_icgraph" id="main_8c_ac5fdf3b2940157c9d81b8a938a279eae_icgraph">
+<area shape="rect" id="node2" href="msp430__uart_8h.html#a87dabcea0809b0bb16559075ecffffa7" title="USCI_A0 ISR (Used for RS485 communication) " alt="" coords="132,5,235,32"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="addd5924d71057cfa18f55f84acf743de"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SysTimer_Start </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="types_8h.html#a482359d73191c2bd0ce23a8d9b8f523f">u16</a>&#160;</td>
+          <td class="paramname"><em>timeout</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Starts 150ms system timer, enables interrupt uppon timer every 150ms. </p>
+
+<p>Definition at line <a class="el" href="main_8c_source.html#l00119">119</a> of file <a class="el" href="main_8c_source.html">main.c</a>.</p>
+
+<p><div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="main_8c_addd5924d71057cfa18f55f84acf743de_icgraph.png" border="0" usemap="#main_8c_addd5924d71057cfa18f55f84acf743de_icgraph" alt=""/></div>
+<map name="main_8c_addd5924d71057cfa18f55f84acf743de_icgraph" id="main_8c_addd5924d71057cfa18f55f84acf743de_icgraph">
+<area shape="rect" id="node2" href="main_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title="main" alt="" coords="165,5,216,32"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="ad1a4adc0c6240eb3e90e902dd11ed467"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">__interrupt void TIMER1_A1_ISR </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>TIMER_A1 ISR counts down timeouts in the system. </p>
+<p>The timer catches several timeouts.</p>
+<ol type="1">
+<li>Close Valves Timeout This timeout is set when command to close all valves received and the timeout is being expired until acknoledgement of succesful command execution gotten.</li>
+<li>Open Valves Timeout This timeout is set when command to open all valves received and the timeout is being expired until acknoledgement of succesful command execution gotten.</li>
+<li>OK Timeout This timeout is reset each time WaterLeak controller riches us. If timeout eventually expired that's concerned as the WaterLeak controller lost. </li>
+</ol>
+
+<p>Definition at line <a class="el" href="main_8c_source.html#l00150">150</a> of file <a class="el" href="main_8c_source.html">main.c</a>.</p>
+
+<p><div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="main_8c_ad1a4adc0c6240eb3e90e902dd11ed467_cgraph.png" border="0" usemap="#main_8c_ad1a4adc0c6240eb3e90e902dd11ed467_cgraph" alt=""/></div>
+<map name="main_8c_ad1a4adc0c6240eb3e90e902dd11ed467_cgraph" id="main_8c_ad1a4adc0c6240eb3e90e902dd11ed467_cgraph">
+<area shape="rect" id="node2" href="sms__queue_8c.html#a5844f14bd0b7ada5b4c0a5a0be414d98" title="SMS_Queue_Push" alt="" coords="172,5,305,32"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<h2 class="groupheader">Variable Documentation</h2>
+<a class="anchor" id="a1e355aed5ee123977647172c50a0b50b"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">struct <a class="el" href="struct_in_pack___type_def.html">InPack_TypeDef</a> InPack</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
 <p>Definition at line <a class="el" href="main_8c_source.html#l00004">4</a> of file <a class="el" href="main_8c_source.html">main.c</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a13cd5ce063acb4886ef8b13cdf215d0a"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">struct <a class="el" href="struct_out_pack___type_def.html">OutPack_TypeDef</a> OutPack</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="main_8c_source.html#l00005">5</a> of file <a class="el" href="main_8c_source.html">main.c</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a8fffca79f23706b77ec688ec9144fbf2"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">struct <a class="el" href="struct_state___type_def.html">State_TypeDef</a> State</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="main_8c_source.html#l00003">3</a> of file <a class="el" href="main_8c_source.html">main.c</a>.</p>
 
 </div>
 </div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Apr 7 2015 13:32:08 for GSME2 by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat May 2 2015 15:33:37 for GSME2 by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.9.1
 </small></address>

@@ -2,19 +2,21 @@
 
 <project>
   <fileVersion>2</fileVersion>
-  <fileChecksum>3817904222</fileChecksum>
+  <fileChecksum>2707065506</fileChecksum>
   <configuration>
     <name>Debug</name>
     <outputs>
-      <file>$PROJ_DIR$\src\powmeas.h</file>
+      <file>$PROJ_DIR$\src\msp430_flash.h</file>
       <file>$PROJ_DIR$\src\main.h</file>
       <file>$PROJ_DIR$\src\delay.h</file>
+      <file>$PROJ_DIR$\src\powmeas.h</file>
       <file>$PROJ_DIR$\src\sim900.h</file>
       <file>$PROJ_DIR$\src\sms_queue.h</file>
       <file>$PROJ_DIR$\src\teldir.h</file>
       <file>$PROJ_DIR$\src\types.h</file>
       <file>$PROJ_DIR$\src\delay.c</file>
       <file>$PROJ_DIR$\src\main.c</file>
+      <file>$PROJ_DIR$\src\msp430_flash.c</file>
       <file>$PROJ_DIR$\src\msp430_uart.c</file>
       <file>$PROJ_DIR$\src\powmeas.c</file>
       <file>$PROJ_DIR$\src\sim900.c</file>
@@ -23,13 +25,13 @@
       <file>$TOOLKIT_DIR$\inc\dlib\c\ysizet.h</file>
       <file>$TOOLKIT_DIR$\inc\dlib\c\xencoding_limits.h</file>
       <file>$PROJ_DIR$\Debug\Obj\delay.r43</file>
-      <file>$PROJ_DIR$\Debug\Obj\msp430_uart.r43</file>
       <file>$PROJ_DIR$\Debug\Obj\msp430_uart.pbi</file>
       <file>$PROJ_DIR$\Debug\Exe\gsme2.d43</file>
+      <file>$PROJ_DIR$\Debug\Obj\msp430_uart.r43</file>
       <file>$TOOLKIT_DIR$\inc\io430.h</file>
+      <file>$PROJ_DIR$\src\msp430_uart.h</file>
       <file>$PROJ_DIR$\Debug\Obj\main.r43</file>
       <file>$TOOLKIT_DIR$\inc\dlib\c\DLib_Threads.h</file>
-      <file>$PROJ_DIR$\src\msp430_uart.h</file>
       <file>$TOOLKIT_DIR$\inc\io430f5508.h</file>
       <file>$TOOLKIT_DIR$\config\multiplier32_loc2.xcl</file>
       <file>$PROJ_DIR$\Debug\Obj\main.pbi</file>
@@ -52,13 +54,15 @@
       <file>$TOOLKIT_DIR$\inc\dlib\c\ycheck.h</file>
       <file>$TOOLKIT_DIR$\inc\dlib\c\DLib_Defaults.h</file>
       <file>$TOOLKIT_DIR$\inc\dlib\c\DLib_Product.h</file>
+      <file>$PROJ_DIR$\Debug\Obj\msp430_flash.r43</file>
+      <file>$PROJ_DIR$\Debug\Obj\msp430_flash.pbi</file>
     </outputs>
     <file>
       <name>[ROOT_NODE]</name>
       <outputs>
         <tool>
           <name>XLINK</name>
-          <file> 19</file>
+          <file> 20</file>
         </tool>
       </outputs>
     </file>
@@ -67,99 +71,7 @@
       <outputs>
         <tool>
           <name>ICC430</name>
-          <file> 16</file>
-        </tool>
-        <tool>
-          <name>BICOMP</name>
-          <file> 36</file>
-        </tool>
-      </outputs>
-      <inputs>
-        <tool>
-          <name>ICC430</name>
-          <file> 2 20 24 28 6</file>
-        </tool>
-        <tool>
-          <name>BICOMP</name>
-          <file> 2 20 24 28 6</file>
-        </tool>
-      </inputs>
-    </file>
-    <file>
-      <name>$PROJ_DIR$\src\main.c</name>
-      <outputs>
-        <tool>
-          <name>ICC430</name>
-          <file> 21</file>
-        </tool>
-        <tool>
-          <name>BICOMP</name>
-          <file> 26</file>
-        </tool>
-      </outputs>
-      <inputs>
-        <tool>
-          <name>ICC430</name>
-          <file> 1 20 24 28 6 23 2 3 4 41 43 42 44 31 45 15 22 14 5 0</file>
-        </tool>
-        <tool>
-          <name>BICOMP</name>
-          <file> 1 20 24 28 6 23 2 3 4 41 43 42 44 45 15 22 14 5 0</file>
-        </tool>
-      </inputs>
-    </file>
-    <file>
-      <name>$PROJ_DIR$\src\msp430_uart.c</name>
-      <outputs>
-        <tool>
-          <name>ICC430</name>
-          <file> 17</file>
-        </tool>
-        <tool>
-          <name>BICOMP</name>
           <file> 18</file>
-        </tool>
-      </outputs>
-      <inputs>
-        <tool>
-          <name>ICC430</name>
-          <file> 23 20 24 28 6 1 2 3 4 41 43 42 44 31 45 15 22 14 5 0</file>
-        </tool>
-        <tool>
-          <name>BICOMP</name>
-          <file> 23 20 24 28 6 1 2 3 4 41 43 42 44 45 15 22 14 5 0</file>
-        </tool>
-      </inputs>
-    </file>
-    <file>
-      <name>$PROJ_DIR$\src\powmeas.c</name>
-      <outputs>
-        <tool>
-          <name>ICC430</name>
-          <file> 34</file>
-        </tool>
-        <tool>
-          <name>BICOMP</name>
-          <file> 37</file>
-        </tool>
-      </outputs>
-      <inputs>
-        <tool>
-          <name>ICC430</name>
-          <file> 0 20 24 28 6</file>
-        </tool>
-        <tool>
-          <name>BICOMP</name>
-          <file> 0 20 24 28 6</file>
-        </tool>
-      </inputs>
-    </file>
-    <file>
-      <name>$PROJ_DIR$\src\sim900.c</name>
-      <outputs>
-        <tool>
-          <name>ICC430</name>
-          <file> 32</file>
         </tool>
         <tool>
           <name>BICOMP</name>
@@ -169,20 +81,89 @@
       <inputs>
         <tool>
           <name>ICC430</name>
-          <file> 3 20 24 28 6 2 23 1 4 41 43 42 44 31 45 15 22 14 5 0</file>
+          <file> 2 22 26 30 7</file>
         </tool>
         <tool>
           <name>BICOMP</name>
-          <file> 3 20 24 28 6 2 23 1 4 41 43 42 44 45 15 22 14 5 0</file>
+          <file> 2 22 26 30 7</file>
         </tool>
       </inputs>
     </file>
     <file>
-      <name>$PROJ_DIR$\src\sms_queue.c</name>
+      <name>$PROJ_DIR$\src\main.c</name>
       <outputs>
         <tool>
           <name>ICC430</name>
-          <file> 33</file>
+          <file> 24</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 28</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICC430</name>
+          <file> 1 22 26 30 7 23 2 4 5 43 45 44 46 33 47 17 25 16 6 3 0</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 1 22 26 30 7 23 2 4 5 43 45 44 46 47 17 25 16 6 3 0</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\src\msp430_flash.c</name>
+      <outputs>
+        <tool>
+          <name>ICC430</name>
+          <file> 48</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 49</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICC430</name>
+          <file> 0 22 26 30 7</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 0 22 26 30 7</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\src\msp430_uart.c</name>
+      <outputs>
+        <tool>
+          <name>ICC430</name>
+          <file> 21</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 19</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICC430</name>
+          <file> 23 22 26 30 7 1 2 4 5 43 45 44 46 33 47 17 25 16 6 3 0</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 23 22 26 30 7 1 2 4 5 43 45 44 46 47 17 25 16 6 3 0</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\src\powmeas.c</name>
+      <outputs>
+        <tool>
+          <name>ICC430</name>
+          <file> 36</file>
         </tool>
         <tool>
           <name>BICOMP</name>
@@ -192,20 +173,20 @@
       <inputs>
         <tool>
           <name>ICC430</name>
-          <file> 4 20 24 28 6 41 43 42 44 31 45 15 22 14</file>
+          <file> 3 22 26 30 7</file>
         </tool>
         <tool>
           <name>BICOMP</name>
-          <file> 4 20 24 28 6 41 43 42 44 45 15 22 14</file>
+          <file> 3 22 26 30 7</file>
         </tool>
       </inputs>
     </file>
     <file>
-      <name>$PROJ_DIR$\src\teldir.c</name>
+      <name>$PROJ_DIR$\src\sim900.c</name>
       <outputs>
         <tool>
           <name>ICC430</name>
-          <file> 35</file>
+          <file> 34</file>
         </tool>
         <tool>
           <name>BICOMP</name>
@@ -215,7 +196,57 @@
       <inputs>
         <tool>
           <name>ICC430</name>
-          <file> 5 20 24 28 6 41 43 42 44 31 45 15 22 14</file>
+          <file> 4 22 26 30 7 2 23 1 5 43 45 44 46 33 47 17 25 16 6 3 0</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 4 22 26 30 7 2 23 1 5 43 45 44 46 47 17 25 16 6 3 0</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\src\sms_queue.c</name>
+      <outputs>
+        <tool>
+          <name>ICC430</name>
+          <file> 35</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 41</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICC430</name>
+          <file> 5 22 26 30 7 43 45 44 46 33 47 17 25 16</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 5 22 26 30 7 43 45 44 46 47 17 25 16</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\src\teldir.c</name>
+      <outputs>
+        <tool>
+          <name>ICC430</name>
+          <file> 37</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 42</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICC430</name>
+          <file> 6 22 26 30 7 43 45 44 46 33 47 17 25 16</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 6 22 26 30 7 43 45 44 46 47 17 25 16</file>
         </tool>
       </inputs>
     </file>
@@ -224,7 +255,7 @@
       <inputs>
         <tool>
           <name>XLINK</name>
-          <file> 27 25 16 21 17 34 32 33 35 30</file>
+          <file> 29 27 18 24 48 21 36 34 35 37 32</file>
         </tool>
       </inputs>
     </file>
@@ -233,7 +264,7 @@
       <inputs>
         <tool>
           <name>BILINK</name>
-          <file> 36 26 18 37 38 39 40</file>
+          <file> 38 28 49 19 39 40 41 42</file>
         </tool>
       </inputs>
     </file>

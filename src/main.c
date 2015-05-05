@@ -17,7 +17,28 @@ int main(void)
     Delay_Init();
     LED_INIT;
     SysTimer_Start();
-    __bis_SR_register(GIE);
+    //__bis_SR_register(GIE);
+
+    u8 dummy[600];
+
+    for(u16 i = 0; i < 600; i++) dummy[i] = (u8)i;
+
+    if(flash_write(dummy, 600) == 0){
+        __no_operation();
+    }else{
+        __no_operation();
+    }
+
+
+    for(u32 i = 0; i < 1000000; ++i);
+    while(1);
+
+
+
+
+
+
+
 
     while(1){
         MSP430_UART_Send(UART_SIM900, "Alien Cristopher", sizeof("Alien Cristopher"));

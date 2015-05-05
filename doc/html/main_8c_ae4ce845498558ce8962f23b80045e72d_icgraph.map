@@ -1,0 +1,4 @@
+<map id="CRC_Calc" name="CRC_Calc">
+<area shape="rect" id="node2" href="$main_8h.html#ac5fdf3b2940157c9d81b8a938a279eae" title="The function sends 1 byte command to a main WaterLeak controller. " alt="" coords="136,5,215,32"/>
+<area shape="rect" id="node3" href="$msp430__uart_8h.html#a87dabcea0809b0bb16559075ecffffa7" title="USCI_A0 ISR (Used for RS485 communication) " alt="" coords="263,31,365,57"/>
+</map>

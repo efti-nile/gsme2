@@ -1,0 +1,7 @@
+<map id="Init" name="Init">
+<area shape="rect" id="node2" href="$delay_8c.html#a1f9ba0e7f4446d7da193a3e348c086e3" title="Delay_Init" alt="" coords="113,5,191,32"/>
+<area shape="rect" id="node3" href="$sms__queue_8c.html#a44330a40d6fe6fa3f96ee0af604e05d8" title="SMS_Queue_Init" alt="" coords="92,56,212,83"/>
+<area shape="rect" id="node4" href="$powmeas_8c.html#a68cd2ed196008b08a7d7189e3054f36a" title="Initializes IO, ADC_10A and REF for power measurement. " alt="" coords="101,107,203,133"/>
+<area shape="rect" id="node6" href="$main_8h.html#a0abb74e5d0038e5aac34542060af12bb" title="Tryes to initialize SIM900 untill success. " alt="" coords="99,157,205,184"/>
+<area shape="rect" id="node5" href="$powmeas_8c.html#a4746c9b329b9639fe9ecd8eb1a24fb9b" title="Returns ADC value of specified channel. " alt="" coords="260,107,391,133"/>
+</map>

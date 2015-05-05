@@ -1,0 +1,7 @@
+<map id="PowMeas_AdcGet" name="PowMeas_AdcGet">
+<area shape="rect" id="node2" href="$powmeas_8h.html#a68cd2ed196008b08a7d7189e3054f36a" title="Initializes IO, ADC_10A and REF for power measurement. " alt="" coords="234,5,337,32"/>
+<area shape="rect" id="node5" href="$powmeas_8h.html#a75928d4dc21ce58a6d4d290f92d7aaef" title="Returns 1 if battery is OK. " alt="" coords="435,56,601,83"/>
+<area shape="rect" id="node6" href="$powmeas_8h.html#a735d0fc2eee4e02e0d6c457ea00a57af" title="Returns 1 if external power supply is OK. " alt="" coords="184,107,387,133"/>
+<area shape="rect" id="node3" href="$main_8h.html#a7ce0a14b6e7779fbb2d9a05333792c41" title="MCU peripheral initialization. " alt="" coords="499,5,537,32"/>
+<area shape="rect" id="node4" href="$main_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title="main" alt="" coords="649,56,700,83"/>
+</map>

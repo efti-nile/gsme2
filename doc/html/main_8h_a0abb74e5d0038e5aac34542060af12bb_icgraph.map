@@ -1,0 +1,7 @@
+<map id="SIM900_ReInit" name="SIM900_ReInit">
+<area shape="rect" id="node2" href="$main_8h.html#a471f177dfdefd35621d02eea75c3f6d6" title="Blinkes the error and restarts SIM900. " alt="" coords="160,56,255,83"/>
+<area shape="rect" id="node6" href="$main_8h.html#a7ce0a14b6e7779fbb2d9a05333792c41" title="MCU peripheral initialization. " alt="" coords="188,107,227,133"/>
+<area shape="rect" id="node3" href="$sim900_8h.html#ae1e3f727860246949a7be1981da0b885" title="SIM900_ReadSms" alt="" coords="303,5,433,32"/>
+<area shape="rect" id="node5" href="$sim900_8h.html#a314bc551db817cb204992fad603d53fb" title="SIM900_SendSms" alt="" coords="303,56,433,83"/>
+<area shape="rect" id="node4" href="$main_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title="main" alt="" coords="481,56,532,83"/>
+</map>

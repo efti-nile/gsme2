@@ -1,0 +1,5 @@
+<map id="SIM900_GetStatus" name="SIM900_GetStatus">
+<area shape="rect" id="node2" href="$main_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title="main" alt="" coords="213,5,264,32"/>
+<area shape="rect" id="node3" href="$msp430__uart_8h.html#a87dabcea0809b0bb16559075ecffffa7" title="USCI_A0 ISR (Used for RS485 communication) " alt="" coords="187,56,290,83"/>
+<area shape="rect" id="node4" href="$sim900_8h.html#a0abb74e5d0038e5aac34542060af12bb" title="Tryes to initialize SIM900 untill success. " alt="" coords="185,107,292,133"/>
+</map>

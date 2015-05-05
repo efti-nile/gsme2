@@ -1,0 +1,518 @@
+\hypertarget{sim900_8c}{}\section{src/sim900.c File Reference}
+\label{sim900_8c}\index{src/sim900.\+c@{src/sim900.\+c}}
+{\ttfamily \#include \char`\"{}sim900.\+h\char`\"{}}\\*
+Include dependency graph for sim900.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{sim900_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{sim900_8c_a0abb74e5d0038e5aac34542060af12bb}{S\+I\+M900\+\_\+\+Re\+Init} (void)
+\begin{DoxyCompactList}\small\item\em Tryes to initialize S\+I\+M900 untill success. \end{DoxyCompactList}\item 
+void \hyperlink{sim900_8c_ae1e3f727860246949a7be1981da0b885}{S\+I\+M900\+\_\+\+Read\+Sms} (void)
+\item 
+void \hyperlink{sim900_8c_a314bc551db817cb204992fad603d53fb}{S\+I\+M900\+\_\+\+Send\+Sms} (void)
+\item 
+\hyperlink{types_8h_aed742c436da53c1080638ce6ef7d13de}{u8} \hyperlink{sim900_8c_a169ac5d02fc1acc1fc16a1919e027280}{S\+I\+M900\+\_\+\+Power\+On} (void)
+\item 
+\hyperlink{types_8h_aed742c436da53c1080638ce6ef7d13de}{u8} \hyperlink{sim900_8c_a182cc5c04391e44e133510cc55bcf1d9}{S\+I\+M900\+\_\+\+Power\+Off} (void)
+\item 
+\hyperlink{types_8h_aed742c436da53c1080638ce6ef7d13de}{u8} \hyperlink{sim900_8c_a849e1e6bd435acb2afe40b2faf541d82}{S\+I\+M900\+\_\+\+Soft\+Reset} (void)
+\item 
+\hyperlink{types_8h_aed742c436da53c1080638ce6ef7d13de}{u8} \hyperlink{sim900_8c_a29375726032b4ed46c12da256de832be}{S\+I\+M900\+\_\+\+Hold\+Reset} (void)
+\item 
+\hyperlink{types_8h_aed742c436da53c1080638ce6ef7d13de}{u8} \hyperlink{sim900_8c_a8204483925a5c4cd8af720ebd199817d}{S\+I\+M900\+\_\+\+Get\+Status} (void)
+\item 
+void \hyperlink{sim900_8c_a2145897f7764b988be14bc4a530c9326}{S\+I\+M900\+\_\+\+Send\+Str} (\hyperlink{types_8h_aed742c436da53c1080638ce6ef7d13de}{u8} $\ast$str)
+\item 
+void \hyperlink{sim900_8c_a5e0999fbb9eaaa4c976c3b0fbd95f9ff}{S\+I\+M900\+\_\+\+Circular\+Buffer\+\_\+\+Purge} (void)
+\item 
+\hyperlink{types_8h_aed742c436da53c1080638ce6ef7d13de}{u8} \hyperlink{sim900_8c_a95422cc0eaac2a87eee78f848f8de4d9}{S\+I\+M900\+\_\+\+Circular\+Buf\+\_\+\+Search} (const \hyperlink{types_8h_aed742c436da53c1080638ce6ef7d13de}{u8} pattern\mbox{[}$\,$\mbox{]})
+\item 
+\hyperlink{types_8h_aed742c436da53c1080638ce6ef7d13de}{u8} \hyperlink{sim900_8c_a3e9195e1ce5716d2e71b480a18da4721}{S\+I\+M900\+\_\+\+Circular\+Buffer\+\_\+\+Extract} (const \hyperlink{types_8h_aed742c436da53c1080638ce6ef7d13de}{u8} Pattern\mbox{[}$\,$\mbox{]}, \hyperlink{types_8h_aed742c436da53c1080638ce6ef7d13de}{u8} $\ast$Dst, \hyperlink{types_8h_a482359d73191c2bd0ce23a8d9b8f523f}{u16} Num, \hyperlink{types_8h_aed742c436da53c1080638ce6ef7d13de}{u8} Del\+Char)
+\item 
+\hyperlink{types_8h_aed742c436da53c1080638ce6ef7d13de}{u8} \hyperlink{sim900_8c_ae21a8d691c2fbae338567ac00097f515}{S\+I\+M900\+\_\+\+Circular\+Buffer\+\_\+\+Extract\+Tel\+Num} (\hyperlink{types_8h_aed742c436da53c1080638ce6ef7d13de}{u8} $\ast$Dst)
+\item 
+\hyperlink{types_8h_aed742c436da53c1080638ce6ef7d13de}{u8} \hyperlink{sim900_8c_a1fb2052563a5f094dd2ee59e047e88d8}{S\+I\+M900\+\_\+\+Circular\+Buffer\+\_\+\+Extract\+Balance\+Num} (const \hyperlink{types_8h_aed742c436da53c1080638ce6ef7d13de}{u8} Pattern\mbox{[}$\,$\mbox{]}, \hyperlink{types_8h_aed742c436da53c1080638ce6ef7d13de}{u8} $\ast$Dst, \hyperlink{types_8h_a482359d73191c2bd0ce23a8d9b8f523f}{u16} Num)
+\item 
+\hyperlink{types_8h_aed742c436da53c1080638ce6ef7d13de}{u8} \hyperlink{sim900_8c_a7191db3b8eab5819179ff80be9f27529}{S\+I\+M900\+\_\+\+Wait\+For\+Response} (\hyperlink{types_8h_aed742c436da53c1080638ce6ef7d13de}{u8} $\ast$pos\+\_\+resp, \hyperlink{types_8h_aed742c436da53c1080638ce6ef7d13de}{u8} $\ast$neg\+\_\+resp)
+\item 
+\hyperlink{types_8h_aed742c436da53c1080638ce6ef7d13de}{u8} \hyperlink{sim900_8c_aa05aa60a1b0a8f4d660365c7d4ff122b}{Is\+Tel\+Number\+Symbol} (const \hyperlink{types_8h_aed742c436da53c1080638ce6ef7d13de}{u8} symbol\mbox{[}$\,$\mbox{]})
+\begin{DoxyCompactList}\small\item\em Returns true if given U\+C\+S2-\/symbol may be in tel. number. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{types_8h_aed742c436da53c1080638ce6ef7d13de}{u8} \hyperlink{sim900_8c_ad6c3a0c023ebe61448865723a3e20f2f}{S\+M\+S\+\_\+\+Balance} \mbox{[}\hyperlink{types_8h_a5d1281feaa659d712b32e8e2a003ec98}{S\+M\+S\+\_\+\+T\+E\+X\+T\+\_\+\+M\+A\+X\+L\+E\+N}\mbox{]}
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\hypertarget{sim900_8c_aa05aa60a1b0a8f4d660365c7d4ff122b}{}\index{sim900.\+c@{sim900.\+c}!Is\+Tel\+Number\+Symbol@{Is\+Tel\+Number\+Symbol}}
+\index{Is\+Tel\+Number\+Symbol@{Is\+Tel\+Number\+Symbol}!sim900.\+c@{sim900.\+c}}
+\subsubsection[{Is\+Tel\+Number\+Symbol}]{\setlength{\rightskip}{0pt plus 5cm}{\bf u8} Is\+Tel\+Number\+Symbol (
+\begin{DoxyParamCaption}
+\item[{const {\bf u8}}]{symbol\mbox{[}$\,$\mbox{]}}
+\end{DoxyParamCaption}
+)}\label{sim900_8c_aa05aa60a1b0a8f4d660365c7d4ff122b}
+
+
+Returns true if given U\+C\+S2-\/symbol may be in tel. number. 
+
+The function returns true if spcified U\+C\+S2-\/symbol may be in telephone number. I.\+e. if the symbol is 0..9, $\ast$ or \#. 
+
+Definition at line 505 of file sim900.\+c.
+
+
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{sim900_8c_aa05aa60a1b0a8f4d660365c7d4ff122b_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{sim900_8c_a95422cc0eaac2a87eee78f848f8de4d9}{}\index{sim900.\+c@{sim900.\+c}!S\+I\+M900\+\_\+\+Circular\+Buf\+\_\+\+Search@{S\+I\+M900\+\_\+\+Circular\+Buf\+\_\+\+Search}}
+\index{S\+I\+M900\+\_\+\+Circular\+Buf\+\_\+\+Search@{S\+I\+M900\+\_\+\+Circular\+Buf\+\_\+\+Search}!sim900.\+c@{sim900.\+c}}
+\subsubsection[{S\+I\+M900\+\_\+\+Circular\+Buf\+\_\+\+Search}]{\setlength{\rightskip}{0pt plus 5cm}{\bf u8} S\+I\+M900\+\_\+\+Circular\+Buf\+\_\+\+Search (
+\begin{DoxyParamCaption}
+\item[{const {\bf u8}}]{pattern\mbox{[}$\,$\mbox{]}}
+\end{DoxyParamCaption}
+)}\label{sim900_8c_a95422cc0eaac2a87eee78f848f8de4d9}
+
+
+Definition at line 317 of file sim900.\+c.
+
+
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{sim900_8c_a95422cc0eaac2a87eee78f848f8de4d9_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{sim900_8c_a3e9195e1ce5716d2e71b480a18da4721}{}\index{sim900.\+c@{sim900.\+c}!S\+I\+M900\+\_\+\+Circular\+Buffer\+\_\+\+Extract@{S\+I\+M900\+\_\+\+Circular\+Buffer\+\_\+\+Extract}}
+\index{S\+I\+M900\+\_\+\+Circular\+Buffer\+\_\+\+Extract@{S\+I\+M900\+\_\+\+Circular\+Buffer\+\_\+\+Extract}!sim900.\+c@{sim900.\+c}}
+\subsubsection[{S\+I\+M900\+\_\+\+Circular\+Buffer\+\_\+\+Extract}]{\setlength{\rightskip}{0pt plus 5cm}{\bf u8} S\+I\+M900\+\_\+\+Circular\+Buffer\+\_\+\+Extract (
+\begin{DoxyParamCaption}
+\item[{const {\bf u8}}]{Pattern\mbox{[}$\,$\mbox{]}, }
+\item[{{\bf u8} $\ast$}]{Dst, }
+\item[{{\bf u16}}]{Num, }
+\item[{{\bf u8}}]{Del\+Char}
+\end{DoxyParamCaption}
+)}\label{sim900_8c_a3e9195e1ce5716d2e71b480a18da4721}
+
+
+Definition at line 354 of file sim900.\+c.
+
+
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{sim900_8c_a3e9195e1ce5716d2e71b480a18da4721_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{sim900_8c_a1fb2052563a5f094dd2ee59e047e88d8}{}\index{sim900.\+c@{sim900.\+c}!S\+I\+M900\+\_\+\+Circular\+Buffer\+\_\+\+Extract\+Balance\+Num@{S\+I\+M900\+\_\+\+Circular\+Buffer\+\_\+\+Extract\+Balance\+Num}}
+\index{S\+I\+M900\+\_\+\+Circular\+Buffer\+\_\+\+Extract\+Balance\+Num@{S\+I\+M900\+\_\+\+Circular\+Buffer\+\_\+\+Extract\+Balance\+Num}!sim900.\+c@{sim900.\+c}}
+\subsubsection[{S\+I\+M900\+\_\+\+Circular\+Buffer\+\_\+\+Extract\+Balance\+Num}]{\setlength{\rightskip}{0pt plus 5cm}{\bf u8} S\+I\+M900\+\_\+\+Circular\+Buffer\+\_\+\+Extract\+Balance\+Num (
+\begin{DoxyParamCaption}
+\item[{const {\bf u8}}]{Pattern\mbox{[}$\,$\mbox{]}, }
+\item[{{\bf u8} $\ast$}]{Dst, }
+\item[{{\bf u16}}]{Num}
+\end{DoxyParamCaption}
+)}\label{sim900_8c_a1fb2052563a5f094dd2ee59e047e88d8}
+
+
+Definition at line 436 of file sim900.\+c.
+
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=333pt]{sim900_8c_a1fb2052563a5f094dd2ee59e047e88d8_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{sim900_8c_a1fb2052563a5f094dd2ee59e047e88d8_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{sim900_8c_ae21a8d691c2fbae338567ac00097f515}{}\index{sim900.\+c@{sim900.\+c}!S\+I\+M900\+\_\+\+Circular\+Buffer\+\_\+\+Extract\+Tel\+Num@{S\+I\+M900\+\_\+\+Circular\+Buffer\+\_\+\+Extract\+Tel\+Num}}
+\index{S\+I\+M900\+\_\+\+Circular\+Buffer\+\_\+\+Extract\+Tel\+Num@{S\+I\+M900\+\_\+\+Circular\+Buffer\+\_\+\+Extract\+Tel\+Num}!sim900.\+c@{sim900.\+c}}
+\subsubsection[{S\+I\+M900\+\_\+\+Circular\+Buffer\+\_\+\+Extract\+Tel\+Num}]{\setlength{\rightskip}{0pt plus 5cm}{\bf u8} S\+I\+M900\+\_\+\+Circular\+Buffer\+\_\+\+Extract\+Tel\+Num (
+\begin{DoxyParamCaption}
+\item[{{\bf u8} $\ast$}]{Dst}
+\end{DoxyParamCaption}
+)}\label{sim900_8c_ae21a8d691c2fbae338567ac00097f515}
+
+
+Definition at line 392 of file sim900.\+c.
+
+
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{sim900_8c_ae21a8d691c2fbae338567ac00097f515_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{sim900_8c_a5e0999fbb9eaaa4c976c3b0fbd95f9ff}{}\index{sim900.\+c@{sim900.\+c}!S\+I\+M900\+\_\+\+Circular\+Buffer\+\_\+\+Purge@{S\+I\+M900\+\_\+\+Circular\+Buffer\+\_\+\+Purge}}
+\index{S\+I\+M900\+\_\+\+Circular\+Buffer\+\_\+\+Purge@{S\+I\+M900\+\_\+\+Circular\+Buffer\+\_\+\+Purge}!sim900.\+c@{sim900.\+c}}
+\subsubsection[{S\+I\+M900\+\_\+\+Circular\+Buffer\+\_\+\+Purge}]{\setlength{\rightskip}{0pt plus 5cm}void S\+I\+M900\+\_\+\+Circular\+Buffer\+\_\+\+Purge (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\label{sim900_8c_a5e0999fbb9eaaa4c976c3b0fbd95f9ff}
+
+
+Definition at line 312 of file sim900.\+c.
+
+
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{sim900_8c_a5e0999fbb9eaaa4c976c3b0fbd95f9ff_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{sim900_8c_a8204483925a5c4cd8af720ebd199817d}{}\index{sim900.\+c@{sim900.\+c}!S\+I\+M900\+\_\+\+Get\+Status@{S\+I\+M900\+\_\+\+Get\+Status}}
+\index{S\+I\+M900\+\_\+\+Get\+Status@{S\+I\+M900\+\_\+\+Get\+Status}!sim900.\+c@{sim900.\+c}}
+\subsubsection[{S\+I\+M900\+\_\+\+Get\+Status}]{\setlength{\rightskip}{0pt plus 5cm}{\bf u8} S\+I\+M900\+\_\+\+Get\+Status (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\label{sim900_8c_a8204483925a5c4cd8af720ebd199817d}
+
+
+Definition at line 304 of file sim900.\+c.
+
+
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=295pt]{sim900_8c_a8204483925a5c4cd8af720ebd199817d_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{sim900_8c_a29375726032b4ed46c12da256de832be}{}\index{sim900.\+c@{sim900.\+c}!S\+I\+M900\+\_\+\+Hold\+Reset@{S\+I\+M900\+\_\+\+Hold\+Reset}}
+\index{S\+I\+M900\+\_\+\+Hold\+Reset@{S\+I\+M900\+\_\+\+Hold\+Reset}!sim900.\+c@{sim900.\+c}}
+\subsubsection[{S\+I\+M900\+\_\+\+Hold\+Reset}]{\setlength{\rightskip}{0pt plus 5cm}{\bf u8} S\+I\+M900\+\_\+\+Hold\+Reset (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\label{sim900_8c_a29375726032b4ed46c12da256de832be}
+
+
+Definition at line 299 of file sim900.\+c.
+
+\hypertarget{sim900_8c_a182cc5c04391e44e133510cc55bcf1d9}{}\index{sim900.\+c@{sim900.\+c}!S\+I\+M900\+\_\+\+Power\+Off@{S\+I\+M900\+\_\+\+Power\+Off}}
+\index{S\+I\+M900\+\_\+\+Power\+Off@{S\+I\+M900\+\_\+\+Power\+Off}!sim900.\+c@{sim900.\+c}}
+\subsubsection[{S\+I\+M900\+\_\+\+Power\+Off}]{\setlength{\rightskip}{0pt plus 5cm}{\bf u8} S\+I\+M900\+\_\+\+Power\+Off (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\label{sim900_8c_a182cc5c04391e44e133510cc55bcf1d9}
+
+
+Definition at line 287 of file sim900.\+c.
+
+
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=290pt]{sim900_8c_a182cc5c04391e44e133510cc55bcf1d9_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{sim900_8c_a169ac5d02fc1acc1fc16a1919e027280}{}\index{sim900.\+c@{sim900.\+c}!S\+I\+M900\+\_\+\+Power\+On@{S\+I\+M900\+\_\+\+Power\+On}}
+\index{S\+I\+M900\+\_\+\+Power\+On@{S\+I\+M900\+\_\+\+Power\+On}!sim900.\+c@{sim900.\+c}}
+\subsubsection[{S\+I\+M900\+\_\+\+Power\+On}]{\setlength{\rightskip}{0pt plus 5cm}{\bf u8} S\+I\+M900\+\_\+\+Power\+On (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\label{sim900_8c_a169ac5d02fc1acc1fc16a1919e027280}
+
+
+Definition at line 282 of file sim900.\+c.
+
+
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=291pt]{sim900_8c_a169ac5d02fc1acc1fc16a1919e027280_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{sim900_8c_ae1e3f727860246949a7be1981da0b885}{}\index{sim900.\+c@{sim900.\+c}!S\+I\+M900\+\_\+\+Read\+Sms@{S\+I\+M900\+\_\+\+Read\+Sms}}
+\index{S\+I\+M900\+\_\+\+Read\+Sms@{S\+I\+M900\+\_\+\+Read\+Sms}!sim900.\+c@{sim900.\+c}}
+\subsubsection[{S\+I\+M900\+\_\+\+Read\+Sms}]{\setlength{\rightskip}{0pt plus 5cm}void S\+I\+M900\+\_\+\+Read\+Sms (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\label{sim900_8c_ae1e3f727860246949a7be1981da0b885}
+
+
+Definition at line 79 of file sim900.\+c.
+
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{sim900_8c_ae1e3f727860246949a7be1981da0b885_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=252pt]{sim900_8c_ae1e3f727860246949a7be1981da0b885_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{sim900_8c_a0abb74e5d0038e5aac34542060af12bb}{}\index{sim900.\+c@{sim900.\+c}!S\+I\+M900\+\_\+\+Re\+Init@{S\+I\+M900\+\_\+\+Re\+Init}}
+\index{S\+I\+M900\+\_\+\+Re\+Init@{S\+I\+M900\+\_\+\+Re\+Init}!sim900.\+c@{sim900.\+c}}
+\subsubsection[{S\+I\+M900\+\_\+\+Re\+Init}]{\setlength{\rightskip}{0pt plus 5cm}void S\+I\+M900\+\_\+\+Re\+Init (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\label{sim900_8c_a0abb74e5d0038e5aac34542060af12bb}
+
+
+Tryes to initialize S\+I\+M900 untill success. 
+
+L\+E\+D switched on for 0.\+5 second on eache attemption to initialize S\+I\+M900. 
+
+Definition at line 11 of file sim900.\+c.
+
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{sim900_8c_a0abb74e5d0038e5aac34542060af12bb_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{sim900_8c_a0abb74e5d0038e5aac34542060af12bb_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{sim900_8c_a314bc551db817cb204992fad603d53fb}{}\index{sim900.\+c@{sim900.\+c}!S\+I\+M900\+\_\+\+Send\+Sms@{S\+I\+M900\+\_\+\+Send\+Sms}}
+\index{S\+I\+M900\+\_\+\+Send\+Sms@{S\+I\+M900\+\_\+\+Send\+Sms}!sim900.\+c@{sim900.\+c}}
+\subsubsection[{S\+I\+M900\+\_\+\+Send\+Sms}]{\setlength{\rightskip}{0pt plus 5cm}void S\+I\+M900\+\_\+\+Send\+Sms (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\label{sim900_8c_a314bc551db817cb204992fad603d53fb}
+
+
+Definition at line 247 of file sim900.\+c.
+
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{sim900_8c_a314bc551db817cb204992fad603d53fb_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=252pt]{sim900_8c_a314bc551db817cb204992fad603d53fb_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{sim900_8c_a2145897f7764b988be14bc4a530c9326}{}\index{sim900.\+c@{sim900.\+c}!S\+I\+M900\+\_\+\+Send\+Str@{S\+I\+M900\+\_\+\+Send\+Str}}
+\index{S\+I\+M900\+\_\+\+Send\+Str@{S\+I\+M900\+\_\+\+Send\+Str}!sim900.\+c@{sim900.\+c}}
+\subsubsection[{S\+I\+M900\+\_\+\+Send\+Str}]{\setlength{\rightskip}{0pt plus 5cm}void S\+I\+M900\+\_\+\+Send\+Str (
+\begin{DoxyParamCaption}
+\item[{{\bf u8} $\ast$}]{str}
+\end{DoxyParamCaption}
+)}\label{sim900_8c_a2145897f7764b988be14bc4a530c9326}
+
+
+Definition at line 308 of file sim900.\+c.
+
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=319pt]{sim900_8c_a2145897f7764b988be14bc4a530c9326_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{sim900_8c_a2145897f7764b988be14bc4a530c9326_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{sim900_8c_a849e1e6bd435acb2afe40b2faf541d82}{}\index{sim900.\+c@{sim900.\+c}!S\+I\+M900\+\_\+\+Soft\+Reset@{S\+I\+M900\+\_\+\+Soft\+Reset}}
+\index{S\+I\+M900\+\_\+\+Soft\+Reset@{S\+I\+M900\+\_\+\+Soft\+Reset}!sim900.\+c@{sim900.\+c}}
+\subsubsection[{S\+I\+M900\+\_\+\+Soft\+Reset}]{\setlength{\rightskip}{0pt plus 5cm}{\bf u8} S\+I\+M900\+\_\+\+Soft\+Reset (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\label{sim900_8c_a849e1e6bd435acb2afe40b2faf541d82}
+
+
+Definition at line 292 of file sim900.\+c.
+
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=299pt]{sim900_8c_a849e1e6bd435acb2afe40b2faf541d82_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=294pt]{sim900_8c_a849e1e6bd435acb2afe40b2faf541d82_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{sim900_8c_a7191db3b8eab5819179ff80be9f27529}{}\index{sim900.\+c@{sim900.\+c}!S\+I\+M900\+\_\+\+Wait\+For\+Response@{S\+I\+M900\+\_\+\+Wait\+For\+Response}}
+\index{S\+I\+M900\+\_\+\+Wait\+For\+Response@{S\+I\+M900\+\_\+\+Wait\+For\+Response}!sim900.\+c@{sim900.\+c}}
+\subsubsection[{S\+I\+M900\+\_\+\+Wait\+For\+Response}]{\setlength{\rightskip}{0pt plus 5cm}{\bf u8} S\+I\+M900\+\_\+\+Wait\+For\+Response (
+\begin{DoxyParamCaption}
+\item[{{\bf u8} $\ast$}]{pos\+\_\+resp, }
+\item[{{\bf u8} $\ast$}]{neg\+\_\+resp}
+\end{DoxyParamCaption}
+)}\label{sim900_8c_a7191db3b8eab5819179ff80be9f27529}
+
+
+Definition at line 485 of file sim900.\+c.
+
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{sim900_8c_a7191db3b8eab5819179ff80be9f27529_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{sim900_8c_a7191db3b8eab5819179ff80be9f27529_icgraph}
+\end{center}
+\end{figure}
+
+
+
+
+\subsection{Variable Documentation}
+\hypertarget{sim900_8c_ad6c3a0c023ebe61448865723a3e20f2f}{}\index{sim900.\+c@{sim900.\+c}!S\+M\+S\+\_\+\+Balance@{S\+M\+S\+\_\+\+Balance}}
+\index{S\+M\+S\+\_\+\+Balance@{S\+M\+S\+\_\+\+Balance}!sim900.\+c@{sim900.\+c}}
+\subsubsection[{S\+M\+S\+\_\+\+Balance}]{\setlength{\rightskip}{0pt plus 5cm}{\bf u8} S\+M\+S\+\_\+\+Balance\mbox{[}{\bf S\+M\+S\+\_\+\+T\+E\+X\+T\+\_\+\+M\+A\+X\+L\+E\+N}\mbox{]}}\label{sim900_8c_ad6c3a0c023ebe61448865723a3e20f2f}
+
+
+Definition at line 3 of file sim900.\+c.
+

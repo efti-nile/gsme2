@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['main',['main',['../main_8c.html#a840291bc02cba5474a4cb46a9b9566fe',1,'main.c']]]
+  ['crc_5fcalc',['CRC_Calc',['../main_8c.html#ae4ce845498558ce8962f23b80045e72d',1,'CRC_Calc(u8 *src, u16 num):&#160;main.c'],['../main_8h.html#ae4ce845498558ce8962f23b80045e72d',1,'CRC_Calc(u8 *src, u16 num):&#160;main.c']]]
 ];

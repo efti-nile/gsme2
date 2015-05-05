@@ -30,7 +30,7 @@ ActionState=1
 Enabled=0
 ShowSource=1
 [DebugChecksum]
-Checksum=204522229
+Checksum=-563453224
 [State Storage]
 Control Register=0
 [Sequencer]
@@ -45,7 +45,8 @@ ShowArgs=0
 [Disassembly]
 MixedMode=1
 [watch_formats]
-Fmt0={W}0:UCSCTL0	4	0
+Fmt0={W}0:FCTL3	4	0
+Fmt1={W}0:UCSCTL0	4	0
 [Log file]
 LoggingEnabled=_ 0
 LogFile=_ ""
@@ -73,16 +74,16 @@ Emulation mode=0
 Free running=0
 Shutting Down=3
 [Memory Dump]
-Start address=
-Lenghth=
+Start address=F800
+Lenghth=258
 Address info=0
-Format=0
+Format=1
 Dump registers=0
 PC=0
 SP=0
 SR=0
 all registers=0
-File name=
+File name=123.DMP
 [Aliases]
 Count=0
 SuppressDialog=0

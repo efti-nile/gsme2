@@ -1,0 +1,171 @@
+\hypertarget{powmeas_8c}{}\section{src/powmeas.c File Reference}
+\label{powmeas_8c}\index{src/powmeas.\+c@{src/powmeas.\+c}}
+{\ttfamily \#include \char`\"{}powmeas.\+h\char`\"{}}\\*
+Include dependency graph for powmeas.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=196pt]{powmeas_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{powmeas_8c_a68cd2ed196008b08a7d7189e3054f36a}{Pow\+Meas\+\_\+\+Init} (void)
+\begin{DoxyCompactList}\small\item\em Initializes I\+O, A\+D\+C\+\_\+10\+A and R\+E\+F for power measurement. \end{DoxyCompactList}\item 
+\hyperlink{types_8h_aed742c436da53c1080638ce6ef7d13de}{u8} \hyperlink{powmeas_8c_a75928d4dc21ce58a6d4d290f92d7aaef}{Pow\+Meas\+\_\+\+Battery\+Status} (void)
+\begin{DoxyCompactList}\small\item\em Returns 1 if battery is O\+K. \end{DoxyCompactList}\item 
+\hyperlink{types_8h_aed742c436da53c1080638ce6ef7d13de}{u8} \hyperlink{powmeas_8c_a735d0fc2eee4e02e0d6c457ea00a57af}{Pow\+Meas\+\_\+\+Extern\+Supply\+Status} (void)
+\begin{DoxyCompactList}\small\item\em Returns 1 if external power supply is O\+K. \end{DoxyCompactList}\item 
+\hyperlink{types_8h_a482359d73191c2bd0ce23a8d9b8f523f}{u16} \hyperlink{powmeas_8c_a4746c9b329b9639fe9ecd8eb1a24fb9b}{Pow\+Meas\+\_\+\+Adc\+Get} (\hyperlink{types_8h_aed742c436da53c1080638ce6ef7d13de}{u8} channel)
+\begin{DoxyCompactList}\small\item\em Returns A\+D\+C value of specified channel. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\hypertarget{powmeas_8c_a4746c9b329b9639fe9ecd8eb1a24fb9b}{}\index{powmeas.\+c@{powmeas.\+c}!Pow\+Meas\+\_\+\+Adc\+Get@{Pow\+Meas\+\_\+\+Adc\+Get}}
+\index{Pow\+Meas\+\_\+\+Adc\+Get@{Pow\+Meas\+\_\+\+Adc\+Get}!powmeas.\+c@{powmeas.\+c}}
+\subsubsection[{Pow\+Meas\+\_\+\+Adc\+Get}]{\setlength{\rightskip}{0pt plus 5cm}{\bf u16} Pow\+Meas\+\_\+\+Adc\+Get (
+\begin{DoxyParamCaption}
+\item[{{\bf u8}}]{channel}
+\end{DoxyParamCaption}
+)}\label{powmeas_8c_a4746c9b329b9639fe9ecd8eb1a24fb9b}
+
+
+Returns A\+D\+C value of specified channel. 
+
+
+
+Definition at line 75 of file powmeas.\+c.
+
+
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{powmeas_8c_a4746c9b329b9639fe9ecd8eb1a24fb9b_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{powmeas_8c_a75928d4dc21ce58a6d4d290f92d7aaef}{}\index{powmeas.\+c@{powmeas.\+c}!Pow\+Meas\+\_\+\+Battery\+Status@{Pow\+Meas\+\_\+\+Battery\+Status}}
+\index{Pow\+Meas\+\_\+\+Battery\+Status@{Pow\+Meas\+\_\+\+Battery\+Status}!powmeas.\+c@{powmeas.\+c}}
+\subsubsection[{Pow\+Meas\+\_\+\+Battery\+Status}]{\setlength{\rightskip}{0pt plus 5cm}{\bf u8} Pow\+Meas\+\_\+\+Battery\+Status (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\label{powmeas_8c_a75928d4dc21ce58a6d4d290f92d7aaef}
+
+
+Returns 1 if battery is O\+K. 
+
+
+
+Definition at line 44 of file powmeas.\+c.
+
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=339pt]{powmeas_8c_a75928d4dc21ce58a6d4d290f92d7aaef_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=279pt]{powmeas_8c_a75928d4dc21ce58a6d4d290f92d7aaef_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{powmeas_8c_a735d0fc2eee4e02e0d6c457ea00a57af}{}\index{powmeas.\+c@{powmeas.\+c}!Pow\+Meas\+\_\+\+Extern\+Supply\+Status@{Pow\+Meas\+\_\+\+Extern\+Supply\+Status}}
+\index{Pow\+Meas\+\_\+\+Extern\+Supply\+Status@{Pow\+Meas\+\_\+\+Extern\+Supply\+Status}!powmeas.\+c@{powmeas.\+c}}
+\subsubsection[{Pow\+Meas\+\_\+\+Extern\+Supply\+Status}]{\setlength{\rightskip}{0pt plus 5cm}{\bf u8} Pow\+Meas\+\_\+\+Extern\+Supply\+Status (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\label{powmeas_8c_a735d0fc2eee4e02e0d6c457ea00a57af}
+
+
+Returns 1 if external power supply is O\+K. 
+
+
+
+Definition at line 68 of file powmeas.\+c.
+
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{powmeas_8c_a735d0fc2eee4e02e0d6c457ea00a57af_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=306pt]{powmeas_8c_a735d0fc2eee4e02e0d6c457ea00a57af_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{powmeas_8c_a68cd2ed196008b08a7d7189e3054f36a}{}\index{powmeas.\+c@{powmeas.\+c}!Pow\+Meas\+\_\+\+Init@{Pow\+Meas\+\_\+\+Init}}
+\index{Pow\+Meas\+\_\+\+Init@{Pow\+Meas\+\_\+\+Init}!powmeas.\+c@{powmeas.\+c}}
+\subsubsection[{Pow\+Meas\+\_\+\+Init}]{\setlength{\rightskip}{0pt plus 5cm}void Pow\+Meas\+\_\+\+Init (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\label{powmeas_8c_a68cd2ed196008b08a7d7189e3054f36a}
+
+
+Initializes I\+O, A\+D\+C\+\_\+10\+A and R\+E\+F for power measurement. 
+
+Initializes I\+O. Initializes A\+D\+C\+\_\+10\+A module. See comments in source fot details. Initializes R\+E\+F module for A\+D\+C\+\_\+10\+A. See comments in source fot details.
+
+Initializes Pow\+Meas\+\_\+\+Prev\+Battery\+Status variable with the current battery status. 
+
+Definition at line 20 of file powmeas.\+c.
+
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=291pt]{powmeas_8c_a68cd2ed196008b08a7d7189e3054f36a_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=296pt]{powmeas_8c_a68cd2ed196008b08a7d7189e3054f36a_icgraph}
+\end{center}
+\end{figure}
+
+

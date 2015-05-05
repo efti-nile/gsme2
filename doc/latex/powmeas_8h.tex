@@ -1,0 +1,247 @@
+\hypertarget{powmeas_8h}{}\section{src/powmeas.h File Reference}
+\label{powmeas_8h}\index{src/powmeas.\+h@{src/powmeas.\+h}}
+{\ttfamily \#include \char`\"{}io430.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}types.\+h\char`\"{}}\\*
+Include dependency graph for powmeas.\+h\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=196pt]{powmeas_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=341pt]{powmeas_8h__dep__incl}
+\end{center}
+\end{figure}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{powmeas_8h_a0527626c589c9cc31c5eb954d3d3a432}{B\+A\+T\+T\+E\+R\+Y\+\_\+\+C\+R\+Y\+T\+\_\+\+V\+O\+L\+T\+A\+G\+E}~366
+\item 
+\#define \hyperlink{powmeas_8h_ab399d76a9bd14fae693110479dfcf43d}{B\+A\+T\+T\+E\+R\+Y\+\_\+\+H\+Y\+S\+T\+E\+R\+E\+S\+I\+S}~8
+\item 
+\#define \hyperlink{powmeas_8h_a35225cb135cd3a1ebaa04653d15461a1}{E\+X\+T\+E\+R\+N\+A\+L\+\_\+\+S\+U\+P\+P\+L\+Y\+\_\+\+C\+R\+Y\+T\+\_\+\+V\+O\+L\+T\+A\+G\+E}~491
+\item 
+\#define \hyperlink{powmeas_8h_aeabc73acb2d3972560983d38a5978916}{E\+N\+B\+A\+T\+\_\+\+I\+N\+I\+T}~\{P5\+O\+U\+T \&= B\+I\+T2$^\wedge$0x\+F\+F; P5\+D\+I\+R $\vert$= B\+I\+T2; P5\+R\+E\+N \&= B\+I\+T2$^\wedge$0x\+F\+F; P5\+S\+E\+L \&= B\+I\+T2$^\wedge$0x\+F\+F; P5\+D\+S \&= B\+I\+T2$^\wedge$0x\+F\+F;\}
+\item 
+\#define \hyperlink{powmeas_8h_a2f88461a53119352831c007abb05dc10}{E\+N\+B\+A\+T\+\_\+\+S\+E\+T}~(P5\+O\+U\+T $\vert$= B\+I\+T2)
+\item 
+\#define \hyperlink{powmeas_8h_a5288d99881369294f771db7cb9a89588}{E\+N\+B\+A\+T\+\_\+\+C\+L\+R}~(P5\+O\+U\+T \&= B\+I\+T2$^\wedge$0x\+F\+F)
+\item 
+\#define \hyperlink{powmeas_8h_a9fee5b40b5acefa8c4e73c846955c25d}{I\+N\+P\+W\+R\+\_\+\+I\+N\+I\+T}~\{P6\+O\+U\+T \&= B\+I\+T0$^\wedge$0x\+F\+F; P6\+D\+I\+R \&= B\+I\+T0$^\wedge$0x\+F\+F; P6\+R\+E\+N \&= B\+I\+T0$^\wedge$0x\+F\+F; P6\+S\+E\+L $\vert$= B\+I\+T0; P6\+D\+S \&= B\+I\+T0$^\wedge$0x\+F\+F;\}
+\item 
+\#define \hyperlink{powmeas_8h_a668c451f1324566d90634af9f62051e1}{I\+N\+P\+W\+R\+\_\+\+A\+D\+C\+\_\+\+C\+H}~0
+\item 
+\#define \hyperlink{powmeas_8h_ae6488b65eec2ccbb53d04f888f589ea9}{I\+N\+B\+A\+T\+\_\+\+I\+N\+I\+T}~\{P6\+O\+U\+T \&= B\+I\+T1$^\wedge$0x\+F\+F; P6\+D\+I\+R \&= B\+I\+T1$^\wedge$0x\+F\+F; P6\+R\+E\+N \&= B\+I\+T1$^\wedge$0x\+F\+F; P6\+S\+E\+L $\vert$= B\+I\+T1; P6\+D\+S \&= B\+I\+T1$^\wedge$0x\+F\+F;\}
+\item 
+\#define \hyperlink{powmeas_8h_a6be6ba3e5f45495f978c4bb80df0e104}{I\+N\+B\+A\+T\+\_\+\+A\+D\+C\+\_\+\+C\+H}~1
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{powmeas_8h_a68cd2ed196008b08a7d7189e3054f36a}{Pow\+Meas\+\_\+\+Init} (void)
+\begin{DoxyCompactList}\small\item\em Initializes I\+O, A\+D\+C\+\_\+10\+A and R\+E\+F for power measurement. \end{DoxyCompactList}\item 
+\hyperlink{types_8h_aed742c436da53c1080638ce6ef7d13de}{u8} \hyperlink{powmeas_8h_a75928d4dc21ce58a6d4d290f92d7aaef}{Pow\+Meas\+\_\+\+Battery\+Status} (void)
+\begin{DoxyCompactList}\small\item\em Returns 1 if battery is O\+K. \end{DoxyCompactList}\item 
+\hyperlink{types_8h_aed742c436da53c1080638ce6ef7d13de}{u8} \hyperlink{powmeas_8h_a735d0fc2eee4e02e0d6c457ea00a57af}{Pow\+Meas\+\_\+\+Extern\+Supply\+Status} (void)
+\begin{DoxyCompactList}\small\item\em Returns 1 if external power supply is O\+K. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\hypertarget{powmeas_8h_a0527626c589c9cc31c5eb954d3d3a432}{}\index{powmeas.\+h@{powmeas.\+h}!B\+A\+T\+T\+E\+R\+Y\+\_\+\+C\+R\+Y\+T\+\_\+\+V\+O\+L\+T\+A\+G\+E@{B\+A\+T\+T\+E\+R\+Y\+\_\+\+C\+R\+Y\+T\+\_\+\+V\+O\+L\+T\+A\+G\+E}}
+\index{B\+A\+T\+T\+E\+R\+Y\+\_\+\+C\+R\+Y\+T\+\_\+\+V\+O\+L\+T\+A\+G\+E@{B\+A\+T\+T\+E\+R\+Y\+\_\+\+C\+R\+Y\+T\+\_\+\+V\+O\+L\+T\+A\+G\+E}!powmeas.\+h@{powmeas.\+h}}
+\subsubsection[{B\+A\+T\+T\+E\+R\+Y\+\_\+\+C\+R\+Y\+T\+\_\+\+V\+O\+L\+T\+A\+G\+E}]{\setlength{\rightskip}{0pt plus 5cm}\#define B\+A\+T\+T\+E\+R\+Y\+\_\+\+C\+R\+Y\+T\+\_\+\+V\+O\+L\+T\+A\+G\+E~366}\label{powmeas_8h_a0527626c589c9cc31c5eb954d3d3a432}
+
+
+Definition at line 8 of file powmeas.\+h.
+
+\hypertarget{powmeas_8h_ab399d76a9bd14fae693110479dfcf43d}{}\index{powmeas.\+h@{powmeas.\+h}!B\+A\+T\+T\+E\+R\+Y\+\_\+\+H\+Y\+S\+T\+E\+R\+E\+S\+I\+S@{B\+A\+T\+T\+E\+R\+Y\+\_\+\+H\+Y\+S\+T\+E\+R\+E\+S\+I\+S}}
+\index{B\+A\+T\+T\+E\+R\+Y\+\_\+\+H\+Y\+S\+T\+E\+R\+E\+S\+I\+S@{B\+A\+T\+T\+E\+R\+Y\+\_\+\+H\+Y\+S\+T\+E\+R\+E\+S\+I\+S}!powmeas.\+h@{powmeas.\+h}}
+\subsubsection[{B\+A\+T\+T\+E\+R\+Y\+\_\+\+H\+Y\+S\+T\+E\+R\+E\+S\+I\+S}]{\setlength{\rightskip}{0pt plus 5cm}\#define B\+A\+T\+T\+E\+R\+Y\+\_\+\+H\+Y\+S\+T\+E\+R\+E\+S\+I\+S~8}\label{powmeas_8h_ab399d76a9bd14fae693110479dfcf43d}
+
+
+Definition at line 9 of file powmeas.\+h.
+
+\hypertarget{powmeas_8h_a5288d99881369294f771db7cb9a89588}{}\index{powmeas.\+h@{powmeas.\+h}!E\+N\+B\+A\+T\+\_\+\+C\+L\+R@{E\+N\+B\+A\+T\+\_\+\+C\+L\+R}}
+\index{E\+N\+B\+A\+T\+\_\+\+C\+L\+R@{E\+N\+B\+A\+T\+\_\+\+C\+L\+R}!powmeas.\+h@{powmeas.\+h}}
+\subsubsection[{E\+N\+B\+A\+T\+\_\+\+C\+L\+R}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\+N\+B\+A\+T\+\_\+\+C\+L\+R~(P5\+O\+U\+T \&= B\+I\+T2$^\wedge$0x\+F\+F)}\label{powmeas_8h_a5288d99881369294f771db7cb9a89588}
+
+
+Definition at line 15 of file powmeas.\+h.
+
+\hypertarget{powmeas_8h_aeabc73acb2d3972560983d38a5978916}{}\index{powmeas.\+h@{powmeas.\+h}!E\+N\+B\+A\+T\+\_\+\+I\+N\+I\+T@{E\+N\+B\+A\+T\+\_\+\+I\+N\+I\+T}}
+\index{E\+N\+B\+A\+T\+\_\+\+I\+N\+I\+T@{E\+N\+B\+A\+T\+\_\+\+I\+N\+I\+T}!powmeas.\+h@{powmeas.\+h}}
+\subsubsection[{E\+N\+B\+A\+T\+\_\+\+I\+N\+I\+T}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\+N\+B\+A\+T\+\_\+\+I\+N\+I\+T~\{P5\+O\+U\+T \&= B\+I\+T2$^\wedge$0x\+F\+F; P5\+D\+I\+R $\vert$= B\+I\+T2; P5\+R\+E\+N \&= B\+I\+T2$^\wedge$0x\+F\+F; P5\+S\+E\+L \&= B\+I\+T2$^\wedge$0x\+F\+F; P5\+D\+S \&= B\+I\+T2$^\wedge$0x\+F\+F;\}}\label{powmeas_8h_aeabc73acb2d3972560983d38a5978916}
+
+
+Definition at line 13 of file powmeas.\+h.
+
+\hypertarget{powmeas_8h_a2f88461a53119352831c007abb05dc10}{}\index{powmeas.\+h@{powmeas.\+h}!E\+N\+B\+A\+T\+\_\+\+S\+E\+T@{E\+N\+B\+A\+T\+\_\+\+S\+E\+T}}
+\index{E\+N\+B\+A\+T\+\_\+\+S\+E\+T@{E\+N\+B\+A\+T\+\_\+\+S\+E\+T}!powmeas.\+h@{powmeas.\+h}}
+\subsubsection[{E\+N\+B\+A\+T\+\_\+\+S\+E\+T}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\+N\+B\+A\+T\+\_\+\+S\+E\+T~(P5\+O\+U\+T $\vert$= B\+I\+T2)}\label{powmeas_8h_a2f88461a53119352831c007abb05dc10}
+
+
+Definition at line 14 of file powmeas.\+h.
+
+\hypertarget{powmeas_8h_a35225cb135cd3a1ebaa04653d15461a1}{}\index{powmeas.\+h@{powmeas.\+h}!E\+X\+T\+E\+R\+N\+A\+L\+\_\+\+S\+U\+P\+P\+L\+Y\+\_\+\+C\+R\+Y\+T\+\_\+\+V\+O\+L\+T\+A\+G\+E@{E\+X\+T\+E\+R\+N\+A\+L\+\_\+\+S\+U\+P\+P\+L\+Y\+\_\+\+C\+R\+Y\+T\+\_\+\+V\+O\+L\+T\+A\+G\+E}}
+\index{E\+X\+T\+E\+R\+N\+A\+L\+\_\+\+S\+U\+P\+P\+L\+Y\+\_\+\+C\+R\+Y\+T\+\_\+\+V\+O\+L\+T\+A\+G\+E@{E\+X\+T\+E\+R\+N\+A\+L\+\_\+\+S\+U\+P\+P\+L\+Y\+\_\+\+C\+R\+Y\+T\+\_\+\+V\+O\+L\+T\+A\+G\+E}!powmeas.\+h@{powmeas.\+h}}
+\subsubsection[{E\+X\+T\+E\+R\+N\+A\+L\+\_\+\+S\+U\+P\+P\+L\+Y\+\_\+\+C\+R\+Y\+T\+\_\+\+V\+O\+L\+T\+A\+G\+E}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\+X\+T\+E\+R\+N\+A\+L\+\_\+\+S\+U\+P\+P\+L\+Y\+\_\+\+C\+R\+Y\+T\+\_\+\+V\+O\+L\+T\+A\+G\+E~491}\label{powmeas_8h_a35225cb135cd3a1ebaa04653d15461a1}
+
+
+Definition at line 10 of file powmeas.\+h.
+
+\hypertarget{powmeas_8h_a6be6ba3e5f45495f978c4bb80df0e104}{}\index{powmeas.\+h@{powmeas.\+h}!I\+N\+B\+A\+T\+\_\+\+A\+D\+C\+\_\+\+C\+H@{I\+N\+B\+A\+T\+\_\+\+A\+D\+C\+\_\+\+C\+H}}
+\index{I\+N\+B\+A\+T\+\_\+\+A\+D\+C\+\_\+\+C\+H@{I\+N\+B\+A\+T\+\_\+\+A\+D\+C\+\_\+\+C\+H}!powmeas.\+h@{powmeas.\+h}}
+\subsubsection[{I\+N\+B\+A\+T\+\_\+\+A\+D\+C\+\_\+\+C\+H}]{\setlength{\rightskip}{0pt plus 5cm}\#define I\+N\+B\+A\+T\+\_\+\+A\+D\+C\+\_\+\+C\+H~1}\label{powmeas_8h_a6be6ba3e5f45495f978c4bb80df0e104}
+
+
+Definition at line 23 of file powmeas.\+h.
+
+\hypertarget{powmeas_8h_ae6488b65eec2ccbb53d04f888f589ea9}{}\index{powmeas.\+h@{powmeas.\+h}!I\+N\+B\+A\+T\+\_\+\+I\+N\+I\+T@{I\+N\+B\+A\+T\+\_\+\+I\+N\+I\+T}}
+\index{I\+N\+B\+A\+T\+\_\+\+I\+N\+I\+T@{I\+N\+B\+A\+T\+\_\+\+I\+N\+I\+T}!powmeas.\+h@{powmeas.\+h}}
+\subsubsection[{I\+N\+B\+A\+T\+\_\+\+I\+N\+I\+T}]{\setlength{\rightskip}{0pt plus 5cm}\#define I\+N\+B\+A\+T\+\_\+\+I\+N\+I\+T~\{P6\+O\+U\+T \&= B\+I\+T1$^\wedge$0x\+F\+F; P6\+D\+I\+R \&= B\+I\+T1$^\wedge$0x\+F\+F; P6\+R\+E\+N \&= B\+I\+T1$^\wedge$0x\+F\+F; P6\+S\+E\+L $\vert$= B\+I\+T1; P6\+D\+S \&= B\+I\+T1$^\wedge$0x\+F\+F;\}}\label{powmeas_8h_ae6488b65eec2ccbb53d04f888f589ea9}
+
+
+Definition at line 22 of file powmeas.\+h.
+
+\hypertarget{powmeas_8h_a668c451f1324566d90634af9f62051e1}{}\index{powmeas.\+h@{powmeas.\+h}!I\+N\+P\+W\+R\+\_\+\+A\+D\+C\+\_\+\+C\+H@{I\+N\+P\+W\+R\+\_\+\+A\+D\+C\+\_\+\+C\+H}}
+\index{I\+N\+P\+W\+R\+\_\+\+A\+D\+C\+\_\+\+C\+H@{I\+N\+P\+W\+R\+\_\+\+A\+D\+C\+\_\+\+C\+H}!powmeas.\+h@{powmeas.\+h}}
+\subsubsection[{I\+N\+P\+W\+R\+\_\+\+A\+D\+C\+\_\+\+C\+H}]{\setlength{\rightskip}{0pt plus 5cm}\#define I\+N\+P\+W\+R\+\_\+\+A\+D\+C\+\_\+\+C\+H~0}\label{powmeas_8h_a668c451f1324566d90634af9f62051e1}
+
+
+Definition at line 19 of file powmeas.\+h.
+
+\hypertarget{powmeas_8h_a9fee5b40b5acefa8c4e73c846955c25d}{}\index{powmeas.\+h@{powmeas.\+h}!I\+N\+P\+W\+R\+\_\+\+I\+N\+I\+T@{I\+N\+P\+W\+R\+\_\+\+I\+N\+I\+T}}
+\index{I\+N\+P\+W\+R\+\_\+\+I\+N\+I\+T@{I\+N\+P\+W\+R\+\_\+\+I\+N\+I\+T}!powmeas.\+h@{powmeas.\+h}}
+\subsubsection[{I\+N\+P\+W\+R\+\_\+\+I\+N\+I\+T}]{\setlength{\rightskip}{0pt plus 5cm}\#define I\+N\+P\+W\+R\+\_\+\+I\+N\+I\+T~\{P6\+O\+U\+T \&= B\+I\+T0$^\wedge$0x\+F\+F; P6\+D\+I\+R \&= B\+I\+T0$^\wedge$0x\+F\+F; P6\+R\+E\+N \&= B\+I\+T0$^\wedge$0x\+F\+F; P6\+S\+E\+L $\vert$= B\+I\+T0; P6\+D\+S \&= B\+I\+T0$^\wedge$0x\+F\+F;\}}\label{powmeas_8h_a9fee5b40b5acefa8c4e73c846955c25d}
+
+
+Definition at line 18 of file powmeas.\+h.
+
+
+
+\subsection{Function Documentation}
+\hypertarget{powmeas_8h_a75928d4dc21ce58a6d4d290f92d7aaef}{}\index{powmeas.\+h@{powmeas.\+h}!Pow\+Meas\+\_\+\+Battery\+Status@{Pow\+Meas\+\_\+\+Battery\+Status}}
+\index{Pow\+Meas\+\_\+\+Battery\+Status@{Pow\+Meas\+\_\+\+Battery\+Status}!powmeas.\+h@{powmeas.\+h}}
+\subsubsection[{Pow\+Meas\+\_\+\+Battery\+Status}]{\setlength{\rightskip}{0pt plus 5cm}{\bf u8} Pow\+Meas\+\_\+\+Battery\+Status (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\label{powmeas_8h_a75928d4dc21ce58a6d4d290f92d7aaef}
+
+
+Returns 1 if battery is O\+K. 
+
+
+
+Definition at line 44 of file powmeas.\+c.
+
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=339pt]{powmeas_8h_a75928d4dc21ce58a6d4d290f92d7aaef_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=279pt]{powmeas_8h_a75928d4dc21ce58a6d4d290f92d7aaef_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{powmeas_8h_a735d0fc2eee4e02e0d6c457ea00a57af}{}\index{powmeas.\+h@{powmeas.\+h}!Pow\+Meas\+\_\+\+Extern\+Supply\+Status@{Pow\+Meas\+\_\+\+Extern\+Supply\+Status}}
+\index{Pow\+Meas\+\_\+\+Extern\+Supply\+Status@{Pow\+Meas\+\_\+\+Extern\+Supply\+Status}!powmeas.\+h@{powmeas.\+h}}
+\subsubsection[{Pow\+Meas\+\_\+\+Extern\+Supply\+Status}]{\setlength{\rightskip}{0pt plus 5cm}{\bf u8} Pow\+Meas\+\_\+\+Extern\+Supply\+Status (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\label{powmeas_8h_a735d0fc2eee4e02e0d6c457ea00a57af}
+
+
+Returns 1 if external power supply is O\+K. 
+
+
+
+Definition at line 68 of file powmeas.\+c.
+
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{powmeas_8h_a735d0fc2eee4e02e0d6c457ea00a57af_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=306pt]{powmeas_8h_a735d0fc2eee4e02e0d6c457ea00a57af_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{powmeas_8h_a68cd2ed196008b08a7d7189e3054f36a}{}\index{powmeas.\+h@{powmeas.\+h}!Pow\+Meas\+\_\+\+Init@{Pow\+Meas\+\_\+\+Init}}
+\index{Pow\+Meas\+\_\+\+Init@{Pow\+Meas\+\_\+\+Init}!powmeas.\+h@{powmeas.\+h}}
+\subsubsection[{Pow\+Meas\+\_\+\+Init}]{\setlength{\rightskip}{0pt plus 5cm}void Pow\+Meas\+\_\+\+Init (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\label{powmeas_8h_a68cd2ed196008b08a7d7189e3054f36a}
+
+
+Initializes I\+O, A\+D\+C\+\_\+10\+A and R\+E\+F for power measurement. 
+
+Initializes I\+O. Initializes A\+D\+C\+\_\+10\+A module. See comments in source fot details. Initializes R\+E\+F module for A\+D\+C\+\_\+10\+A. See comments in source fot details.
+
+Initializes Pow\+Meas\+\_\+\+Prev\+Battery\+Status variable with the current battery status. 
+
+Definition at line 20 of file powmeas.\+c.
+
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=291pt]{powmeas_8h_a68cd2ed196008b08a7d7189e3054f36a_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=296pt]{powmeas_8h_a68cd2ed196008b08a7d7189e3054f36a_icgraph}
+\end{center}
+\end{figure}
+
+

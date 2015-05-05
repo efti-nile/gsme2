@@ -1,0 +1,5 @@
+<map id="SendCmd" name="SendCmd">
+<area shape="rect" id="node2" href="$main_8c.html#ae4ce845498558ce8962f23b80045e72d" title="Calculates simple control sum via XOR with 0xAA. " alt="" coords="190,5,273,32"/>
+<area shape="rect" id="node3" href="$msp430__uart_8c.html#aa74f7a14edaebaeedbd7b5f3dc710068" title="Sends address&#45;byte via specified USCI. " alt="" coords="132,56,331,83"/>
+<area shape="rect" id="node4" href="$msp430__uart_8c.html#a8922f574c57852ff52086ee18da90583" title="Sends data via specified USCI. " alt="" coords="156,107,307,133"/>
+</map>

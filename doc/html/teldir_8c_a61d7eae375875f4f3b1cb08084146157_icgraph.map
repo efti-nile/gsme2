@@ -1,0 +1,8 @@
+<map id="TelDir_WriteToFlash" name="TelDir_WriteToFlash">
+<area shape="rect" id="node2" href="$teldir_8h.html#a9b65e7bbc73732a18f3336f450fed706" title="TelDir_Clean" alt="" coords="232,5,327,32"/>
+<area shape="rect" id="node5" href="$teldir_8h.html#a4646bad3b1c8c9012bb8d69f76f23415" title="TelDir_Push" alt="" coords="233,56,325,83"/>
+<area shape="rect" id="node6" href="$teldir_8h.html#a16f9616bb0bff34b1f289b5fb841e0a9" title="TelDir_SetBalanceNumber" alt="" coords="192,107,367,133"/>
+<area shape="rect" id="node7" href="$teldir_8h.html#a6bd23eb9d8de630a5f0a8bd96007457b" title="TelDir_Del" alt="" coords="239,157,320,184"/>
+<area shape="rect" id="node3" href="$sim900_8h.html#ae1e3f727860246949a7be1981da0b885" title="SIM900_ReadSms" alt="" coords="415,81,545,108"/>
+<area shape="rect" id="node4" href="$main_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title="main" alt="" coords="593,81,644,108"/>
+</map>

@@ -1,0 +1,3 @@
+<map id="SIM900_PowerOn" name="SIM900_PowerOn">
+<area shape="rect" id="node2" href="$sim900_8h.html#a0abb74e5d0038e5aac34542060af12bb" title="Tryes to initialize SIM900 untill success. " alt="" coords="180,5,287,32"/>
+</map>

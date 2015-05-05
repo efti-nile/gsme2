@@ -1,0 +1,195 @@
+\hypertarget{msp430__uart_8c}{}\section{src/msp430\+\_\+uart.c File Reference}
+\label{msp430__uart_8c}\index{src/msp430\+\_\+uart.\+c@{src/msp430\+\_\+uart.\+c}}
+{\ttfamily \#include \char`\"{}msp430\+\_\+uart.\+h\char`\"{}}\\*
+Include dependency graph for msp430\+\_\+uart.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{msp430__uart_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{msp430__uart_8c_ac4e8d86f9f454144efcdfaddb63ef0c8}{M\+S\+P430\+\_\+\+U\+A\+R\+T\+\_\+\+Init} (void)
+\begin{DoxyCompactList}\small\item\em Initializes U\+S\+C\+I\+\_\+\+A0 (for R\+S486) and U\+S\+C\+I\+\_\+\+A1 (for S\+I\+M900) as U\+A\+R\+Ts. \end{DoxyCompactList}\item 
+void \hyperlink{msp430__uart_8c_aa74f7a14edaebaeedbd7b5f3dc710068}{M\+S\+P430\+\_\+\+U\+A\+R\+T\+\_\+\+Send\+Address} (\hyperlink{types_8h_aed742c436da53c1080638ce6ef7d13de}{u8} interface, \hyperlink{types_8h_aed742c436da53c1080638ce6ef7d13de}{u8} address)
+\begin{DoxyCompactList}\small\item\em Sends address-\/byte via specified U\+S\+C\+I. \end{DoxyCompactList}\item 
+void \hyperlink{msp430__uart_8c_a8922f574c57852ff52086ee18da90583}{M\+S\+P430\+\_\+\+U\+A\+R\+T\+\_\+\+Send} (\hyperlink{types_8h_aed742c436da53c1080638ce6ef7d13de}{u8} interface, \hyperlink{types_8h_aed742c436da53c1080638ce6ef7d13de}{u8} $\ast$src, \hyperlink{types_8h_a482359d73191c2bd0ce23a8d9b8f523f}{u16} num)
+\begin{DoxyCompactList}\small\item\em Sends data via specified U\+S\+C\+I. \end{DoxyCompactList}\item 
+\+\_\+\+\_\+interrupt void \hyperlink{msp430__uart_8c_a87dabcea0809b0bb16559075ecffffa7}{U\+S\+C\+I\+\_\+\+A0\+\_\+\+I\+S\+R} (void)
+\begin{DoxyCompactList}\small\item\em U\+S\+C\+I\+\_\+\+A0 I\+S\+R (Used for R\+S485 communication) \end{DoxyCompactList}\item 
+\+\_\+\+\_\+interrupt void \hyperlink{msp430__uart_8c_abfb9cd451ecd8be1dd4cd8404ab18d62}{U\+S\+C\+I\+\_\+\+A1\+\_\+\+I\+S\+R} (void)
+\begin{DoxyCompactList}\small\item\em U\+S\+C\+I\+\_\+\+A1 I\+S\+R (Used for S\+I\+M900 communication) \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{types_8h_aed742c436da53c1080638ce6ef7d13de}{u8} \hyperlink{msp430__uart_8c_a7d70428508a4be83101d74f9f07baf73}{Cir\+Buf} \mbox{[}\hyperlink{types_8h_a99b4ed1ce0c5e325c06930d8facd0df5}{C\+I\+R\+B\+U\+F\+\_\+\+S\+I\+Z\+E}\mbox{]}
+\item 
+\hyperlink{types_8h_a482359d73191c2bd0ce23a8d9b8f523f}{u16} \hyperlink{msp430__uart_8c_a492eddda2c0e090c2cec4c3bcdcc3953}{Cir\+Buf\+\_\+\+Tail} = 0
+\item 
+\hyperlink{types_8h_a482359d73191c2bd0ce23a8d9b8f523f}{u16} \hyperlink{msp430__uart_8c_ab4331581e91184fd8e208d2117ba27b9}{Cir\+Buf\+\_\+\+Head} = 0
+\item 
+\hyperlink{types_8h_a482359d73191c2bd0ce23a8d9b8f523f}{u16} \hyperlink{msp430__uart_8c_a7dad63c3a01aebf5ae89c387c2c0f0b4}{Cir\+Buf\+\_\+\+Num\+Bytes} = 0
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\hypertarget{msp430__uart_8c_ac4e8d86f9f454144efcdfaddb63ef0c8}{}\index{msp430\+\_\+uart.\+c@{msp430\+\_\+uart.\+c}!M\+S\+P430\+\_\+\+U\+A\+R\+T\+\_\+\+Init@{M\+S\+P430\+\_\+\+U\+A\+R\+T\+\_\+\+Init}}
+\index{M\+S\+P430\+\_\+\+U\+A\+R\+T\+\_\+\+Init@{M\+S\+P430\+\_\+\+U\+A\+R\+T\+\_\+\+Init}!msp430\+\_\+uart.\+c@{msp430\+\_\+uart.\+c}}
+\subsubsection[{M\+S\+P430\+\_\+\+U\+A\+R\+T\+\_\+\+Init}]{\setlength{\rightskip}{0pt plus 5cm}void M\+S\+P430\+\_\+\+U\+A\+R\+T\+\_\+\+Init (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\label{msp430__uart_8c_ac4e8d86f9f454144efcdfaddb63ef0c8}
+
+
+Initializes U\+S\+C\+I\+\_\+\+A0 (for R\+S486) and U\+S\+C\+I\+\_\+\+A1 (for S\+I\+M900) as U\+A\+R\+Ts. 
+
+
+
+Definition at line 11 of file msp430\+\_\+uart.\+c.
+
+
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=257pt]{msp430__uart_8c_ac4e8d86f9f454144efcdfaddb63ef0c8_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{msp430__uart_8c_a8922f574c57852ff52086ee18da90583}{}\index{msp430\+\_\+uart.\+c@{msp430\+\_\+uart.\+c}!M\+S\+P430\+\_\+\+U\+A\+R\+T\+\_\+\+Send@{M\+S\+P430\+\_\+\+U\+A\+R\+T\+\_\+\+Send}}
+\index{M\+S\+P430\+\_\+\+U\+A\+R\+T\+\_\+\+Send@{M\+S\+P430\+\_\+\+U\+A\+R\+T\+\_\+\+Send}!msp430\+\_\+uart.\+c@{msp430\+\_\+uart.\+c}}
+\subsubsection[{M\+S\+P430\+\_\+\+U\+A\+R\+T\+\_\+\+Send}]{\setlength{\rightskip}{0pt plus 5cm}void M\+S\+P430\+\_\+\+U\+A\+R\+T\+\_\+\+Send (
+\begin{DoxyParamCaption}
+\item[{{\bf u8}}]{interface, }
+\item[{{\bf u8} $\ast$}]{src, }
+\item[{{\bf u16}}]{num}
+\end{DoxyParamCaption}
+)}\label{msp430__uart_8c_a8922f574c57852ff52086ee18da90583}
+
+
+Sends data via specified U\+S\+C\+I. 
+
+
+
+Definition at line 64 of file msp430\+\_\+uart.\+c.
+
+
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{msp430__uart_8c_a8922f574c57852ff52086ee18da90583_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{msp430__uart_8c_aa74f7a14edaebaeedbd7b5f3dc710068}{}\index{msp430\+\_\+uart.\+c@{msp430\+\_\+uart.\+c}!M\+S\+P430\+\_\+\+U\+A\+R\+T\+\_\+\+Send\+Address@{M\+S\+P430\+\_\+\+U\+A\+R\+T\+\_\+\+Send\+Address}}
+\index{M\+S\+P430\+\_\+\+U\+A\+R\+T\+\_\+\+Send\+Address@{M\+S\+P430\+\_\+\+U\+A\+R\+T\+\_\+\+Send\+Address}!msp430\+\_\+uart.\+c@{msp430\+\_\+uart.\+c}}
+\subsubsection[{M\+S\+P430\+\_\+\+U\+A\+R\+T\+\_\+\+Send\+Address}]{\setlength{\rightskip}{0pt plus 5cm}void M\+S\+P430\+\_\+\+U\+A\+R\+T\+\_\+\+Send\+Address (
+\begin{DoxyParamCaption}
+\item[{{\bf u8}}]{interface, }
+\item[{{\bf u8}}]{address}
+\end{DoxyParamCaption}
+)}\label{msp430__uart_8c_aa74f7a14edaebaeedbd7b5f3dc710068}
+
+
+Sends address-\/byte via specified U\+S\+C\+I. 
+
+
+
+Definition at line 47 of file msp430\+\_\+uart.\+c.
+
+
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{msp430__uart_8c_aa74f7a14edaebaeedbd7b5f3dc710068_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{msp430__uart_8c_a87dabcea0809b0bb16559075ecffffa7}{}\index{msp430\+\_\+uart.\+c@{msp430\+\_\+uart.\+c}!U\+S\+C\+I\+\_\+\+A0\+\_\+\+I\+S\+R@{U\+S\+C\+I\+\_\+\+A0\+\_\+\+I\+S\+R}}
+\index{U\+S\+C\+I\+\_\+\+A0\+\_\+\+I\+S\+R@{U\+S\+C\+I\+\_\+\+A0\+\_\+\+I\+S\+R}!msp430\+\_\+uart.\+c@{msp430\+\_\+uart.\+c}}
+\subsubsection[{U\+S\+C\+I\+\_\+\+A0\+\_\+\+I\+S\+R}]{\setlength{\rightskip}{0pt plus 5cm}\+\_\+\+\_\+interrupt void U\+S\+C\+I\+\_\+\+A0\+\_\+\+I\+S\+R (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\label{msp430__uart_8c_a87dabcea0809b0bb16559075ecffffa7}
+
+
+U\+S\+C\+I\+\_\+\+A0 I\+S\+R (Used for R\+S485 communication) 
+
+
+
+Definition at line 87 of file msp430\+\_\+uart.\+c.
+
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{msp430__uart_8c_a87dabcea0809b0bb16559075ecffffa7_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{msp430__uart_8c_abfb9cd451ecd8be1dd4cd8404ab18d62}{}\index{msp430\+\_\+uart.\+c@{msp430\+\_\+uart.\+c}!U\+S\+C\+I\+\_\+\+A1\+\_\+\+I\+S\+R@{U\+S\+C\+I\+\_\+\+A1\+\_\+\+I\+S\+R}}
+\index{U\+S\+C\+I\+\_\+\+A1\+\_\+\+I\+S\+R@{U\+S\+C\+I\+\_\+\+A1\+\_\+\+I\+S\+R}!msp430\+\_\+uart.\+c@{msp430\+\_\+uart.\+c}}
+\subsubsection[{U\+S\+C\+I\+\_\+\+A1\+\_\+\+I\+S\+R}]{\setlength{\rightskip}{0pt plus 5cm}\+\_\+\+\_\+interrupt void U\+S\+C\+I\+\_\+\+A1\+\_\+\+I\+S\+R (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\label{msp430__uart_8c_abfb9cd451ecd8be1dd4cd8404ab18d62}
+
+
+U\+S\+C\+I\+\_\+\+A1 I\+S\+R (Used for S\+I\+M900 communication) 
+
+
+
+Definition at line 233 of file msp430\+\_\+uart.\+c.
+
+
+
+\subsection{Variable Documentation}
+\hypertarget{msp430__uart_8c_a7d70428508a4be83101d74f9f07baf73}{}\index{msp430\+\_\+uart.\+c@{msp430\+\_\+uart.\+c}!Cir\+Buf@{Cir\+Buf}}
+\index{Cir\+Buf@{Cir\+Buf}!msp430\+\_\+uart.\+c@{msp430\+\_\+uart.\+c}}
+\subsubsection[{Cir\+Buf}]{\setlength{\rightskip}{0pt plus 5cm}{\bf u8} Cir\+Buf\mbox{[}{\bf C\+I\+R\+B\+U\+F\+\_\+\+S\+I\+Z\+E}\mbox{]}}\label{msp430__uart_8c_a7d70428508a4be83101d74f9f07baf73}
+
+
+Definition at line 3 of file msp430\+\_\+uart.\+c.
+
+\hypertarget{msp430__uart_8c_ab4331581e91184fd8e208d2117ba27b9}{}\index{msp430\+\_\+uart.\+c@{msp430\+\_\+uart.\+c}!Cir\+Buf\+\_\+\+Head@{Cir\+Buf\+\_\+\+Head}}
+\index{Cir\+Buf\+\_\+\+Head@{Cir\+Buf\+\_\+\+Head}!msp430\+\_\+uart.\+c@{msp430\+\_\+uart.\+c}}
+\subsubsection[{Cir\+Buf\+\_\+\+Head}]{\setlength{\rightskip}{0pt plus 5cm}{\bf u16} Cir\+Buf\+\_\+\+Head = 0}\label{msp430__uart_8c_ab4331581e91184fd8e208d2117ba27b9}
+
+
+Definition at line 5 of file msp430\+\_\+uart.\+c.
+
+\hypertarget{msp430__uart_8c_a7dad63c3a01aebf5ae89c387c2c0f0b4}{}\index{msp430\+\_\+uart.\+c@{msp430\+\_\+uart.\+c}!Cir\+Buf\+\_\+\+Num\+Bytes@{Cir\+Buf\+\_\+\+Num\+Bytes}}
+\index{Cir\+Buf\+\_\+\+Num\+Bytes@{Cir\+Buf\+\_\+\+Num\+Bytes}!msp430\+\_\+uart.\+c@{msp430\+\_\+uart.\+c}}
+\subsubsection[{Cir\+Buf\+\_\+\+Num\+Bytes}]{\setlength{\rightskip}{0pt plus 5cm}{\bf u16} Cir\+Buf\+\_\+\+Num\+Bytes = 0}\label{msp430__uart_8c_a7dad63c3a01aebf5ae89c387c2c0f0b4}
+
+
+Definition at line 6 of file msp430\+\_\+uart.\+c.
+
+\hypertarget{msp430__uart_8c_a492eddda2c0e090c2cec4c3bcdcc3953}{}\index{msp430\+\_\+uart.\+c@{msp430\+\_\+uart.\+c}!Cir\+Buf\+\_\+\+Tail@{Cir\+Buf\+\_\+\+Tail}}
+\index{Cir\+Buf\+\_\+\+Tail@{Cir\+Buf\+\_\+\+Tail}!msp430\+\_\+uart.\+c@{msp430\+\_\+uart.\+c}}
+\subsubsection[{Cir\+Buf\+\_\+\+Tail}]{\setlength{\rightskip}{0pt plus 5cm}{\bf u16} Cir\+Buf\+\_\+\+Tail = 0}\label{msp430__uart_8c_a492eddda2c0e090c2cec4c3bcdcc3953}
+
+
+Definition at line 4 of file msp430\+\_\+uart.\+c.
+

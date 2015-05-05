@@ -1,0 +1,117 @@
+\hypertarget{sms__queue_8h}{}\section{src/sms\+\_\+queue.h File Reference}
+\label{sms__queue_8h}\index{src/sms\+\_\+queue.\+h@{src/sms\+\_\+queue.\+h}}
+{\ttfamily \#include \char`\"{}io430.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}types.\+h\char`\"{}}\\*
+{\ttfamily \#include $<$string.\+h$>$}\\*
+Include dependency graph for sms\+\_\+queue.\+h\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=263pt]{sms__queue_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{sms__queue_8h__dep__incl}
+\end{center}
+\end{figure}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{sms__queue_8h_a07c070cb95be75a3f279db71be76d2bd}{S\+M\+S\+\_\+\+L\+I\+F\+E\+T\+I\+M\+E}~5
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{sms__queue_8h_a44330a40d6fe6fa3f96ee0af604e05d8}{S\+M\+S\+\_\+\+Queue\+\_\+\+Init} (void)
+\item 
+void \hyperlink{sms__queue_8h_a180ae9f0bd6e5894eb630aeb9fa8009c}{S\+M\+S\+\_\+\+Queue\+\_\+\+Push} (\hyperlink{types_8h_aed742c436da53c1080638ce6ef7d13de}{u8} $\ast$Tel\+Num, const \hyperlink{types_8h_aed742c436da53c1080638ce6ef7d13de}{u8} Sms\+Text\mbox{[}$\,$\mbox{]}, \hyperlink{types_8h_aed742c436da53c1080638ce6ef7d13de}{u8} Life\+Time)
+\item 
+\hyperlink{types_8h_aed742c436da53c1080638ce6ef7d13de}{u8} \hyperlink{sms__queue_8h_a48ae4a9d51c532b5bb8309221cb89148}{S\+M\+S\+\_\+\+Queue\+\_\+\+Pop} (\hyperlink{types_8h_aed742c436da53c1080638ce6ef7d13de}{u8} $\ast$Tel\+Num, \hyperlink{types_8h_aed742c436da53c1080638ce6ef7d13de}{u8} $\ast$$\ast$Sms\+Text)
+\item 
+\hyperlink{types_8h_aed742c436da53c1080638ce6ef7d13de}{u8} \hyperlink{sms__queue_8h_aca35b159a6a87f738ac878bbd440a3ba}{S\+M\+S\+\_\+\+Queue\+\_\+\+Num\+Items} (void)
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\hypertarget{sms__queue_8h_a07c070cb95be75a3f279db71be76d2bd}{}\index{sms\+\_\+queue.\+h@{sms\+\_\+queue.\+h}!S\+M\+S\+\_\+\+L\+I\+F\+E\+T\+I\+M\+E@{S\+M\+S\+\_\+\+L\+I\+F\+E\+T\+I\+M\+E}}
+\index{S\+M\+S\+\_\+\+L\+I\+F\+E\+T\+I\+M\+E@{S\+M\+S\+\_\+\+L\+I\+F\+E\+T\+I\+M\+E}!sms\+\_\+queue.\+h@{sms\+\_\+queue.\+h}}
+\subsubsection[{S\+M\+S\+\_\+\+L\+I\+F\+E\+T\+I\+M\+E}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\+M\+S\+\_\+\+L\+I\+F\+E\+T\+I\+M\+E~5}\label{sms__queue_8h_a07c070cb95be75a3f279db71be76d2bd}
+
+
+Definition at line 8 of file sms\+\_\+queue.\+h.
+
+
+
+\subsection{Function Documentation}
+\hypertarget{sms__queue_8h_a44330a40d6fe6fa3f96ee0af604e05d8}{}\index{sms\+\_\+queue.\+h@{sms\+\_\+queue.\+h}!S\+M\+S\+\_\+\+Queue\+\_\+\+Init@{S\+M\+S\+\_\+\+Queue\+\_\+\+Init}}
+\index{S\+M\+S\+\_\+\+Queue\+\_\+\+Init@{S\+M\+S\+\_\+\+Queue\+\_\+\+Init}!sms\+\_\+queue.\+h@{sms\+\_\+queue.\+h}}
+\subsubsection[{S\+M\+S\+\_\+\+Queue\+\_\+\+Init}]{\setlength{\rightskip}{0pt plus 5cm}void S\+M\+S\+\_\+\+Queue\+\_\+\+Init (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\label{sms__queue_8h_a44330a40d6fe6fa3f96ee0af604e05d8}
+
+
+Definition at line 5 of file sms\+\_\+queue.\+c.
+
+
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=309pt]{sms__queue_8h_a44330a40d6fe6fa3f96ee0af604e05d8_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{sms__queue_8h_aca35b159a6a87f738ac878bbd440a3ba}{}\index{sms\+\_\+queue.\+h@{sms\+\_\+queue.\+h}!S\+M\+S\+\_\+\+Queue\+\_\+\+Num\+Items@{S\+M\+S\+\_\+\+Queue\+\_\+\+Num\+Items}}
+\index{S\+M\+S\+\_\+\+Queue\+\_\+\+Num\+Items@{S\+M\+S\+\_\+\+Queue\+\_\+\+Num\+Items}!sms\+\_\+queue.\+h@{sms\+\_\+queue.\+h}}
+\subsubsection[{S\+M\+S\+\_\+\+Queue\+\_\+\+Num\+Items}]{\setlength{\rightskip}{0pt plus 5cm}{\bf u8} S\+M\+S\+\_\+\+Queue\+\_\+\+Num\+Items (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\label{sms__queue_8h_aca35b159a6a87f738ac878bbd440a3ba}
+
+
+Definition at line 37 of file sms\+\_\+queue.\+c.
+
+\hypertarget{sms__queue_8h_a48ae4a9d51c532b5bb8309221cb89148}{}\index{sms\+\_\+queue.\+h@{sms\+\_\+queue.\+h}!S\+M\+S\+\_\+\+Queue\+\_\+\+Pop@{S\+M\+S\+\_\+\+Queue\+\_\+\+Pop}}
+\index{S\+M\+S\+\_\+\+Queue\+\_\+\+Pop@{S\+M\+S\+\_\+\+Queue\+\_\+\+Pop}!sms\+\_\+queue.\+h@{sms\+\_\+queue.\+h}}
+\subsubsection[{S\+M\+S\+\_\+\+Queue\+\_\+\+Pop}]{\setlength{\rightskip}{0pt plus 5cm}{\bf u8} S\+M\+S\+\_\+\+Queue\+\_\+\+Pop (
+\begin{DoxyParamCaption}
+\item[{{\bf u8} $\ast$}]{Tel\+Num, }
+\item[{{\bf u8} $\ast$$\ast$}]{Sms\+Text}
+\end{DoxyParamCaption}
+)}\label{sms__queue_8h_a48ae4a9d51c532b5bb8309221cb89148}
+
+
+Definition at line 23 of file sms\+\_\+queue.\+c.
+
+
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{sms__queue_8h_a48ae4a9d51c532b5bb8309221cb89148_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{sms__queue_8h_a180ae9f0bd6e5894eb630aeb9fa8009c}{}\index{sms\+\_\+queue.\+h@{sms\+\_\+queue.\+h}!S\+M\+S\+\_\+\+Queue\+\_\+\+Push@{S\+M\+S\+\_\+\+Queue\+\_\+\+Push}}
+\index{S\+M\+S\+\_\+\+Queue\+\_\+\+Push@{S\+M\+S\+\_\+\+Queue\+\_\+\+Push}!sms\+\_\+queue.\+h@{sms\+\_\+queue.\+h}}
+\subsubsection[{S\+M\+S\+\_\+\+Queue\+\_\+\+Push}]{\setlength{\rightskip}{0pt plus 5cm}void S\+M\+S\+\_\+\+Queue\+\_\+\+Push (
+\begin{DoxyParamCaption}
+\item[{{\bf u8} $\ast$}]{Tel\+Num, }
+\item[{const {\bf u8}}]{Sms\+Text\mbox{[}$\,$\mbox{]}, }
+\item[{{\bf u8}}]{Life\+Time}
+\end{DoxyParamCaption}
+)}\label{sms__queue_8h_a180ae9f0bd6e5894eb630aeb9fa8009c}

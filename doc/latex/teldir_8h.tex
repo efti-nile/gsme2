@@ -1,0 +1,440 @@
+\hypertarget{teldir_8h}{}\section{src/teldir.h File Reference}
+\label{teldir_8h}\index{src/teldir.\+h@{src/teldir.\+h}}
+{\ttfamily \#include \char`\"{}io430.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}types.\+h\char`\"{}}\\*
+{\ttfamily \#include $<$string.\+h$>$}\\*
+Include dependency graph for teldir.\+h\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=263pt]{teldir_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{teldir_8h__dep__incl}
+\end{center}
+\end{figure}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{teldir_8h_a9244e2bcf18841ccff7c5e00c2ff315e}{T\+E\+L\+D\+I\+R}
+\item 
+\#define \hyperlink{teldir_8h_a1cf8196d0b6146e7b247d332efc6ae86}{T\+E\+L\+D\+I\+R\+\_\+\+R\+E\+S\+\_\+\+F\+L\+A\+S\+H\+\_\+\+E\+R\+R\+O\+R}~3
+\item 
+\#define \hyperlink{teldir_8h_a37244f78ce6de827b671a7c16e925750}{T\+E\+L\+D\+I\+R\+\_\+\+P\+U\+S\+H\+\_\+\+R\+E\+S\+\_\+\+P\+U\+S\+H\+E\+D}~0
+\item 
+\#define \hyperlink{teldir_8h_ac8ee7fc1866f1355b8e2f5823713f449}{T\+E\+L\+D\+I\+R\+\_\+\+P\+U\+S\+H\+\_\+\+R\+E\+S\+\_\+\+A\+L\+R\+E\+A\+D\+Y\+\_\+\+P\+U\+S\+H\+E\+D}~1
+\item 
+\#define \hyperlink{teldir_8h_a75fc8daa53d0aea72cc8519f1c837d24}{T\+E\+L\+D\+I\+R\+\_\+\+P\+U\+S\+H\+\_\+\+R\+E\+S\+\_\+\+N\+O\+\_\+\+M\+E\+M\+O\+R\+Y}~2
+\item 
+\#define \hyperlink{teldir_8h_ae02aeef0cf0c33a64ed26c96ee9456b2}{T\+E\+L\+D\+I\+R\+\_\+\+D\+E\+L\+\_\+\+R\+E\+S\+\_\+\+D\+E\+L\+E\+T\+E\+D}~0
+\item 
+\#define \hyperlink{teldir_8h_a69319e2c547c477f6970912dd9c9c4f8}{T\+E\+L\+D\+I\+R\+\_\+\+D\+E\+L\+\_\+\+R\+E\+S\+\_\+\+N\+O\+T\+\_\+\+F\+O\+U\+N\+D}~1
+\item 
+\#define \hyperlink{teldir_8h_a8782331513ec7b48a7571a80f949809b}{T\+E\+L\+D\+I\+R\+\_\+\+C\+L\+E\+A\+N\+\_\+\+R\+E\+S\+\_\+\+C\+L\+E\+A\+N\+E\+D}~0
+\item 
+\#define \hyperlink{teldir_8h_a5882a43e8d25ec308d4d9eb520c87f5a}{T\+E\+L\+D\+I\+R\+\_\+\+S\+E\+T\+\_\+\+B\+A\+L\+A\+N\+C\+E\+\_\+\+T\+E\+L\+N\+U\+M\+\_\+\+R\+E\+S\+\_\+\+O\+K}~0
+\item 
+\#define \hyperlink{teldir_8h_a8be554f354e5aa65370f6db63d4f3ee4}{F\+L\+A\+S\+H\+\_\+\+E\+N\+D}~0x00\+F\+F70
+\item 
+\#define \hyperlink{teldir_8h_ad3db8af2f8071d221b55074fa4d692c0}{F\+L\+A\+S\+H\+\_\+\+S\+E\+G\+S\+I\+Z\+E}~512
+\item 
+\#define \hyperlink{teldir_8h_a6cf0256eb9e0a6597d2356d53a5def1d}{F\+L\+A\+S\+H\+\_\+\+T\+E\+L\+D\+I\+R}~(\hyperlink{teldir_8h_a8be554f354e5aa65370f6db63d4f3ee4}{F\+L\+A\+S\+H\+\_\+\+E\+N\+D} -\/ (sizeof(Tel\+Dir)/F\+L\+A\+S\+H\+\_\+\+P\+A\+G\+E\+S\+I\+Z\+E + 1)$\ast$F\+L\+A\+S\+H\+\_\+\+P\+A\+G\+E\+S\+I\+Z\+E)
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{teldir_8h_a0aea063588e20b8c4cc21deb624fcf2d}{Tel\+Dir\+\_\+\+Init} (void)
+\item 
+\hyperlink{types_8h_aed742c436da53c1080638ce6ef7d13de}{u8} \hyperlink{teldir_8h_aa74735c901e3147c1bdc668b9881e4ac}{Tel\+Dir\+\_\+is\+Balance\+Tel\+Num\+Set} (void)
+\item 
+\hyperlink{types_8h_aed742c436da53c1080638ce6ef7d13de}{u8} \hyperlink{teldir_8h_a16f9616bb0bff34b1f289b5fb841e0a9}{Tel\+Dir\+\_\+\+Set\+Balance\+Number} (\hyperlink{types_8h_aed742c436da53c1080638ce6ef7d13de}{u8} $\ast$Tel\+Num)
+\item 
+\hyperlink{types_8h_aed742c436da53c1080638ce6ef7d13de}{u8} $\ast$ \hyperlink{teldir_8h_a9149473eeb7aab1097e62206c7af88fa}{Tel\+Dir\+\_\+\+Get\+Balance\+Number} (void)
+\item 
+\hyperlink{types_8h_aed742c436da53c1080638ce6ef7d13de}{u8} \hyperlink{teldir_8h_a9b65e7bbc73732a18f3336f450fed706}{Tel\+Dir\+\_\+\+Clean} (void)
+\item 
+\hyperlink{types_8h_aed742c436da53c1080638ce6ef7d13de}{u8} \hyperlink{teldir_8h_a4646bad3b1c8c9012bb8d69f76f23415}{Tel\+Dir\+\_\+\+Push} (\hyperlink{types_8h_aed742c436da53c1080638ce6ef7d13de}{u8} $\ast$Tel\+Num)
+\item 
+\hyperlink{types_8h_aed742c436da53c1080638ce6ef7d13de}{u8} \hyperlink{teldir_8h_a6bd23eb9d8de630a5f0a8bd96007457b}{Tel\+Dir\+\_\+\+Del} (\hyperlink{types_8h_aed742c436da53c1080638ce6ef7d13de}{u8} $\ast$Tel\+Num)
+\item 
+\hyperlink{types_8h_a151f780fb455885061d3b77ec1c90c03}{s8} \hyperlink{teldir_8h_aac98e4f64e7d986fad0dd17c263ddaa0}{Tel\+Dir\+\_\+\+Find\+Tel\+Number} (\hyperlink{types_8h_aed742c436da53c1080638ce6ef7d13de}{u8} $\ast$Tel\+Num)
+\item 
+void \hyperlink{teldir_8h_afce5dc883ff00abed4fe489b336d3bdb}{Tel\+Dir\+\_\+\+Iterator\+\_\+\+Init} (void)
+\item 
+\hyperlink{types_8h_aed742c436da53c1080638ce6ef7d13de}{u8} \hyperlink{teldir_8h_a728a882c9557910c0c10bd580fc4db72}{Tel\+Dir\+\_\+\+Get\+Next\+Tel\+Num} (\hyperlink{types_8h_aed742c436da53c1080638ce6ef7d13de}{u8} $\ast$Tel\+Num)
+\item 
+\hyperlink{types_8h_aed742c436da53c1080638ce6ef7d13de}{u8} \hyperlink{teldir_8h_a61d7eae375875f4f3b1cb08084146157}{Tel\+Dir\+\_\+\+Write\+To\+Flash} (void)
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\hypertarget{teldir_8h_a8be554f354e5aa65370f6db63d4f3ee4}{}\index{teldir.\+h@{teldir.\+h}!F\+L\+A\+S\+H\+\_\+\+E\+N\+D@{F\+L\+A\+S\+H\+\_\+\+E\+N\+D}}
+\index{F\+L\+A\+S\+H\+\_\+\+E\+N\+D@{F\+L\+A\+S\+H\+\_\+\+E\+N\+D}!teldir.\+h@{teldir.\+h}}
+\subsubsection[{F\+L\+A\+S\+H\+\_\+\+E\+N\+D}]{\setlength{\rightskip}{0pt plus 5cm}\#define F\+L\+A\+S\+H\+\_\+\+E\+N\+D~0x00\+F\+F70}\label{teldir_8h_a8be554f354e5aa65370f6db63d4f3ee4}
+
+
+Definition at line 27 of file teldir.\+h.
+
+\hypertarget{teldir_8h_ad3db8af2f8071d221b55074fa4d692c0}{}\index{teldir.\+h@{teldir.\+h}!F\+L\+A\+S\+H\+\_\+\+S\+E\+G\+S\+I\+Z\+E@{F\+L\+A\+S\+H\+\_\+\+S\+E\+G\+S\+I\+Z\+E}}
+\index{F\+L\+A\+S\+H\+\_\+\+S\+E\+G\+S\+I\+Z\+E@{F\+L\+A\+S\+H\+\_\+\+S\+E\+G\+S\+I\+Z\+E}!teldir.\+h@{teldir.\+h}}
+\subsubsection[{F\+L\+A\+S\+H\+\_\+\+S\+E\+G\+S\+I\+Z\+E}]{\setlength{\rightskip}{0pt plus 5cm}\#define F\+L\+A\+S\+H\+\_\+\+S\+E\+G\+S\+I\+Z\+E~512}\label{teldir_8h_ad3db8af2f8071d221b55074fa4d692c0}
+
+
+Definition at line 28 of file teldir.\+h.
+
+\hypertarget{teldir_8h_a6cf0256eb9e0a6597d2356d53a5def1d}{}\index{teldir.\+h@{teldir.\+h}!F\+L\+A\+S\+H\+\_\+\+T\+E\+L\+D\+I\+R@{F\+L\+A\+S\+H\+\_\+\+T\+E\+L\+D\+I\+R}}
+\index{F\+L\+A\+S\+H\+\_\+\+T\+E\+L\+D\+I\+R@{F\+L\+A\+S\+H\+\_\+\+T\+E\+L\+D\+I\+R}!teldir.\+h@{teldir.\+h}}
+\subsubsection[{F\+L\+A\+S\+H\+\_\+\+T\+E\+L\+D\+I\+R}]{\setlength{\rightskip}{0pt plus 5cm}\#define F\+L\+A\+S\+H\+\_\+\+T\+E\+L\+D\+I\+R~({\bf F\+L\+A\+S\+H\+\_\+\+E\+N\+D} -\/ (sizeof(Tel\+Dir)/F\+L\+A\+S\+H\+\_\+\+P\+A\+G\+E\+S\+I\+Z\+E + 1)$\ast$F\+L\+A\+S\+H\+\_\+\+P\+A\+G\+E\+S\+I\+Z\+E)}\label{teldir_8h_a6cf0256eb9e0a6597d2356d53a5def1d}
+
+
+Definition at line 29 of file teldir.\+h.
+
+\hypertarget{teldir_8h_a9244e2bcf18841ccff7c5e00c2ff315e}{}\index{teldir.\+h@{teldir.\+h}!T\+E\+L\+D\+I\+R@{T\+E\+L\+D\+I\+R}}
+\index{T\+E\+L\+D\+I\+R@{T\+E\+L\+D\+I\+R}!teldir.\+h@{teldir.\+h}}
+\subsubsection[{T\+E\+L\+D\+I\+R}]{\setlength{\rightskip}{0pt plus 5cm}\#define T\+E\+L\+D\+I\+R}\label{teldir_8h_a9244e2bcf18841ccff7c5e00c2ff315e}
+
+
+Definition at line 2 of file teldir.\+h.
+
+\hypertarget{teldir_8h_a8782331513ec7b48a7571a80f949809b}{}\index{teldir.\+h@{teldir.\+h}!T\+E\+L\+D\+I\+R\+\_\+\+C\+L\+E\+A\+N\+\_\+\+R\+E\+S\+\_\+\+C\+L\+E\+A\+N\+E\+D@{T\+E\+L\+D\+I\+R\+\_\+\+C\+L\+E\+A\+N\+\_\+\+R\+E\+S\+\_\+\+C\+L\+E\+A\+N\+E\+D}}
+\index{T\+E\+L\+D\+I\+R\+\_\+\+C\+L\+E\+A\+N\+\_\+\+R\+E\+S\+\_\+\+C\+L\+E\+A\+N\+E\+D@{T\+E\+L\+D\+I\+R\+\_\+\+C\+L\+E\+A\+N\+\_\+\+R\+E\+S\+\_\+\+C\+L\+E\+A\+N\+E\+D}!teldir.\+h@{teldir.\+h}}
+\subsubsection[{T\+E\+L\+D\+I\+R\+\_\+\+C\+L\+E\+A\+N\+\_\+\+R\+E\+S\+\_\+\+C\+L\+E\+A\+N\+E\+D}]{\setlength{\rightskip}{0pt plus 5cm}\#define T\+E\+L\+D\+I\+R\+\_\+\+C\+L\+E\+A\+N\+\_\+\+R\+E\+S\+\_\+\+C\+L\+E\+A\+N\+E\+D~0}\label{teldir_8h_a8782331513ec7b48a7571a80f949809b}
+
+
+Definition at line 22 of file teldir.\+h.
+
+\hypertarget{teldir_8h_ae02aeef0cf0c33a64ed26c96ee9456b2}{}\index{teldir.\+h@{teldir.\+h}!T\+E\+L\+D\+I\+R\+\_\+\+D\+E\+L\+\_\+\+R\+E\+S\+\_\+\+D\+E\+L\+E\+T\+E\+D@{T\+E\+L\+D\+I\+R\+\_\+\+D\+E\+L\+\_\+\+R\+E\+S\+\_\+\+D\+E\+L\+E\+T\+E\+D}}
+\index{T\+E\+L\+D\+I\+R\+\_\+\+D\+E\+L\+\_\+\+R\+E\+S\+\_\+\+D\+E\+L\+E\+T\+E\+D@{T\+E\+L\+D\+I\+R\+\_\+\+D\+E\+L\+\_\+\+R\+E\+S\+\_\+\+D\+E\+L\+E\+T\+E\+D}!teldir.\+h@{teldir.\+h}}
+\subsubsection[{T\+E\+L\+D\+I\+R\+\_\+\+D\+E\+L\+\_\+\+R\+E\+S\+\_\+\+D\+E\+L\+E\+T\+E\+D}]{\setlength{\rightskip}{0pt plus 5cm}\#define T\+E\+L\+D\+I\+R\+\_\+\+D\+E\+L\+\_\+\+R\+E\+S\+\_\+\+D\+E\+L\+E\+T\+E\+D~0}\label{teldir_8h_ae02aeef0cf0c33a64ed26c96ee9456b2}
+
+
+Definition at line 18 of file teldir.\+h.
+
+\hypertarget{teldir_8h_a69319e2c547c477f6970912dd9c9c4f8}{}\index{teldir.\+h@{teldir.\+h}!T\+E\+L\+D\+I\+R\+\_\+\+D\+E\+L\+\_\+\+R\+E\+S\+\_\+\+N\+O\+T\+\_\+\+F\+O\+U\+N\+D@{T\+E\+L\+D\+I\+R\+\_\+\+D\+E\+L\+\_\+\+R\+E\+S\+\_\+\+N\+O\+T\+\_\+\+F\+O\+U\+N\+D}}
+\index{T\+E\+L\+D\+I\+R\+\_\+\+D\+E\+L\+\_\+\+R\+E\+S\+\_\+\+N\+O\+T\+\_\+\+F\+O\+U\+N\+D@{T\+E\+L\+D\+I\+R\+\_\+\+D\+E\+L\+\_\+\+R\+E\+S\+\_\+\+N\+O\+T\+\_\+\+F\+O\+U\+N\+D}!teldir.\+h@{teldir.\+h}}
+\subsubsection[{T\+E\+L\+D\+I\+R\+\_\+\+D\+E\+L\+\_\+\+R\+E\+S\+\_\+\+N\+O\+T\+\_\+\+F\+O\+U\+N\+D}]{\setlength{\rightskip}{0pt plus 5cm}\#define T\+E\+L\+D\+I\+R\+\_\+\+D\+E\+L\+\_\+\+R\+E\+S\+\_\+\+N\+O\+T\+\_\+\+F\+O\+U\+N\+D~1}\label{teldir_8h_a69319e2c547c477f6970912dd9c9c4f8}
+
+
+Definition at line 19 of file teldir.\+h.
+
+\hypertarget{teldir_8h_ac8ee7fc1866f1355b8e2f5823713f449}{}\index{teldir.\+h@{teldir.\+h}!T\+E\+L\+D\+I\+R\+\_\+\+P\+U\+S\+H\+\_\+\+R\+E\+S\+\_\+\+A\+L\+R\+E\+A\+D\+Y\+\_\+\+P\+U\+S\+H\+E\+D@{T\+E\+L\+D\+I\+R\+\_\+\+P\+U\+S\+H\+\_\+\+R\+E\+S\+\_\+\+A\+L\+R\+E\+A\+D\+Y\+\_\+\+P\+U\+S\+H\+E\+D}}
+\index{T\+E\+L\+D\+I\+R\+\_\+\+P\+U\+S\+H\+\_\+\+R\+E\+S\+\_\+\+A\+L\+R\+E\+A\+D\+Y\+\_\+\+P\+U\+S\+H\+E\+D@{T\+E\+L\+D\+I\+R\+\_\+\+P\+U\+S\+H\+\_\+\+R\+E\+S\+\_\+\+A\+L\+R\+E\+A\+D\+Y\+\_\+\+P\+U\+S\+H\+E\+D}!teldir.\+h@{teldir.\+h}}
+\subsubsection[{T\+E\+L\+D\+I\+R\+\_\+\+P\+U\+S\+H\+\_\+\+R\+E\+S\+\_\+\+A\+L\+R\+E\+A\+D\+Y\+\_\+\+P\+U\+S\+H\+E\+D}]{\setlength{\rightskip}{0pt plus 5cm}\#define T\+E\+L\+D\+I\+R\+\_\+\+P\+U\+S\+H\+\_\+\+R\+E\+S\+\_\+\+A\+L\+R\+E\+A\+D\+Y\+\_\+\+P\+U\+S\+H\+E\+D~1}\label{teldir_8h_ac8ee7fc1866f1355b8e2f5823713f449}
+
+
+Definition at line 14 of file teldir.\+h.
+
+\hypertarget{teldir_8h_a75fc8daa53d0aea72cc8519f1c837d24}{}\index{teldir.\+h@{teldir.\+h}!T\+E\+L\+D\+I\+R\+\_\+\+P\+U\+S\+H\+\_\+\+R\+E\+S\+\_\+\+N\+O\+\_\+\+M\+E\+M\+O\+R\+Y@{T\+E\+L\+D\+I\+R\+\_\+\+P\+U\+S\+H\+\_\+\+R\+E\+S\+\_\+\+N\+O\+\_\+\+M\+E\+M\+O\+R\+Y}}
+\index{T\+E\+L\+D\+I\+R\+\_\+\+P\+U\+S\+H\+\_\+\+R\+E\+S\+\_\+\+N\+O\+\_\+\+M\+E\+M\+O\+R\+Y@{T\+E\+L\+D\+I\+R\+\_\+\+P\+U\+S\+H\+\_\+\+R\+E\+S\+\_\+\+N\+O\+\_\+\+M\+E\+M\+O\+R\+Y}!teldir.\+h@{teldir.\+h}}
+\subsubsection[{T\+E\+L\+D\+I\+R\+\_\+\+P\+U\+S\+H\+\_\+\+R\+E\+S\+\_\+\+N\+O\+\_\+\+M\+E\+M\+O\+R\+Y}]{\setlength{\rightskip}{0pt plus 5cm}\#define T\+E\+L\+D\+I\+R\+\_\+\+P\+U\+S\+H\+\_\+\+R\+E\+S\+\_\+\+N\+O\+\_\+\+M\+E\+M\+O\+R\+Y~2}\label{teldir_8h_a75fc8daa53d0aea72cc8519f1c837d24}
+
+
+Definition at line 15 of file teldir.\+h.
+
+\hypertarget{teldir_8h_a37244f78ce6de827b671a7c16e925750}{}\index{teldir.\+h@{teldir.\+h}!T\+E\+L\+D\+I\+R\+\_\+\+P\+U\+S\+H\+\_\+\+R\+E\+S\+\_\+\+P\+U\+S\+H\+E\+D@{T\+E\+L\+D\+I\+R\+\_\+\+P\+U\+S\+H\+\_\+\+R\+E\+S\+\_\+\+P\+U\+S\+H\+E\+D}}
+\index{T\+E\+L\+D\+I\+R\+\_\+\+P\+U\+S\+H\+\_\+\+R\+E\+S\+\_\+\+P\+U\+S\+H\+E\+D@{T\+E\+L\+D\+I\+R\+\_\+\+P\+U\+S\+H\+\_\+\+R\+E\+S\+\_\+\+P\+U\+S\+H\+E\+D}!teldir.\+h@{teldir.\+h}}
+\subsubsection[{T\+E\+L\+D\+I\+R\+\_\+\+P\+U\+S\+H\+\_\+\+R\+E\+S\+\_\+\+P\+U\+S\+H\+E\+D}]{\setlength{\rightskip}{0pt plus 5cm}\#define T\+E\+L\+D\+I\+R\+\_\+\+P\+U\+S\+H\+\_\+\+R\+E\+S\+\_\+\+P\+U\+S\+H\+E\+D~0}\label{teldir_8h_a37244f78ce6de827b671a7c16e925750}
+
+
+Definition at line 13 of file teldir.\+h.
+
+\hypertarget{teldir_8h_a1cf8196d0b6146e7b247d332efc6ae86}{}\index{teldir.\+h@{teldir.\+h}!T\+E\+L\+D\+I\+R\+\_\+\+R\+E\+S\+\_\+\+F\+L\+A\+S\+H\+\_\+\+E\+R\+R\+O\+R@{T\+E\+L\+D\+I\+R\+\_\+\+R\+E\+S\+\_\+\+F\+L\+A\+S\+H\+\_\+\+E\+R\+R\+O\+R}}
+\index{T\+E\+L\+D\+I\+R\+\_\+\+R\+E\+S\+\_\+\+F\+L\+A\+S\+H\+\_\+\+E\+R\+R\+O\+R@{T\+E\+L\+D\+I\+R\+\_\+\+R\+E\+S\+\_\+\+F\+L\+A\+S\+H\+\_\+\+E\+R\+R\+O\+R}!teldir.\+h@{teldir.\+h}}
+\subsubsection[{T\+E\+L\+D\+I\+R\+\_\+\+R\+E\+S\+\_\+\+F\+L\+A\+S\+H\+\_\+\+E\+R\+R\+O\+R}]{\setlength{\rightskip}{0pt plus 5cm}\#define T\+E\+L\+D\+I\+R\+\_\+\+R\+E\+S\+\_\+\+F\+L\+A\+S\+H\+\_\+\+E\+R\+R\+O\+R~3}\label{teldir_8h_a1cf8196d0b6146e7b247d332efc6ae86}
+
+
+Definition at line 10 of file teldir.\+h.
+
+\hypertarget{teldir_8h_a5882a43e8d25ec308d4d9eb520c87f5a}{}\index{teldir.\+h@{teldir.\+h}!T\+E\+L\+D\+I\+R\+\_\+\+S\+E\+T\+\_\+\+B\+A\+L\+A\+N\+C\+E\+\_\+\+T\+E\+L\+N\+U\+M\+\_\+\+R\+E\+S\+\_\+\+O\+K@{T\+E\+L\+D\+I\+R\+\_\+\+S\+E\+T\+\_\+\+B\+A\+L\+A\+N\+C\+E\+\_\+\+T\+E\+L\+N\+U\+M\+\_\+\+R\+E\+S\+\_\+\+O\+K}}
+\index{T\+E\+L\+D\+I\+R\+\_\+\+S\+E\+T\+\_\+\+B\+A\+L\+A\+N\+C\+E\+\_\+\+T\+E\+L\+N\+U\+M\+\_\+\+R\+E\+S\+\_\+\+O\+K@{T\+E\+L\+D\+I\+R\+\_\+\+S\+E\+T\+\_\+\+B\+A\+L\+A\+N\+C\+E\+\_\+\+T\+E\+L\+N\+U\+M\+\_\+\+R\+E\+S\+\_\+\+O\+K}!teldir.\+h@{teldir.\+h}}
+\subsubsection[{T\+E\+L\+D\+I\+R\+\_\+\+S\+E\+T\+\_\+\+B\+A\+L\+A\+N\+C\+E\+\_\+\+T\+E\+L\+N\+U\+M\+\_\+\+R\+E\+S\+\_\+\+O\+K}]{\setlength{\rightskip}{0pt plus 5cm}\#define T\+E\+L\+D\+I\+R\+\_\+\+S\+E\+T\+\_\+\+B\+A\+L\+A\+N\+C\+E\+\_\+\+T\+E\+L\+N\+U\+M\+\_\+\+R\+E\+S\+\_\+\+O\+K~0}\label{teldir_8h_a5882a43e8d25ec308d4d9eb520c87f5a}
+
+
+Definition at line 25 of file teldir.\+h.
+
+
+
+\subsection{Function Documentation}
+\hypertarget{teldir_8h_a9b65e7bbc73732a18f3336f450fed706}{}\index{teldir.\+h@{teldir.\+h}!Tel\+Dir\+\_\+\+Clean@{Tel\+Dir\+\_\+\+Clean}}
+\index{Tel\+Dir\+\_\+\+Clean@{Tel\+Dir\+\_\+\+Clean}!teldir.\+h@{teldir.\+h}}
+\subsubsection[{Tel\+Dir\+\_\+\+Clean}]{\setlength{\rightskip}{0pt plus 5cm}{\bf u8} Tel\+Dir\+\_\+\+Clean (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\label{teldir_8h_a9b65e7bbc73732a18f3336f450fed706}
+
+
+Definition at line 17 of file teldir.\+c.
+
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=291pt]{teldir_8h_a9b65e7bbc73732a18f3336f450fed706_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{teldir_8h_a9b65e7bbc73732a18f3336f450fed706_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{teldir_8h_a6bd23eb9d8de630a5f0a8bd96007457b}{}\index{teldir.\+h@{teldir.\+h}!Tel\+Dir\+\_\+\+Del@{Tel\+Dir\+\_\+\+Del}}
+\index{Tel\+Dir\+\_\+\+Del@{Tel\+Dir\+\_\+\+Del}!teldir.\+h@{teldir.\+h}}
+\subsubsection[{Tel\+Dir\+\_\+\+Del}]{\setlength{\rightskip}{0pt plus 5cm}{\bf u8} Tel\+Dir\+\_\+\+Del (
+\begin{DoxyParamCaption}
+\item[{{\bf u8} $\ast$}]{Tel\+Num}
+\end{DoxyParamCaption}
+)}\label{teldir_8h_a6bd23eb9d8de630a5f0a8bd96007457b}
+
+
+Definition at line 64 of file teldir.\+c.
+
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=281pt]{teldir_8h_a6bd23eb9d8de630a5f0a8bd96007457b_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=349pt]{teldir_8h_a6bd23eb9d8de630a5f0a8bd96007457b_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{teldir_8h_aac98e4f64e7d986fad0dd17c263ddaa0}{}\index{teldir.\+h@{teldir.\+h}!Tel\+Dir\+\_\+\+Find\+Tel\+Number@{Tel\+Dir\+\_\+\+Find\+Tel\+Number}}
+\index{Tel\+Dir\+\_\+\+Find\+Tel\+Number@{Tel\+Dir\+\_\+\+Find\+Tel\+Number}!teldir.\+h@{teldir.\+h}}
+\subsubsection[{Tel\+Dir\+\_\+\+Find\+Tel\+Number}]{\setlength{\rightskip}{0pt plus 5cm}{\bf s8} Tel\+Dir\+\_\+\+Find\+Tel\+Number (
+\begin{DoxyParamCaption}
+\item[{{\bf u8} $\ast$}]{Tel\+Num}
+\end{DoxyParamCaption}
+)}\label{teldir_8h_aac98e4f64e7d986fad0dd17c263ddaa0}
+
+
+Definition at line 81 of file teldir.\+c.
+
+
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{teldir_8h_aac98e4f64e7d986fad0dd17c263ddaa0_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{teldir_8h_a9149473eeb7aab1097e62206c7af88fa}{}\index{teldir.\+h@{teldir.\+h}!Tel\+Dir\+\_\+\+Get\+Balance\+Number@{Tel\+Dir\+\_\+\+Get\+Balance\+Number}}
+\index{Tel\+Dir\+\_\+\+Get\+Balance\+Number@{Tel\+Dir\+\_\+\+Get\+Balance\+Number}!teldir.\+h@{teldir.\+h}}
+\subsubsection[{Tel\+Dir\+\_\+\+Get\+Balance\+Number}]{\setlength{\rightskip}{0pt plus 5cm}{\bf u8}$\ast$ Tel\+Dir\+\_\+\+Get\+Balance\+Number (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\label{teldir_8h_a9149473eeb7aab1097e62206c7af88fa}
+
+
+Definition at line 60 of file teldir.\+c.
+
+
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{teldir_8h_a9149473eeb7aab1097e62206c7af88fa_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{teldir_8h_a728a882c9557910c0c10bd580fc4db72}{}\index{teldir.\+h@{teldir.\+h}!Tel\+Dir\+\_\+\+Get\+Next\+Tel\+Num@{Tel\+Dir\+\_\+\+Get\+Next\+Tel\+Num}}
+\index{Tel\+Dir\+\_\+\+Get\+Next\+Tel\+Num@{Tel\+Dir\+\_\+\+Get\+Next\+Tel\+Num}!teldir.\+h@{teldir.\+h}}
+\subsubsection[{Tel\+Dir\+\_\+\+Get\+Next\+Tel\+Num}]{\setlength{\rightskip}{0pt plus 5cm}{\bf u8} Tel\+Dir\+\_\+\+Get\+Next\+Tel\+Num (
+\begin{DoxyParamCaption}
+\item[{{\bf u8} $\ast$}]{Tel\+Num}
+\end{DoxyParamCaption}
+)}\label{teldir_8h_a728a882c9557910c0c10bd580fc4db72}
+
+
+Definition at line 95 of file teldir.\+c.
+
+
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=309pt]{teldir_8h_a728a882c9557910c0c10bd580fc4db72_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{teldir_8h_a0aea063588e20b8c4cc21deb624fcf2d}{}\index{teldir.\+h@{teldir.\+h}!Tel\+Dir\+\_\+\+Init@{Tel\+Dir\+\_\+\+Init}}
+\index{Tel\+Dir\+\_\+\+Init@{Tel\+Dir\+\_\+\+Init}!teldir.\+h@{teldir.\+h}}
+\subsubsection[{Tel\+Dir\+\_\+\+Init}]{\setlength{\rightskip}{0pt plus 5cm}void Tel\+Dir\+\_\+\+Init (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\label{teldir_8h_a0aea063588e20b8c4cc21deb624fcf2d}
+
+
+Definition at line 5 of file teldir.\+c.
+
+\hypertarget{teldir_8h_aa74735c901e3147c1bdc668b9881e4ac}{}\index{teldir.\+h@{teldir.\+h}!Tel\+Dir\+\_\+is\+Balance\+Tel\+Num\+Set@{Tel\+Dir\+\_\+is\+Balance\+Tel\+Num\+Set}}
+\index{Tel\+Dir\+\_\+is\+Balance\+Tel\+Num\+Set@{Tel\+Dir\+\_\+is\+Balance\+Tel\+Num\+Set}!teldir.\+h@{teldir.\+h}}
+\subsubsection[{Tel\+Dir\+\_\+is\+Balance\+Tel\+Num\+Set}]{\setlength{\rightskip}{0pt plus 5cm}{\bf u8} Tel\+Dir\+\_\+is\+Balance\+Tel\+Num\+Set (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\label{teldir_8h_aa74735c901e3147c1bdc668b9881e4ac}
+
+
+Definition at line 46 of file teldir.\+c.
+
+\hypertarget{teldir_8h_afce5dc883ff00abed4fe489b336d3bdb}{}\index{teldir.\+h@{teldir.\+h}!Tel\+Dir\+\_\+\+Iterator\+\_\+\+Init@{Tel\+Dir\+\_\+\+Iterator\+\_\+\+Init}}
+\index{Tel\+Dir\+\_\+\+Iterator\+\_\+\+Init@{Tel\+Dir\+\_\+\+Iterator\+\_\+\+Init}!teldir.\+h@{teldir.\+h}}
+\subsubsection[{Tel\+Dir\+\_\+\+Iterator\+\_\+\+Init}]{\setlength{\rightskip}{0pt plus 5cm}void Tel\+Dir\+\_\+\+Iterator\+\_\+\+Init (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\label{teldir_8h_afce5dc883ff00abed4fe489b336d3bdb}
+
+
+Definition at line 91 of file teldir.\+c.
+
+
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=288pt]{teldir_8h_afce5dc883ff00abed4fe489b336d3bdb_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{teldir_8h_a4646bad3b1c8c9012bb8d69f76f23415}{}\index{teldir.\+h@{teldir.\+h}!Tel\+Dir\+\_\+\+Push@{Tel\+Dir\+\_\+\+Push}}
+\index{Tel\+Dir\+\_\+\+Push@{Tel\+Dir\+\_\+\+Push}!teldir.\+h@{teldir.\+h}}
+\subsubsection[{Tel\+Dir\+\_\+\+Push}]{\setlength{\rightskip}{0pt plus 5cm}{\bf u8} Tel\+Dir\+\_\+\+Push (
+\begin{DoxyParamCaption}
+\item[{{\bf u8} $\ast$}]{Tel\+Num}
+\end{DoxyParamCaption}
+)}\label{teldir_8h_a4646bad3b1c8c9012bb8d69f76f23415}
+
+
+Definition at line 27 of file teldir.\+c.
+
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=289pt]{teldir_8h_a4646bad3b1c8c9012bb8d69f76f23415_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{teldir_8h_a4646bad3b1c8c9012bb8d69f76f23415_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{teldir_8h_a16f9616bb0bff34b1f289b5fb841e0a9}{}\index{teldir.\+h@{teldir.\+h}!Tel\+Dir\+\_\+\+Set\+Balance\+Number@{Tel\+Dir\+\_\+\+Set\+Balance\+Number}}
+\index{Tel\+Dir\+\_\+\+Set\+Balance\+Number@{Tel\+Dir\+\_\+\+Set\+Balance\+Number}!teldir.\+h@{teldir.\+h}}
+\subsubsection[{Tel\+Dir\+\_\+\+Set\+Balance\+Number}]{\setlength{\rightskip}{0pt plus 5cm}{\bf u8} Tel\+Dir\+\_\+\+Set\+Balance\+Number (
+\begin{DoxyParamCaption}
+\item[{{\bf u8} $\ast$}]{Tel\+Num}
+\end{DoxyParamCaption}
+)}\label{teldir_8h_a16f9616bb0bff34b1f289b5fb841e0a9}
+
+
+Definition at line 50 of file teldir.\+c.
+
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{teldir_8h_a16f9616bb0bff34b1f289b5fb841e0a9_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{teldir_8h_a16f9616bb0bff34b1f289b5fb841e0a9_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{teldir_8h_a61d7eae375875f4f3b1cb08084146157}{}\index{teldir.\+h@{teldir.\+h}!Tel\+Dir\+\_\+\+Write\+To\+Flash@{Tel\+Dir\+\_\+\+Write\+To\+Flash}}
+\index{Tel\+Dir\+\_\+\+Write\+To\+Flash@{Tel\+Dir\+\_\+\+Write\+To\+Flash}!teldir.\+h@{teldir.\+h}}
+\subsubsection[{Tel\+Dir\+\_\+\+Write\+To\+Flash}]{\setlength{\rightskip}{0pt plus 5cm}{\bf u8} Tel\+Dir\+\_\+\+Write\+To\+Flash (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\label{teldir_8h_a61d7eae375875f4f3b1cb08084146157}
+
+
+Definition at line 104 of file teldir.\+c.
+
+
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{teldir_8h_a61d7eae375875f4f3b1cb08084146157_icgraph}
+\end{center}
+\end{figure}
+
+

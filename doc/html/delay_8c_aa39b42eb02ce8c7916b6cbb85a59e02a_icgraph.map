@@ -1,0 +1,9 @@
+<map id="Delay_DelayMs" name="Delay_DelayMs">
+<area shape="rect" id="node2" href="$main_8c.html#a840291bc02cba5474a4cb46a9b9566fe" title="main" alt="" coords="571,64,621,91"/>
+<area shape="rect" id="node3" href="$main_8h.html#a471f177dfdefd35621d02eea75c3f6d6" title="Blinkes the error and restarts SIM900. " alt="" coords="208,64,303,91"/>
+<area shape="rect" id="node4" href="$sim900_8h.html#ae1e3f727860246949a7be1981da0b885" title="SIM900_ReadSms" alt="" coords="392,115,523,142"/>
+<area shape="rect" id="node5" href="$sim900_8h.html#a314bc551db817cb204992fad603d53fb" title="SIM900_SendSms" alt="" coords="392,64,523,91"/>
+<area shape="rect" id="node6" href="$sim900_8h.html#a0abb74e5d0038e5aac34542060af12bb" title="Tryes to initialize SIM900 untill success. " alt="" coords="404,216,511,243"/>
+<area shape="rect" id="node7" href="$sim900_8h.html#a849e1e6bd435acb2afe40b2faf541d82" title="SIM900_SoftReset" alt="" coords="190,216,321,243"/>
+<area shape="rect" id="node8" href="$sim900_8h.html#a7191db3b8eab5819179ff80be9f27529" title="SIM900_WaitForResponse" alt="" coords="167,115,344,142"/>
+</map>
