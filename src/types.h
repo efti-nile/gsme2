@@ -82,10 +82,10 @@ struct SMS_Queque_TypeDef{
 #define TELDIR_SIZE 10 // Number of slots for telephone numbers
 
 struct TelDir_TypeDef{
+    u8 NumItems;
     u8 List[TELDIR_SIZE][TELDIR_TELNUM_LEN];
 	u8 BalanceTelNum[TELDIR_TELNUM_LEN];
     u8 isBalanceTelNumSet;
-    u8 NumItems;
     u8 Iterator;
 };
 

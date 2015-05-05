@@ -3,6 +3,7 @@
 
 #include "io430.h"
 #include "types.h"
+#include "msp430_flash.h"
 #include <string.h>
 
 // Results
@@ -38,6 +39,5 @@ u8 TelDir_Del(u8 *TelNum);
 s8 TelDir_FindTelNumber(u8 *TelNum);
 void TelDir_Iterator_Init(void);
 u8 TelDir_GetNextTelNum(u8 *TelNum);
-u8 TelDir_WriteToFlash(void);
 
 #endif
