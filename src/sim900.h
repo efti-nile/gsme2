@@ -26,7 +26,7 @@ extern u16 CirBuf_NumBytes;
 #define g_HPWR_SET (P2OUT |= BIT6)
 #define g_HPWR_CLEAR (P2OUT &= BIT6^0xFF)
 // Reset SIM900 (PWRKEY)
-#define g_PWR_INIT {P3OUT &= BIT0^0xFF; P3DIR |= BIT0; P3REN &= BIT0^0xFF; P3SEL &= BIT0^0xFF; P3DS &= BIT0^0xFF;}
+#define g_PWR_INIT {P3OUT |= BIT0; P3DIR |= BIT0; P3REN &= BIT0^0xFF; P3SEL &= BIT0^0xFF; P3DS &= BIT0^0xFF;}
 #define g_PWR_SET (P3OUT |= BIT0)
 #define g_PWR_CLEAR (P3OUT &= BIT0^0xFF)
 
