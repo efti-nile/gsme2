@@ -158,11 +158,11 @@ void SysTimer_Start(u16 timeout){
 __interrupt void TIMER1_A1_ISR(void){
 
     static u8 cnt = 0;
-    if(cnt++ % 2){
+    /*if(cnt++ % 2){
         LED_OFF;
     }else{
         LED_ON;
-    };
+    };*/
     TA1CTL &= ~TAIFG;
     return;
 

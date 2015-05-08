@@ -281,11 +281,15 @@ void SIM900_SendSms(void){
 
 u8 SIM900_PowerOn(void){
     g_HPWR_SET;
+    g_PWR_SET;
+    g_USART1_TX_ENABLE;
 	return 0;
 }
 
 u8 SIM900_PowerOff(void){
     g_HPWR_CLEAR;
+    g_PWR_CLEAR;
+    g_USART1_TX_DISABLE;
     return 0;
 }
 
