@@ -1,5 +1,7 @@
 #include "sim900.h"
 
+extern struct TelDir_TypeDef TelDir;
+
 u8 SMS_Balance[SMS_TEXT_MAXLEN]; // TODO: maybe put it in stack?
 
 /*!
@@ -211,7 +213,7 @@ void SIM900_ReadSms(void){
     // Request balance
     if(SIM900_CircularBuf_Search(SIM900_SMS_CMD_CHECK_BALANCE) && TelDir_FindTelNumber(TelNum) != -1){
         // Check if user set the telephone number for balance check
-        if(TelDir_IsBalanceTelNumSet()){
+        if(TelDir_isBalanceNumberSet()){
             // Make up command to request balance
             // TODO: Why do not send this long command seperately?
             u8 CMD[sizeof("AT+CUSD=1,\"AAAABBBBCCCCDDDDEEEE\"\r") + 8] = "AT+CUSD=1,\""; // 8 for just in case

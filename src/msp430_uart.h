@@ -8,6 +8,11 @@
 #define UART_RS485 0 // USCI_A0
 #define UART_SIM900 1 // USCI_A1
 
+// R\E\ RS485 - P3.2
+#define RxTx_RS485_INIT {P3OUT &= ~BIT2; P3DIR |= BIT2; P3REN &= ~BIT2; P3SEL &= ~BIT2; P3DS &= ~BIT2;}
+#define RxTx_RS485_RxEnable P3OUT &= ~BIT2
+#define RxTx_RS485_TxEnable P3OUT |= BIT2
+
 // Circular buffer for USART connected to SIM900 /////////////////////
 
 void MSP430_UART_Init(void);

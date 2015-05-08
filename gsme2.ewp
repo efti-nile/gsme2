@@ -1896,6 +1896,9 @@
       <name>$PROJ_DIR$\src\msp430_flash.h</name>
     </file>
     <file>
+      <name>$PROJ_DIR$\src\msp430_uart.h</name>
+    </file>
+    <file>
       <name>$PROJ_DIR$\src\powmeas.h</name>
     </file>
     <file>

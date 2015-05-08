@@ -22,19 +22,10 @@ int main(void)
 
     g_PWR_INIT;
     g_HPWR_INIT;
+    g_STS_INIT;
 
     SIM900_ReInit();
-    //__bis_SR_register(GIE);
 
-
-    while(1);
-
-    while(1){
-        MSP430_UART_Send(UART_SIM900, "Alien Cristopher", sizeof("Alien Cristopher"));
-        for(u32 i = 0; i < 1000000; ++i);
-    }
-
-    Init();
 
     State.sim900_initialized = 1;
 
@@ -156,16 +147,6 @@ void SysTimer_Start(u16 timeout){
 */
 #pragma vector=TIMER1_A1_VECTOR
 __interrupt void TIMER1_A1_ISR(void){
-
-    static u8 cnt = 0;
-    /*if(cnt++ % 2){
-        LED_OFF;
-    }else{
-        LED_ON;
-    };*/
-    TA1CTL &= ~TAIFG;
-    return;
-
     if(TA1CTL & TAIFG){
         TA1R = 0x0000;
         if(State.close_valves_timeout > 0){
@@ -251,7 +232,7 @@ void Init(void){
     //////////////////////// GPIO ////////////////////////////////////
     g_HPWR_INIT;
     g_PWR_INIT;
-    g_STS_INIT;
+
     RxTx_RS485_INIT;
     LED_INIT;
 

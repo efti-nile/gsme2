@@ -31,8 +31,8 @@ extern u16 CirBuf_NumBytes;
 #define g_PWR_CLEAR {P3OUT &= ~BIT0; P3DIR |= BIT0;}
 
 // State SIM900 (STS)
-#define g_STS_INIT {P3OUT &= BIT1^0xFF; P3DIR &= BIT1^0xFF; P3REN &= BIT1^0xFF; P3SEL &= BIT1^0xFF; P3DS &= BIT1^0xFF;}
-#define g_STS_READ (P3OUT & BIT1)
+#define g_STS_INIT {P3OUT &= ~BIT1; P3DIR &= ~BIT1; P3REN &= ~BIT1; P3SEL &= ~BIT1; P3DS &= ~BIT1;}
+#define g_STS_READ (P3IN & BIT1)
 
 // Control USART1 pin
 #define g_USART1_TX_DISABLE {P4SEL &= ~BIT4; P4DIR &= ~BIT4; P4OUT &= ~BIT4;}

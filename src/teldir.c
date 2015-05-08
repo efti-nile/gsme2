@@ -39,10 +39,6 @@ u8 TelDir_Push(u8 *TelNum){
     }
 }
 
-u8 TelDir_isBalanceTelNumSet(void){
-    return TelDir.isBalanceTelNumSet;
-}
-
 u8 TelDir_SetBalanceNumber(u8 *TelNum){
     strcpy((char *)TelDir.BalanceTelNum, (char const *)TelNum);
     if(flash_write((u8 *)&TelDir, sizeof(TelDir)) == 0){
@@ -92,6 +88,14 @@ u8 TelDir_GetNextTelNum(u8 *TelNum){
     if(TelDir.Iterator < TelDir.NumItems){
         strcpy((char *)TelNum, (char const *)TelDir.List[TelDir.Iterator++]);
         return 1;
+    }else{
+        return 0;
+    }
+}
+
+u8 TelDir_isBalanceNumberSet(void){
+    if(TelDir.isBalanceTelNumSet){
+        return 2;
     }else{
         return 0;
     }

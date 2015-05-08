@@ -10,18 +10,24 @@ u16 CirBuf_NumBytes = 0;
 */
 void MSP430_UART_Init(void){
     // USCI_A0 Initialization //////////////////////////////////////////////////
+    RxTx_RS485_INIT;
+    RxTx_RS485_RxEnable;
+
     UCA0CTL1 |= UCSWRST; // Hault UART
 
     UCA0CTL1 |= UCSSEL_2; // BRCLK drawn from SMCLK (I.e. UART clocked by SMCLK)
+
+    UCA0CTL0 |= BIT2; // Use multiprocessor mode with address-bit
 
     // Set IO for UART operation P3.4 - RXD, P3.3 - TXD
     /*P3OUT &= BIT4^0xFF; P3DIR |= BIT4; P3REN &= BIT4^0xFF;*/ P3SEL |= BIT4; /*P3DS &= BIT4^0xFF;*/ // UCA1TXD
     /*P3OUT &= BIT5^0xFF; P3DIR |= BIT5; P3REN &= BIT5^0xFF;*/ P3SEL |= BIT3; /*P3DS &= BIT5^0xFF;*/ // UCA1RXD
 
-    UCA0BRW = 0x0068; // Baud rate configuring. 0x0068 for 115200 @ 12MHz BRCLK
+    UCA0BRW = 2628; // Baud rate configuring. 0x0068 for 115200 @ 12MHz BRCLK
 
     UCA0CTL1 &= ~UCSWRST; // Release UART
 
+    UCA0IE |= UCRXIE;
     //UCA0IE |= UCRXIE | UCTXIE; // Enable interrupts
 
     // USCI_A1 Initialization //////////////////////////////////////////////////
@@ -92,8 +98,12 @@ __interrupt void USCI_A0_ISR(void){
     case 0: // Vector 0 - no interrupt
         break;
     case 2: // Vector 2 - RXIFG
-        tmp = UCA0RXBUF;
         if_address = UCA0STAT & UCADDR;
+        tmp = UCA0RXBUF;
+
+        if(if_address && tmp == MY_ADDRESS){
+            __no_operation();
+        }
 
         // Save received byte
         ((u8*)&InPack)[num_received_bytes++] = tmp;

@@ -13,11 +13,6 @@
 
 // Pins description ////////////////////////////////////////////////////////////
 
-// R\E\ RS485 - P3.2
-#define RxTx_RS485_INIT {P3OUT &= BIT2^0xFF; P3DIR |= BIT2; P3REN &= BIT2^0xFF; P3SEL &= BIT2^0xFF; P3DS &= BIT2^0xFF;}
-#define RxTx_RS485_RxEnable (P3OUT &= BIT2^0xFF)
-#define RxTx_RS485_TxEnable (P3OUT |= BIT2)
-
 // Indicating LED - P5.3
 #define LED_INIT {P5OUT &= BIT3^0xFF; P5DIR |= BIT3; P5REN &= BIT3^0xFF; P5SEL &= BIT3^0xFF; P5DS &= BIT3^0xFF;}
 

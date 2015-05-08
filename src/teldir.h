@@ -30,7 +30,6 @@
 #define FLASH_TELDIR (FLASH_END - (sizeof(TelDir)/FLASH_PAGESIZE + 1)*FLASH_PAGESIZE)
 
 void TelDir_Init(void);
-u8 TelDir_isBalanceTelNumSet(void);
 u8 TelDir_SetBalanceNumber(u8 *TelNum);
 u8 *TelDir_GetBalanceNumber(void);
 u8 TelDir_Clean(void);
@@ -39,5 +38,6 @@ u8 TelDir_Del(u8 *TelNum);
 s8 TelDir_FindTelNumber(u8 *TelNum);
 void TelDir_Iterator_Init(void);
 u8 TelDir_GetNextTelNum(u8 *TelNum);
+u8 TelDir_isBalanceNumberSet(void);
 
 #endif
