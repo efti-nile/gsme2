@@ -1890,6 +1890,9 @@
       <name>$PROJ_DIR$\src\delay.h</name>
     </file>
     <file>
+      <name>$PROJ_DIR$\src\loads.h</name>
+    </file>
+    <file>
       <name>$PROJ_DIR$\src\main.h</name>
     </file>
     <file>
@@ -1918,6 +1921,9 @@
     <name>src</name>
     <file>
       <name>$PROJ_DIR$\src\delay.c</name>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\src\loads.c</name>
     </file>
     <file>
       <name>$PROJ_DIR$\src\main.c</name>

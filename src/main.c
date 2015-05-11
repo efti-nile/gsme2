@@ -10,9 +10,10 @@ int main(void)
     // It is good to enable watchdog timer in production
     WDTCTL = WDTPW + WDTHOLD;
 
-    //TelDir_Clean();
+
     //TelDir_SetBalanceNumber("002A0031003000300023"); // Delete in production
     MSP430_UCS_Init();
+    TelDir_Clean();
     MSP430_UART_Init();
     Delay_Init();
     LED_INIT;
