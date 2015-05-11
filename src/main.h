@@ -10,6 +10,7 @@
 #include "teldir.h"
 #include "powmeas.h"
 #include "msp430_flash.h"
+#include "loads.h"
 
 // Pins description ////////////////////////////////////////////////////////////
 

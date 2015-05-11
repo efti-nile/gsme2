@@ -15,6 +15,7 @@ int main(void)
     MSP430_UCS_Init();
     TelDir_Clean();
     MSP430_UART_Init();
+    Loads_Init();
     Delay_Init();
     LED_INIT;
     SysTimer_Start();

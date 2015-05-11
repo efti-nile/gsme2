@@ -232,6 +232,24 @@ void SIM900_ReadSms(void){
             // Ask user to set this telephone number
             SMS_Queue_Push(TelNum, SIM900_SMS_REPORT_BALANCE_TELNUM_NOT_SET, SMS_LIFETIME);
         }
+    }else
+    // Turn load on
+    if(SIM900_CircularBuf_Search(SIM900_SMS_CMD_TURN_LOAD_ON)/* && TelDir_FindTelNumber(TelNum) != -1*/){
+        if(SIM900_CircularBuf_Search("00200031")){
+            Loads_Command(LOAD1_ON);
+        }else
+        if(SIM900_CircularBuf_Search("00200032")){
+            Loads_Command(LOAD2_ON);
+        }
+    }
+    // Turn load off
+    if(SIM900_CircularBuf_Search(SIM900_SMS_CMD_TURN_LOAD_OFF)/* && TelDir_FindTelNumber(TelNum) != -1*/){
+        if(SIM900_CircularBuf_Search("00200031")){
+            Loads_Command(LOAD1_OFF);
+        }else
+        if(SIM900_CircularBuf_Search("00200032")){
+            Loads_Command(LOAD2_OFF);
+        }
     }
 
     SIM900_CircularBuffer_Purge();
