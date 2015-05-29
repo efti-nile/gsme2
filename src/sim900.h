@@ -23,17 +23,26 @@ extern u16 CirBuf_NumBytes;
 // Simple buffer for SMS with information about balance //////////////
 
 // Power SIM900
-#define g_HPWR_INIT {P2OUT &= BIT6^0xFF; P2DIR |= BIT6; P2REN &= BIT6^0xFF; P2SEL &= BIT6^0xFF; P2DS &= BIT6^0xFF;}
-#define g_HPWR_SET (P2OUT |= BIT6)
-#define g_HPWR_CLEAR (P2OUT &= BIT6^0xFF)
+#define g_HPWR_INIT {P2OUT &= BIT0^0xFF; P2DIR |= BIT0; P2REN &= BIT0^0xFF; P2SEL &= BIT0^0xFF; P2DS &= BIT0^0xFF;}
+#define g_HPWR_SET (P2OUT |= BIT0)
+#define g_HPWR_CLEAR (P2OUT &= BIT0^0xFF)
 // Reset SIM900 (PWRKEY)
-#define g_PWR_INIT {P3OUT &= ~BIT0; P3DIR &= ~BIT0; P3REN &= ~BIT0; P3SEL &= ~BIT0; P3DS &= ~BIT0;}
-#define g_PWR_SET {P3OUT &= ~BIT0; P3DIR &= ~BIT0;}
-#define g_PWR_CLEAR {P3OUT &= ~BIT0; P3DIR |= BIT0;}
+#define g_PWR_INIT {P2OUT &= ~BIT1; P2DIR &= ~BIT1; P2REN &= ~BIT1; P2SEL &= ~BIT1; P2DS &= ~BIT1;}
+#define g_PWR_SET {P2OUT &= ~BIT1; P2DIR &= ~BIT1;}
+#define g_PWR_CLEAR {P2OUT &= ~BIT1; P2DIR |= BIT1;}
 
 // State SIM900 (STS)
-#define g_STS_INIT {P3OUT &= ~BIT1; P3DIR &= ~BIT1; P3REN &= ~BIT1; P3SEL &= ~BIT1; P3DS &= ~BIT1;}
-#define g_STS_READ (P3IN & BIT1)
+#define g_STS_INIT {P2OUT &= ~BIT2; P2DIR &= ~BIT2; P2REN &= ~BIT2; P2SEL &= ~BIT2; P2DS &= ~BIT2;}
+#define g_STS_READ (P2IN & BIT2)
+
+// Reset SIM900 (NRST)
+#define g_NRST_INIT {P2OUT &= ~BIT3; P2DIR &= ~BIT3; P2REN &= ~BIT3; P2SEL &= ~BIT3; P2DS &= ~BIT3;}
+#define g_NRST_SET {P2DIR |= BIT3;}
+#define g_NRST_CLEAR {P2DIR &= ~BIT3;}
+
+// Net light SIM900 (NETLIGHT)
+#define g_NETLIGHT_INIT {P2OUT &= ~BIT4; P2DIR &= ~BIT4; P2REN &= ~BIT4; P2SEL &= ~BIT4; P2DS &= ~BIT4;}
+#define g_NETLIGHT_READ {P2IN & BIT4;}
 
 // Control USART1 pin
 #define g_USART1_TX_DISABLE {P4SEL &= ~BIT4; P4DIR &= ~BIT4; P4OUT &= ~BIT4;}

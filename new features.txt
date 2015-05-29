@@ -1,0 +1,2 @@
+1. Temperature sensor. Get temperature command.
+2. Closing/opening valves of ones group.

@@ -3,6 +3,7 @@
 struct State_TypeDef State;
 struct InPack_TypeDef InPack;
 struct OutPack_TypeDef OutPack;
+volatile u16 tmp;
 
 int main(void)
 {
@@ -20,6 +21,7 @@ int main(void)
     LED_INIT;
     SysTimer_Start();
     SMS_Queue_Init();
+    PowMeas_Init();
     __bis_SR_register(GIE);
 
     g_PWR_INIT;
@@ -27,7 +29,6 @@ int main(void)
     g_STS_INIT;
 
     SIM900_ReInit();
-
 
     State.sim900_initialized = 1;
 

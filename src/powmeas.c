@@ -22,15 +22,18 @@ void PowMeas_Init(void){
     ENBAT_INIT; // Enable battery measurement circuit
     INBAT_INIT; // Battery power measurement ADC channel
     INPWR_INIT; // External power measurement  ADC channel
+    TEMP_INIT;  // Tepmerature sensor input
+    LMT84_INIT; // Temperature sensor supply turning off
 
     // ADC_10A Initialization
-    ADC10CTL0 &= ~ ADC10ON; // Switch ADC_10A off
+    ADC10CTL0 = 0X00; // Switch ADC_10A off
     ADC10CTL0 |= ADC10ON; // Switch ADC_10A on
     ADC10CTL0 |= 0x8 << 8; // Sample time is 256 cycles of ADC10CLK
     ADC10CTL1 |= 0x4 << 5 | 0x3 << 3 | ADC10SHP; // Use SMCLK divided by 5 as ADC clock, use sample timer
-    ADC10CTL2 |= ADC10RES; // 12-bit result
+    ADC10CTL2 |= ADC10RES; // 10-bit result
     ADC10MCTL0 |= 1 << 4; // Use internal reference as ADC reference
     REFCTL0 |= REFMSTR | 0X3 << 4 | REFON; // Configure internal 2.5V reference
+    ADC10CTL0 |= ADC10ENC; // Enable conversion
 
 
     ENBAT_SET;
@@ -73,8 +76,20 @@ u8 PowMeas_ExternSupplyStatus(void){
     \brief Returns ADC value of specified channel.
 */
 u16 PowMeas_AdcGet(u8 channel){
-  ADC10MCTL0 |= channel & 0x0F; // Set channel
-  ADC10CTL0 |= ADC10ENC | ADC10SC; // Start the conversion
-  while(ADC10IFG & ADC10IFG0); // Wait until conversion completion
+  ADC10MCTL0 = (ADC10MCTL0 & 0xF0) | (channel & 0x0F); // Set channel
+  ADC10CTL0 |= ADC10SC; // Start the conversion
+  while(!(ADC10CTL1 & ADC10BUSY)); // Wait until conversion completion
   return ADC10MEM0; // Return the conversion value
+}
+
+/*!
+    \brief Returns temperature in celcium degree
+*/
+s8 PowMeas_GetTemp(void){
+    u16 tmp;
+    LMT84_ON;
+    Delay_DelayMs(2);
+    tmp = PowMeas_AdcGet(TEMP_ADC_CH);
+    LMT84_OFF;
+    return TEMP_MIN + ((ADC_VALUE_AT_TEMP_MAX - tmp) * (TEMP_MAX - TEMP_MIN))/(ADC_VALUE_AT_TEMP_MAX - ADC_VALUE_AT_TEMP_MIN);
 }
