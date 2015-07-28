@@ -11,6 +11,7 @@
 #include "powmeas.h"
 #include "msp430_flash.h"
 #include "loads.h"
+#include "ucs2.h"
 
 // Pins description ////////////////////////////////////////////////////////////
 

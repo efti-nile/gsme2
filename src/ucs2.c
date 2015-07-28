@@ -1,5 +1,11 @@
 #include "ucs2.h"
 
+static u8 ucs2_rv[5]; /// Memory to store returned value for fromUCS2 function
+
+/*!
+    \brief Converts UCS-2 symbols with the codes within 0x0020..0x007E and 0x0410..0x0440 to CP1251.
+		\param[in] c String like "0028"
+*/
 u8 fromUCS2(u8 *c){
 	u8 l = strlen((char const *)c);
 	u16 t = 0;
@@ -9,18 +15,22 @@ u8 fromUCS2(u8 *c){
 	}
 	if(ENG_BEGIN <= t && t <= ENG_END){
 		return t; // english characters in Windows 1251 the same as in Unicode
-	}else if(t >= W1251_RUS_TABLE_BEGIN && t <= W1251_RUS_TABLE_END){
-		return w1251_rus[t - W1251_RUS_TABLE_BEGIN];
+	}else if(UNICODE_RUS_BEGIN <= t && t <= UNICODE_RUS_END){
+		return CP1251_RUS_BEGIN + (t - UNICODE_RUS_BEGIN);
 	}
 	return 0x20; // It must not be executed. Return space character if there is no such symbol in table.
 }
 
+/*!
+    \brief Converts CP1251 symbols with codes within 0x20..0x7E and 0xC0..0xFF to UCS-2.
+		\param[in] c CP1251 character code
+*/
 u8 *toUCS2(u8 c){
 	u16 t;
 	if(ENG_BEGIN <= c && c <= ENG_END){
 		t = c; // english characters in Windows 1251 the same as in Unicode
-	}else if(UCS2_RUS_TABLE_BEGIN <= c && c <= UCS2_RUS_TABLE_END){
-		t = ucs2_rus[c];
+	}else if(CP1251_RUS_BEGIN <= c && c <= CP1251_RUS_END){
+		t = UNICODE_RUS_BEGIN + (c - CP1251_RUS_BEGIN);
 	}else{
 		t = 0x0020;// space charachter
 	};
@@ -32,6 +42,10 @@ u8 *toUCS2(u8 c){
 	return ucs2_rv;
 }
 
+/*!
+    \brief Converts characters of hexademical digits '0'..'1','A'..'F' to an appropriate number.
+		\param[in] c Character
+*/
 static u8 hextodig(u8 c){
 	if(c >= '0' && c <= '9'){
 		return c - '0';
@@ -42,11 +56,15 @@ static u8 hextodig(u8 c){
 	}
 }
 
+/*!
+    \brief Converts number 0..15 to an appropriate symbol '0'..'F' of hexademical digit
+		\param[in] c Number
+*/
 static u8 digtohex(u8 n){
 	if(n <= 9){
 		return '0' + n;
 	}else if (n >= 10 && n <= 15){
-		return 'A' + n;
+		return 'A' + (n - 10);
 	}else{
 		return 0;
 	}
