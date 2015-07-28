@@ -18,11 +18,11 @@ func_begin:
     BUG: System timer ISR turns of the led right after switched on.
     */
 
-    /*LED_OFF;
+    LED_OFF;
     Delay_DelayMs(500);
     LED_ON;
     Delay_DelayMs(500);
-    LED_OFF;*/
+    LED_OFF;
 
     SIM900_PowerOn(); // Start SIM900
 
@@ -30,7 +30,7 @@ func_begin:
 
     SIM900_SoftReset();
 
-    Delay_DelayMs(10000);
+    Delay_DelayMs(3000);
 
     // Switch off echo
     SIM900_SendStr("ATE0\r");
@@ -254,6 +254,46 @@ void SIM900_ReadSms(void){
         if(SIM900_CircularBuf_Search("00200032")){
             Loads_Command(LOAD2_OFF);
         }
+    }else
+    // Get temperature
+    if(SIM900_CircularBuf_Search(SIM900_SMS_CMD_TEMPERATURE)){
+        u8 i = 0, d;
+        u8 temp_sms[4*8+4];
+        s8 temp = PowMeas_GetTemp();
+
+        if(temp < 0){ // Write a minus in UCS2 if the temperature is negative
+            temp_sms[i++] = '0';
+            temp_sms[i++] = '0';
+            temp_sms[i++] = '2';
+            temp_sms[i++] = 'D';
+            temp = -temp;
+        }
+
+        d = temp / 10;
+        if(d > 0){
+            temp_sms[i++] = '0';
+            temp_sms[i++] = '0';
+            temp_sms[i++] = '3';
+            temp_sms[i++] = 0x30 + d;
+        }
+
+        temp_sms[i++] = '0';
+        temp_sms[i++] = '0';
+        temp_sms[i++] = '3';
+        temp_sms[i++] = 0x30 + temp % 10;
+
+        temp_sms[i++] = '0';
+        temp_sms[i++] = '0';
+        temp_sms[i++] = '2';
+        temp_sms[i++] = '0';
+
+        strcpy((char *)(temp_sms + i), (const char *)SIM900_SMS_REPORT_DEGREE_MARK);
+
+        i += strlen((char const *)SIM900_SMS_REPORT_DEGREE_MARK);
+
+        temp_sms[i++] = '\0';
+
+        SMS_Queue_Push(TelNum, temp_sms, SMS_LIFETIME);
     }
 
     SIM900_CircularBuffer_Purge();
@@ -304,7 +344,6 @@ void SIM900_SendSms(void){
 }
 
 u8 SIM900_PowerOn(void){
-    u16 i, j;
     g_HPWR_SET;
     g_PWR_SET;
     g_USART1_TX_ENABLE;

@@ -33,7 +33,6 @@ void PowMeas_Init(void){
     ADC10CTL2 |= ADC10RES; // 10-bit result
     ADC10MCTL0 |= 1 << 4; // Use internal reference as ADC reference
     REFCTL0 |= REFMSTR | 0X3 << 4 | REFON; // Configure internal 2.5V reference
-    ADC10CTL0 |= ADC10ENC; // Enable conversion
 
 
     ENBAT_SET;
@@ -76,9 +75,11 @@ u8 PowMeas_ExternSupplyStatus(void){
     \brief Returns ADC value of specified channel.
 */
 u16 PowMeas_AdcGet(u8 channel){
+  ADC10CTL0 &= ~ADC10ENC; // Disable conversion
   ADC10MCTL0 = (ADC10MCTL0 & 0xF0) | (channel & 0x0F); // Set channel
+  ADC10CTL0 |= ADC10ENC; // Enable conversion
   ADC10CTL0 |= ADC10SC; // Start the conversion
-  while(!(ADC10CTL1 & ADC10BUSY)); // Wait until conversion completion
+  while(!(ADC10IFG & ADC10IFG0)); // Wait until conversion completion
   return ADC10MEM0; // Return the conversion value
 }
 
@@ -86,10 +87,16 @@ u16 PowMeas_AdcGet(u8 channel){
     \brief Returns temperature in celcium degree
 */
 s8 PowMeas_GetTemp(void){
-    u16 tmp;
+    u16 t; s8 retval;
     LMT84_ON;
     Delay_DelayMs(2);
-    tmp = PowMeas_AdcGet(TEMP_ADC_CH);
+    t = PowMeas_AdcGet(TEMP_ADC_CH);
     LMT84_OFF;
-    return TEMP_MIN + ((ADC_VALUE_AT_TEMP_MAX - tmp) * (TEMP_MAX - TEMP_MIN))/(ADC_VALUE_AT_TEMP_MAX - ADC_VALUE_AT_TEMP_MIN);
+    retval = (s8)(TEMP_MIN + ((ADC_VALUE_AT_TEMP_MIN - t) * (TEMP_MAX - TEMP_MIN))/(ADC_VALUE_AT_TEMP_MIN - ADC_VALUE_AT_TEMP_MAX));
+    if(retval < TEMP_MIN){
+        retval = TEMP_MIN - 1;
+    }else if(retval > TEMP_MAX){
+        retval = TEMP_MAX + 1;
+    }
+    return retval;
 }

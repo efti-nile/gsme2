@@ -3,7 +3,7 @@
 struct State_TypeDef State;
 struct InPack_TypeDef InPack;
 struct OutPack_TypeDef OutPack;
-volatile u16 tmp;
+volatile s8 tmp;
 
 int main(void)
 {
@@ -11,6 +11,7 @@ int main(void)
     // It is good to enable watchdog timer in production
     WDTCTL = WDTPW + WDTHOLD;
 
+		
 
     //TelDir_SetBalanceNumber("002A0031003000300023"); // Delete in production
     MSP430_UCS_Init();
@@ -19,7 +20,6 @@ int main(void)
     Loads_Init();
     Delay_Init();
     LED_INIT;
-    SysTimer_Start();
     SMS_Queue_Init();
     PowMeas_Init();
     __bis_SR_register(GIE);
@@ -29,12 +29,14 @@ int main(void)
     g_STS_INIT;
 
     SIM900_ReInit();
+    SysTimer_Start();
 
     State.sim900_initialized = 1;
 
-
     while(1){
         State.sim900_initialized = SIM900_GetStatus();
+				
+				P5OUT |= BIT3;
 
         Delay_DelayMs(10000);
         if(SIM900_CircularBuf_Search("+CMTI")){

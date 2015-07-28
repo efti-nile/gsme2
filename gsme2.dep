@@ -2,7 +2,7 @@
 
 <project>
   <fileVersion>2</fileVersion>
-  <fileChecksum>4011373405</fileChecksum>
+  <fileChecksum>975994160</fileChecksum>
   <configuration>
     <name>Debug</name>
     <outputs>
@@ -60,6 +60,10 @@
       <file>$TOOLKIT_DIR$\inc\dlib\c\DLib_Product.h</file>
       <file>$PROJ_DIR$\Debug\Obj\msp430_flash.r43</file>
       <file>$PROJ_DIR$\Debug\Obj\msp430_flash.pbi</file>
+      <file>$PROJ_DIR$\Debug\Obj\ucs2.r43</file>
+      <file>$PROJ_DIR$\src\ucs2.c</file>
+      <file>$PROJ_DIR$\src\ucs2.h</file>
+      <file>$PROJ_DIR$\Debug\Obj\ucs2.pbi</file>
     </outputs>
     <file>
       <name>[ROOT_NODE]</name>
@@ -282,7 +286,7 @@
       <inputs>
         <tool>
           <name>XLINK</name>
-          <file> 31 29 21 42 23 52 26 38 36 37 39 34</file>
+          <file> 31 29 21 42 23 52 26 38 36 37 39 54 34</file>
         </tool>
       </inputs>
     </file>
@@ -291,7 +295,30 @@
       <inputs>
         <tool>
           <name>BILINK</name>
-          <file> 40 43 30 53 28 41 44 45 46</file>
+          <file> 40 43 30 53 28 41 44 45 46 57</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\src\ucs2.c</name>
+      <outputs>
+        <tool>
+          <name>ICC430</name>
+          <file> 54</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 57</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICC430</name>
+          <file> 56 47 49 48 50 35 51 20 24 19 9</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 56 47 49 48 50 51 20 24 19 9</file>
         </tool>
       </inputs>
     </file>

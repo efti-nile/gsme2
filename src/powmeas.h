@@ -35,8 +35,8 @@
 // Constants for convertion ADC value to actual temperature.
 #define TEMP_MIN (-30)
 #define TEMP_MAX (80)
-#define ADC_VALUE_AT_TEMP_MIN (1194)
-#define ADC_VALUE_AT_TEMP_MAX (760)
+#define ADC_VALUE_AT_TEMP_MIN (489)
+#define ADC_VALUE_AT_TEMP_MAX (242)
 
 void PowMeas_Init(void);
 u8 PowMeas_BatteryStatus(void);

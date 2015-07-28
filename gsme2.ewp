@@ -1916,6 +1916,9 @@
     <file>
       <name>$PROJ_DIR$\src\types.h</name>
     </file>
+    <file>
+      <name>$PROJ_DIR$\src\ucs2.h</name>
+    </file>
   </group>
   <group>
     <name>src</name>
@@ -1945,6 +1948,9 @@
     </file>
     <file>
       <name>$PROJ_DIR$\src\teldir.c</name>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\src\ucs2.c</name>
     </file>
   </group>
 </project>
