@@ -107,7 +107,7 @@ void SIM900_ReadSms(void){
     TelNum[3] = '8'; // Change '7' to '8' TODO: WTF?
 
     // Add the telephone number to the telephone dictionary
-    if(SIM900_CircularBuf_Search(SIM900_SMS_CMD_ADD)){
+    if(SIM900_CircularBuf_Search(SIM900_SMS_CMD_ADD) != -1){
         switch(TelDir_Push(TelNum)){
         // Telephone number has been pushed successfully
             case TELDIR_PUSH_RES_PUSHED:{
@@ -137,7 +137,7 @@ void SIM900_ReadSms(void){
         }
     }else
     // Delete telephone number from the dictionary
-    if(SIM900_CircularBuf_Search(SIM900_SMS_CMD_DEL)){
+    if(SIM900_CircularBuf_Search(SIM900_SMS_CMD_DEL) != -1){
         switch(TelDir_Del(TelNum)){
         // Telephone number has been deleted successfully
             case TELDIR_DEL_RES_DELETED:{
@@ -157,7 +157,7 @@ void SIM900_ReadSms(void){
         }
     }else
     // Clean the telephone dictionary
-    if(SIM900_CircularBuf_Search(SIM900_SMS_CMD_CLEAN) &&
+    if(SIM900_CircularBuf_Search(SIM900_SMS_CMD_CLEAN) != -1 &&
        TelDir_FindTelNumber(TelNum) != -1){
         switch(TelDir_Clean()){
         // The telephone dictionary cleaned
@@ -178,7 +178,7 @@ void SIM900_ReadSms(void){
         }
     }else
     // Check GSM-link and valves-state simultaneously
-    if(SIM900_CircularBuf_Search(SIM900_SMS_CMD_CHECK)){
+    if(SIM900_CircularBuf_Search(SIM900_SMS_CMD_CHECK) != -1){
         if(State.ok_timeout > 0){
             if(InPack.COMMAND & IN_COMMAND_AVC){
                 SMS_Queue_Push(TelNum, SIM900_SMS_REPORT_CHECK_ALL_CLOSED, SMS_LIFETIME);
@@ -193,21 +193,33 @@ void SIM900_ReadSms(void){
         }
     }else
     // Request to close all valves
-    if(SIM900_CircularBuf_Search(SIM900_SMS_CMD_CLOSE) && TelDir_FindTelNumber(TelNum) != -1){
+    if(SIM900_CircularBuf_Search(SIM900_SMS_CMD_CLOSE) != -1 && TelDir_FindTelNumber(TelNum) != -1){
+				u8 valveNameBuffer[VALVE_NAME_MAXLEN * 4];
+				// Get the name of the group which open command will be executed on
+				if(1 != SIM900_CircularBuffer_Extract(SIM900_SMS_CMD_CLOSE_, valveNameBuffer, sizeof(State.current_valves_group), '"')){
+					strcpy((char *)State.current_valves_group, "all");
+				}
+				strToCP1251(State.current_valves_group, valveNameBuffer);
         strcpy((char *)State.TelNumOfSourceOfRequest, (char const *)TelNum);
-        State.request_close_all_valves = 1;
+        State.request_close_valves = 1;
         State.close_valves_timeout = CLOSE_VALVES_TIMEOUT; // Timeout
     }else
     // Request to open all valves
-    if(SIM900_CircularBuf_Search(SIM900_SMS_CMD_OPEN) && TelDir_FindTelNumber(TelNum) != -1){
+    if(SIM900_CircularBuf_Search(SIM900_SMS_CMD_OPEN) != -1 && TelDir_FindTelNumber(TelNum) != -1){
+				u8 valveNameBuffer[VALVE_NAME_MAXLEN * 4];
+				// Get the name of the group which open command will be executed on
+				if(1 != SIM900_CircularBuffer_Extract(SIM900_SMS_CMD_OPEN_, valveNameBuffer, sizeof(State.current_valves_group), '"')){
+					strcpy((char *)State.current_valves_group, "all");
+				}
+				strToCP1251(State.current_valves_group, valveNameBuffer);
         strcpy((char *)State.TelNumOfSourceOfRequest, (char const *)TelNum);
-        State.request_open_all_valves = 1;
+        State.request_open_valves = 1;
         State.open_valves_timeout = OPEN_VALVES_TIMEOUT; // Timeout
     }else
     // Set number for balance checking
     if(SIM900_CircularBuffer_ExtractBalanceNum(SIM900_SMS_CMD_SET_BALANCE, TelNum_Balance, sizeof(TelNum_Balance) - 1) &&
         TelDir_FindTelNumber(TelNum) != -1)
-    {
+		{
         if(TelDir_SetBalanceNumber(TelNum_Balance) == TELDIR_SET_BALANCE_TELNUM_RES_OK){
             SMS_Queue_Push(TelNum, SIM900_SMS_REPORT_BALANCE_SET_OK, SMS_LIFETIME);
         }else{
@@ -215,7 +227,7 @@ void SIM900_ReadSms(void){
         }
     }else
     // Request balance
-    if(SIM900_CircularBuf_Search(SIM900_SMS_CMD_CHECK_BALANCE) && TelDir_FindTelNumber(TelNum) != -1){
+    if(SIM900_CircularBuf_Search(SIM900_SMS_CMD_CHECK_BALANCE) != -1 && TelDir_FindTelNumber(TelNum) != -1){
         // Check if user set the telephone number for balance check
         if(TelDir_isBalanceNumberSet()){
             // Make up command to request balance
@@ -238,25 +250,28 @@ void SIM900_ReadSms(void){
         }
     }else
     // Turn load on
-    if(SIM900_CircularBuf_Search(SIM900_SMS_CMD_TURN_LOAD_ON)/* && TelDir_FindTelNumber(TelNum) != -1*/){
-        if(SIM900_CircularBuf_Search("00200031")){
+    if(SIM900_CircularBuf_Search(SIM900_SMS_CMD_TURN_LOAD_ON) != -1/* && TelDir_FindTelNumber(TelNum) != -1*/){
+        if(SIM900_CircularBuf_Search("00200031") != -1){
             Loads_Command(LOAD1_ON);
+						SMS_Queue_Push(TelNum, SIM900_SMS_REPORT_LOAD1_ON, SMS_LIFETIME);
         }else
-        if(SIM900_CircularBuf_Search("00200032")){
-            Loads_Command(LOAD2_ON);
+        if(SIM900_CircularBuf_Search("00200032") != -1){
+            SMS_Queue_Push(TelNum, SIM900_SMS_REPORT_LOAD2_ON, SMS_LIFETIME);
         }
     }
     // Turn load off
-    if(SIM900_CircularBuf_Search(SIM900_SMS_CMD_TURN_LOAD_OFF)/* && TelDir_FindTelNumber(TelNum) != -1*/){
-        if(SIM900_CircularBuf_Search("00200031")){
+    if(SIM900_CircularBuf_Search(SIM900_SMS_CMD_TURN_LOAD_OFF) != -1/* && TelDir_FindTelNumber(TelNum) != -1*/){
+        if(SIM900_CircularBuf_Search("00200031") != -1){
             Loads_Command(LOAD1_OFF);
+						SMS_Queue_Push(TelNum, SIM900_SMS_REPORT_LOAD1_OFF, SMS_LIFETIME);
         }else
-        if(SIM900_CircularBuf_Search("00200032")){
+        if(SIM900_CircularBuf_Search("00200032") != -1){
             Loads_Command(LOAD2_OFF);
+						SMS_Queue_Push(TelNum, SIM900_SMS_REPORT_LOAD2_OFF, SMS_LIFETIME);
         }
     }else
     // Get temperature
-    if(SIM900_CircularBuf_Search(SIM900_SMS_CMD_TEMPERATURE)){
+    if(SIM900_CircularBuf_Search(SIM900_SMS_CMD_TEMPERATURE) != -1){
         u8 i = 0, d;
         u8 temp_sms[4*8+4];
         s8 temp = PowMeas_GetTemp();
@@ -382,7 +397,7 @@ void SIM900_CircularBuffer_Purge(void){
     CirBuf_NumBytes = 0;
 }
 
-u8 SIM900_CircularBuf_Search(const u8 pattern[]){
+s8 SIM900_CircularBuf_Search(const u8 pattern[]){
     u16 i, j, k, l, p;
 
     // Find length of given pattern
@@ -390,7 +405,7 @@ u8 SIM900_CircularBuf_Search(const u8 pattern[]){
 
     // Check if circular buffer can fit in given pattern
     if(l > CirBuf_NumBytes){
-        return 0;
+        return -1;
     }
 
     // Index of byte before the last received one
@@ -409,14 +424,14 @@ u8 SIM900_CircularBuf_Search(const u8 pattern[]){
                 break;
             }else
             if(k == l - 1){
-                return 1;
+                return i;
             }
             j = j < CIRBUF_SIZE - 1 ? ++j : 0;
         }
         i = i > 0 ? --i : CIRBUF_SIZE - 1;
     }
 
-    return 0;
+    return -1;
 }
 
 u8 SIM900_CircularBuffer_Extract(const u8 Pattern[], u8 *Dst, u16 Num, u8 DelChar){
@@ -554,10 +569,10 @@ u8 SIM900_WaitForResponse(u8 *pos_resp, u8 *neg_resp){
     u32 timeout = SIM900_WAIT_FOR_RESPONSE_TIMEOUT; // TODO: may be not u42?
     while(timeout--){
         Delay_DelayMs(100);
-        if(SIM900_CircularBuf_Search(pos_resp)){
+        if(SIM900_CircularBuf_Search(pos_resp) != -1){
             return 1;
         }
-        if(SIM900_CircularBuf_Search(neg_resp)){
+        if(SIM900_CircularBuf_Search(neg_resp) != -1){
             return 0;
         }
     }

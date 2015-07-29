@@ -2,11 +2,18 @@
 
 static u8 ucs2_rv[5]; /// Memory to store returned value for fromUCS2 function
 
+void strToCP1251(u8 *dst, u8 *src){
+	u8 l = strlen((const char *)src), i;
+	for(i = 0; i < l / 4; i++){
+		dst[i] = toCP1251((u8 *)(src + i * 4));
+	}
+}
+
 /*!
     \brief Converts UCS-2 symbols with the codes within 0x0020..0x007E and 0x0410..0x0440 to CP1251.
 		\param[in] c String like "0028"
 */
-u8 fromUCS2(u8 *c){
+u8 toCP1251(u8 *c){
 	u8 l = strlen((char const *)c);
 	u16 t = 0;
 	for(u8 i = 0; i < l; i++){

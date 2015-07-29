@@ -13,8 +13,9 @@
 #define CP1251_RUS_BEGIN 0xC0
 #define CP1251_RUS_END 0xFF
 
+void strToCP1251(u8 *dst, u8 *src);
 u8 *toUCS2(u8 c);
-u8 fromUCS2(u8 *c);
+u8 toCP1251(u8 *c);
 static u8 hextodig(u8 c);
 static u8 digtohex(u8 n);
 #endif

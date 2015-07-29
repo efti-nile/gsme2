@@ -37,7 +37,7 @@ int main(void)
 				P5OUT |= BIT3;
 
         Delay_DelayMs(10000);
-        if(SIM900_CircularBuf_Search("+CMTI")){
+        if(SIM900_CircularBuf_Search("+CMTI") != -1){
             SIM900_ReadSms();
         }
         SIM900_SendSms();
@@ -154,15 +154,15 @@ __interrupt void TIMER1_A1_ISR(void){
         TA1R = 0x0000;
         if(State.close_valves_timeout > 0){
             State.close_valves_timeout--;
-            if(!State.close_valves_timeout && State.request_close_all_valves){
-                State.request_close_all_valves = 0;
+            if(!State.close_valves_timeout && State.request_close_valves){
+                State.request_close_valves = 0;
                 SMS_Queue_Push(State.TelNumOfSourceOfRequest, SIM900_SMS_REPORT_CLOSE_NOT_ALL, SMS_LIFETIME);
             }
         }
         if(State.open_valves_timeout > 0){
             State.open_valves_timeout--;
-            if(!State.open_valves_timeout && State.request_open_all_valves){
-                State.request_open_all_valves = 0;
+            if(!State.open_valves_timeout && State.request_open_valves){
+                State.request_open_valves = 0;
                 SMS_Queue_Push(State.TelNumOfSourceOfRequest, SIM900_SMS_REPORT_OPEN_NOT_ALL, SMS_LIFETIME);
             }
         }
@@ -181,16 +181,14 @@ __interrupt void TIMER1_A1_ISR(void){
     The function builds the outgoing packet, calculates the check sum and
     sends all that.
 */
-void SendCmd(u8 cmd){
+void SendCmd(void){
     u16 i;
 
     OutPack.DevID = State.controller_address;
-    OutPack.Length = sizeof(OutPack) - 2; // Excluding DevID & Length
     OutPack.SourceAddress = MY_ADDRESS;
     OutPack.TID = 0;
-    OutPack.COMMAND = cmd;
 
-    OutPack.crc = CRC_Calc((u8*)&OutPack, sizeof(OutPack)-1);
+    OutPack.crc = CRC_Calc((u8*)&OutPack, 5 + OutPack.Length);
 
     RxTx_RS485_TxEnable;
 	
@@ -201,7 +199,7 @@ void SendCmd(u8 cmd){
     MSP430_UART_SendAddress(UART_RS485, OutPack.DevID);
 
     // Send the rest of the outgoing packet - data bytes
-    MSP430_UART_Send(UART_RS485, (u8 *)&OutPack + 1, sizeof(OutPack) - 1);
+    MSP430_UART_Send(UART_RS485, (u8 *)&OutPack + 1, 5 + OutPack.Length);
 
     i = 7000*3; // TODO: Bljad!
     while(i--);

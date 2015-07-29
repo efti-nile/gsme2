@@ -31,7 +31,7 @@
 #define RESPONSE_NO_EVENTS 0x00
 #define RESPONSE_RESERVED  0x01
 #define RESPONSE_CLOSE_ALL 0x02
-#define RESPONES_OPEN_ALL  0x03
+#define RESPONSE_OPEN_ALL  0x03
 
 #define IN_COMMAND_AVC   (1<<0)
 #define IN_COMMAND_AVO   (1<<1)
@@ -65,7 +65,7 @@ extern u16 CirBuf_NumBytes;
 void MSP430_UCS_Init(void);
 void ErrorHandler(u32 ErrNum);
 void TIM3_IRQHandler(void);
-void SendCmd(u8 cmd);
+void SendCmd(void);
 void OkStatus_Update(void);
 u8 CRC_Calc(u8* src, u16 num);
 void SIM900_ReInit(void);

@@ -131,14 +131,14 @@ __interrupt void USCI_A0_ISR(void){
                 }
 
                 if(InPack.COMMAND & IN_COMMAND_AVC){
-                    if(State.request_close_all_valves){ // TODO: But what happens if this condition checked right after request gotten?
-                        State.request_close_all_valves = 0;
+                    if(State.request_close_valves){ // TODO: But what happens if this condition checked right after request gotten?
+                        State.request_close_valves = 0;
                         SMS_Queue_Push(State.TelNumOfSourceOfRequest, SIM900_SMS_REPORT_CLOSE_OK, SMS_LIFETIME); // TODO: What is the warrnty that the source of the request still held here?
                     }
                 }else
                 if(InPack.COMMAND & IN_COMMAND_AVO){
-                    if(State.request_open_all_valves){ // TODO: See above
-                        State.request_open_all_valves = 0;
+                    if(State.request_open_valves){ // TODO: See above
+                        State.request_open_valves = 0;
                         SMS_Queue_Push(State.TelNumOfSourceOfRequest, SIM900_SMS_REPORT_OPEN_OK, SMS_LIFETIME);
                     }
                 }
@@ -214,13 +214,31 @@ __interrupt void USCI_A0_ISR(void){
 
                 // If there is a some pending flag to execute user's request than
                 // send proper command to the WaterLeak controller.
-                if(State.request_close_all_valves){
-                    SendCmd(RESPONSE_CLOSE_ALL);
+                if(State.request_close_valves){
+									if(strcmp((const char *)State.current_valves_group, "all") == 0){
+										 OutPack.Length = 4; // Excluding DevID & Length
+									}else{
+										 strcpy((char *)&OutPack.Optional, (const char *)State.current_valves_group);
+										 OutPack.Length = 4 + strlen((const char *)State.current_valves_group); // Excluding DevID & Length
+									}
+									OutPack.DevID = State.controller_address;
+									OutPack.COMMAND = RESPONSE_CLOSE_ALL;
+									SendCmd();
                 }else
-                if(State.request_open_all_valves){
-                    SendCmd(RESPONES_OPEN_ALL);
+                if(State.request_open_valves){
+									if(strcmp((const char *)State.current_valves_group, "all") == 0){
+										 OutPack.Length = 4; // Excluding DevID & Length
+									}else{
+										 strcpy((char *)&OutPack.Optional, (const char *)State.current_valves_group);
+										 OutPack.Length = 4 + strlen((const char *)State.current_valves_group); // Excluding DevID & Length
+									}
+									OutPack.DevID = State.controller_address;
+									OutPack.COMMAND = RESPONSE_OPEN_ALL;
+									SendCmd();
                 }else{
-                    SendCmd(RESPONSE_NO_EVENTS);
+									  OutPack.Length = 4;
+									  OutPack.COMMAND = RESPONSE_NO_EVENTS;
+									  SendCmd();
                 }
             }
 

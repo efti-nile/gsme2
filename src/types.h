@@ -7,6 +7,8 @@
 #define SMS_TEXT_MAXLEN (200+1)
 #define SMS_TELNUM_LEN (44+1)
 
+#define VALVE_NAME_MAXLEN (10+1)
+
 #define LED_ON P5OUT |= BIT3
 #define LED_OFF P5OUT &= ~BIT3
 
@@ -23,10 +25,12 @@ struct State_TypeDef{
     u8 TelNumOfSourceOfRequest[SMS_TELNUM_LEN];
     // Controller address in the RS-485 network
     u8 controller_address;
+		// During valve command execution name of the current group stored in this string
+		u8 current_valves_group[VALVE_NAME_MAXLEN];
     // Flags
     u8 sim900_initialized;
-    u8 request_close_all_valves;
-    u8 request_open_all_valves;
+    u8 request_close_valves;
+    u8 request_open_valves;
     u8 leak_prev;
     u8 leak_now;
     u8 check_battery_prev;
@@ -63,6 +67,7 @@ struct OutPack_TypeDef{
     u8 SourceAddress;
     u8 TID;
     u8 COMMAND;
+		u8 Optional[20];
     u8 crc;
 };
 
