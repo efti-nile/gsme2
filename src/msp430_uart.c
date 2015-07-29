@@ -101,10 +101,6 @@ __interrupt void USCI_A0_ISR(void){
         if_address = UCA0STAT & UCADDR;
         tmp = UCA0RXBUF;
 
-        if(if_address && tmp == MY_ADDRESS){
-            __no_operation();
-        }
-
         // Save received byte
         ((u8*)&InPack)[num_received_bytes++] = tmp;
 

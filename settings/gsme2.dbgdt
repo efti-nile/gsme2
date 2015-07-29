@@ -34,7 +34,7 @@
         
         
       <ShowCodeCoverage>0</ShowCodeCoverage><ShowInstrProfiling>0</ShowInstrProfiling></Disassembly>
-    <WATCH_1><expressions><item>CirBuf</item><item>InPack</item><item>TelDir</item><item>State</item><item>CirBuf_Tail</item><item>CirBuf_Head</item><item>tmp</item><item>ADC10MEM0</item><item>ADC10CTL0</item><item>ADC10IFG</item><item>tmp</item><item>temp_sms</item><item>t1</item><item>ucs2_rv</item><item></item></expressions><col-names><item>Expression</item><item>Location</item><item>Type</item><item>Value</item></col-names><col-widths><item>188</item><item>150</item><item>100</item><item>100</item></col-widths></WATCH_1><Find-in-Files><ColumnWidth0>470</ColumnWidth0><ColumnWidth1>67</ColumnWidth1><ColumnWidth2>806</ColumnWidth2></Find-in-Files></Static>
+    <WATCH_1><expressions><item>CirBuf</item><item>InPack</item><item>TelDir</item><item>State</item><item>CirBuf_Tail</item><item>CirBuf_Head</item><item>tmp</item><item>ADC10MEM0</item><item>ADC10CTL0</item><item>ADC10IFG</item><item>tmp</item><item>temp_sms</item><item>t1</item><item>ucs2_rv</item><item/></expressions><col-names><item>Expression</item><item>Location</item><item>Type</item><item>Value</item></col-names><col-widths><item>188</item><item>150</item><item>100</item><item>100</item></col-widths></WATCH_1><Find-in-Files><ColumnWidth0>470</ColumnWidth0><ColumnWidth1>67</ColumnWidth1><ColumnWidth2>806</ColumnWidth2></Find-in-Files></Static>
     <Windows>
       
       

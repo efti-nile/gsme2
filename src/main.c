@@ -9,11 +9,11 @@ int main(void)
 {
     // Stop watchdog timer to prevent time out reset
     // It is good to enable watchdog timer in production
-    WDTCTL = WDTPW + WDTHOLD;
+    WDTCTL = WDTPW + WDTCNTCL;
 
     //TelDir_SetBalanceNumber("002A0031003000300023"); // Delete in production
     MSP430_UCS_Init();
-    TelDir_Clean();
+    TelDir_Clean(); // Delete in production
     MSP430_UART_Init();
     Loads_Init();
     Delay_Init();
@@ -34,7 +34,7 @@ int main(void)
     while(1){
         State.sim900_initialized = SIM900_GetStatus();
 				
-				P5OUT |= BIT3;
+				WDTCTL = WDTPW + WDTCNTCL;
 
         Delay_DelayMs(10000);
         if(SIM900_CircularBuf_Search("+CMTI") != -1){
