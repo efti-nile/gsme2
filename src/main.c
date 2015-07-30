@@ -7,17 +7,18 @@ volatile s8 tmp;
 
 int main(void)
 {
-    // Stop watchdog timer to prevent time out reset
-    // It is good to enable watchdog timer in production
-    WDTCTL = WDTPW + WDTCNTCL;
+    WDTCTL = WDTPW + WDTCNTCL; // 1 min 25 s watchdog @ SMCLK 25MHz
+
+    LED_INIT;
+    MSP430_UCS_Init();
+    Delay_Init();
+
+    LED_Blinking3Times(); // The LED blinks 3 times to mark reset
 
     //TelDir_SetBalanceNumber("002A0031003000300023"); // Delete in production
-    MSP430_UCS_Init();
     TelDir_Clean(); // Delete in production
     MSP430_UART_Init();
     Loads_Init();
-    Delay_Init();
-    LED_INIT;
     SMS_Queue_Init();
     PowMeas_Init();
     __bis_SR_register(GIE);
@@ -29,12 +30,12 @@ int main(void)
     SIM900_ReInit();
     SysTimer_Start();
 
-    State.sim900_initialized = 1;
+    //State.sim900_initialized = 1;
 
     while(1){
         State.sim900_initialized = SIM900_GetStatus();
 				
-				WDTCTL = WDTPW + WDTCNTCL;
+		WDTCTL = WDTPW + WDTCNTCL;
 
         Delay_DelayMs(10000);
         if(SIM900_CircularBuf_Search("+CMTI") != -1){
@@ -270,4 +271,16 @@ void MSP430_UCS_Init(void){
     UCSCTL2 = UCSCTL2 & 0xFC00 | 762; // Set N = 762
     UCSCTL1 = UCSCTL1 & 0xFF8F | 0x0060; // Set DCORSEL = 6
     UCSCTL1 = UCSCTL1 & 0xE0FF | 0x0F00; // Set DCO = 15
+}
+
+/*!
+	\brief 3 LED's blinks signal device reset
+*/
+void LED_Blinking3Times(void){
+	for(u8 i = 0; i < 3; i++){
+        Delay_DelayMs(100);
+        LED_ON;
+        Delay_DelayMs(100);
+        LED_OFF;
+	}
 }

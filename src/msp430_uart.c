@@ -122,7 +122,7 @@ __interrupt void USCI_A0_ISR(void){
             UCA1IE &= ~UCRXIE; // TODO: If is it necessary?
             if(InPack.crc == CRC_Calc((u8*)&InPack, sizeof(InPack)-1)){
 
-                if(SIM900_GetStatus() && State.sim900_initialized){ // TODO: We have decided to change this
+                if(State.sim900_initialized){ // TODO: We have decided to change this
                     OkStatus_Update(); // Ready-to-work LED
                 }
 

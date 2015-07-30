@@ -75,11 +75,17 @@ func_begin:
     SIM900_CircularBuffer_Purge();
 
     // Give SIM900 some time for thinking
-    Delay_DelayMs(10000);
+    Delay_DelayMs(3000);
 
     if(!SIM900_GetStatus()){
         goto func_begin;
     }
+
+    LED_OFF;
+    Delay_DelayMs(500);
+    LED_ON;
+    Delay_DelayMs(500);
+    LED_OFF;
 }
 
 void SIM900_ReadSms(void){
@@ -92,9 +98,9 @@ void SIM900_ReadSms(void){
     if(!SIM900_WaitForResponse("OK", "ERROR")){
         // If we didn't receive response delete all
         // SMSs then return to the main loop
-        Delay_DelayMs(5000);
         SIM900_SendStr("AT+CMGD=1,4\r");
         if(!SIM900_WaitForResponse("OK", "ERROR")){
+            SIM900_SendStr("ERROR: 7");
             ErrorHandler(7);
         }
         SIM900_CircularBuffer_Purge();
@@ -194,32 +200,31 @@ void SIM900_ReadSms(void){
     }else
     // Request to close all valves
     if(SIM900_CircularBuf_Search(SIM900_SMS_CMD_CLOSE) != -1 && TelDir_FindTelNumber(TelNum) != -1){
-				u8 valveNameBuffer[VALVE_NAME_MAXLEN * 4];
-				// Get the name of the group which open command will be executed on
-				if(1 != SIM900_CircularBuffer_Extract(SIM900_SMS_CMD_CLOSE_, valveNameBuffer, sizeof(State.current_valves_group), '"')){
-					strcpy((char *)State.current_valves_group, "all");
-				}
-				strToCP1251(State.current_valves_group, valveNameBuffer);
+        u8 valveNameBuffer[VALVE_NAME_MAXLEN * 4];
+        // Get the name of the group which open command will be executed on
+        if(1 != SIM900_CircularBuffer_Extract(SIM900_SMS_CMD_CLOSE_, valveNameBuffer, sizeof(State.current_valves_group), '"')){
+            strcpy((char *)State.current_valves_group, "all");
+        }
+        strToCP1251(State.current_valves_group, valveNameBuffer);
         strcpy((char *)State.TelNumOfSourceOfRequest, (char const *)TelNum);
         State.request_close_valves = 1;
         State.close_valves_timeout = CLOSE_VALVES_TIMEOUT; // Timeout
     }else
     // Request to open all valves
     if(SIM900_CircularBuf_Search(SIM900_SMS_CMD_OPEN) != -1 && TelDir_FindTelNumber(TelNum) != -1){
-				u8 valveNameBuffer[VALVE_NAME_MAXLEN * 4];
-				// Get the name of the group which open command will be executed on
-				if(1 != SIM900_CircularBuffer_Extract(SIM900_SMS_CMD_OPEN_, valveNameBuffer, sizeof(State.current_valves_group), '"')){
-					strcpy((char *)State.current_valves_group, "all");
-				}
-				strToCP1251(State.current_valves_group, valveNameBuffer);
+        u8 valveNameBuffer[VALVE_NAME_MAXLEN * 4];
+        // Get the name of the group which open command will be executed on
+        if(1 != SIM900_CircularBuffer_Extract(SIM900_SMS_CMD_OPEN_, valveNameBuffer, sizeof(State.current_valves_group), '"')){
+            strcpy((char *)State.current_valves_group, "all");
+        }
+        strToCP1251(State.current_valves_group, valveNameBuffer);
         strcpy((char *)State.TelNumOfSourceOfRequest, (char const *)TelNum);
         State.request_open_valves = 1;
         State.open_valves_timeout = OPEN_VALVES_TIMEOUT; // Timeout
     }else
     // Set number for balance checking
     if(SIM900_CircularBuffer_ExtractBalanceNum(SIM900_SMS_CMD_SET_BALANCE, TelNum_Balance, sizeof(TelNum_Balance) - 1) &&
-        TelDir_FindTelNumber(TelNum) != -1)
-		{
+        TelDir_FindTelNumber(TelNum) != -1){
         if(TelDir_SetBalanceNumber(TelNum_Balance) == TELDIR_SET_BALANCE_TELNUM_RES_OK){
             SMS_Queue_Push(TelNum, SIM900_SMS_REPORT_BALANCE_SET_OK, SMS_LIFETIME);
         }else{
@@ -250,24 +255,25 @@ void SIM900_ReadSms(void){
         }
     }else
     // Turn load on
-    if(SIM900_CircularBuf_Search(SIM900_SMS_CMD_TURN_LOAD_ON) != -1/* && TelDir_FindTelNumber(TelNum) != -1*/){
+    if(SIM900_CircularBuf_Search(SIM900_SMS_CMD_TURN_LOAD_ON) != -1 && TelDir_FindTelNumber(TelNum) != -1){
         if(SIM900_CircularBuf_Search("00200031") != -1){
             Loads_Command(LOAD1_ON);
-						SMS_Queue_Push(TelNum, SIM900_SMS_REPORT_LOAD1_ON, SMS_LIFETIME);
+			SMS_Queue_Push(TelNum, SIM900_SMS_REPORT_LOAD1_ON, SMS_LIFETIME);
         }else
         if(SIM900_CircularBuf_Search("00200032") != -1){
+            Loads_Command(LOAD2_ON);
             SMS_Queue_Push(TelNum, SIM900_SMS_REPORT_LOAD2_ON, SMS_LIFETIME);
         }
     }
     // Turn load off
-    if(SIM900_CircularBuf_Search(SIM900_SMS_CMD_TURN_LOAD_OFF) != -1/* && TelDir_FindTelNumber(TelNum) != -1*/){
+    if(SIM900_CircularBuf_Search(SIM900_SMS_CMD_TURN_LOAD_OFF) != -1 && TelDir_FindTelNumber(TelNum) != -1){
         if(SIM900_CircularBuf_Search("00200031") != -1){
             Loads_Command(LOAD1_OFF);
-						SMS_Queue_Push(TelNum, SIM900_SMS_REPORT_LOAD1_OFF, SMS_LIFETIME);
+			SMS_Queue_Push(TelNum, SIM900_SMS_REPORT_LOAD1_OFF, SMS_LIFETIME);
         }else
         if(SIM900_CircularBuf_Search("00200032") != -1){
             Loads_Command(LOAD2_OFF);
-						SMS_Queue_Push(TelNum, SIM900_SMS_REPORT_LOAD2_OFF, SMS_LIFETIME);
+			SMS_Queue_Push(TelNum, SIM900_SMS_REPORT_LOAD2_OFF, SMS_LIFETIME);
         }
     }else
     // Get temperature
@@ -315,6 +321,7 @@ void SIM900_ReadSms(void){
 
     SIM900_SendStr("AT+CMGD=1,4\r");
     if(!SIM900_WaitForResponse("OK", "ERROR")){
+        SIM900_SendStr("ERROR: 8");
         ErrorHandler(8);
         SIM900_CircularBuffer_Purge();
         return;
@@ -340,6 +347,7 @@ void SIM900_SendSms(void){
     SIM900_SendStr("\"\r");
 
     if(!SIM900_WaitForResponse(">", "ERROR")){
+        SIM900_SendStr("ERROR 9");
         ErrorHandler(9);
         SIM900_CircularBuffer_Purge();
         return;
@@ -354,7 +362,9 @@ void SIM900_SendSms(void){
     // If SMS wasn't sent -- push it in the queue to send it one more
     // time later
     if(!SIM900_WaitForResponse("OK", "ERROR")){
+      if(!SIM900_WaitForResponse("OK", "ERROR")){
         SMS_Queue_Push(TelNum, SmsText, LifeTime - 1);
+      }
     }
 }
 
