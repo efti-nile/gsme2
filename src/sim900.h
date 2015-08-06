@@ -120,7 +120,7 @@ u8 SIM900_SoftReset(void);
 u8 SIM900_HoldReset(void);
 u8 SIM900_GetStatus(void);
 void SIM900_CircularBuffer_Purge(void);
-s8 SIM900_CircularBuf_Search(const u8 pattern[]);
+s16 SIM900_CircularBuf_Search(const u8 pattern[]);
 u8 SIM900_CircularBuffer_Extract(const u8 Pattern[], u8 *Dst, u16 Num, u8 DelChar);
 u8 SIM900_CircularBuffer_ExtractTelNum(u8 *Dst);
 u8 SIM900_CircularBuffer_ExtractBalanceNum(const u8 Pattern[], u8 *Dst, u16 Num);

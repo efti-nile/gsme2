@@ -200,12 +200,14 @@ void SIM900_ReadSms(void){
     }else
     // Request to close all valves
     if(SIM900_CircularBuf_Search(SIM900_SMS_CMD_CLOSE) != -1 && TelDir_FindTelNumber(TelNum) != -1){
-        u8 valveNameBuffer[VALVE_NAME_MAXLEN * 4];
+        volatile u8 valveNameBuffer[VALVE_NAME_MAXLEN * 4];
         // Get the name of the group which open command will be executed on
-        if(1 != SIM900_CircularBuffer_Extract(SIM900_SMS_CMD_CLOSE_, valveNameBuffer, sizeof(State.current_valves_group), '"')){
+        SIM900_CircularBuffer_Extract(SIM900_SMS_CMD_CLOSE_, (u8 *) valveNameBuffer, VALVE_NAME_MAXLEN * 4, '\r');
+        if(strlen((const char *)valveNameBuffer) == 0){
             strcpy((char *)State.current_valves_group, "all");
+        }else{
+            strToCP1251(State.current_valves_group, (u8 *)valveNameBuffer);
         }
-        strToCP1251(State.current_valves_group, valveNameBuffer);
         strcpy((char *)State.TelNumOfSourceOfRequest, (char const *)TelNum);
         State.request_close_valves = 1;
         State.close_valves_timeout = CLOSE_VALVES_TIMEOUT; // Timeout
@@ -415,7 +417,7 @@ void SIM900_CircularBuffer_Purge(void){
     CirBuf_NumBytes = 0;
 }
 
-s8 SIM900_CircularBuf_Search(const u8 pattern[]){
+s16 SIM900_CircularBuf_Search(const u8 pattern[]){
     u16 i, j, k, l, p;
 
     // Find length of given pattern

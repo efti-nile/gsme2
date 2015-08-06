@@ -9,6 +9,16 @@ void strToCP1251(u8 *dst, u8 *src){
 	}
 }
 
+void strToUCS2(u8 *dst, u8 *src){
+	u8 l = strlen((const char *)src), i, j;
+	for(i = 0; i < l; i++){
+        u8 *b = toUCS2(src[i]);
+        for(j = 0; j < 4; j++){
+           dst[i*4 + j] = b[j];
+        }
+	}
+}
+
 /*!
     \brief Converts UCS-2 symbols with the codes within 0x0020..0x007E and 0x0410..0x0440 to CP1251.
 		\param[in] c String like "0028"

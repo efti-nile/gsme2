@@ -119,7 +119,7 @@ void OkStatus_Update(void){
 /*!
     \brief Starts 150ms system timer, enables interrupt uppon timer every 150ms
 */
-void SysTimer_Start(u16 timeout){
+void SysTimer_Start(){
     TA1CTL = 0x0000; // Hault the timer
     TA1CTL = 0X00C0; // ID = 8 (i.e. /8 divider)
     TA1CTL |= 0X2 << 8; // Use SMCLK as a source clock

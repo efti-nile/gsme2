@@ -1,5 +1,7 @@
 #include "msp430_uart.h"
 
+u8 ControllerSMS[70*4];
+
 u8 CirBuf[CIRBUF_SIZE];
 u16 CirBuf_Tail = 0;
 u16 CirBuf_Head = 0;
@@ -118,9 +120,9 @@ __interrupt void USCI_A0_ISR(void){
             State.controller_address = InPack.SourceAddress;
         }
         // If we managed to receive all pack's bytes until time-out expired
-        if(num_received_bytes >= sizeof(struct InPack_TypeDef)){
+        if(num_received_bytes >= InPack.Length){
             UCA1IE &= ~UCRXIE; // TODO: If is it necessary?
-            if(InPack.crc == CRC_Calc((u8*)&InPack, sizeof(InPack)-1)){
+            if(InPack.crc == CRC_Calc((u8*)&InPack, InPack.Length - 1)){
 
                 if(State.sim900_initialized){ // TODO: We have decided to change this
                     OkStatus_Update(); // Ready-to-work LED
@@ -208,33 +210,44 @@ __interrupt void USCI_A0_ISR(void){
                     State.leak_removed_now = 0;
                 }
 
+                // If there is some messages to send everyone, put the message in the
+                // buffer.
+                if(InPack.COMMAND & IN_COMMAND_SEND_SMS){
+                    u8 TelNum[SMS_TELNUM_LEN];
+                    strToUCS2(ControllerSMS, InPack.Optional);
+                    TelDir_Iterator_Init();
+                    while(TelDir_GetNextTelNum(TelNum)){
+                        SMS_Queue_Push(TelNum, ControllerSMS, SMS_LIFETIME);
+                    }
+                };
+
                 // If there is a some pending flag to execute user's request than
                 // send proper command to the WaterLeak controller.
                 if(State.request_close_valves){
-									if(strcmp((const char *)State.current_valves_group, "all") == 0){
-										 OutPack.Length = 4; // Excluding DevID & Length
-									}else{
-										 strcpy((char *)&OutPack.Optional, (const char *)State.current_valves_group);
-										 OutPack.Length = 4 + strlen((const char *)State.current_valves_group); // Excluding DevID & Length
-									}
-									OutPack.DevID = State.controller_address;
-									OutPack.COMMAND = RESPONSE_CLOSE_ALL;
-									SendCmd();
+                    if(strcmp((const char *)State.current_valves_group, "all") == 0){
+                         OutPack.Length = 4; // Excluding DevID & Length
+                    }else{
+                         strcpy((char *)&OutPack.Optional, (const char *)State.current_valves_group);
+                         OutPack.Length = 4 + strlen((const char *)State.current_valves_group); // Excluding DevID & Length
+                    }
+                    OutPack.DevID = State.controller_address;
+                    OutPack.COMMAND = RESPONSE_CLOSE_ALL;
+                    SendCmd();
                 }else
                 if(State.request_open_valves){
-									if(strcmp((const char *)State.current_valves_group, "all") == 0){
-										 OutPack.Length = 4; // Excluding DevID & Length
-									}else{
-										 strcpy((char *)&OutPack.Optional, (const char *)State.current_valves_group);
-										 OutPack.Length = 4 + strlen((const char *)State.current_valves_group); // Excluding DevID & Length
-									}
-									OutPack.DevID = State.controller_address;
-									OutPack.COMMAND = RESPONSE_OPEN_ALL;
-									SendCmd();
+                    if(strcmp((const char *)State.current_valves_group, "all") == 0){
+                         OutPack.Length = 4; // Excluding DevID & Length
+                    }else{
+                         strcpy((char *)&OutPack.Optional, (const char *)State.current_valves_group);
+                         OutPack.Length = 4 + strlen((const char *)State.current_valves_group); // Excluding DevID & Length
+                    }
+                    OutPack.DevID = State.controller_address;
+                    OutPack.COMMAND = RESPONSE_OPEN_ALL;
+                    SendCmd();
                 }else{
-									  OutPack.Length = 4;
-									  OutPack.COMMAND = RESPONSE_NO_EVENTS;
-									  SendCmd();
+                    OutPack.Length = 4;
+                    OutPack.COMMAND = RESPONSE_NO_EVENTS;
+                    SendCmd();
                 }
             }
 

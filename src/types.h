@@ -15,7 +15,8 @@
 typedef unsigned long int u32;
 typedef signed long int s32;
 
-typedef unsigned long int u16;
+typedef unsigned short int u16;
+typedef signed short int s16;
 
 typedef unsigned char u8;
 typedef signed char s8;
@@ -58,6 +59,7 @@ struct InPack_TypeDef{
     u8 SourceAddress;
     u8 TID;
     u8 COMMAND;
+    u8 Optional[70];
     u8 crc;
 };
 
@@ -67,7 +69,7 @@ struct OutPack_TypeDef{
     u8 SourceAddress;
     u8 TID;
     u8 COMMAND;
-		u8 Optional[20];
+	u8 Optional[20];
     u8 crc;
 };
 

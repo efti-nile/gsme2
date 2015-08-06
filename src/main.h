@@ -33,12 +33,13 @@
 #define RESPONSE_CLOSE_ALL 0x02
 #define RESPONSE_OPEN_ALL  0x03
 
-#define IN_COMMAND_AVC   (1<<0)
-#define IN_COMMAND_AVO   (1<<1)
-#define IN_COMMAND_CHB   (1<<2)
-#define IN_COMMAND_CHL   (1<<3)
-#define IN_COMMAND_LEAK  (1<<4)
-#define IN_COMMAND_LEAKR (1<<5)
+#define IN_COMMAND_AVC      (1<<0)
+#define IN_COMMAND_AVO      (1<<1)
+#define IN_COMMAND_CHB      (1<<2)
+#define IN_COMMAND_CHL      (1<<3)
+#define IN_COMMAND_LEAK     (1<<4)
+#define IN_COMMAND_LEAKR    (1<<5)
+#define IN_COMMAND_SEND_SMS (1<<6)
 
 // Timeouts in seconds /////////////////////////////////////////////////////////
 
