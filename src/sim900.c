@@ -359,13 +359,21 @@ void SIM900_SendSms(void){
     SIM900_SendStr(SmsText); // Send SMS text
     SIM900_SendStr("\x1A\r"); // End of SMS text
 
-    // If SMS wasn't sent -- push it in the queue to send it one more
-    // time later
-    if(!SIM900_WaitForResponse("OK", "ERROR")){
-      if(!SIM900_WaitForResponse("OK", "ERROR")){
-        SMS_Queue_Push(TelNum, SmsText, LifeTime - 1);
+    // Try during several time intervals to receive acknoledgment
+    for(u8 i = 0; i < 4; i++){
+      if(SIM900_WaitForResponse("OK", "ERROR")){
+        return;
       }
     }
+
+    // If we didn't receive one, put outgoing SMS in queue again with decreased
+    // lifetime
+    SMS_Queue_Push(TelNum, SmsText, LifeTime - 1);
+
+    // Then restart SIM900
+    SIM900_SendStr("ERROR 6");
+    ErrorHandler(6);
+    SIM900_CircularBuffer_Purge();
 }
 
 u8 SIM900_PowerOn(void){
