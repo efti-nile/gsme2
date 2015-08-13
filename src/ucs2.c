@@ -5,7 +5,10 @@ static u8 ucs2_rv[5]; /// Memory to store returned value for fromUCS2 function
 void strToCP1251(u8 *dst, u8 *src){
 	u8 l = strlen((const char *)src), i;
 	for(i = 0; i < l / 4; i++){
+        u8 tmp = src[(i + 1) * 4];
+        src[(i + 1) * 4] = '\0';
 		dst[i] = toCP1251((u8 *)(src + i * 4));
+        src[(i + 1) * 4] = tmp;
 	}
 }
 
