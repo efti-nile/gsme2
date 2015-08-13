@@ -216,7 +216,7 @@ void SIM900_ReadSms(void){
     if(SIM900_CircularBuf_Search(SIM900_SMS_CMD_OPEN) != -1 && TelDir_FindTelNumber(TelNum) != -1){
         u8 valveNameBuffer[VALVE_NAME_MAXLEN * 4];
         // Get the name of the group which open command will be executed on
-        SIM900_CircularBuffer_Extract(SIM900_SMS_CMD_CLOSE_, (u8 *) valveNameBuffer, VALVE_NAME_MAXLEN * 4, '\r');
+        SIM900_CircularBuffer_Extract(SIM900_SMS_CMD_OPEN_, (u8 *) valveNameBuffer, VALVE_NAME_MAXLEN * 4, '\r');
         if(strlen((const char *)valveNameBuffer) == 0){
             strcpy((char *)State.current_valves_group, "all");
         }else{

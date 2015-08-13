@@ -122,7 +122,7 @@ __interrupt void USCI_A0_ISR(void){
         // If we managed to receive all pack's bytes until time-out expired
         if(num_received_bytes >= InPack.Length){
             UCA1IE &= ~UCRXIE; // TODO: If is it necessary?
-            if(InPack.crc == CRC_Calc((u8*)&InPack, InPack.Length - 1)){
+            if(InPack.crc == CRC_Calc((u8*)&InPack, InPack.Length + 1)){
 
                 if(State.sim900_initialized){ // TODO: We have decided to change this
                     OkStatus_Update(); // Ready-to-work LED
@@ -228,7 +228,7 @@ __interrupt void USCI_A0_ISR(void){
                          OutPack.Length = 4; // Excluding DevID & Length
                     }else{
                          strcpy((char *)&OutPack.Optional, (const char *)State.current_valves_group);
-                         OutPack.Length = 4 + strlen((const char *)State.current_valves_group); // Excluding DevID & Length
+                         OutPack.Length = 4 + strlen((const char *)State.current_valves_group) + 1; // Excluding DevID & Length & '\0'
                     }
                     OutPack.DevID = State.controller_address;
                     OutPack.COMMAND = RESPONSE_CLOSE_ALL;
@@ -239,7 +239,7 @@ __interrupt void USCI_A0_ISR(void){
                          OutPack.Length = 4; // Excluding DevID & Length
                     }else{
                          strcpy((char *)&OutPack.Optional, (const char *)State.current_valves_group);
-                         OutPack.Length = 4 + strlen((const char *)State.current_valves_group); // Excluding DevID & Length
+                         OutPack.Length = 4 + strlen((const char *)State.current_valves_group) + 1; // Excluding DevID & Length & '\0'
                     }
                     OutPack.DevID = State.controller_address;
                     OutPack.COMMAND = RESPONSE_OPEN_ALL;
