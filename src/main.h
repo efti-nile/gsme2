@@ -44,8 +44,8 @@
 // Timeouts in seconds /////////////////////////////////////////////////////////
 
 //#define SMS_TIMER_MOD 20
-#define CLOSE_VALVES_TIMEOUT 10
-#define OPEN_VALVES_TIMEOUT 10
+#define CLOSE_VALVES_TIMEOUT 50
+#define OPEN_VALVES_TIMEOUT 50
 #define OK_TIMEOUT 5
 
 // State variables /////////////////////////////////////////////////////////////
@@ -67,7 +67,6 @@ void MSP430_UCS_Init(void);
 void ErrorHandler(u32 ErrNum);
 void TIM3_IRQHandler(void);
 void SendCmd(void);
-void OkStatus_Update(void);
 u8 CRC_Calc(u8* src, u16 num);
 void SIM900_ReInit(void);
 void Init(void);

@@ -25,7 +25,7 @@ void MSP430_UART_Init(void){
     /*P3OUT &= BIT4^0xFF; P3DIR |= BIT4; P3REN &= BIT4^0xFF;*/ P3SEL |= BIT4; /*P3DS &= BIT4^0xFF;*/ // UCA1TXD
     /*P3OUT &= BIT5^0xFF; P3DIR |= BIT5; P3REN &= BIT5^0xFF;*/ P3SEL |= BIT3; /*P3DS &= BIT5^0xFF;*/ // UCA1RXD
 
-    UCA0BRW = 2628; // Baud rate configuring. 0x0068 for 115200 @ 12MHz BRCLK
+    UCA0BRW = 2628; //
 
     UCA0CTL1 &= ~UCSWRST; // Release UART
 
@@ -118,15 +118,13 @@ __interrupt void USCI_A0_ISR(void){
         }else
         if(num_received_bytes == 3){
             State.controller_address = InPack.SourceAddress;
-        }
+        }else
         // If we managed to receive all pack's bytes until time-out expired
-        if(num_received_bytes >= InPack.Length){
+        if(num_received_bytes >= InPack.Length + 2){
             UCA1IE &= ~UCRXIE; // TODO: If is it necessary?
-            if(InPack.crc == CRC_Calc((u8*)&InPack, InPack.Length + 1)){
+            if(((u8*)&InPack)[InPack.Length + 1] == CRC_Calc((u8*)&InPack, InPack.Length + 1)){ // Check incoming packet CRC
 
-                if(State.sim900_initialized){ // TODO: We have decided to change this
-                    OkStatus_Update(); // Ready-to-work LED
-                }
+                State.ok_timeout = OK_TIMEOUT; // Update OK timeout
 
                 if(InPack.COMMAND & IN_COMMAND_AVC){
                     if(State.request_close_valves){ // TODO: But what happens if this condition checked right after request gotten?

@@ -30,13 +30,13 @@
       <file>$TOOLKIT_DIR$\lib\dlib\dl430xsfn.h</file>
       <file>$TOOLKIT_DIR$\config\multiplier32_loc2.xcl</file>
       <file>$PROJ_DIR$\Debug\Obj\loads.pbi</file>
+      <file>$PROJ_DIR$\Debug\Obj\msp430_uart.r43</file>
       <file>$TOOLKIT_DIR$\inc\dlib\c\DLib_Product.h</file>
       <file>$PROJ_DIR$\Debug\Obj\sms_queue.r43</file>
-      <file>$PROJ_DIR$\Debug\Obj\msp430_uart.r43</file>
       <file>$PROJ_DIR$\Debug\Obj\loads.r43</file>
-      <file>$PROJ_DIR$\Debug\Obj\powmeas.pbi</file>
       <file>$PROJ_DIR$\Debug\Obj\teldir.r43</file>
       <file>$PROJ_DIR$\Debug\List\gsme2.map</file>
+      <file>$PROJ_DIR$\Debug\Obj\powmeas.pbi</file>
       <file>$TOOLKIT_DIR$\inc\intrinsics.h</file>
       <file>$TOOLKIT_DIR$\inc\dlib\c\string.h</file>
       <file>$PROJ_DIR$\Debug\Obj\sim900.pbi</file>
@@ -71,7 +71,7 @@
       <outputs>
         <tool>
           <name>XLINK</name>
-          <file> 42 30</file>
+          <file> 42 29</file>
         </tool>
       </outputs>
     </file>
@@ -136,11 +136,11 @@
       <inputs>
         <tool>
           <name>ICC430</name>
-          <file> 0 55 53 31 9 4 2 6 7 32 34 37 50 21 24 44 49 45 8 3 1 5 10</file>
+          <file> 0 55 53 31 9 4 2 6 7 32 34 37 50 21 25 44 49 45 8 3 1 5 10</file>
         </tool>
         <tool>
           <name>BICOMP</name>
-          <file> 0 55 53 31 9 4 2 6 7 32 34 37 50 24 44 49 45 8 3 1 5 10</file>
+          <file> 0 55 53 31 9 4 2 6 7 32 34 37 50 25 44 49 45 8 3 1 5 10</file>
         </tool>
       </inputs>
     </file>
@@ -172,7 +172,7 @@
       <outputs>
         <tool>
           <name>ICC430</name>
-          <file> 26</file>
+          <file> 24</file>
         </tool>
         <tool>
           <name>BICOMP</name>
@@ -182,11 +182,11 @@
       <inputs>
         <tool>
           <name>ICC430</name>
-          <file> 4 55 53 31 9 0 2 6 7 32 34 37 50 21 24 44 49 45 8 3 1 5 10</file>
+          <file> 4 55 53 31 9 0 2 6 7 32 34 37 50 21 25 44 49 45 8 3 1 5 10</file>
         </tool>
         <tool>
           <name>BICOMP</name>
-          <file> 4 55 53 31 9 0 2 6 7 32 34 37 50 24 44 49 45 8 3 1 5 10</file>
+          <file> 4 55 53 31 9 0 2 6 7 32 34 37 50 25 44 49 45 8 3 1 5 10</file>
         </tool>
       </inputs>
     </file>
@@ -199,7 +199,7 @@
         </tool>
         <tool>
           <name>BICOMP</name>
-          <file> 28</file>
+          <file> 30</file>
         </tool>
       </outputs>
       <inputs>
@@ -228,11 +228,11 @@
       <inputs>
         <tool>
           <name>ICC430</name>
-          <file> 6 55 53 31 9 2 4 0 7 32 34 37 50 21 24 44 49 45 8 3 5 1 10</file>
+          <file> 6 55 53 31 9 2 4 0 7 32 34 37 50 21 25 44 49 45 8 3 5 1 10</file>
         </tool>
         <tool>
           <name>BICOMP</name>
-          <file> 6 55 53 31 9 2 4 0 7 32 34 37 50 24 44 49 45 8 3 5 1 10</file>
+          <file> 6 55 53 31 9 2 4 0 7 32 34 37 50 25 44 49 45 8 3 5 1 10</file>
         </tool>
       </inputs>
     </file>
@@ -241,7 +241,7 @@
       <outputs>
         <tool>
           <name>ICC430</name>
-          <file> 25</file>
+          <file> 26</file>
         </tool>
         <tool>
           <name>BICOMP</name>
@@ -251,11 +251,11 @@
       <inputs>
         <tool>
           <name>ICC430</name>
-          <file> 7 55 53 31 9 32 34 37 50 21 24 44 49 45</file>
+          <file> 7 55 53 31 9 32 34 37 50 21 25 44 49 45</file>
         </tool>
         <tool>
           <name>BICOMP</name>
-          <file> 7 55 53 31 9 32 34 37 50 24 44 49 45</file>
+          <file> 7 55 53 31 9 32 34 37 50 25 44 49 45</file>
         </tool>
       </inputs>
     </file>
@@ -264,7 +264,7 @@
       <outputs>
         <tool>
           <name>ICC430</name>
-          <file> 29</file>
+          <file> 28</file>
         </tool>
         <tool>
           <name>BICOMP</name>
@@ -274,11 +274,11 @@
       <inputs>
         <tool>
           <name>ICC430</name>
-          <file> 8 55 53 31 9 3 32 34 37 50 21 24 44 49 45</file>
+          <file> 8 55 53 31 9 3 32 34 37 50 21 25 44 49 45</file>
         </tool>
         <tool>
           <name>BICOMP</name>
-          <file> 8 55 53 31 9 3 32 34 37 50 24 44 49 45</file>
+          <file> 8 55 53 31 9 3 32 34 37 50 25 44 49 45</file>
         </tool>
       </inputs>
     </file>
@@ -297,11 +297,11 @@
       <inputs>
         <tool>
           <name>ICC430</name>
-          <file> 10 32 34 37 50 21 24 44 49 45 9</file>
+          <file> 10 32 34 37 50 21 25 44 49 45 9</file>
         </tool>
         <tool>
           <name>BICOMP</name>
-          <file> 10 32 34 37 50 24 44 49 45 9</file>
+          <file> 10 32 34 37 50 25 44 49 45 9</file>
         </tool>
       </inputs>
     </file>
@@ -310,13 +310,13 @@
       <outputs>
         <tool>
           <name>XLINK</name>
-          <file> 30</file>
+          <file> 29</file>
         </tool>
       </outputs>
       <inputs>
         <tool>
           <name>XLINK</name>
-          <file> 54 22 38 27 52 43 26 48 56 25 29 41 47</file>
+          <file> 54 22 38 27 52 43 24 48 56 26 28 41 47</file>
         </tool>
       </inputs>
     </file>
@@ -325,7 +325,7 @@
       <inputs>
         <tool>
           <name>BILINK</name>
-          <file> 35 23 51 36 57 28 33 39 40 46</file>
+          <file> 35 23 51 36 57 30 33 39 40 46</file>
         </tool>
       </inputs>
     </file>

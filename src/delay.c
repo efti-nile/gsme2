@@ -1,5 +1,6 @@
 #include "delay.h"
 
+
 u8 Delay_Init(void){
     TA0CTL = 0X0000; // Hault the timer
     TA0CTL |= 0X2 << 8; // Use SMCLK as a source clock

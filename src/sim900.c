@@ -201,6 +201,7 @@ void SIM900_ReadSms(void){
     // Request to close all valves
     if(SIM900_CircularBuf_Search(SIM900_SMS_CMD_CLOSE) != -1 && TelDir_FindTelNumber(TelNum) != -1){
         u8 valveNameBuffer[VALVE_NAME_MAXLEN * 4];
+        valveNameBuffer[0] = 0; // Clear the buffer
         // Get the name of the group which open command will be executed on
         SIM900_CircularBuffer_Extract(SIM900_SMS_CMD_CLOSE_, (u8 *) valveNameBuffer, VALVE_NAME_MAXLEN * 4, '\r');
         if(strlen((const char *)valveNameBuffer) == 0){
@@ -215,6 +216,7 @@ void SIM900_ReadSms(void){
     // Request to open all valves
     if(SIM900_CircularBuf_Search(SIM900_SMS_CMD_OPEN) != -1 && TelDir_FindTelNumber(TelNum) != -1){
         u8 valveNameBuffer[VALVE_NAME_MAXLEN * 4];
+        valveNameBuffer[0] = 0; // Clear the buffer
         // Get the name of the group which open command will be executed on
         SIM900_CircularBuffer_Extract(SIM900_SMS_CMD_OPEN_, (u8 *) valveNameBuffer, VALVE_NAME_MAXLEN * 4, '\r');
         if(strlen((const char *)valveNameBuffer) == 0){
@@ -258,17 +260,6 @@ void SIM900_ReadSms(void){
             SMS_Queue_Push(TelNum, SIM900_SMS_REPORT_BALANCE_TELNUM_NOT_SET, SMS_LIFETIME);
         }
     }else
-    // Turn load on
-    if(SIM900_CircularBuf_Search(SIM900_SMS_CMD_TURN_LOAD_ON) != -1 && TelDir_FindTelNumber(TelNum) != -1){
-        if(SIM900_CircularBuf_Search("00200031") != -1){
-            Loads_Command(LOAD1_ON);
-			SMS_Queue_Push(TelNum, SIM900_SMS_REPORT_LOAD1_ON, SMS_LIFETIME);
-        }else
-        if(SIM900_CircularBuf_Search("00200032") != -1){
-            Loads_Command(LOAD2_ON);
-            SMS_Queue_Push(TelNum, SIM900_SMS_REPORT_LOAD2_ON, SMS_LIFETIME);
-        }
-    }
     // Turn load off
     if(SIM900_CircularBuf_Search(SIM900_SMS_CMD_TURN_LOAD_OFF) != -1 && TelDir_FindTelNumber(TelNum) != -1){
         if(SIM900_CircularBuf_Search("00200031") != -1){
@@ -278,6 +269,17 @@ void SIM900_ReadSms(void){
         if(SIM900_CircularBuf_Search("00200032") != -1){
             Loads_Command(LOAD2_OFF);
 			SMS_Queue_Push(TelNum, SIM900_SMS_REPORT_LOAD2_OFF, SMS_LIFETIME);
+        }
+    }else
+    // Turn load on
+    if(SIM900_CircularBuf_Search(SIM900_SMS_CMD_TURN_LOAD_ON) != -1 && TelDir_FindTelNumber(TelNum) != -1){
+        if(SIM900_CircularBuf_Search("00200031") != -1){
+            Loads_Command(LOAD1_ON);
+			SMS_Queue_Push(TelNum, SIM900_SMS_REPORT_LOAD1_ON, SMS_LIFETIME);
+        }else
+        if(SIM900_CircularBuf_Search("00200032") != -1){
+            Loads_Command(LOAD2_ON);
+            SMS_Queue_Push(TelNum, SIM900_SMS_REPORT_LOAD2_ON, SMS_LIFETIME);
         }
     }else
     // Get temperature

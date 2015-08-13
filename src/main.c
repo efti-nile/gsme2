@@ -16,7 +16,9 @@ int main(void)
     LED_Blinking3Times(); // The LED blinks 3 times to mark reset
 
     //TelDir_SetBalanceNumber("002A0031003000300023"); // Delete in production
-    TelDir_Clean(); // Delete in production
+    //TelDir_Clean(); // Delete in production
+    TelDir_Init();
+
     MSP430_UART_Init();
     Loads_Init();
     SMS_Queue_Init();
@@ -30,10 +32,10 @@ int main(void)
     SIM900_ReInit();
     SysTimer_Start();
 
-    //State.sim900_initialized = 1;
-
     while(1){
-        State.sim900_initialized = SIM900_GetStatus();
+        if(!SIM900_GetStatus()){
+          SIM900_ReInit();
+        };
 				
 		WDTCTL = WDTPW + WDTCNTCL;
 
@@ -42,6 +44,12 @@ int main(void)
             SIM900_ReadSms();
         }
         SIM900_SendSms();
+
+        if(State.ok_timeout > 0){
+            LED_ON;
+        }else{
+            LED_OFF;
+        }
 
         // Check link with main controller
         State.link_ok_with_main_controller_prev = State.link_ok_with_main_controller_now;
@@ -70,7 +78,7 @@ int main(void)
             }
         }
 
-        // Check battery in GSM Extender
+        // Check external supply in GSM Extender
         State.ext_supply_ok_prev = State.ext_supply_ok_now;
         State.ext_supply_ok_now = PowMeas_ExternSupplyStatus();
         if( State.ext_supply_ok_prev &&
@@ -106,14 +114,6 @@ void ErrorHandler(u32 ErrNum){
     }
 
     SIM900_ReInit();
-}
-
-/*!
-    \brief Updates global OK-flag and turns on the LED
-*/
-void OkStatus_Update(void){
-	State.ok_timeout = OK_TIMEOUT;
-	LED_ON;
 }
 
 /*!
@@ -169,8 +169,6 @@ __interrupt void TIMER1_A1_ISR(void){
         }
 		if(State.ok_timeout > 0){
 			State.ok_timeout--;
-		}else{
-			LED_OFF;
 		}
         TA1CTL &= ~TAIFG; // TODO: If this is necessary to clear the flag?
     }

@@ -29,7 +29,6 @@ struct State_TypeDef{
 		// During valve command execution name of the current group stored in this string
 		u8 current_valves_group[VALVE_NAME_MAXLEN];
     // Flags
-    u8 sim900_initialized;
     u8 request_close_valves;
     u8 request_open_valves;
     u8 leak_prev;
