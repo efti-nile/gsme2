@@ -46,7 +46,7 @@
 //#define SMS_TIMER_MOD 20
 #define CLOSE_VALVES_TIMEOUT 50
 #define OPEN_VALVES_TIMEOUT 50
-#define OK_TIMEOUT 5
+#define OK_TIMEOUT 50
 
 // State variables /////////////////////////////////////////////////////////////
 
