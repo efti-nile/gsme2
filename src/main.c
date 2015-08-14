@@ -16,8 +16,8 @@ int main(void)
     LED_Blinking3Times(); // The LED blinks 3 times to mark reset
 
     //TelDir_SetBalanceNumber("002A0031003000300023"); // Delete in production
-    //TelDir_Clean(); // Delete in production
     TelDir_Init();
+    TelDir_Push("00380039003200370037003100350031003800360037");
 
     MSP430_UART_Init();
     Loads_Init();
@@ -28,6 +28,7 @@ int main(void)
     g_PWR_INIT;
     g_HPWR_INIT;
     g_STS_INIT;
+    DBG_PIN_INIT;
 
     SIM900_ReInit();
     SysTimer_Start();
@@ -39,15 +40,12 @@ int main(void)
 				
 		WDTCTL = WDTPW + WDTCNTCL;
 
-        Delay_DelayMs(10000);
         if(SIM900_CircularBuf_Search("+CMTI") != -1){
             SIM900_ReadSms();
         }
         SIM900_SendSms();
 
-        if(State.ok_timeout > 0){
-            LED_ON;
-        }else{
+        if(State.ok_timeout == 0){
             LED_OFF;
         }
 
@@ -91,6 +89,7 @@ int main(void)
             }
         }
 
+        Delay_DelayMs(3000);
     }
 }
 
@@ -187,7 +186,7 @@ void SendCmd(void){
     OutPack.SourceAddress = MY_ADDRESS;
     OutPack.TID = 0;
 
-    OutPack.crc = CRC_Calc((u8*)&OutPack, 5 + OutPack.Length);
+    ((u8 *)&OutPack)[OutPack.Length + 1] = CRC_Calc((u8*)&OutPack, OutPack.Length + 1); // Set CRC
 
     RxTx_RS485_TxEnable;
 	
@@ -198,7 +197,7 @@ void SendCmd(void){
     MSP430_UART_SendAddress(UART_RS485, OutPack.DevID);
 
     // Send the rest of the outgoing packet - data bytes
-    MSP430_UART_Send(UART_RS485, (u8 *)&OutPack + 1, 5 + OutPack.Length);
+    MSP430_UART_Send(UART_RS485, (u8 *)&OutPack + 1, OutPack.Length + 1);
 
     i = 7000*3; // TODO: Bljad!
     while(i--);

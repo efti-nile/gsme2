@@ -41,6 +41,13 @@
 #define IN_COMMAND_LEAKR    (1<<5)
 #define IN_COMMAND_SEND_SMS (1<<6)
 
+// For debug ///////////////////////////////////////////////////////////////////
+
+#define DBG_PIN_INIT {P6OUT &= BIT0^0xFF; P6DIR |= BIT0; P6REN &= BIT0^0xFF; P6SEL &= BIT0^0xFF; P6DS &= BIT0^0xFF;}
+#define DBG_PIN_HIGH P6OUT |= BIT0
+#define DBG_PIN_LOW P6OUT &= BIT0^0xFF
+
+
 // Timeouts in seconds /////////////////////////////////////////////////////////
 
 //#define SMS_TIMER_MOD 20

@@ -125,6 +125,9 @@ __interrupt void USCI_A0_ISR(void){
             if(((u8*)&InPack)[InPack.Length + 1] == CRC_Calc((u8*)&InPack, InPack.Length + 1)){ // Check incoming packet CRC
 
                 State.ok_timeout = OK_TIMEOUT; // Update OK timeout
+                if(SIM900_GetStatus()){
+                    LED_ON;
+                }
 
                 if(InPack.COMMAND & IN_COMMAND_AVC){
                     if(State.request_close_valves){ // TODO: But what happens if this condition checked right after request gotten?
@@ -221,6 +224,7 @@ __interrupt void USCI_A0_ISR(void){
 
                 // If there is a some pending flag to execute user's request than
                 // send proper command to the WaterLeak controller.
+
                 if(State.request_close_valves){
                     if(strcmp((const char *)State.current_valves_group, "all") == 0){
                          OutPack.Length = 4; // Excluding DevID & Length
@@ -228,7 +232,6 @@ __interrupt void USCI_A0_ISR(void){
                          strcpy((char *)&OutPack.Optional, (const char *)State.current_valves_group);
                          OutPack.Length = 4 + strlen((const char *)State.current_valves_group) + 1; // Excluding DevID & Length & '\0'
                     }
-                    OutPack.DevID = State.controller_address;
                     OutPack.COMMAND = RESPONSE_CLOSE_ALL;
                     SendCmd();
                 }else
@@ -239,12 +242,7 @@ __interrupt void USCI_A0_ISR(void){
                          strcpy((char *)&OutPack.Optional, (const char *)State.current_valves_group);
                          OutPack.Length = 4 + strlen((const char *)State.current_valves_group) + 1; // Excluding DevID & Length & '\0'
                     }
-                    OutPack.DevID = State.controller_address;
                     OutPack.COMMAND = RESPONSE_OPEN_ALL;
-                    SendCmd();
-                }else{
-                    OutPack.Length = 4;
-                    OutPack.COMMAND = RESPONSE_NO_EVENTS;
                     SendCmd();
                 }
             }
