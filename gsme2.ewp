@@ -1911,6 +1911,9 @@
       <name>$PROJ_DIR$\src\sms_queue.h</name>
     </file>
     <file>
+      <name>$PROJ_DIR$\src\smspool.h</name>
+    </file>
+    <file>
       <name>$PROJ_DIR$\src\teldir.h</name>
     </file>
     <file>
@@ -1945,6 +1948,9 @@
     </file>
     <file>
       <name>$PROJ_DIR$\src\sms_queue.c</name>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\src\smspool.c</name>
     </file>
     <file>
       <name>$PROJ_DIR$\src\teldir.c</name>

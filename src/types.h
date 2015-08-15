@@ -100,10 +100,12 @@ struct TelDir_TypeDef{
 };
 
 // SMS pool
-#define SMSPOOL_SIZE
+#define SMSPOOL_SMS_MAXLEN (70 + 1)
+#define SMSPOOL_SIZE 3
 
-struct SmsPool_TypeDef{
-  u8 NumItems;
+struct SmsPool_Item_TypeDef{
+    u8 Text[SMSPOOL_SMS_MAXLEN];
+    u8 Qty;
 };
 
 #endif

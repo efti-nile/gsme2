@@ -2,7 +2,7 @@
 #                                                                              #
 #      IAR Universal Linker V5.2.4.16                                          #
 #                                                                              #
-#           Link time     =  15/Aug/2015  19:51:23                             #
+#           Link time     =  15/Aug/2015  20:39:02                             #
 #           Target CPU    =  MSP430                                            #
 #           List file     =  "D:\gsme2 firmware\Debug\List\gsme2.map"          #
 #           Output file 1 =  "D:\gsme2 firmware\Debug\Exe\gsme2.d43"           #
@@ -17,6 +17,7 @@
 #                            "D:\gsme2 firmware\Debug\Obj\powmeas.r43"         #
 #                            "D:\gsme2 firmware\Debug\Obj\sim900.r43"          #
 #                            "D:\gsme2 firmware\Debug\Obj\sms_queue.r43"       #
+#                            "D:\gsme2 firmware\Debug\Obj\smspool.r43"         #
 #                            "D:\gsme2 firmware\Debug\Obj\teldir.r43"          #
 #                            "D:\gsme2 firmware\Debug\Obj\ucs2.r43" -o         #
 #                            "D:\gsme2 firmware\Debug\Exe\gsme2.d43" -l        #
@@ -70,7 +71,7 @@
                 *                                      *
                 ****************************************
 
-       Program entry at :           CDFA  Relocatable, from module : ?cstart
+       Program entry at :           C2D4  Relocatable, from module : ?cstart
 
 
 
@@ -131,8 +132,7 @@ Absolute parts
   ======================
 DATA16_AN
   Relative segment, address: 0340 - 0341 (0x2 bytes), align: 0
-  Segment part 1. ROOT.       Intra module refs:   Delay_DelayMs
-                                                   Delay_Init
+  Segment part 1. ROOT.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
            _A_TA0CTL               0340 
@@ -143,22 +143,21 @@ DATA16_AN
     -------------------------------------------------------------------------
 DATA16_AN
   Relative segment, address: 0350 - 0351 (0x2 bytes), align: 0
-  Segment part 2. ROOT.       Intra module refs:   Delay_DelayMs
-                                                   Delay_Init
+  Segment part 2. ROOT.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
            TA0R                    0350 
     -------------------------------------------------------------------------
 DATA16_AN
   Relative segment, address: 0352 - 0353 (0x2 bytes), align: 0
-  Segment part 3. ROOT.       Intra module refs:   Delay_Init
+  Segment part 3. ROOT.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
            TA0CCR0                 0352 
     -------------------------------------------------------------------------
 DATA16_AN
   Relative segment, address: 0360 - 0361 (0x2 bytes), align: 0
-  Segment part 4. ROOT.       Intra module refs:   Delay_Init
+  Segment part 4. ROOT.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
            _A_TA0EX0               0360 
@@ -166,27 +165,6 @@ DATA16_AN
            =====                   =======         
            TA0EX0                  0360 
            TA0EX0_bit              0360 
-    -------------------------------------------------------------------------
-<CODE> 1 (was CODE)
-  Relative segment, address: E82E - E851 (0x24 bytes), align: 1
-  Segment part 7.
-           ENTRY                   ADDRESS         REF BY
-           =====                   =======         ======
-           Delay_Init              E82E            main (main)
-               CSTACK = 00000000 ( 00000004 )
-    -------------------------------------------------------------------------
-<CODE> 1 (was CODE)
-  Relative segment, address: E78A - E7B3 (0x2a bytes), align: 1
-  Segment part 6.
-           ENTRY                   ADDRESS         REF BY
-           =====                   =======         ======
-           Delay_DelayMs           E78A            ErrorHandler (main)
-                                                   PowMeas_GetTemp (powmeas)
-                                                   SIM900_ReInit (sim900)
-                                                   SIM900_SendSms (sim900)
-                                                   SIM900_SoftReset (sim900)
-                                                   SIM900_WaitForResponse (sim900)
-               CSTACK = 00000000 ( 00000006 )
 
     *************************************************************************
 
@@ -197,12 +175,7 @@ DATA16_AN
   ======================
 DATA16_AN
   Relative segment, address: 0242 - 0242 (0x1 bytes), align: 0
-  Segment part 1. ROOT.       Intra module refs:   ErrorHandler (main)
-                                                   Loads_Command
-                                                   Loads_Init
-                                                   PowMeas_BatteryStatus (powmeas)
-                                                   PowMeas_Init (powmeas)
-                                                   SIM900_ReInit (sim900)
+  Segment part 1. ROOT.       Intra module refs:   Loads_Command
                                                    TIMER1_A1_ISR (main)
                                                    main (main)
            ENTRY                   ADDRESS         REF BY
@@ -215,9 +188,7 @@ DATA16_AN
     -------------------------------------------------------------------------
 DATA16_AN
   Relative segment, address: 0244 - 0244 (0x1 bytes), align: 0
-  Segment part 2. ROOT.       Intra module refs:   Loads_Init
-                                                   PowMeas_Init (powmeas)
-                                                   main (main)
+  Segment part 2. ROOT.       Intra module refs:   main (main)
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
            _A_P5DIR                0244 
@@ -228,9 +199,7 @@ DATA16_AN
     -------------------------------------------------------------------------
 DATA16_AN
   Relative segment, address: 0246 - 0246 (0x1 bytes), align: 0
-  Segment part 3. ROOT.       Intra module refs:   Loads_Init
-                                                   PowMeas_Init (powmeas)
-                                                   main (main)
+  Segment part 3. ROOT.       Intra module refs:   main (main)
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
            _A_P5REN                0246 
@@ -241,9 +210,7 @@ DATA16_AN
     -------------------------------------------------------------------------
 DATA16_AN
   Relative segment, address: 0248 - 0248 (0x1 bytes), align: 0
-  Segment part 4. ROOT.       Intra module refs:   Loads_Init
-                                                   PowMeas_Init (powmeas)
-                                                   main (main)
+  Segment part 4. ROOT.       Intra module refs:   main (main)
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
            _A_P5DS                 0248 
@@ -254,9 +221,7 @@ DATA16_AN
     -------------------------------------------------------------------------
 DATA16_AN
   Relative segment, address: 024A - 024A (0x1 bytes), align: 0
-  Segment part 5. ROOT.       Intra module refs:   Loads_Init
-                                                   PowMeas_Init (powmeas)
-                                                   main (main)
+  Segment part 5. ROOT.       Intra module refs:   main (main)
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
            _A_P5SEL                024A 
@@ -266,20 +231,11 @@ DATA16_AN
            P5SEL_bit               024A 
     -------------------------------------------------------------------------
 <CODE> 1 (was CODE)
-  Relative segment, address: E584 - E5C1 (0x3e bytes), align: 1
-  Segment part 8.
-           ENTRY                   ADDRESS         REF BY
-           =====                   =======         ======
-           Loads_Init              E584            main (main)
-               CSTACK = 00000000 ( 00000004 )
-    -------------------------------------------------------------------------
-<CODE> 1 (was CODE)
-  Relative segment, address: E69E - E6CF (0x32 bytes), align: 1
+  Relative segment, address: C94E - C97F (0x32 bytes), align: 1
   Segment part 7.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           Loads_Command           E69E            SIM900_ReadSms (sim900)
-                                                   TIMER1_A1_ISR (main)
+           Loads_Command           C94E            TIMER1_A1_ISR (main)
                CSTACK = 00000000 ( 00000004 )
 
     *************************************************************************
@@ -291,10 +247,7 @@ DATA16_AN
   ======================
 DATA16_AN
   Relative segment, address: 0203 - 0203 (0x1 bytes), align: 0
-  Segment part 1. ROOT.       Intra module refs:   SIM900_PowerOff (sim900)
-                                                   SIM900_PowerOn (sim900)
-                                                   SIM900_ReInit (sim900)
-                                                   SIM900_SoftReset (sim900)
+  Segment part 1. ROOT.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
            _A_P2OUT                0203 
@@ -305,10 +258,7 @@ DATA16_AN
     -------------------------------------------------------------------------
 DATA16_AN
   Relative segment, address: 0205 - 0205 (0x1 bytes), align: 0
-  Segment part 2. ROOT.       Intra module refs:   SIM900_PowerOff (sim900)
-                                                   SIM900_PowerOn (sim900)
-                                                   SIM900_ReInit (sim900)
-                                                   SIM900_SoftReset (sim900)
+  Segment part 2. ROOT.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
            _A_P2DIR                0205 
@@ -319,7 +269,7 @@ DATA16_AN
     -------------------------------------------------------------------------
 DATA16_AN
   Relative segment, address: 0207 - 0207 (0x1 bytes), align: 0
-  Segment part 3. ROOT.       Intra module refs:   SIM900_ReInit (sim900)
+  Segment part 3. ROOT.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
            _A_P2REN                0207 
@@ -330,7 +280,7 @@ DATA16_AN
     -------------------------------------------------------------------------
 DATA16_AN
   Relative segment, address: 0209 - 0209 (0x1 bytes), align: 0
-  Segment part 4. ROOT.       Intra module refs:   SIM900_ReInit (sim900)
+  Segment part 4. ROOT.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
            _A_P2DS                 0209 
@@ -341,7 +291,7 @@ DATA16_AN
     -------------------------------------------------------------------------
 DATA16_AN
   Relative segment, address: 020B - 020B (0x1 bytes), align: 0
-  Segment part 5. ROOT.       Intra module refs:   SIM900_ReInit (sim900)
+  Segment part 5. ROOT.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
            _A_P2SEL                020B 
@@ -352,8 +302,7 @@ DATA16_AN
     -------------------------------------------------------------------------
 DATA16_AN
   Relative segment, address: 0222 - 0222 (0x1 bytes), align: 0
-  Segment part 6. ROOT.       Intra module refs:   MSP430_UART_Init (msp430_uart)
-                                                   SendCmd
+  Segment part 6. ROOT.       Intra module refs:   SendCmd
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
            _A_P3OUT                0222 
@@ -364,7 +313,7 @@ DATA16_AN
     -------------------------------------------------------------------------
 DATA16_AN
   Relative segment, address: 0224 - 0224 (0x1 bytes), align: 0
-  Segment part 7. ROOT.       Intra module refs:   MSP430_UART_Init (msp430_uart)
+  Segment part 7. ROOT.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
            _A_P3DIR                0224 
@@ -375,7 +324,7 @@ DATA16_AN
     -------------------------------------------------------------------------
 DATA16_AN
   Relative segment, address: 0226 - 0226 (0x1 bytes), align: 0
-  Segment part 8. ROOT.       Intra module refs:   MSP430_UART_Init (msp430_uart)
+  Segment part 8. ROOT.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
            _A_P3REN                0226 
@@ -386,7 +335,7 @@ DATA16_AN
     -------------------------------------------------------------------------
 DATA16_AN
   Relative segment, address: 0228 - 0228 (0x1 bytes), align: 0
-  Segment part 9. ROOT.       Intra module refs:   MSP430_UART_Init (msp430_uart)
+  Segment part 9. ROOT.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
            _A_P3DS                 0228 
@@ -397,7 +346,7 @@ DATA16_AN
     -------------------------------------------------------------------------
 DATA16_AN
   Relative segment, address: 022A - 022A (0x1 bytes), align: 0
-  Segment part 10. ROOT.      Intra module refs:   MSP430_UART_Init (msp430_uart)
+  Segment part 10. ROOT.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
            _A_P3SEL                022A 
@@ -408,8 +357,7 @@ DATA16_AN
     -------------------------------------------------------------------------
 DATA16_AN
   Relative segment, address: 0380 - 0381 (0x2 bytes), align: 0
-  Segment part 16. ROOT.      Intra module refs:   SysTimer_Start
-                                                   TIMER1_A1_ISR
+  Segment part 16. ROOT.      Intra module refs:   TIMER1_A1_ISR
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
            _A_TA1CTL               0380 
@@ -420,22 +368,21 @@ DATA16_AN
     -------------------------------------------------------------------------
 DATA16_AN
   Relative segment, address: 0390 - 0391 (0x2 bytes), align: 0
-  Segment part 17. ROOT.      Intra module refs:   SysTimer_Start
-                                                   TIMER1_A1_ISR
+  Segment part 17. ROOT.      Intra module refs:   TIMER1_A1_ISR
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
            TA1R                    0390 
     -------------------------------------------------------------------------
 DATA16_AN
   Relative segment, address: 0392 - 0393 (0x2 bytes), align: 0
-  Segment part 18. ROOT.      Intra module refs:   SysTimer_Start
+  Segment part 18. ROOT.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
            TA1CCR0                 0392 
     -------------------------------------------------------------------------
 DATA16_AN
   Relative segment, address: 03A0 - 03A1 (0x2 bytes), align: 0
-  Segment part 19. ROOT.      Intra module refs:   SysTimer_Start
+  Segment part 19. ROOT.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
            _A_TA1EX0               03A0 
@@ -446,7 +393,7 @@ DATA16_AN
     -------------------------------------------------------------------------
 DATA16_AN
   Relative segment, address: 0162 - 0163 (0x2 bytes), align: 0
-  Segment part 20. ROOT.      Intra module refs:   MSP430_UCS_Init
+  Segment part 20. ROOT.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
            _A_UCSCTL1              0162 
@@ -457,7 +404,7 @@ DATA16_AN
     -------------------------------------------------------------------------
 DATA16_AN
   Relative segment, address: 0164 - 0165 (0x2 bytes), align: 0
-  Segment part 21. ROOT.      Intra module refs:   MSP430_UCS_Init
+  Segment part 21. ROOT.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
            _A_UCSCTL2              0164 
@@ -468,7 +415,7 @@ DATA16_AN
     -------------------------------------------------------------------------
 DATA16_AN
   Relative segment, address: 0166 - 0167 (0x2 bytes), align: 0
-  Segment part 22. ROOT.      Intra module refs:   MSP430_UCS_Init
+  Segment part 22. ROOT.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
            _A_UCSCTL3              0166 
@@ -488,143 +435,69 @@ DATA16_AN
            WDTCTL                  015C 
            WDTCTL_bit              015C 
     -------------------------------------------------------------------------
-DATA16_C
-  Relative segment, address: C000 - C014 (0x15 bytes), align: 0
-  Segment part 26.            Intra module refs:   main
-    -------------------------------------------------------------------------
-DATA16_C
-  Relative segment, address: C015 - C041 (0x2d bytes), align: 0
-  Segment part 27.            Intra module refs:   main
-    -------------------------------------------------------------------------
-DATA16_C
-  Relative segment, address: C042 - C047 (0x6 bytes), align: 0
-  Segment part 28.            Intra module refs:   main
-    -------------------------------------------------------------------------
-DATA16_C
-  Relative segment, address: C048 - C104 (0xbd bytes), align: 0
-  Segment part 29.            Intra module refs:   main
-           LOCAL                   ADDRESS         
-           =====                   =======         
-           SIM900_SMS_REPORT_LINK_LOST_WITH_MAIN_CONTROLLER
-                                   C048 
-    -------------------------------------------------------------------------
-DATA16_C
-  Relative segment, address: C105 - C181 (0x7d bytes), align: 0
-  Segment part 30.            Intra module refs:   main
-           LOCAL                   ADDRESS         
-           =====                   =======         
-           SIM900_SMS_REPORT_BATTERY_LOW_IN_GSM_EXTENDER
-                                   C105 
-    -------------------------------------------------------------------------
-DATA16_C
-  Relative segment, address: C182 - C21E (0x9d bytes), align: 0
-  Segment part 31.            Intra module refs:   main
-           LOCAL                   ADDRESS         
-           =====                   =======         
-           SIM900_SMS_REPORT_EXTERNAL_SUPPLY_LOST
-                                   C182 
-    -------------------------------------------------------------------------
-DATA16_C
-  Relative segment, address: C21F - C277 (0x59 bytes), align: 0
-  Segment part 32.            Intra module refs:   main
-           LOCAL                   ADDRESS         
-           =====                   =======         
-           SIM900_SMS_REPORT_CLOSE_NOT_ALL
-                                   C21F 
-    -------------------------------------------------------------------------
-DATA16_C
-  Relative segment, address: C278 - C2D0 (0x59 bytes), align: 0
-  Segment part 33.            Intra module refs:   main
-           LOCAL                   ADDRESS         
-           =====                   =======         
-           SIM900_SMS_REPORT_OPEN_NOT_ALL
-                                   C278 
-    -------------------------------------------------------------------------
 DATA16_Z
   Relative segment, address: 2400 - 2455 (0x56 bytes), align: 1
-  Segment part 34.            Intra module refs:   SendCmd
+  Segment part 28.            Intra module refs:   SendCmd
                                                    TIMER1_A1_ISR
-                                                   main
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           State                   2400            SIM900_ReadSms (sim900)
-                                                   USCI_A0_ISR (msp430_uart)
+           State                   2400            USCI_A0_ISR (msp430_uart)
     -------------------------------------------------------------------------
 DATA16_Z
   Relative segment, address: 2670 - 26BB (0x4c bytes), align: 0
-  Segment part 35.
+  Segment part 29.            Intra module refs:   main
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           InPack                  2670            SIM900_ReadSms (sim900)
-                                                   USCI_A0_ISR (msp430_uart)
+           InPack                  2670            USCI_A0_ISR (msp430_uart)
     -------------------------------------------------------------------------
 DATA16_Z
   Relative segment, address: 26BC - 26D5 (0x1a bytes), align: 0
-  Segment part 36.            Intra module refs:   SendCmd
+  Segment part 30.            Intra module refs:   SendCmd
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
            OutPack                 26BC            USCI_A0_ISR (msp430_uart)
     -------------------------------------------------------------------------
 <CODE> 1 (was CODE)
-  Relative segment, address: D7A8 - D93F (0x198 bytes), align: 1
-  Segment part 44.
+  Relative segment, address: C69A - C729 (0x90 bytes), align: 1
+  Segment part 39.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           main                    D7A8            Segment part 22 (?cstart)
-               calls direct
-               CSTACK = 00000000 ( 0000008C )
-    -------------------------------------------------------------------------
-<CODE> 1 (was CODE)
-  Relative segment, address: E4F6 - E541 (0x4c bytes), align: 1
-  Segment part 43.
-           ENTRY                   ADDRESS         REF BY
-           =====                   =======         ======
-           ErrorHandler            E4F6            SIM900_ReadSms (sim900)
-                                                   SIM900_SendSms (sim900)
+           main                    C69A            Segment part 22 (?cstart)
                calls direct
                CSTACK = 00000000 ( 0000000C )
     -------------------------------------------------------------------------
-<CODE> 1 (was CODE)
-  Relative segment, address: E732 - E75D (0x2c bytes), align: 1
-  Segment part 42.            Intra module refs:   main
-           ENTRY                   ADDRESS         REF BY
-           =====                   =======         ======
-           SysTimer_Start          E732 
-               CSTACK = 00000000 ( 00000004 )
+DATA16_Z
+  Relative segment, address: 26D6 - 26D6 (0x1 bytes), align: 0
+  Segment part 32.            Intra module refs:   main
+           LOCAL                   ADDRESS         
+           =====                   =======         
+           main::res               26D6 
     -------------------------------------------------------------------------
 ISR_CODE
-  Relative segment, address: CE12 - CE8B (0x7a bytes), align: 1
-  Segment part 45.            Intra module refs:   TIMER1_A1_ISR::??INTVEC 96
+  Relative segment, address: C2EC - C365 (0x7a bytes), align: 1
+  Segment part 40.            Intra module refs:   TIMER1_A1_ISR::??INTVEC 96
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           TIMER1_A1_ISR           CE12 
+           TIMER1_A1_ISR           C2EC 
                interrupt function
                calls direct
                CSTACK = 00000000 ( 0000000C )
     -------------------------------------------------------------------------
 <CODE> 1 (was CODE)
-  Relative segment, address: E19C - E207 (0x6c bytes), align: 1
-  Segment part 41.
+  Relative segment, address: C7B4 - C81F (0x6c bytes), align: 1
+  Segment part 36.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           SendCmd                 E19C            USCI_A0_ISR (msp430_uart)
+           SendCmd                 C7B4            USCI_A0_ISR (msp430_uart)
                calls direct
                CSTACK = 00000000 ( 00000004 )
     -------------------------------------------------------------------------
 <CODE> 1 (was CODE)
-  Relative segment, address: E966 - E97D (0x18 bytes), align: 1
-  Segment part 39.            Intra module refs:   SendCmd
+  Relative segment, address: CA2A - CA41 (0x18 bytes), align: 1
+  Segment part 34.            Intra module refs:   SendCmd
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           CRC_Calc                E966            USCI_A0_ISR (msp430_uart)
-               CSTACK = 00000000 ( 00000004 )
-    -------------------------------------------------------------------------
-<CODE> 1 (was CODE)
-  Relative segment, address: E542 - E583 (0x42 bytes), align: 1
-  Segment part 38.            Intra module refs:   main
-           ENTRY                   ADDRESS         REF BY
-           =====                   =======         ======
-           MSP430_UCS_Init         E542 
+           CRC_Calc                CA2A            USCI_A0_ISR (msp430_uart)
                CSTACK = 00000000 ( 00000004 )
     -------------------------------------------------------------------------
 INTVEC
@@ -634,6 +507,14 @@ INTVEC
            =====                   =======         ======
            TIMER1_A1_ISR::??INTVEC 96
                                    FFE0 
+    -------------------------------------------------------------------------
+DATA16_C
+  Relative segment, address: C000 - C00D (0xe bytes), align: 0
+  Segment part 26.            Intra module refs:   main
+    -------------------------------------------------------------------------
+DATA16_C
+  Relative segment, address: C00E - C054 (0x47 bytes), align: 0
+  Segment part 27.            Intra module refs:   main
 
     *************************************************************************
 
@@ -644,7 +525,7 @@ INTVEC
   ======================
 DATA16_AN
   Relative segment, address: 0140 - 0141 (0x2 bytes), align: 0
-  Segment part 1. ROOT.       Intra module refs:   flash_write
+  Segment part 1. ROOT.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
            _A_FCTL1                0140 
@@ -655,7 +536,7 @@ DATA16_AN
     -------------------------------------------------------------------------
 DATA16_AN
   Relative segment, address: 0144 - 0145 (0x2 bytes), align: 0
-  Segment part 2. ROOT.       Intra module refs:   flash_write
+  Segment part 2. ROOT.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
            _A_FCTL3                0144 
@@ -663,25 +544,6 @@ DATA16_AN
            =====                   =======         
            FCTL3                   0144 
            FCTL3_bit               0144 
-    -------------------------------------------------------------------------
-<CODE> 1 (was CODE)
-  Relative segment, address: DD2E - DDF9 (0xcc bytes), align: 1
-  Segment part 5.
-           ENTRY                   ADDRESS         REF BY
-           =====                   =======         ======
-           flash_write             DD2E            TelDir_Clean (teldir)
-                                                   TelDir_Del (teldir)
-                                                   TelDir_Push (teldir)
-                                                   TelDir_SetBalanceNumber (teldir)
-               CSTACK = 00000000 ( 00000008 )
-    -------------------------------------------------------------------------
-<CODE> 1 (was CODE)
-  Relative segment, address: E7B4 - E7DD (0x2a bytes), align: 1
-  Segment part 4.
-           ENTRY                   ADDRESS         REF BY
-           =====                   =======         ======
-           flash_read              E7B4            TelDir_Init (teldir)
-               CSTACK = 00000000 ( 00000006 )
 
     *************************************************************************
 
@@ -692,9 +554,7 @@ DATA16_AN
   ======================
 DATA16_AN
   Relative segment, address: 022B - 022B (0x1 bytes), align: 0
-  Segment part 6. ROOT.       Intra module refs:   MSP430_UART_Init
-                                                   SIM900_PowerOff (sim900)
-                                                   SIM900_PowerOn (sim900)
+  Segment part 6. ROOT.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
            _A_P4SEL                022B 
@@ -705,7 +565,7 @@ DATA16_AN
     -------------------------------------------------------------------------
 DATA16_AN
   Relative segment, address: 05C1 - 05C1 (0x1 bytes), align: 0
-  Segment part 7. ROOT.       Intra module refs:   MSP430_UART_Init
+  Segment part 7. ROOT.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
            _A_UCA0CTL0             05C1 
@@ -716,8 +576,7 @@ DATA16_AN
     -------------------------------------------------------------------------
 DATA16_AN
   Relative segment, address: 05C0 - 05C0 (0x1 bytes), align: 0
-  Segment part 8. ROOT.       Intra module refs:   MSP430_UART_Init
-                                                   MSP430_UART_SendAddress
+  Segment part 8. ROOT.       Intra module refs:   MSP430_UART_SendAddress
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
            _A_UCA0CTL1             05C0 
@@ -728,7 +587,7 @@ DATA16_AN
     -------------------------------------------------------------------------
 DATA16_AN
   Relative segment, address: 05C6 - 05C7 (0x2 bytes), align: 0
-  Segment part 9. ROOT.       Intra module refs:   MSP430_UART_Init
+  Segment part 9. ROOT.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
            UCA0BRW                 05C6 
@@ -761,7 +620,7 @@ DATA16_AN
     -------------------------------------------------------------------------
 DATA16_AN
   Relative segment, address: 05DC - 05DC (0x1 bytes), align: 0
-  Segment part 13. ROOT.      Intra module refs:   MSP430_UART_Init
+  Segment part 13. ROOT.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
            _A_UCA0IE               05DC 
@@ -791,7 +650,7 @@ DATA16_AN
     -------------------------------------------------------------------------
 DATA16_AN
   Relative segment, address: 0600 - 0600 (0x1 bytes), align: 0
-  Segment part 16. ROOT.      Intra module refs:   MSP430_UART_Init
+  Segment part 16. ROOT.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
            _A_UCA1CTL1             0600 
@@ -802,7 +661,7 @@ DATA16_AN
     -------------------------------------------------------------------------
 DATA16_AN
   Relative segment, address: 0606 - 0607 (0x2 bytes), align: 0
-  Segment part 17. ROOT.      Intra module refs:   MSP430_UART_Init
+  Segment part 17. ROOT.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
            UCA1BRW                 0606 
@@ -823,7 +682,7 @@ DATA16_AN
     -------------------------------------------------------------------------
 DATA16_AN
   Relative segment, address: 061C - 061C (0x1 bytes), align: 0
-  Segment part 20. ROOT.      Intra module refs:   MSP430_UART_Init
+  Segment part 20. ROOT.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
            _A_UCA1IE               061C 
@@ -851,156 +710,132 @@ DATA16_AN
            UCA1IV                  061E 
     -------------------------------------------------------------------------
 DATA16_C
-  Relative segment, address: C2D1 - C2D4 (0x4 bytes), align: 0
+  Relative segment, address: C055 - C058 (0x4 bytes), align: 0
   Segment part 26.            Intra module refs:   USCI_A0_ISR
     -------------------------------------------------------------------------
 DATA16_C
-  Relative segment, address: C2D5 - C31D (0x49 bytes), align: 0
+  Relative segment, address: C059 - C0A1 (0x49 bytes), align: 0
   Segment part 27.            Intra module refs:   USCI_A0_ISR
            LOCAL                   ADDRESS         
            =====                   =======         
            SIM900_SMS_REPORT_LEAK
-                                   C2D5 
+                                   C059 
     -------------------------------------------------------------------------
 DATA16_C
-  Relative segment, address: C31E - C3BA (0x9d bytes), align: 0
+  Relative segment, address: C0A2 - C13E (0x9d bytes), align: 0
   Segment part 28.            Intra module refs:   USCI_A0_ISR
            LOCAL                   ADDRESS         
            =====                   =======         
            SIM900_SMS_REPORT_CHECK_BATTERY
-                                   C31E 
+                                   C0A2 
     -------------------------------------------------------------------------
 DATA16_C
-  Relative segment, address: C3BB - C477 (0xbd bytes), align: 0
+  Relative segment, address: C13F - C1FB (0xbd bytes), align: 0
   Segment part 29.            Intra module refs:   USCI_A0_ISR
            LOCAL                   ADDRESS         
            =====                   =======         
            SIM900_DMD_REPORT_LINK_LOST
-                                   C3BB 
+                                   C13F 
     -------------------------------------------------------------------------
 DATA16_C
-  Relative segment, address: C478 - C4B4 (0x3d bytes), align: 0
+  Relative segment, address: C1FC - C238 (0x3d bytes), align: 0
   Segment part 30.            Intra module refs:   USCI_A0_ISR
            LOCAL                   ADDRESS         
            =====                   =======         
-           SIM900_LEAK_REMOVED     C478 
+           SIM900_LEAK_REMOVED     C1FC 
     -------------------------------------------------------------------------
 DATA16_C
-  Relative segment, address: C4B5 - C501 (0x4d bytes), align: 0
+  Relative segment, address: C239 - C285 (0x4d bytes), align: 0
   Segment part 31.            Intra module refs:   USCI_A0_ISR
            LOCAL                   ADDRESS         
            =====                   =======         
            SIM900_SMS_REPORT_CLOSE_OK
-                                   C4B5 
+                                   C239 
     -------------------------------------------------------------------------
 DATA16_C
-  Relative segment, address: C502 - C54E (0x4d bytes), align: 0
+  Relative segment, address: C286 - C2D2 (0x4d bytes), align: 0
   Segment part 32.            Intra module refs:   USCI_A0_ISR
            LOCAL                   ADDRESS         
            =====                   =======         
            SIM900_SMS_REPORT_OPEN_OK
-                                   C502 
+                                   C286 
     -------------------------------------------------------------------------
 DATA16_Z
-  Relative segment, address: 26D6 - 27ED (0x118 bytes), align: 0
+  Relative segment, address: 26D7 - 27EE (0x118 bytes), align: 0
   Segment part 33.            Intra module refs:   USCI_A0_ISR
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           ControllerSMS           26D6 
+           ControllerSMS           26D7 
     -------------------------------------------------------------------------
 DATA16_Z
-  Relative segment, address: 27EE - 2919 (0x12c bytes), align: 0
+  Relative segment, address: 27EF - 291A (0x12c bytes), align: 0
   Segment part 34.            Intra module refs:   USCI_A1_ISR
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           CirBuf                  27EE            SIM900_CircularBuf_Search (sim900)
-                                                   SIM900_CircularBuffer_Extract (sim900)
-                                                   SIM900_CircularBuffer_ExtractBalanceNum (sim900)
-                                                   SIM900_CircularBuffer_ExtractTelNum (sim900)
+           CirBuf                  27EF 
     -------------------------------------------------------------------------
 DATA16_Z
   Relative segment, address: 2456 - 2457 (0x2 bytes), align: 1
   Segment part 35.            Intra module refs:   USCI_A1_ISR
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           CirBuf_Tail             2456            SIM900_CircularBuf_Search (sim900)
-                                                   SIM900_CircularBuffer_Extract (sim900)
-                                                   SIM900_CircularBuffer_ExtractBalanceNum (sim900)
-                                                   SIM900_CircularBuffer_ExtractTelNum (sim900)
-                                                   SIM900_CircularBuffer_Purge (sim900)
+           CirBuf_Tail             2456 
     -------------------------------------------------------------------------
 DATA16_Z
   Relative segment, address: 2458 - 2459 (0x2 bytes), align: 1
   Segment part 36.            Intra module refs:   USCI_A1_ISR
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           CirBuf_Head             2458            SIM900_CircularBuf_Search (sim900)
-                                                   SIM900_CircularBuffer_Extract (sim900)
-                                                   SIM900_CircularBuffer_ExtractBalanceNum (sim900)
-                                                   SIM900_CircularBuffer_ExtractTelNum (sim900)
-                                                   SIM900_CircularBuffer_Purge (sim900)
+           CirBuf_Head             2458 
     -------------------------------------------------------------------------
 DATA16_Z
   Relative segment, address: 245A - 245B (0x2 bytes), align: 1
   Segment part 37.            Intra module refs:   USCI_A1_ISR
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           CirBuf_NumBytes         245A            SIM900_CircularBuf_Search (sim900)
-                                                   SIM900_CircularBuffer_Extract (sim900)
-                                                   SIM900_CircularBuffer_ExtractBalanceNum (sim900)
-                                                   SIM900_CircularBuffer_ExtractTelNum (sim900)
-                                                   SIM900_CircularBuffer_Purge (sim900)
+           CirBuf_NumBytes         245A 
     -------------------------------------------------------------------------
 <CODE> 1 (was CODE)
-  Relative segment, address: E2DC - E33F (0x64 bytes), align: 1
-  Segment part 43.
-           ENTRY                   ADDRESS         REF BY
-           =====                   =======         ======
-           MSP430_UART_Init        E2DC            main (main)
-               CSTACK = 00000000 ( 00000004 )
-    -------------------------------------------------------------------------
-<CODE> 1 (was CODE)
-  Relative segment, address: E934 - E94D (0x1a bytes), align: 1
+  Relative segment, address: CA10 - CA29 (0x1a bytes), align: 1
   Segment part 42.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
            MSP430_UART_SendAddress
-                                   E934            SendCmd (main)
+                                   CA10            SendCmd (main)
                CSTACK = 00000000 ( 00000004 )
     -------------------------------------------------------------------------
 <CODE> 1 (was CODE)
-  Relative segment, address: E6D0 - E701 (0x32 bytes), align: 1
+  Relative segment, address: C980 - C9B1 (0x32 bytes), align: 1
   Segment part 41.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           MSP430_UART_Send        E6D0            SIM900_SendStr (sim900)
-                                                   SendCmd (main)
+           MSP430_UART_Send        C980            SendCmd (main)
                CSTACK = 00000000 ( 00000004 )
     -------------------------------------------------------------------------
 ISR_CODE
-  Relative segment, address: CE8C - D173 (0x2e8 bytes), align: 1
+  Relative segment, address: C366 - C64D (0x2e8 bytes), align: 1
   Segment part 40.            Intra module refs:   USCI_A0_ISR::??INTVEC 112
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           USCI_A0_ISR             CE8C 
+           USCI_A0_ISR             C366 
                interrupt function
                calls direct
                CSTACK = 00000000 ( 000000F0 )
     -------------------------------------------------------------------------
 DATA16_Z
-  Relative segment, address: 291A - 291A (0x1 bytes), align: 0
+  Relative segment, address: 291B - 291B (0x1 bytes), align: 0
   Segment part 38.            Intra module refs:   USCI_A0_ISR
            LOCAL                   ADDRESS         
            =====                   =======         
            USCI_A0_ISR::num_received_bytes
-                                   291A 
+                                   291B 
     -------------------------------------------------------------------------
 ISR_CODE
-  Relative segment, address: D174 - D1BF (0x4c bytes), align: 1
+  Relative segment, address: C64E - C699 (0x4c bytes), align: 1
   Segment part 39.            Intra module refs:   USCI_A1_ISR::??INTVEC 92
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           USCI_A1_ISR             D174 
+           USCI_A1_ISR             C64E 
                interrupt function
                CSTACK = 00000000 ( 00000006 )
     -------------------------------------------------------------------------
@@ -1029,8 +864,7 @@ INTVEC
   ======================
 DATA16_AN
   Relative segment, address: 0740 - 0741 (0x2 bytes), align: 0
-  Segment part 1. ROOT.       Intra module refs:   PowMeas_AdcGet
-                                                   PowMeas_Init
+  Segment part 1. ROOT.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
            _A_ADC10CTL0            0740 
@@ -1041,7 +875,7 @@ DATA16_AN
     -------------------------------------------------------------------------
 DATA16_AN
   Relative segment, address: 0742 - 0743 (0x2 bytes), align: 0
-  Segment part 2. ROOT.       Intra module refs:   PowMeas_Init
+  Segment part 2. ROOT.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
            _A_ADC10CTL1            0742 
@@ -1052,7 +886,7 @@ DATA16_AN
     -------------------------------------------------------------------------
 DATA16_AN
   Relative segment, address: 0744 - 0745 (0x2 bytes), align: 0
-  Segment part 3. ROOT.       Intra module refs:   PowMeas_Init
+  Segment part 3. ROOT.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
            _A_ADC10CTL2            0744 
@@ -1063,8 +897,7 @@ DATA16_AN
     -------------------------------------------------------------------------
 DATA16_AN
   Relative segment, address: 074A - 074B (0x2 bytes), align: 0
-  Segment part 4. ROOT.       Intra module refs:   PowMeas_AdcGet
-                                                   PowMeas_Init
+  Segment part 4. ROOT.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
            _A_ADC10MCTL0           074A 
@@ -1075,14 +908,14 @@ DATA16_AN
     -------------------------------------------------------------------------
 DATA16_AN
   Relative segment, address: 0752 - 0753 (0x2 bytes), align: 0
-  Segment part 5. ROOT.       Intra module refs:   PowMeas_AdcGet
+  Segment part 5. ROOT.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
            ADC10MEM0               0752 
     -------------------------------------------------------------------------
 DATA16_AN
   Relative segment, address: 075C - 075D (0x2 bytes), align: 0
-  Segment part 6. ROOT.       Intra module refs:   PowMeas_AdcGet
+  Segment part 6. ROOT.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
            _A_ADC10IFG             075C 
@@ -1093,8 +926,7 @@ DATA16_AN
     -------------------------------------------------------------------------
 DATA16_AN
   Relative segment, address: 0202 - 0202 (0x1 bytes), align: 0
-  Segment part 7. ROOT.       Intra module refs:   PowMeas_GetTemp
-                                                   PowMeas_Init
+  Segment part 7. ROOT.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
            _A_P1OUT                0202 
@@ -1105,7 +937,7 @@ DATA16_AN
     -------------------------------------------------------------------------
 DATA16_AN
   Relative segment, address: 0204 - 0204 (0x1 bytes), align: 0
-  Segment part 8. ROOT.       Intra module refs:   PowMeas_Init
+  Segment part 8. ROOT.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
            _A_P1DIR                0204 
@@ -1116,7 +948,7 @@ DATA16_AN
     -------------------------------------------------------------------------
 DATA16_AN
   Relative segment, address: 0206 - 0206 (0x1 bytes), align: 0
-  Segment part 9. ROOT.       Intra module refs:   PowMeas_Init
+  Segment part 9. ROOT.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
            _A_P1REN                0206 
@@ -1127,7 +959,7 @@ DATA16_AN
     -------------------------------------------------------------------------
 DATA16_AN
   Relative segment, address: 0208 - 0208 (0x1 bytes), align: 0
-  Segment part 10. ROOT.      Intra module refs:   PowMeas_Init
+  Segment part 10. ROOT.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
            _A_P1DS                 0208 
@@ -1138,7 +970,7 @@ DATA16_AN
     -------------------------------------------------------------------------
 DATA16_AN
   Relative segment, address: 020A - 020A (0x1 bytes), align: 0
-  Segment part 11. ROOT.      Intra module refs:   PowMeas_Init
+  Segment part 11. ROOT.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
            _A_P1SEL                020A 
@@ -1149,7 +981,7 @@ DATA16_AN
     -------------------------------------------------------------------------
 DATA16_AN
   Relative segment, address: 0243 - 0243 (0x1 bytes), align: 0
-  Segment part 17. ROOT.      Intra module refs:   PowMeas_Init
+  Segment part 17. ROOT.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
            _A_P6OUT                0243 
@@ -1160,7 +992,7 @@ DATA16_AN
     -------------------------------------------------------------------------
 DATA16_AN
   Relative segment, address: 0245 - 0245 (0x1 bytes), align: 0
-  Segment part 18. ROOT.      Intra module refs:   PowMeas_Init
+  Segment part 18. ROOT.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
            _A_P6DIR                0245 
@@ -1171,7 +1003,7 @@ DATA16_AN
     -------------------------------------------------------------------------
 DATA16_AN
   Relative segment, address: 0247 - 0247 (0x1 bytes), align: 0
-  Segment part 19. ROOT.      Intra module refs:   PowMeas_Init
+  Segment part 19. ROOT.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
            _A_P6REN                0247 
@@ -1182,7 +1014,7 @@ DATA16_AN
     -------------------------------------------------------------------------
 DATA16_AN
   Relative segment, address: 0249 - 0249 (0x1 bytes), align: 0
-  Segment part 20. ROOT.      Intra module refs:   PowMeas_Init
+  Segment part 20. ROOT.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
            _A_P6DS                 0249 
@@ -1193,7 +1025,7 @@ DATA16_AN
     -------------------------------------------------------------------------
 DATA16_AN
   Relative segment, address: 024B - 024B (0x1 bytes), align: 0
-  Segment part 21. ROOT.      Intra module refs:   PowMeas_Init
+  Segment part 21. ROOT.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
            _A_P6SEL                024B 
@@ -1204,7 +1036,7 @@ DATA16_AN
     -------------------------------------------------------------------------
 DATA16_AN
   Relative segment, address: 01B0 - 01B1 (0x2 bytes), align: 0
-  Segment part 22. ROOT.      Intra module refs:   PowMeas_Init
+  Segment part 22. ROOT.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
            _A_REFCTL0              01B0 
@@ -1212,63 +1044,6 @@ DATA16_AN
            =====                   =======         
            REFCTL0                 01B0 
            REFCTL0_bit             01B0 
-    -------------------------------------------------------------------------
-DATA16_Z
-  Relative segment, address: 291B - 291B (0x1 bytes), align: 0
-  Segment part 24.            Intra module refs:   PowMeas_BatteryStatus
-                                                   PowMeas_Init
-           LOCAL                   ADDRESS         
-           =====                   =======         
-           PowMeas_PrevBatteryStatus
-                                   291B 
-    -------------------------------------------------------------------------
-<CODE> 1 (was CODE)
-  Relative segment, address: DEC0 - DF6B (0xac bytes), align: 1
-  Segment part 29.
-           ENTRY                   ADDRESS         REF BY
-           =====                   =======         ======
-           PowMeas_Init            DEC0            main (main)
-               calls direct
-               CSTACK = 00000000 ( 00000004 )
-    -------------------------------------------------------------------------
-<CODE> 1 (was CODE)
-  Relative segment, address: E702 - E731 (0x30 bytes), align: 1
-  Segment part 28.
-           ENTRY                   ADDRESS         REF BY
-           =====                   =======         ======
-           PowMeas_BatteryStatus   E702            main (main)
-               calls direct
-               CSTACK = 00000000 ( 00000004 )
-    -------------------------------------------------------------------------
-<CODE> 1 (was CODE)
-  Relative segment, address: E9C2 - E9D5 (0x14 bytes), align: 1
-  Segment part 27.
-           ENTRY                   ADDRESS         REF BY
-           =====                   =======         ======
-           PowMeas_ExternSupplyStatus
-                                   E9C2            main (main)
-               calls direct
-               CSTACK = 00000000 ( 00000004 )
-    -------------------------------------------------------------------------
-<CODE> 1 (was CODE)
-  Relative segment, address: E75E - E789 (0x2c bytes), align: 1
-  Segment part 25.            Intra module refs:   PowMeas_BatteryStatus
-                                                   PowMeas_ExternSupplyStatus
-                                                   PowMeas_GetTemp
-                                                   PowMeas_Init
-           ENTRY                   ADDRESS         REF BY
-           =====                   =======         ======
-           PowMeas_AdcGet          E75E 
-               CSTACK = 00000000 ( 00000004 )
-    -------------------------------------------------------------------------
-<CODE> 1 (was CODE)
-  Relative segment, address: E406 - E45B (0x56 bytes), align: 1
-  Segment part 26.
-           ENTRY                   ADDRESS         REF BY
-           =====                   =======         ======
-           PowMeas_GetTemp         E406            SIM900_ReadSms (sim900)
-               calls direct
-               CSTACK = 00000000 ( 00000004 )
 
     *************************************************************************
 
@@ -1279,7 +1054,7 @@ DATA16_Z
   ======================
 DATA16_AN
   Relative segment, address: 0201 - 0201 (0x1 bytes), align: 0
-  Segment part 1. ROOT.       Intra module refs:   SIM900_GetStatus
+  Segment part 1. ROOT.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
            _A_P2IN                 0201 
@@ -1290,8 +1065,7 @@ DATA16_AN
     -------------------------------------------------------------------------
 DATA16_AN
   Relative segment, address: 0223 - 0223 (0x1 bytes), align: 0
-  Segment part 7. ROOT.       Intra module refs:   SIM900_PowerOff
-                                                   SIM900_PowerOn
+  Segment part 7. ROOT.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
            _A_P4OUT                0223 
@@ -1302,8 +1076,7 @@ DATA16_AN
     -------------------------------------------------------------------------
 DATA16_AN
   Relative segment, address: 0225 - 0225 (0x1 bytes), align: 0
-  Segment part 8. ROOT.       Intra module refs:   SIM900_PowerOff
-                                                   SIM900_PowerOn
+  Segment part 8. ROOT.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
            _A_P4DIR                0225 
@@ -1311,544 +1084,6 @@ DATA16_AN
            =====                   =======         
            P4DIR                   0225 
            P4DIR_bit               0225 
-    -------------------------------------------------------------------------
-DATA16_C
-  Relative segment, address: C54F - C554 (0x6 bytes), align: 0
-  Segment part 12.            Intra module refs:   SIM900_ReInit
-    -------------------------------------------------------------------------
-DATA16_C
-  Relative segment, address: C555 - C557 (0x3 bytes), align: 0
-  Segment part 13.            Intra module refs:   SIM900_ReInit
-                                                   SIM900_ReadSms
-                                                   SIM900_SendSms
-    -------------------------------------------------------------------------
-DATA16_C
-  Relative segment, address: C558 - C55D (0x6 bytes), align: 0
-  Segment part 14.            Intra module refs:   SIM900_ReInit
-                                                   SIM900_ReadSms
-                                                   SIM900_SendSms
-    -------------------------------------------------------------------------
-DATA16_C
-  Relative segment, address: C55E - C568 (0xb bytes), align: 0
-  Segment part 15.            Intra module refs:   SIM900_ReInit
-    -------------------------------------------------------------------------
-DATA16_C
-  Relative segment, address: C569 - C573 (0xb bytes), align: 0
-  Segment part 16.            Intra module refs:   SIM900_ReInit
-    -------------------------------------------------------------------------
-DATA16_C
-  Relative segment, address: C574 - C583 (0x10 bytes), align: 0
-  Segment part 17.            Intra module refs:   SIM900_ReInit
-    -------------------------------------------------------------------------
-DATA16_C
-  Relative segment, address: C584 - C598 (0x15 bytes), align: 0
-  Segment part 18.            Intra module refs:   SIM900_ReInit
-    -------------------------------------------------------------------------
-DATA16_C
-  Relative segment, address: C599 - C5A5 (0xd bytes), align: 0
-  Segment part 19.            Intra module refs:   SIM900_ReInit
-                                                   SIM900_ReadSms
-    -------------------------------------------------------------------------
-DATA16_C
-  Relative segment, address: C5A6 - C5B0 (0xb bytes), align: 0
-  Segment part 20.            Intra module refs:   SIM900_ReadSms
-    -------------------------------------------------------------------------
-DATA16_C
-  Relative segment, address: C5B1 - C5B9 (0x9 bytes), align: 0
-  Segment part 21.            Intra module refs:   SIM900_ReadSms
-    -------------------------------------------------------------------------
-DATA16_C
-  Relative segment, address: C5BA - C5BD (0x4 bytes), align: 0
-  Segment part 22.            Intra module refs:   SIM900_ReadSms
-    -------------------------------------------------------------------------
-DATA16_C
-  Relative segment, address: C5BE - C5C9 (0xc bytes), align: 0
-  Segment part 23.            Intra module refs:   SIM900_ReadSms
-    -------------------------------------------------------------------------
-DATA16_C
-  Relative segment, address: C5CA - C5CC (0x3 bytes), align: 0
-  Segment part 24.            Intra module refs:   SIM900_ReadSms
-                                                   SIM900_SendSms
-    -------------------------------------------------------------------------
-DATA16_C
-  Relative segment, address: C5CD - C5D7 (0xb bytes), align: 0
-  Segment part 25.            Intra module refs:   SIM900_ReadSms
-    -------------------------------------------------------------------------
-DATA16_C
-  Relative segment, address: C5D8 - C5DA (0x3 bytes), align: 0
-  Segment part 26.            Intra module refs:   SIM900_ReadSms
-    -------------------------------------------------------------------------
-DATA16_C
-  Relative segment, address: C5DB - C5E3 (0x9 bytes), align: 0
-  Segment part 27.            Intra module refs:   SIM900_ReadSms
-    -------------------------------------------------------------------------
-DATA16_C
-  Relative segment, address: C5E4 - C5EC (0x9 bytes), align: 0
-  Segment part 28.            Intra module refs:   SIM900_ReadSms
-    -------------------------------------------------------------------------
-DATA16_C
-  Relative segment, address: C5ED - C5F5 (0x9 bytes), align: 0
-  Segment part 29.            Intra module refs:   SIM900_ReadSms
-    -------------------------------------------------------------------------
-DATA16_C
-  Relative segment, address: C5F6 - C5FF (0xa bytes), align: 0
-  Segment part 30.            Intra module refs:   SIM900_SendSms
-    -------------------------------------------------------------------------
-DATA16_C
-  Relative segment, address: C600 - C601 (0x2 bytes), align: 0
-  Segment part 31.            Intra module refs:   SIM900_SendSms
-    -------------------------------------------------------------------------
-DATA16_C
-  Relative segment, address: C602 - C609 (0x8 bytes), align: 0
-  Segment part 32.            Intra module refs:   SIM900_SendSms
-    -------------------------------------------------------------------------
-DATA16_C
-  Relative segment, address: C60A - C60C (0x3 bytes), align: 0
-  Segment part 33.            Intra module refs:   SIM900_SendSms
-    -------------------------------------------------------------------------
-DATA16_C
-  Relative segment, address: C60D - C614 (0x8 bytes), align: 0
-  Segment part 34.            Intra module refs:   SIM900_SendSms
-    -------------------------------------------------------------------------
-DATA16_C
-  Relative segment, address: C615 - C61C (0x8 bytes), align: 0
-  Segment part 35.            Intra module refs:   SIM900_CircularBuffer_ExtractTelNum
-    -------------------------------------------------------------------------
-DATA16_C
-  Relative segment, address: C61D - C639 (0x1d bytes), align: 0
-  Segment part 36.            Intra module refs:   SIM900_ReadSms
-           LOCAL                   ADDRESS         
-           =====                   =======         
-           SIM900_SMS_CMD_ADD      C61D 
-    -------------------------------------------------------------------------
-DATA16_C
-  Relative segment, address: C63A - C652 (0x19 bytes), align: 0
-  Segment part 37.            Intra module refs:   SIM900_ReadSms
-           LOCAL                   ADDRESS         
-           =====                   =======         
-           SIM900_SMS_CMD_DEL      C63A 
-    -------------------------------------------------------------------------
-DATA16_C
-  Relative segment, address: C653 - C66F (0x1d bytes), align: 0
-  Segment part 38.            Intra module refs:   SIM900_ReadSms
-           LOCAL                   ADDRESS         
-           =====                   =======         
-           SIM900_SMS_CMD_CLEAN    C653 
-    -------------------------------------------------------------------------
-DATA16_C
-  Relative segment, address: C670 - C688 (0x19 bytes), align: 0
-  Segment part 39.            Intra module refs:   SIM900_ReadSms
-           LOCAL                   ADDRESS         
-           =====                   =======         
-           SIM900_SMS_CMD_CLOSE    C670 
-    -------------------------------------------------------------------------
-DATA16_C
-  Relative segment, address: C689 - C6A5 (0x1d bytes), align: 0
-  Segment part 40.            Intra module refs:   SIM900_ReadSms
-           LOCAL                   ADDRESS         
-           =====                   =======         
-           SIM900_SMS_CMD_CLOSE_   C689 
-    -------------------------------------------------------------------------
-DATA16_C
-  Relative segment, address: C6A6 - C6BE (0x19 bytes), align: 0
-  Segment part 41.            Intra module refs:   SIM900_ReadSms
-           LOCAL                   ADDRESS         
-           =====                   =======         
-           SIM900_SMS_CMD_OPEN     C6A6 
-    -------------------------------------------------------------------------
-DATA16_C
-  Relative segment, address: C6BF - C6DB (0x1d bytes), align: 0
-  Segment part 42.            Intra module refs:   SIM900_ReadSms
-           LOCAL                   ADDRESS         
-           =====                   =======         
-           SIM900_SMS_CMD_OPEN_    C6BF 
-    -------------------------------------------------------------------------
-DATA16_C
-  Relative segment, address: C6DC - C6F8 (0x1d bytes), align: 0
-  Segment part 43.            Intra module refs:   SIM900_ReadSms
-           LOCAL                   ADDRESS         
-           =====                   =======         
-           SIM900_SMS_CMD_CHECK    C6DC 
-    -------------------------------------------------------------------------
-DATA16_C
-  Relative segment, address: C6F9 - C70D (0x15 bytes), align: 0
-  Segment part 44.            Intra module refs:   SIM900_ReadSms
-           LOCAL                   ADDRESS         
-           =====                   =======         
-           SIM900_SMS_CMD_CHECK_BALANCE
-                                   C6F9 
-    -------------------------------------------------------------------------
-DATA16_C
-  Relative segment, address: C70E - C73E (0x31 bytes), align: 0
-  Segment part 45.            Intra module refs:   SIM900_ReadSms
-           LOCAL                   ADDRESS         
-           =====                   =======         
-           SIM900_SMS_CMD_SET_BALANCE
-                                   C70E 
-    -------------------------------------------------------------------------
-DATA16_C
-  Relative segment, address: C73F - C75B (0x1d bytes), align: 0
-  Segment part 46.            Intra module refs:   SIM900_ReadSms
-           LOCAL                   ADDRESS         
-           =====                   =======         
-           SIM900_SMS_CMD_TURN_LOAD_ON
-                                   C73F 
-    -------------------------------------------------------------------------
-DATA16_C
-  Relative segment, address: C75C - C77C (0x21 bytes), align: 0
-  Segment part 47.            Intra module refs:   SIM900_ReadSms
-           LOCAL                   ADDRESS         
-           =====                   =======         
-           SIM900_SMS_CMD_TURN_LOAD_OFF
-                                   C75C 
-    -------------------------------------------------------------------------
-DATA16_C
-  Relative segment, address: C77D - C7A5 (0x29 bytes), align: 0
-  Segment part 48.            Intra module refs:   SIM900_ReadSms
-           LOCAL                   ADDRESS         
-           =====                   =======         
-           SIM900_SMS_CMD_TEMPERATURE
-                                   C77D 
-    -------------------------------------------------------------------------
-DATA16_C
-  Relative segment, address: C7A6 - C7FE (0x59 bytes), align: 0
-  Segment part 49.            Intra module refs:   SIM900_ReadSms
-           LOCAL                   ADDRESS         
-           =====                   =======         
-           SIM900_SMS_REPORT_ADD_OK
-                                   C7A6 
-    -------------------------------------------------------------------------
-DATA16_C
-  Relative segment, address: C7FF - C847 (0x49 bytes), align: 0
-  Segment part 50.            Intra module refs:   SIM900_ReadSms
-           LOCAL                   ADDRESS         
-           =====                   =======         
-           SIM900_SMS_REPORT_ADD_ALREADY_ADDED
-                                   C7FF 
-    -------------------------------------------------------------------------
-DATA16_C
-  Relative segment, address: C848 - C8C0 (0x79 bytes), align: 0
-  Segment part 51.            Intra module refs:   SIM900_ReadSms
-           LOCAL                   ADDRESS         
-           =====                   =======         
-           SIM900_SMS_REPORT_ADD_NO_MEMORY
-                                   C848 
-    -------------------------------------------------------------------------
-DATA16_C
-  Relative segment, address: C8C1 - C8C9 (0x9 bytes), align: 0
-  Segment part 52.            Intra module refs:   SIM900_ReadSms
-           LOCAL                   ADDRESS         
-           =====                   =======         
-           SIM900_SMS_REPORT_ADD_FLASH_ERROR
-                                   C8C1 
-    -------------------------------------------------------------------------
-DATA16_C
-  Relative segment, address: C8CA - C8D2 (0x9 bytes), align: 0
-  Segment part 53.            Intra module refs:   SIM900_ReadSms
-           LOCAL                   ADDRESS         
-           =====                   =======         
-           SIM900_SMS_REPORT_ADD_FATAL_ERROR
-                                   C8CA 
-    -------------------------------------------------------------------------
-DATA16_C
-  Relative segment, address: C8D3 - C923 (0x51 bytes), align: 0
-  Segment part 54.            Intra module refs:   SIM900_ReadSms
-           LOCAL                   ADDRESS         
-           =====                   =======         
-           SIM900_SMS_REPORT_DEL_OK
-                                   C8D3 
-    -------------------------------------------------------------------------
-DATA16_C
-  Relative segment, address: C924 - C92C (0x9 bytes), align: 0
-  Segment part 55.            Intra module refs:   SIM900_ReadSms
-           LOCAL                   ADDRESS         
-           =====                   =======         
-           SIM900_SMS_REPORT_DEL_FLASH_ERROR
-                                   C924 
-    -------------------------------------------------------------------------
-DATA16_C
-  Relative segment, address: C92D - C935 (0x9 bytes), align: 0
-  Segment part 56.            Intra module refs:   SIM900_ReadSms
-           LOCAL                   ADDRESS         
-           =====                   =======         
-           SIM900_SMS_REPORT_DEL_FATAL_ERROR
-                                   C92D 
-    -------------------------------------------------------------------------
-DATA16_C
-  Relative segment, address: C936 - C97E (0x49 bytes), align: 0
-  Segment part 57.            Intra module refs:   SIM900_ReadSms
-           LOCAL                   ADDRESS         
-           =====                   =======         
-           SIM900_SMS_REPORT_CLEAN_OK
-                                   C936 
-    -------------------------------------------------------------------------
-DATA16_C
-  Relative segment, address: C97F - C987 (0x9 bytes), align: 0
-  Segment part 58.            Intra module refs:   SIM900_ReadSms
-           LOCAL                   ADDRESS         
-           =====                   =======         
-           SIM900_SMS_REPORT_CLEAN_FLASH_ERROR
-                                   C97F 
-    -------------------------------------------------------------------------
-DATA16_C
-  Relative segment, address: C988 - C990 (0x9 bytes), align: 0
-  Segment part 59.            Intra module refs:   SIM900_ReadSms
-           LOCAL                   ADDRESS         
-           =====                   =======         
-           SIM900_SMS_REPORT_CLEAN_FATAL_ERROR
-                                   C988 
-    -------------------------------------------------------------------------
-DATA16_C
-  Relative segment, address: C991 - CA4D (0xbd bytes), align: 0
-  Segment part 60.            Intra module refs:   SIM900_ReadSms
-           LOCAL                   ADDRESS         
-           =====                   =======         
-           SIM900_SMS_REPORT_LINK_LOST_WITH_MAIN_CONTROLLER
-                                   C991 
-    -------------------------------------------------------------------------
-DATA16_C
-  Relative segment, address: CA4E - CA9A (0x4d bytes), align: 0
-  Segment part 61.            Intra module refs:   SIM900_ReadSms
-           LOCAL                   ADDRESS         
-           =====                   =======         
-           SIM900_SMS_REPORT_CHECK_ALL_CLOSED
-                                   CA4E 
-    -------------------------------------------------------------------------
-DATA16_C
-  Relative segment, address: CA9B - CAE7 (0x4d bytes), align: 0
-  Segment part 62.            Intra module refs:   SIM900_ReadSms
-           LOCAL                   ADDRESS         
-           =====                   =======         
-           SIM900_SMS_REPORT_CHECK_ALL_OPENED
-                                   CA9B 
-    -------------------------------------------------------------------------
-DATA16_C
-  Relative segment, address: CAE8 - CB40 (0x59 bytes), align: 0
-  Segment part 63.            Intra module refs:   SIM900_ReadSms
-           LOCAL                   ADDRESS         
-           =====                   =======         
-           SIM900_SMS_REPORT_CHECK_NOT_ALL_OPENED
-                                   CAE8 
-    -------------------------------------------------------------------------
-DATA16_C
-  Relative segment, address: CB41 - CB71 (0x31 bytes), align: 0
-  Segment part 64.            Intra module refs:   SIM900_ReadSms
-           LOCAL                   ADDRESS         
-           =====                   =======         
-           SIM900_SMS_REPORT_BALANCE_SET_OK
-                                   CB41 
-    -------------------------------------------------------------------------
-DATA16_C
-  Relative segment, address: CB72 - CB7A (0x9 bytes), align: 0
-  Segment part 65.            Intra module refs:   SIM900_ReadSms
-           LOCAL                   ADDRESS         
-           =====                   =======         
-           SIM900_SMS_REPORT_BALANCE_SET_ERROR
-                                   CB72 
-    -------------------------------------------------------------------------
-DATA16_C
-  Relative segment, address: CB7B - CC1B (0xa1 bytes), align: 0
-  Segment part 66.            Intra module refs:   SIM900_ReadSms
-           LOCAL                   ADDRESS         
-           =====                   =======         
-           SIM900_SMS_REPORT_BALANCE_TELNUM_NOT_SET
-                                   CB7B 
-    -------------------------------------------------------------------------
-DATA16_C
-  Relative segment, address: CC1C - CC84 (0x69 bytes), align: 0
-  Segment part 67.            Intra module refs:   SIM900_ReadSms
-           LOCAL                   ADDRESS         
-           =====                   =======         
-           SIM900_SMS_REPORT_BALANCE_ERROR
-                                   CC1C 
-    -------------------------------------------------------------------------
-DATA16_C
-  Relative segment, address: CC85 - CC9D (0x19 bytes), align: 0
-  Segment part 68.            Intra module refs:   SIM900_ReadSms
-           LOCAL                   ADDRESS         
-           =====                   =======         
-           SIM900_SMS_REPORT_DEGREE_MARK
-                                   CC85 
-    -------------------------------------------------------------------------
-DATA16_C
-  Relative segment, address: CC9E - CCF2 (0x55 bytes), align: 0
-  Segment part 69.            Intra module refs:   SIM900_ReadSms
-           LOCAL                   ADDRESS         
-           =====                   =======         
-           SIM900_SMS_REPORT_LOAD1_ON
-                                   CC9E 
-    -------------------------------------------------------------------------
-DATA16_C
-  Relative segment, address: CCF3 - CD4B (0x59 bytes), align: 0
-  Segment part 70.            Intra module refs:   SIM900_ReadSms
-           LOCAL                   ADDRESS         
-           =====                   =======         
-           SIM900_SMS_REPORT_LOAD1_OFF
-                                   CCF3 
-    -------------------------------------------------------------------------
-DATA16_C
-  Relative segment, address: CD4C - CDA0 (0x55 bytes), align: 0
-  Segment part 71.            Intra module refs:   SIM900_ReadSms
-           LOCAL                   ADDRESS         
-           =====                   =======         
-           SIM900_SMS_REPORT_LOAD2_ON
-                                   CD4C 
-    -------------------------------------------------------------------------
-DATA16_C
-  Relative segment, address: CDA1 - CDF9 (0x59 bytes), align: 0
-  Segment part 72.            Intra module refs:   SIM900_ReadSms
-           LOCAL                   ADDRESS         
-           =====                   =======         
-           SIM900_SMS_REPORT_LOAD2_OFF
-                                   CDA1 
-    -------------------------------------------------------------------------
-DATA16_Z
-  Relative segment, address: 291C - 29E4 (0xc9 bytes), align: 0
-  Segment part 73.            Intra module refs:   SIM900_ReadSms
-           ENTRY                   ADDRESS         REF BY
-           =====                   =======         ======
-           SMS_Balance             291C 
-    -------------------------------------------------------------------------
-<CODE> 1 (was CODE)
-  Relative segment, address: D940 - DA97 (0x158 bytes), align: 1
-  Segment part 89.
-           ENTRY                   ADDRESS         REF BY
-           =====                   =======         ======
-           SIM900_ReInit           D940            ErrorHandler (main)
-                                                   main (main)
-               calls direct
-               CSTACK = 00000000 ( 00000004 )
-    -------------------------------------------------------------------------
-<CODE> 1 (was CODE)
-  Relative segment, address: D1C0 - D7A7 (0x5e8 bytes), align: 1
-  Segment part 88.
-           ENTRY                   ADDRESS         REF BY
-           =====                   =======         ======
-           SIM900_ReadSms          D1C0            main (main)
-               calls direct
-               CSTACK = 00000000 ( 00000108 )
-    -------------------------------------------------------------------------
-<CODE> 1 (was CODE)
-  Relative segment, address: DDFA - DEBF (0xc6 bytes), align: 1
-  Segment part 87.
-           ENTRY                   ADDRESS         REF BY
-           =====                   =======         ======
-           SIM900_SendSms          DDFA            main (main)
-               calls direct
-               CSTACK = 00000000 ( 0000003C )
-    -------------------------------------------------------------------------
-<CODE> 1 (was CODE)
-  Relative segment, address: E852 - E873 (0x22 bytes), align: 1
-  Segment part 86.            Intra module refs:   SIM900_ReInit
-           ENTRY                   ADDRESS         REF BY
-           =====                   =======         ======
-           SIM900_PowerOn          E852 
-               CSTACK = 00000000 ( 00000004 )
-    -------------------------------------------------------------------------
-<CODE> 1 (was CODE)
-  Relative segment, address: E874 - E895 (0x22 bytes), align: 1
-  Segment part 85.            Intra module refs:   SIM900_ReInit
-           ENTRY                   ADDRESS         REF BY
-           =====                   =======         ======
-           SIM900_PowerOff         E874 
-               CSTACK = 00000000 ( 00000004 )
-    -------------------------------------------------------------------------
-<CODE> 1 (was CODE)
-  Relative segment, address: E8FA - E917 (0x1e bytes), align: 1
-  Segment part 84.            Intra module refs:   SIM900_ReInit
-           ENTRY                   ADDRESS         REF BY
-           =====                   =======         ======
-           SIM900_SoftReset        E8FA 
-               calls direct
-               CSTACK = 00000000 ( 00000004 )
-    -------------------------------------------------------------------------
-<CODE> 1 (was CODE)
-  Relative segment, address: EA42 - EA49 (0x8 bytes), align: 1
-  Segment part 82.            Intra module refs:   SIM900_ReInit
-           ENTRY                   ADDRESS         REF BY
-           =====                   =======         ======
-           SIM900_GetStatus        EA42            main (main)
-               CSTACK = 00000000 ( 00000004 )
-    -------------------------------------------------------------------------
-<CODE> 1 (was CODE)
-  Relative segment, address: E97E - E995 (0x18 bytes), align: 1
-  Segment part 81.            Intra module refs:   SIM900_ReInit
-                                                   SIM900_ReadSms
-                                                   SIM900_SendSms
-           ENTRY                   ADDRESS         REF BY
-           =====                   =======         ======
-           SIM900_SendStr          E97E 
-               calls direct
-               CSTACK = 00000000 ( 00000006 )
-    -------------------------------------------------------------------------
-<CODE> 1 (was CODE)
-  Relative segment, address: EA36 - EA41 (0xc bytes), align: 1
-  Segment part 80.            Intra module refs:   SIM900_ReInit
-                                                   SIM900_ReadSms
-                                                   SIM900_SendSms
-           ENTRY                   ADDRESS         REF BY
-           =====                   =======         ======
-           SIM900_CircularBuffer_Purge
-                                   EA36 
-               CSTACK = 00000000 ( 00000004 )
-    -------------------------------------------------------------------------
-<CODE> 1 (was CODE)
-  Relative segment, address: DF6C - E003 (0x98 bytes), align: 1
-  Segment part 75.            Intra module refs:   SIM900_ReadSms
-                                                   SIM900_WaitForResponse
-           ENTRY                   ADDRESS         REF BY
-           =====                   =======         ======
-           SIM900_CircularBuf_Search
-                                   DF6C            main (main)
-               CSTACK = 00000000 ( 0000000C )
-    -------------------------------------------------------------------------
-<CODE> 1 (was CODE)
-  Relative segment, address: DC62 - DD2D (0xcc bytes), align: 1
-  Segment part 79.            Intra module refs:   SIM900_ReadSms
-           ENTRY                   ADDRESS         REF BY
-           =====                   =======         ======
-           SIM900_CircularBuffer_Extract
-                                   DC62 
-               CSTACK = 00000000 ( 00000014 )
-    -------------------------------------------------------------------------
-<CODE> 1 (was CODE)
-  Relative segment, address: DB90 - DC61 (0xd2 bytes), align: 1
-  Segment part 78.            Intra module refs:   SIM900_ReadSms
-           ENTRY                   ADDRESS         REF BY
-           =====                   =======         ======
-           SIM900_CircularBuffer_ExtractTelNum
-                                   DB90 
-               CSTACK = 00000000 ( 00000014 )
-    -------------------------------------------------------------------------
-<CODE> 1 (was CODE)
-  Relative segment, address: DA98 - DB8F (0xf8 bytes), align: 1
-  Segment part 77.            Intra module refs:   SIM900_ReadSms
-           ENTRY                   ADDRESS         REF BY
-           =====                   =======         ======
-           SIM900_CircularBuffer_ExtractBalanceNum
-                                   DA98 
-               calls direct
-               CSTACK = 00000000 ( 00000010 )
-    -------------------------------------------------------------------------
-<CODE> 1 (was CODE)
-  Relative segment, address: E4AA - E4F5 (0x4c bytes), align: 1
-  Segment part 76.            Intra module refs:   SIM900_ReInit
-                                                   SIM900_ReadSms
-                                                   SIM900_SendSms
-           ENTRY                   ADDRESS         REF BY
-           =====                   =======         ======
-           SIM900_WaitForResponse
-                                   E4AA 
-               calls direct
-               CSTACK = 00000000 ( 0000000C )
-    -------------------------------------------------------------------------
-<CODE> 1 (was CODE)
-  Relative segment, address: E5C2 - E5FD (0x3c bytes), align: 1
-  Segment part 74.            Intra module refs:   SIM900_CircularBuffer_ExtractBalanceNum
-           ENTRY                   ADDRESS         REF BY
-           =====                   =======         ======
-           IsTelNumberSymbol       E5C2 
-               CSTACK = 00000000 ( 00000004 )
 
     *************************************************************************
 
@@ -1859,41 +1094,59 @@ DATA16_Z
   ======================
 DATA16_Z
   Relative segment, address: 245C - 266F (0x214 bytes), align: 1
-  Segment part 2.             Intra module refs:   SMS_Queue_Init
-                                                   SMS_Queue_Pop
-                                                   SMS_Queue_Push
+  Segment part 2.             Intra module refs:   SMS_Queue_Push
            LOCAL                   ADDRESS         
            =====                   =======         
            SMS_Queue               245C 
     -------------------------------------------------------------------------
 <CODE> 1 (was CODE)
-  Relative segment, address: EA28 - EA35 (0xe bytes), align: 1
-  Segment part 6.
-           ENTRY                   ADDRESS         REF BY
-           =====                   =======         ======
-           SMS_Queue_Init          EA28            main (main)
-               CSTACK = 00000000 ( 00000004 )
-    -------------------------------------------------------------------------
-<CODE> 1 (was CODE)
-  Relative segment, address: E092 - E11B (0x8a bytes), align: 1
+  Relative segment, address: C72A - C7B3 (0x8a bytes), align: 1
   Segment part 5.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           SMS_Queue_Push          E092            SIM900_ReadSms (sim900)
-                                                   SIM900_SendSms (sim900)
-                                                   USCI_A0_ISR (msp430_uart)
-                                                   main (main)
+           SMS_Queue_Push          C72A            USCI_A0_ISR (msp430_uart)
                calls direct
                CSTACK = 00000000 ( 00000008 )
+
+    *************************************************************************
+
+  FILE NAME : D:\gsme2 firmware\Debug\Obj\smspool.r43
+  PROGRAM MODULE, NAME : smspool
+
+  SEGMENTS IN THE MODULE
+  ======================
+DATA16_Z
+  Relative segment, address: 291C - 29F3 (0xd8 bytes), align: 0
+  Segment part 2.             Intra module refs:   SmsPool_Find
+                                                   SmsPool_Push
+           LOCAL                   ADDRESS         
+           =====                   =======         
+           Pool                    291C 
     -------------------------------------------------------------------------
 <CODE> 1 (was CODE)
-  Relative segment, address: E208 - E273 (0x6c bytes), align: 1
+  Relative segment, address: C8D0 - C919 (0x4a bytes), align: 1
+  Segment part 5.
+           ENTRY                   ADDRESS         REF BY
+           =====                   =======         ======
+           SmsPool_Push            C8D0            main (main)
+               calls direct
+               CSTACK = 00000000 ( 00000006 )
+    -------------------------------------------------------------------------
+<CODE> 1 (was CODE)
+  Relative segment, address: CA6C - CA7D (0x12 bytes), align: 1
   Segment part 4.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           SMS_Queue_Pop           E208            SIM900_SendSms (sim900)
-               calls direct
-               CSTACK = 00000000 ( 00000006 )
+           SmsPool_Pull            CA6C            main (main)
+               CSTACK = 00000000 ( 00000004 )
+    -------------------------------------------------------------------------
+<CODE> 1 (was CODE)
+  Relative segment, address: CA58 - CA6B (0x14 bytes), align: 1
+  Segment part 3.
+           ENTRY                   ADDRESS         REF BY
+           =====                   =======         ======
+           SmsPool_Find            CA58            main (main)
+               CSTACK = 00000000 ( 00000004 )
 
     *************************************************************************
 
@@ -1903,113 +1156,28 @@ DATA16_Z
   SEGMENTS IN THE MODULE
   ======================
 DATA16_N
-  Relative segment, address: 29EA - 2BDB (0x1f2 bytes), align: 0
-  Segment part 2.             Intra module refs:   TelDir_Clean
-                                                   TelDir_Del
-                                                   TelDir_FindTelNumber
-                                                   TelDir_GetBalanceNumber
-                                                   TelDir_GetNextTelNum
-                                                   TelDir_Init
+  Relative segment, address: 29F9 - 2BEA (0x1f2 bytes), align: 0
+  Segment part 2.             Intra module refs:   TelDir_GetNextTelNum
                                                    TelDir_Iterator_Init
-                                                   TelDir_Push
-                                                   TelDir_SetBalanceNumber
-                                                   TelDir_isBalanceNumberSet
            LOCAL                   ADDRESS         
            =====                   =======         
-           TelDir                  29EA 
+           TelDir                  29F9 
     -------------------------------------------------------------------------
 <CODE> 1 (was CODE)
-  Relative segment, address: E9AC - E9C1 (0x16 bytes), align: 1
-  Segment part 12.
-           ENTRY                   ADDRESS         REF BY
-           =====                   =======         ======
-           TelDir_Init             E9AC            main (main)
-               calls direct
-               CSTACK = 00000000 ( 00000004 )
-    -------------------------------------------------------------------------
-<CODE> 1 (was CODE)
-  Relative segment, address: E8B8 - E8D9 (0x22 bytes), align: 1
-  Segment part 11.            Intra module refs:   TelDir_Init
-           ENTRY                   ADDRESS         REF BY
-           =====                   =======         ======
-           TelDir_Clean            E8B8            SIM900_ReadSms (sim900)
-               calls direct
-               CSTACK = 00000000 ( 00000004 )
-    -------------------------------------------------------------------------
-<CODE> 1 (was CODE)
-  Relative segment, address: E11C - E19B (0x80 bytes), align: 1
-  Segment part 10.
-           ENTRY                   ADDRESS         REF BY
-           =====                   =======         ======
-           TelDir_Push             E11C            SIM900_ReadSms (sim900)
-                                                   main (main)
-               calls direct
-               CSTACK = 00000000 ( 00000008 )
-    -------------------------------------------------------------------------
-<CODE> 1 (was CODE)
-  Relative segment, address: E806 - E82D (0x28 bytes), align: 1
-  Segment part 9.
-           ENTRY                   ADDRESS         REF BY
-           =====                   =======         ======
-           TelDir_SetBalanceNumber
-                                   E806            SIM900_ReadSms (sim900)
-                                                   main (main)
-               calls direct
-               CSTACK = 00000000 ( 00000004 )
-    -------------------------------------------------------------------------
-<CODE> 1 (was CODE)
-  Relative segment, address: EA4A - EA4F (0x6 bytes), align: 1
-  Segment part 8.
-           ENTRY                   ADDRESS         REF BY
-           =====                   =======         ======
-           TelDir_GetBalanceNumber
-                                   EA4A            SIM900_ReadSms (sim900)
-               CSTACK = 00000000 ( 00000004 )
-    -------------------------------------------------------------------------
-<CODE> 1 (was CODE)
-  Relative segment, address: E004 - E091 (0x8e bytes), align: 1
-  Segment part 7.
-           ENTRY                   ADDRESS         REF BY
-           =====                   =======         ======
-           TelDir_Del              E004            SIM900_ReadSms (sim900)
-               calls direct
-               CSTACK = 00000000 ( 0000000C )
-    -------------------------------------------------------------------------
-<CODE> 1 (was CODE)
-  Relative segment, address: E5FE - E635 (0x38 bytes), align: 1
-  Segment part 6.
-           ENTRY                   ADDRESS         REF BY
-           =====                   =======         ======
-           TelDir_FindTelNumber    E5FE            SIM900_ReadSms (sim900)
-               calls direct
-               CSTACK = 00000000 ( 00000008 )
-    -------------------------------------------------------------------------
-<CODE> 1 (was CODE)
-  Relative segment, address: EA50 - EA55 (0x6 bytes), align: 1
+  Relative segment, address: CAB2 - CAB7 (0x6 bytes), align: 1
   Segment part 5.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           TelDir_Iterator_Init    EA50            USCI_A0_ISR (msp430_uart)
-                                                   main (main)
+           TelDir_Iterator_Init    CAB2            USCI_A0_ISR (msp430_uart)
                CSTACK = 00000000 ( 00000004 )
     -------------------------------------------------------------------------
 <CODE> 1 (was CODE)
-  Relative segment, address: E636 - E669 (0x34 bytes), align: 1
+  Relative segment, address: C91A - C94D (0x34 bytes), align: 1
   Segment part 4.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           TelDir_GetNextTelNum    E636            USCI_A0_ISR (msp430_uart)
-                                                   main (main)
+           TelDir_GetNextTelNum    C91A            USCI_A0_ISR (msp430_uart)
                calls direct
-               CSTACK = 00000000 ( 00000004 )
-    -------------------------------------------------------------------------
-<CODE> 1 (was CODE)
-  Relative segment, address: EA1A - EA27 (0xe bytes), align: 1
-  Segment part 3.
-           ENTRY                   ADDRESS         REF BY
-           =====                   =======         ======
-           TelDir_isBalanceNumberSet
-                                   EA1A            SIM900_ReadSms (sim900)
                CSTACK = 00000000 ( 00000004 )
 
     *************************************************************************
@@ -2020,62 +1188,36 @@ DATA16_N
   SEGMENTS IN THE MODULE
   ======================
 DATA16_Z
-  Relative segment, address: 29E5 - 29E9 (0x5 bytes), align: 0
+  Relative segment, address: 29F4 - 29F8 (0x5 bytes), align: 0
   Segment part 2.             Intra module refs:   toUCS2
            LOCAL                   ADDRESS         
            =====                   =======         
-           ucs2_rv                 29E5 
+           ucs2_rv                 29F4 
     -------------------------------------------------------------------------
 <CODE> 1 (was CODE)
-  Relative segment, address: E340 - E3A3 (0x64 bytes), align: 1
-  Segment part 8.
-           ENTRY                   ADDRESS         REF BY
-           =====                   =======         ======
-           strToCP1251             E340            SIM900_ReadSms (sim900)
-               calls direct
-               CSTACK = 00000000 ( 00000010 )
-    -------------------------------------------------------------------------
-<CODE> 1 (was CODE)
-  Relative segment, address: E45C - E4A9 (0x4e bytes), align: 1
+  Relative segment, address: C882 - C8CF (0x4e bytes), align: 1
   Segment part 7.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           strToUCS2               E45C            USCI_A0_ISR (msp430_uart)
+           strToUCS2               C882            USCI_A0_ISR (msp430_uart)
                calls direct
                CSTACK = 00000000 ( 00000010 )
     -------------------------------------------------------------------------
 <CODE> 1 (was CODE)
-  Relative segment, address: E274 - E2DB (0x68 bytes), align: 1
-  Segment part 6.             Intra module refs:   strToCP1251
-           ENTRY                   ADDRESS         REF BY
-           =====                   =======         ======
-           toCP1251                E274 
-               calls direct
-               CSTACK = 00000000 ( 00000008 )
-    -------------------------------------------------------------------------
-<CODE> 1 (was CODE)
-  Relative segment, address: E3A4 - E405 (0x62 bytes), align: 1
+  Relative segment, address: C820 - C881 (0x62 bytes), align: 1
   Segment part 5.             Intra module refs:   strToUCS2
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           toUCS2                  E3A4 
+           toUCS2                  C820 
                calls direct
                CSTACK = 00000000 ( 00000008 )
     -------------------------------------------------------------------------
 <CODE> 1 (was CODE)
-  Relative segment, address: E7DE - E805 (0x28 bytes), align: 1
-  Segment part 4.             Intra module refs:   toCP1251
-           LOCAL                   ADDRESS         
-           =====                   =======         
-           hextodig                E7DE 
-               CSTACK = 00000000 ( 00000004 )
-    -------------------------------------------------------------------------
-<CODE> 1 (was CODE)
-  Relative segment, address: E896 - E8B7 (0x22 bytes), align: 1
+  Relative segment, address: C9B2 - C9D3 (0x22 bytes), align: 1
   Segment part 3.             Intra module refs:   toUCS2
            LOCAL                   ADDRESS         
            =====                   =======         
-           digtohex                E896 
+           digtohex                C9B2 
                CSTACK = 00000000 ( 00000004 )
 
     *************************************************************************
@@ -2086,11 +1228,11 @@ DATA16_Z
   SEGMENTS IN THE MODULE
   ======================
 <CODE> 1 (was CODE)
-  Relative segment, address: EA5E - EA5F (0x2 bytes), align: 1
+  Relative segment, address: CAC0 - CAC1 (0x2 bytes), align: 1
   Segment part 2.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           __DebugBreak            EA5E            __exit (?__exit)
+           __DebugBreak            CAC0            __exit (?__exit)
 
     -------------------------------------------------------------------------
   LIBRARY MODULE, NAME : ?__exit
@@ -2098,11 +1240,11 @@ DATA16_Z
   SEGMENTS IN THE MODULE
   ======================
 <CODE> 1 (was CODE)
-  Relative segment, address: E996 - E9AB (0x16 bytes), align: 1
+  Relative segment, address: CA42 - CA57 (0x16 bytes), align: 1
   Segment part 2.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           __exit                  E996            Segment part 6 (?_exit)
+           __exit                  CA42            Segment part 6 (?_exit)
                                                    _exit (?_exit)
                calls direct
 
@@ -2112,14 +1254,14 @@ DATA16_Z
   SEGMENTS IN THE MODULE
   ======================
 <CODE> 1 (was CODE)
-  Relative segment, address: EA56, align: 1
+  Relative segment, address: CABC, align: 1
   Segment part 0.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           _exit                   EA56            exit (?exit)
+           _exit                   CABC            exit (?exit)
     -------------------------------------------------------------------------
 <CODE> 1 (was CODE)
-  Relative segment, address: EA56 - EA59 (0x4 bytes), align: 1
+  Relative segment, address: CABC - CABF (0x4 bytes), align: 1
   Segment part 6.             Intra module refs:   _exit
 
     -------------------------------------------------------------------------
@@ -2136,40 +1278,40 @@ DATA16_Z
   Segment part 2.
     -------------------------------------------------------------------------
 CSTART
-  Relative segment, address: CDFA - CDFD (0x4 bytes), align: 1
+  Relative segment, address: C2D4 - C2D7 (0x4 bytes), align: 1
   Segment part 12.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           __program_start         CDFA            ?reset_vector (?reset_vector)
+           __program_start         C2D4            ?reset_vector (?reset_vector)
                                                    Absolute parts (?ABS_ENTRY_MOD)
-           ?cstart_begin           CDFA 
+           ?cstart_begin           C2D4 
     -------------------------------------------------------------------------
 CSTART
-  Relative segment, address: CDFE - CE09 (0xc bytes), align: 1
+  Relative segment, address: C2D8 - C2E3 (0xc bytes), align: 1
   Segment part 15.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           ?cstart_init_zero       CDFE            CirBuf (msp430_uart)
+           ?cstart_init_zero       C2D8            CirBuf (msp430_uart)
                                                    CirBuf_Head (msp430_uart)
                                                    CirBuf_NumBytes (msp430_uart)
                                                    CirBuf_Tail (msp430_uart)
                                                    ControllerSMS (msp430_uart)
                                                    InPack (main)
                                                    OutPack (main)
-                                                   PowMeas_PrevBatteryStatus (powmeas)
-                                                   SMS_Balance (sim900)
+                                                   Pool (smspool)
                                                    SMS_Queue (sms_queue)
                                                    State (main)
                                                    USCI_A0_ISR::num_received_bytes (msp430_uart)
+                                                   main::res (main)
                                                    ucs2_rv (ucs2)
     -------------------------------------------------------------------------
 CSTART
-  Relative segment, address: CE0A - CE11 (0x8 bytes), align: 1
+  Relative segment, address: C2E4 - C2EB (0x8 bytes), align: 1
   Segment part 22.            Intra module refs:   Segment part 12
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           ?cstart_call_main       CE0A 
-           ?cstart_end             CE12 
+           ?cstart_call_main       C2E4 
+           ?cstart_end             C2EC 
 
     -------------------------------------------------------------------------
   LIBRARY MODULE, NAME : ?reset_vector
@@ -2189,11 +1331,11 @@ RESET
   SEGMENTS IN THE MODULE
   ======================
 <CODE> 1 (was CODE)
-  Relative segment, address: EA5A - EA5D (0x4 bytes), align: 1
+  Relative segment, address: CAB8 - CABB (0x4 bytes), align: 1
   Segment part 2.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           exit                    EA5A            Segment part 22 (?cstart)
+           exit                    CAB8            Segment part 22 (?cstart)
                calls direct
                CSTACK = 00000000 ( 00000004 )
 
@@ -2203,41 +1345,12 @@ RESET
   SEGMENTS IN THE MODULE
   ======================
 <CODE> 1 (was CODE)
-  Relative segment, address: E918 - E933 (0x1c bytes), align: 1
+  Relative segment, address: C9F4 - CA0F (0x1c bytes), align: 1
   Segment part 0.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           ?DivMod8u               E918            strToCP1251 (ucs2)
-           ?DivMod16u              E91C            PowMeas_GetTemp (powmeas)
-                                                   SIM900_CircularBuffer_ExtractBalanceNum (sim900)
-                                                   Segment part 0 (?DivMod816s)
-                                                   toUCS2 (ucs2)
-
-    -------------------------------------------------------------------------
-  LIBRARY MODULE, NAME : ?DivMod816s
-
-  SEGMENTS IN THE MODULE
-  ======================
-<CODE> 1 (was CODE)
-  Relative segment, address: E66A - E69D (0x34 bytes), align: 1
-  Segment part 0.
-           ENTRY                   ADDRESS         REF BY
-           =====                   =======         ======
-           ?DivMod8s               E66A            SIM900_ReadSms (sim900)
-           ?DivMod16s              E66E 
-
-    -------------------------------------------------------------------------
-  LIBRARY MODULE, NAME : ?CopyMemoryBytes
-
-  SEGMENTS IN THE MODULE
-  ======================
-<CODE> 1 (was CODE)
-  Relative segment, address: E9FA - EA09 (0x10 bytes), align: 1
-  Segment part 0.
-           ENTRY                   ADDRESS         REF BY
-           =====                   =======         ======
-           ?CopyMemoryBytes        E9FA            SIM900_CircularBuffer_ExtractTelNum (sim900)
-                                                   SIM900_ReadSms (sim900)
+           ?DivMod8u               C9F4 
+           ?DivMod16u              C9F8            toUCS2 (ucs2)
 
     -------------------------------------------------------------------------
   LIBRARY MODULE, NAME : ?memzero
@@ -2245,24 +1358,11 @@ RESET
   SEGMENTS IN THE MODULE
   ======================
 <CODE> 1 (was CODE)
-  Relative segment, address: E9D6 - E9E7 (0x12 bytes), align: 1
+  Relative segment, address: CA7E - CA8F (0x12 bytes), align: 1
   Segment part 4.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           __data16_memzero        E9D6            ?cstart_init_zero (?cstart)
-               CSTACK = 00000000 ( 00000004 )
-
-    -------------------------------------------------------------------------
-  LIBRARY MODULE, NAME : ?strcat
-
-  SEGMENTS IN THE MODULE
-  ======================
-<CODE> 1 (was CODE)
-  Relative segment, address: E94E - E965 (0x18 bytes), align: 1
-  Segment part 2.
-           ENTRY                   ADDRESS         REF BY
-           =====                   =======         ======
-           strcat                  E94E            SIM900_ReadSms (sim900)
+           __data16_memzero        CA7E            ?cstart_init_zero (?cstart)
                CSTACK = 00000000 ( 00000004 )
 
     -------------------------------------------------------------------------
@@ -2271,14 +1371,11 @@ RESET
   SEGMENTS IN THE MODULE
   ======================
 <CODE> 1 (was CODE)
-  Relative segment, address: E8DA - E8F9 (0x20 bytes), align: 1
+  Relative segment, address: C9D4 - C9F3 (0x20 bytes), align: 1
   Segment part 2.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           strcmp                  E8DA            TelDir_Del (teldir)
-                                                   TelDir_FindTelNumber (teldir)
-                                                   TelDir_Push (teldir)
-                                                   USCI_A0_ISR (msp430_uart)
+           strcmp                  C9D4            USCI_A0_ISR (msp430_uart)
                CSTACK = 00000000 ( 00000004 )
 
     -------------------------------------------------------------------------
@@ -2287,17 +1384,13 @@ RESET
   SEGMENTS IN THE MODULE
   ======================
 <CODE> 1 (was CODE)
-  Relative segment, address: EA0A - EA19 (0x10 bytes), align: 1
+  Relative segment, address: CAA2 - CAB1 (0x10 bytes), align: 1
   Segment part 2.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           strcpy                  EA0A            SIM900_ReadSms (sim900)
-                                                   SMS_Queue_Pop (sms_queue)
-                                                   SMS_Queue_Push (sms_queue)
-                                                   TelDir_Del (teldir)
+           strcpy                  CAA2            SMS_Queue_Push (sms_queue)
+                                                   SmsPool_Push (smspool)
                                                    TelDir_GetNextTelNum (teldir)
-                                                   TelDir_Push (teldir)
-                                                   TelDir_SetBalanceNumber (teldir)
                                                    USCI_A0_ISR (msp430_uart)
                CSTACK = 00000000 ( 00000004 )
 
@@ -2307,16 +1400,12 @@ RESET
   SEGMENTS IN THE MODULE
   ======================
 <CODE> 1 (was CODE)
-  Relative segment, address: E9E8 - E9F9 (0x12 bytes), align: 1
+  Relative segment, address: CA90 - CAA1 (0x12 bytes), align: 1
   Segment part 2.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           strlen                  E9E8            SIM900_ReadSms (sim900)
-                                                   SIM900_SendStr (sim900)
-                                                   USCI_A0_ISR (msp430_uart)
-                                                   strToCP1251 (ucs2)
+           strlen                  CA90            USCI_A0_ISR (msp430_uart)
                                                    strToUCS2 (ucs2)
-                                                   toCP1251 (ucs2)
                CSTACK = 00000000 ( 00000004 )
 
 
@@ -2363,13 +1452,13 @@ DATA16_AN                              0140 - 0141               2   rel    0
                                        0752 - 0753               2 
                                        075C - 075D               2 
 DATA16_I                                  2400                       dse    0
-DATA16_Z                               2400 - 29E9             5EA   rel    1
-DATA16_N                               29EA - 2BDB             1F2   rel    0
+DATA16_Z                               2400 - 29F8             5F9   rel    1
+DATA16_N                               29F9 - 2BEA             1F2   rel    0
 CSTACK                                 3360 - 33FF              A0   rel    1
-DATA16_C                               C000 - CDF9             DFA   rel    0
-CSTART                                 CDFA - CE11              18   rel    1
-ISR_CODE                               CE12 - D1BF             3AE   rel    1
-<CODE> 1                               D1C0 - EA5F            18A0   rel    1
+DATA16_C                               C000 - C2D2             2D3   rel    0
+CSTART                                 C2D4 - C2EB              18   rel    1
+ISR_CODE                               C2EC - C699             3AE   rel    1
+<CODE> 1                               C69A - CAC1             428   rel    1
 INTVEC                                 FF80 - FFF1              72   com    1
 RESET                                  FFFE - FFFF               2   rel    1
 
@@ -2379,9 +1468,9 @@ RESET                                  FFFE - FFFF               2   rel    1
                 *                                      *
                 ****************************************
 
- 7 386 bytes of CODE  memory
- 2 172 bytes of DATA  memory (+ 91 absolute )
- 3 578 bytes of CONST memory
+ 2 146 bytes of CODE  memory
+ 2 187 bytes of DATA  memory (+ 91 absolute )
+   723 bytes of CONST memory
 
 Errors: none
 Warnings: none

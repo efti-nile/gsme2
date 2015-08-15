@@ -12,6 +12,7 @@
 #include "msp430_flash.h"
 #include "loads.h"
 #include "ucs2.h"
+#include "smspool.h"
 
 // Pins description ////////////////////////////////////////////////////////////
 

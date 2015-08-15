@@ -2,7 +2,7 @@
 
 <project>
   <fileVersion>2</fileVersion>
-  <fileChecksum>3498822832</fileChecksum>
+  <fileChecksum>1453951065</fileChecksum>
   <configuration>
     <name>Debug</name>
     <outputs>
@@ -65,6 +65,10 @@
       <file>$PROJ_DIR$\Debug\Obj\sim900.pbi</file>
       <file>$TOOLKIT_DIR$\inc\dlib\c\ycheck.h</file>
       <file>$PROJ_DIR$\Debug\Obj\delay.pbi</file>
+      <file>$PROJ_DIR$\src\smspool.c</file>
+      <file>$PROJ_DIR$\src\smspool.h</file>
+      <file>$PROJ_DIR$\Debug\Obj\smspool.r43</file>
+      <file>$PROJ_DIR$\Debug\Obj\smspool.pbi</file>
     </outputs>
     <file>
       <name>[ROOT_NODE]</name>
@@ -136,11 +140,11 @@
       <inputs>
         <tool>
           <name>ICC430</name>
-          <file> 0 40 38 54 9 4 2 6 7 55 57 22 35 44 47 28 34 29 8 3 1 5 10</file>
+          <file> 0 40 38 54 9 4 2 6 7 55 57 22 35 44 47 28 34 29 8 3 1 5 10 60</file>
         </tool>
         <tool>
           <name>BICOMP</name>
-          <file> 0 40 38 54 9 4 2 6 7 55 57 22 35 47 28 34 29 8 3 1 5 10</file>
+          <file> 0 40 38 54 9 4 2 6 7 55 57 22 35 47 28 34 29 8 3 1 5 10 60</file>
         </tool>
       </inputs>
     </file>
@@ -182,11 +186,11 @@
       <inputs>
         <tool>
           <name>ICC430</name>
-          <file> 4 40 38 54 9 0 2 6 7 55 57 22 35 44 47 28 34 29 8 3 1 5 10</file>
+          <file> 4 40 38 54 9 0 2 6 7 55 57 22 35 44 47 28 34 29 8 3 1 5 10 60</file>
         </tool>
         <tool>
           <name>BICOMP</name>
-          <file> 4 40 38 54 9 0 2 6 7 55 57 22 35 47 28 34 29 8 3 1 5 10</file>
+          <file> 4 40 38 54 9 0 2 6 7 55 57 22 35 47 28 34 29 8 3 1 5 10 60</file>
         </tool>
       </inputs>
     </file>
@@ -228,11 +232,11 @@
       <inputs>
         <tool>
           <name>ICC430</name>
-          <file> 6 40 38 54 9 2 4 0 7 55 57 22 35 44 47 28 34 29 8 3 5 1 10</file>
+          <file> 6 40 38 54 9 2 4 0 7 55 57 22 35 44 47 28 34 29 8 3 5 1 10 60</file>
         </tool>
         <tool>
           <name>BICOMP</name>
-          <file> 6 40 38 54 9 2 4 0 7 55 57 22 35 47 28 34 29 8 3 5 1 10</file>
+          <file> 6 40 38 54 9 2 4 0 7 55 57 22 35 47 28 34 29 8 3 5 1 10 60</file>
         </tool>
       </inputs>
     </file>
@@ -276,6 +280,10 @@
           <name>ICC430</name>
           <file> 8 40 38 54 9 3 55 57 22 35 44 47 28 34 29</file>
         </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 8 40 38 54 9 3 55 57 22 35 47 28 34 29</file>
+        </tool>
       </inputs>
     </file>
     <file>
@@ -312,7 +320,7 @@
       <inputs>
         <tool>
           <name>XLINK</name>
-          <file> 39 45 23 50 37 30 49 33 41 48 52 24 32</file>
+          <file> 39 45 23 50 37 30 49 33 41 48 61 52 24 32</file>
         </tool>
       </inputs>
     </file>
@@ -321,7 +329,30 @@
       <inputs>
         <tool>
           <name>BILINK</name>
-          <file> 58 46 36 21 42 51 56 25 26 31</file>
+          <file> 58 46 36 21 42 51 56 25 62 26 31</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\src\smspool.c</name>
+      <outputs>
+        <tool>
+          <name>ICC430</name>
+          <file> 61</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 62</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICC430</name>
+          <file> 60 55 57 22 35 44 47 28 34 29 9</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 60 55 57 22 35 47 28 34 29 9</file>
         </tool>
       </inputs>
     </file>

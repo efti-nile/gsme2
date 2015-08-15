@@ -30,7 +30,7 @@ ActionState=1
 Enabled=0
 ShowSource=1
 [DebugChecksum]
-Checksum=-393587195
+Checksum=-669912491
 [State Storage]
 Control Register=0
 [Sequencer]
@@ -49,16 +49,10 @@ Fmt0={W}0:ADC10CTL0	4	0
 Fmt1={W}0:FCTL3	4	0
 Fmt2={W}0:UCSCTL0	4	0
 Fmt3={W}0:tmp	3	0
-[CallStackLog]
-Enabled=0
-[DriverProfiling]
-Enabled=0
-Mode=0
-Graph=0
-Symbiont=0
-Exclusions=
 [Breakpoints]
-Count=0
+Bp0=_ "STD_CODE" "{$PROJ_DIR$\src\smspool.c}.18.9" 1 0 0 0 "" 0 ""
+Bp1=_ "STD_CODE" "{$PROJ_DIR$\src\main.c}.23.5" 1 0 0 0 "" 0 ""
+Count=2
 [FET]
 Clock mode=14
 Extended Clock mode=-1
@@ -90,3 +84,11 @@ LogFile=_ ""
 A0=_ "C:\work\gsme2 firmware\src\sim900.c" ""
 Count=1
 SuppressDialog=0
+[CallStackLog]
+Enabled=0
+[DriverProfiling]
+Enabled=0
+Mode=0
+Graph=0
+Symbiont=0
+Exclusions=
