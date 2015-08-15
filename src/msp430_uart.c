@@ -157,6 +157,25 @@ __interrupt void USCI_A0_ISR(void){
                     State.leak_now = 0;
                 }
 
+                // Check the new state of the water-leak-removed flag.
+                // If it has been just risen than send a message to everyone in
+                // the telephone directory.
+                State.leak_removed_prev = State.leak_removed_now;
+                if(InPack.COMMAND & IN_COMMAND_LEAKR){
+                    State.leak_removed_now = 1;
+                    if(!State.leak_removed_prev && State.leak_removed_now
+                       && State.leak_now && !State.leak_removed_flag_timeout){
+                        u8 TelNum[SMS_TELNUM_LEN];
+                        TelDir_Iterator_Init();
+                        while(TelDir_GetNextTelNum(TelNum)){
+                            SMS_Queue_Push(TelNum, SIM900_LEAK_REMOVED, SMS_LIFETIME);
+                        }
+                        State.leak_removed_flag_timeout = LEAK_FLAG_TIMEOUT;
+                    }
+                }else{
+                    State.leak_removed_now = 0;
+                }
+
                 // Check the new state of the low battery flag.
                 // If it has been just risen than send a warning to everyone in
                 // the telephone directory.
@@ -189,24 +208,6 @@ __interrupt void USCI_A0_ISR(void){
                     }
                 }else{
                     State.link_lost_now = 0;
-                }
-
-                // Check the new state of the water-leak-removed flag.
-                // If it has been just risen than send a message to everyone in
-                // the telephone directory.
-                State.leak_removed_prev = State.leak_removed_now;
-                if(InPack.COMMAND & IN_COMMAND_LEAKR){ // TODO: Check the sense of this flag on the WaterLeak controller
-                    State.leak_removed_now = 1;
-                    if(!State.leak_removed_prev && State.leak_removed_now
-                       && State.leak_now){
-                        u8 TelNum[SMS_TELNUM_LEN];
-                        TelDir_Iterator_Init();
-                        while(TelDir_GetNextTelNum(TelNum)){
-                            SMS_Queue_Push(TelNum, SIM900_LEAK_REMOVED, SMS_LIFETIME);
-                        }
-                    }
-                }else{
-                    State.leak_removed_now = 0;
                 }
 
                 // If there is some messages to send everyone, put the message in the

@@ -11,6 +11,10 @@ u8 SMS_Balance[SMS_TEXT_MAXLEN]; // TODO: maybe put it in stack?
     SIM900.
 */
 void SIM900_ReInit(void){
+    g_PWR_INIT;
+    g_HPWR_INIT;
+    g_STS_INIT;
+
 func_begin:
     SIM900_PowerOff(); // Power-off SIM900
 

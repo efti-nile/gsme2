@@ -9,29 +9,27 @@ int main(void)
 {
     WDTCTL = WDTPW + WDTCNTCL; // 1 min 25 s watchdog @ SMCLK 25MHz
 
+    State.initialization_in_progress = 1;
+
     LED_INIT;
     MSP430_UCS_Init();
     Delay_Init();
-
-    LED_Blinking3Times(); // The LED blinks 3 times to mark reset
-
-    //TelDir_SetBalanceNumber("002A0031003000300023"); // Delete in production
     TelDir_Init();
+
+#ifdef __DBG__
+    TelDir_SetBalanceNumber("002A0031003000300023");
     TelDir_Push("00380039003200370037003100350031003800360037");
+#endif
 
     MSP430_UART_Init();
     Loads_Init();
     SMS_Queue_Init();
     PowMeas_Init();
     __bis_SR_register(GIE);
-
-    g_PWR_INIT;
-    g_HPWR_INIT;
-    g_STS_INIT;
-    DBG_PIN_INIT;
-
-    SIM900_ReInit();
     SysTimer_Start();
+    SIM900_ReInit();
+
+    State.initialization_in_progress = 0;
 
     while(1){
         if(!SIM900_GetStatus()){
@@ -162,6 +160,9 @@ void SysTimer_Start(){
 __interrupt void TIMER1_A1_ISR(void){
     if(TA1CTL & TAIFG){
         TA1R = 0x0000;
+        if(State.initialization_in_progress){
+            LED_TOGGLE;
+        }
         if(State.close_valves_timeout > 0){
             State.close_valves_timeout--;
         }
@@ -173,6 +174,9 @@ __interrupt void TIMER1_A1_ISR(void){
 		}
         if(State.leak_flag_timeout > 0){
             State.leak_flag_timeout--;
+        }
+        if(State.leak_removed_flag_timeout > 0){
+            State.leak_removed_flag_timeout--;
         }
 #ifdef __DBG__
         if(State.leak_now){
@@ -285,16 +289,4 @@ void MSP430_UCS_Init(void){
     UCSCTL2 = UCSCTL2 & 0xFC00 | 762; // Set N = 762
     UCSCTL1 = UCSCTL1 & 0xFF8F | 0x0060; // Set DCORSEL = 6
     UCSCTL1 = UCSCTL1 & 0xE0FF | 0x0F00; // Set DCO = 15
-}
-
-/*!
-	\brief 3 LED's blinks signal device reset
-*/
-void LED_Blinking3Times(void){
-	for(u8 i = 0; i < 3; i++){
-        Delay_DelayMs(100);
-        LED_ON;
-        Delay_DelayMs(100);
-        LED_OFF;
-	}
 }

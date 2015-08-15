@@ -9,8 +9,9 @@
 
 #define VALVE_NAME_MAXLEN (10+1)
 
-#define LED_ON P5OUT |= BIT3
-#define LED_OFF P5OUT &= ~BIT3
+#define LED_ON     P5OUT |= BIT3
+#define LED_OFF    P5OUT &= ~BIT3
+#define LED_TOGGLE P5OUT ^= BIT3
 
 typedef unsigned long int u32;
 typedef signed long int s32;
@@ -45,13 +46,14 @@ struct State_TypeDef{
     u8 battery_ok_in_gsm_extender_now;
     u8 ext_supply_ok_prev;
     u8 ext_supply_ok_now;
-    u8 sim900_initialized;
+    u8 initialization_in_progress;
     // Timers and timeouts
     u16 sms_timer;
     u16 close_valves_timeout;
     u16 open_valves_timeout;
     u16 controller_link_timeout;
     u16 leak_flag_timeout;
+    u16 leak_removed_flag_timeout;
 };
 
 struct InPack_TypeDef{
@@ -97,5 +99,11 @@ struct TelDir_TypeDef{
     u8 Iterator;
 };
 
+// SMS pool
+#define SMSPOOL_SIZE
+
+struct SmsPool_TypeDef{
+  u8 NumItems;
+};
 
 #endif

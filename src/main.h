@@ -90,5 +90,4 @@ void SIM900_ReInit(void);
 void Init(void);
 void SysTimer_Start();
 __interrupt void TIMER1_A1_ISR(void);
-void LED_Blinking3Times(void);
 
