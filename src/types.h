@@ -45,11 +45,13 @@ struct State_TypeDef{
     u8 battery_ok_in_gsm_extender_now;
     u8 ext_supply_ok_prev;
     u8 ext_supply_ok_now;
+    u8 sim900_initialized;
     // Timers and timeouts
-    u32 sms_timer;
-    u32 close_valves_timeout;
-    u32 open_valves_timeout;
-    u32 ok_timeout;
+    u16 sms_timer;
+    u16 close_valves_timeout;
+    u16 open_valves_timeout;
+    u16 controller_link_timeout;
+    u16 leak_flag_timeout;
 };
 
 struct InPack_TypeDef{

@@ -48,12 +48,23 @@
 #define DBG_PIN_LOW P6OUT &= BIT0^0xFF
 
 
-// Timeouts in seconds /////////////////////////////////////////////////////////
+// Timeouts ////////////////////////////////////////////////////////////////////
+// 1 == 150 ms
+#ifndef __DBG__
 
-//#define SMS_TIMER_MOD 20
 #define CLOSE_VALVES_TIMEOUT 50
-#define OPEN_VALVES_TIMEOUT 50
-#define OK_TIMEOUT 50
+#define OPEN_VALVES_TIMEOUT  50
+#define OK_TIMEOUT           50
+#define LEAK_FLAG_TIMEOUT    400 // Min. time between two alarm SMSs
+
+#else
+
+#define CLOSE_VALVES_TIMEOUT 50
+#define OPEN_VALVES_TIMEOUT  50
+#define OK_TIMEOUT           50
+#define LEAK_FLAG_TIMEOUT    30
+
+#endif
 
 // State variables /////////////////////////////////////////////////////////////
 

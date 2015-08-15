@@ -116,18 +116,15 @@ __interrupt void USCI_A0_ISR(void){
         if(num_received_bytes > 1 && if_address){
             num_received_bytes = 0;
         }else
+        // Save WaterLeak controller address
         if(num_received_bytes == 3){
             State.controller_address = InPack.SourceAddress;
         }else
         // If we managed to receive all pack's bytes until time-out expired
         if(num_received_bytes >= InPack.Length + 2){
-            UCA1IE &= ~UCRXIE; // TODO: If is it necessary?
             if(((u8*)&InPack)[InPack.Length + 1] == CRC_Calc((u8*)&InPack, InPack.Length + 1)){ // Check incoming packet CRC
 
-                State.ok_timeout = OK_TIMEOUT; // Update OK timeout
-                if(SIM900_GetStatus()){
-                    LED_ON;
-                }
+                State.controller_link_timeout = OK_TIMEOUT; // Update OK timeout
 
                 if(InPack.COMMAND & IN_COMMAND_AVC){
                     if(State.request_close_valves){ // TODO: But what happens if this condition checked right after request gotten?
@@ -144,16 +141,17 @@ __interrupt void USCI_A0_ISR(void){
 
                 // Check the new state of the water leak flag.
                 // If it has been just risen than send alarm everyone in
-                // the telephone directory
-                State.leak_prev = State.leak_now; // TODO: That is discussed to change this behaviour
+                // the telephone directory.
+                State.leak_prev = State.leak_now;
                 if(InPack.COMMAND & IN_COMMAND_LEAK){
                     State.leak_now = 1;
-                    if(!State.leak_prev && State.leak_now){
+                    if(!State.leak_prev && State.leak_now && !State.leak_flag_timeout){
                         u8 TelNum[SMS_TELNUM_LEN];
                         TelDir_Iterator_Init();
                         while(TelDir_GetNextTelNum(TelNum)){
                             SMS_Queue_Push(TelNum, SIM900_SMS_REPORT_LEAK, SMS_LIFETIME);
                         }
+                        State.leak_flag_timeout = LEAK_FLAG_TIMEOUT;
                     }
                 }else{
                     State.leak_now = 0;
@@ -246,8 +244,6 @@ __interrupt void USCI_A0_ISR(void){
                     SendCmd();
                 }
             }
-
-            UCA1IE |= UCRXIE;
 
             num_received_bytes = 0;
         }

@@ -35,8 +35,12 @@ int main(void)
 
     while(1){
         if(!SIM900_GetStatus()){
-          SIM900_ReInit();
-        };
+            SIM900_ReInit();
+        }else if(State.controller_link_timeout > 0){
+            LED_ON;
+        }else{
+            LED_OFF;
+        }
 				
 		WDTCTL = WDTPW + WDTCNTCL;
 
@@ -45,13 +49,9 @@ int main(void)
         }
         SIM900_SendSms();
 
-        if(State.ok_timeout == 0){
-            LED_OFF;
-        }
-
         // Check link with main controller
         State.link_ok_with_main_controller_prev = State.link_ok_with_main_controller_now;
-        State.link_ok_with_main_controller_now = (State.ok_timeout > 0);
+        State.link_ok_with_main_controller_now = (State.controller_link_timeout > 0);
         if( State.link_ok_with_main_controller_prev &&
             !State.link_ok_with_main_controller_now )
         {
@@ -89,7 +89,17 @@ int main(void)
             }
         }
 
-        Delay_DelayMs(3000);
+        // If open valves timeout elapsed
+        if(!State.open_valves_timeout && State.request_open_valves){
+            State.request_open_valves = 0;
+            SMS_Queue_Push(State.TelNumOfSourceOfRequest, SIM900_SMS_REPORT_OPEN_NOT_ALL, SMS_LIFETIME);
+        }
+
+        // If close valves timeout elapsed
+        if(!State.close_valves_timeout && State.request_close_valves){
+            State.request_close_valves = 0;
+            SMS_Queue_Push(State.TelNumOfSourceOfRequest, SIM900_SMS_REPORT_CLOSE_NOT_ALL, SMS_LIFETIME);
+        }
     }
 }
 
@@ -154,22 +164,29 @@ __interrupt void TIMER1_A1_ISR(void){
         TA1R = 0x0000;
         if(State.close_valves_timeout > 0){
             State.close_valves_timeout--;
-            if(!State.close_valves_timeout && State.request_close_valves){
-                State.request_close_valves = 0;
-                SMS_Queue_Push(State.TelNumOfSourceOfRequest, SIM900_SMS_REPORT_CLOSE_NOT_ALL, SMS_LIFETIME);
-            }
         }
         if(State.open_valves_timeout > 0){
             State.open_valves_timeout--;
-            if(!State.open_valves_timeout && State.request_open_valves){
-                State.request_open_valves = 0;
-                SMS_Queue_Push(State.TelNumOfSourceOfRequest, SIM900_SMS_REPORT_OPEN_NOT_ALL, SMS_LIFETIME);
-            }
         }
-		if(State.ok_timeout > 0){
-			State.ok_timeout--;
+		if(State.controller_link_timeout > 0){
+			State.controller_link_timeout--;
 		}
-        TA1CTL &= ~TAIFG; // TODO: If this is necessary to clear the flag?
+        if(State.leak_flag_timeout > 0){
+            State.leak_flag_timeout--;
+        }
+#ifdef __DBG__
+        if(State.leak_now){
+            Loads_Command(LOAD1_ON);
+        }else{
+            Loads_Command(LOAD1_OFF);
+        };
+        if(State.leak_removed_now){
+            Loads_Command(LOAD2_ON);
+        }else{
+            Loads_Command(LOAD2_OFF);
+        };
+#endif
+        TA1CTL &= ~TAIFG;
     }
 }
 

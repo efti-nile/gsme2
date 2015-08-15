@@ -185,7 +185,7 @@ void SIM900_ReadSms(void){
     }else
     // Check GSM-link and valves-state simultaneously
     if(SIM900_CircularBuf_Search(SIM900_SMS_CMD_CHECK) != -1){
-        if(State.ok_timeout > 0){
+        if(State.controller_link_timeout > 0){
             if(InPack.COMMAND & IN_COMMAND_AVC){
                 SMS_Queue_Push(TelNum, SIM900_SMS_REPORT_CHECK_ALL_CLOSED, SMS_LIFETIME);
             }else
