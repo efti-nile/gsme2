@@ -39,5 +39,6 @@ s8 TelDir_FindTelNumber(u8 *TelNum);
 void TelDir_Iterator_Init(void);
 u8 TelDir_GetNextTelNum(u8 *TelNum);
 u8 TelDir_isBalanceNumberSet(void);
+u8 TelDir_NumItems(void);
 
 #endif

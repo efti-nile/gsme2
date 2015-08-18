@@ -60,7 +60,7 @@ int main(void)
             }
         }
 
-
+#ifdef __PWR_CONTROL__
         // Check battery in GSM Extender
         State.battery_ok_in_gsm_extender_prev = State.battery_ok_in_gsm_extender_now;
         State.battery_ok_in_gsm_extender_now = PowMeas_BatteryStatus();
@@ -86,6 +86,7 @@ int main(void)
                 SMS_Queue_Push(TelNum, SIM900_SMS_REPORT_EXTERNAL_SUPPLY_LOST, SMS_LIFETIME);
             }
         }
+#endif
 
         // If open valves timeout elapsed
         if(!State.open_valves_timeout && State.request_open_valves){

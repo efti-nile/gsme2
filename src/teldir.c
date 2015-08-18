@@ -100,3 +100,7 @@ u8 TelDir_isBalanceNumberSet(void){
         return 0;
     }
 }
+
+u8 TelDir_NumItems(void){
+    return TelDir.NumItems;
+}

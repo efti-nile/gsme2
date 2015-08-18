@@ -8,7 +8,8 @@
 // Voltage levels
 #define BATTERY_CRYT_VOLTAGE            366 // 366 = 4.4V
 #define BATTERY_HYSTERESIS              8 // 8 = 0.1V
-#define EXTERNAL_SUPPLY_CRYT_VOLTAGE    491 // 491 = 4.8V
+#define EXTERNAL_SUPPLY_CRYT_VOLTAGE    501 // 491 = 4.8V
+#define EXTERNAL_SUPPLY_HYSTERESIS      10
 
 // Enable battery measurement circuit
 #define ENBAT_INIT {P5OUT &= ~BIT2; P5DIR |= BIT2; P5REN &= ~BIT2; P5SEL &= ~BIT2; P5DS &= ~BIT2;}

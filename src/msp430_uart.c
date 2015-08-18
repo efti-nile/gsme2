@@ -1,7 +1,5 @@
 #include "msp430_uart.h"
 
-u8 ControllerSMS[70*4];
-
 u8 CirBuf[CIRBUF_SIZE];
 u16 CirBuf_Tail = 0;
 u16 CirBuf_Head = 0;
@@ -214,10 +212,13 @@ __interrupt void USCI_A0_ISR(void){
                 // buffer.
                 if(InPack.COMMAND & IN_COMMAND_SEND_SMS){
                     u8 TelNum[SMS_TELNUM_LEN];
-                    strToUCS2(ControllerSMS, InPack.Optional);
-                    TelDir_Iterator_Init();
-                    while(TelDir_GetNextTelNum(TelNum)){
-                        SMS_Queue_Push(TelNum, ControllerSMS, SMS_LIFETIME);
+                    u8 *ptr = SmsPool_GetPtrForPush(TelDir_NumItems());
+                    if(ptr != NULL){
+                        strToUCS2(ptr, InPack.Optional);
+                        TelDir_Iterator_Init();
+                        while(TelDir_GetNextTelNum(TelNum)){
+                            SMS_Queue_Push(TelNum, ptr, SMS_LIFETIME);
+                        }
                     }
                 };
 

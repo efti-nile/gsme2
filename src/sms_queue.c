@@ -25,6 +25,9 @@ u8 SMS_Queue_Pop(u8 *TelNum, u8 **SmsText){
     if(SMS_Queue.NumItems > 0){
         strcpy((char *)TelNum, (char const *)SMS_Queue.List[SMS_Queue.FirstItem].TelNum);
         *SmsText = SMS_Queue.List[SMS_Queue.FirstItem].SmsText;
+        if(SmsPool_Find(*SmsText)){
+            SmsPool_Pull(*SmsText);
+        }
         LifeTime = SMS_Queue.List[SMS_Queue.FirstItem].LifeTime;
         SMS_Queue.FirstItem = SMS_Queue.FirstItem < SMS_QUEUE_MAXSIZE - 1 ? ++SMS_Queue.FirstItem : 0;
         SMS_Queue.NumItems--;

@@ -3,6 +3,7 @@
 
 #include "io430.h"
 #include "types.h"
+#include "smspool.h"
 #include <string.h>
 
 #define SMS_LIFETIME 5

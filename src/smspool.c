@@ -2,6 +2,16 @@
 
 static struct SmsPool_Item_TypeDef Pool[SMSPOOL_SIZE];
 
+u8 *SmsPool_GetPtrForPush(u8 qty){
+    for(u8 i = 0; i < SMSPOOL_SIZE; i++){
+        if(Pool[i].Qty == 0){
+            Pool[i].Qty = qty;
+            return Pool[i].Text;
+        }
+    }
+    return NULL;
+}
+
 u8* SmsPool_Push(u8 *text, u8 qty){
     for(u8 i = 0; i < SMSPOOL_SIZE; i++){
         if(Pool[i].Qty == 0){

@@ -1,12 +1,6 @@
 #include "powmeas.h"
 
-/*!
-    \brief The last status of the battery
-
-    Remembers the last status of battery: 1 - charged, 0 - discharged.
-    It helps to implement hysteresis.
-*/
-static u8 PowMeas_PrevBatteryStatus;
+extern struct State_TypeDef State;
 
 /*!
     \brief Initializes IO, ADC_10A and REF for power measurement.
@@ -33,11 +27,6 @@ void PowMeas_Init(void){
     ADC10CTL2 |= ADC10RES; // 10-bit result
     ADC10MCTL0 |= 1 << 4; // Use internal reference as ADC reference
     REFCTL0 |= REFMSTR | 0X3 << 4 | REFON; // Configure internal 2.5V reference
-
-
-    ENBAT_SET;
-    PowMeas_PrevBatteryStatus = (PowMeas_AdcGet(INPWR_ADC_CH) > BATTERY_CRYT_VOLTAGE);
-    ENBAT_CLR;
 }
 
 /*!
@@ -51,12 +40,12 @@ u8 PowMeas_BatteryStatus(void){
     // TODO: Check if is it necessary to introduce some delay here. It may
     // allow to charge the ADC input capacitor fully.
 
+    Delay_DelayMs(2);
+
     retval = (
-        PowMeas_PrevBatteryStatus = (
-            PowMeas_AdcGet(INPWR_ADC_CH)
+            PowMeas_AdcGet(INBAT_ADC_CH)
              >
-            BATTERY_CRYT_VOLTAGE - (PowMeas_PrevBatteryStatus * 2 - 1) * BATTERY_HYSTERESIS
-        )
+            BATTERY_CRYT_VOLTAGE + (State.battery_ok_in_gsm_extender_prev ? -BATTERY_HYSTERESIS : +BATTERY_HYSTERESIS)
     );
 
     ENBAT_CLR;
@@ -68,7 +57,8 @@ u8 PowMeas_BatteryStatus(void){
     \brief Returns 1 if external power supply is OK.
 */
 u8 PowMeas_ExternSupplyStatus(void){
-    return PowMeas_AdcGet(INPWR_ADC_CH) > EXTERNAL_SUPPLY_CRYT_VOLTAGE;
+    return PowMeas_AdcGet(INPWR_ADC_CH) > EXTERNAL_SUPPLY_CRYT_VOLTAGE +
+      (State.ext_supply_ok_prev ? -EXTERNAL_SUPPLY_HYSTERESIS : +EXTERNAL_SUPPLY_HYSTERESIS);
 }
 
 /*!
