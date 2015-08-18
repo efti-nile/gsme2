@@ -68,7 +68,7 @@ int main(void)
             !State.battery_ok_in_gsm_extender_now )
         {
             u8 TelNum[SMS_TELNUM_LEN];
-            TelDir_Iterator_Init(); // TODO: I changed ...Iterator() to ...Iterator_Init()
+            TelDir_Iterator_Init();
             while(TelDir_GetNextTelNum(TelNum)){
                 SMS_Queue_Push(TelNum, SIM900_SMS_REPORT_BATTERY_LOW_IN_GSM_EXTENDER, SMS_LIFETIME);
             }
@@ -205,8 +205,6 @@ __interrupt void TIMER1_A1_ISR(void){
     sends all that.
 */
 void SendCmd(void){
-    u16 i;
-
     OutPack.DevID = State.controller_address;
     OutPack.SourceAddress = MY_ADDRESS;
     OutPack.TID = 0;
@@ -215,8 +213,7 @@ void SendCmd(void){
 
     RxTx_RS485_TxEnable;
 	
-    i = 7000; // TODO: Rewrite this shit
-    while(i--);
+    __delay_cycles(175); // 175 = 7us @ 25MHz
 
     // Send the head of the outgoing packet - address byte
     MSP430_UART_SendAddress(UART_RS485, OutPack.DevID);
@@ -224,8 +221,7 @@ void SendCmd(void){
     // Send the rest of the outgoing packet - data bytes
     MSP430_UART_Send(UART_RS485, (u8 *)&OutPack + 1, OutPack.Length + 1);
 
-    i = 7000*3; // TODO: Bljad!
-    while(i--);
+    __delay_cycles(175); // 175 = 7us @ 25MHz
 
     RxTx_RS485_RxEnable;
 }

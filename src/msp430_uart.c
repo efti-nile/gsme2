@@ -91,7 +91,7 @@ void MSP430_UART_Send(u8 interface, u8 *src, u16 num){
 */
 #pragma vector=USCI_A0_VECTOR
 __interrupt void USCI_A0_ISR(void){
-    static u8 num_received_bytes = 0; // TODO: Can it be u8?
+    static u8 num_received_bytes = 0;
     volatile u8 tmp, if_address;
     switch(__even_in_range(UCA0IV,4))
     {
@@ -125,13 +125,13 @@ __interrupt void USCI_A0_ISR(void){
                 State.controller_link_timeout = OK_TIMEOUT; // Update OK timeout
 
                 if(InPack.COMMAND & IN_COMMAND_AVC){
-                    if(State.request_close_valves){ // TODO: But what happens if this condition checked right after request gotten?
+                    if(State.request_close_valves){
                         State.request_close_valves = 0;
-                        SMS_Queue_Push(State.TelNumOfSourceOfRequest, SIM900_SMS_REPORT_CLOSE_OK, SMS_LIFETIME); // TODO: What is the warrnty that the source of the request still held here?
+                        SMS_Queue_Push(State.TelNumOfSourceOfRequest, SIM900_SMS_REPORT_CLOSE_OK, SMS_LIFETIME);
                     }
                 }else
                 if(InPack.COMMAND & IN_COMMAND_AVO){
-                    if(State.request_open_valves){ // TODO: See above
+                    if(State.request_open_valves){
                         State.request_open_valves = 0;
                         SMS_Queue_Push(State.TelNumOfSourceOfRequest, SIM900_SMS_REPORT_OPEN_OK, SMS_LIFETIME);
                     }
