@@ -27,8 +27,8 @@ struct State_TypeDef{
     u8 TelNumOfSourceOfRequest[SMS_TELNUM_LEN];
     // Controller address in the RS-485 network
     u8 controller_address;
-		// During valve command execution name of the current group stored in this string
-		u8 current_valves_group[VALVE_NAME_MAXLEN];
+    // During valve command execution name of the current group stored in this string
+    u8 current_valves_group[VALVE_NAME_MAXLEN];
     // Flags
     u8 request_close_valves;
     u8 request_open_valves;
@@ -54,6 +54,7 @@ struct State_TypeDef{
     u16 controller_link_timeout;
     u16 leak_flag_timeout;
     u16 leak_removed_flag_timeout;
+    u16 link_lost_flag_timeout;
 };
 
 struct InPack_TypeDef{

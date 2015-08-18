@@ -179,6 +179,9 @@ __interrupt void TIMER1_A1_ISR(void){
         if(State.leak_removed_flag_timeout > 0){
             State.leak_removed_flag_timeout--;
         }
+        if(State.link_lost_flag_timeout > 0){
+            State.link_lost_flag_timeout--;
+        }
 #ifdef __DBG__
         if(State.leak_now){
             Loads_Command(LOAD1_ON);

@@ -197,12 +197,13 @@ __interrupt void USCI_A0_ISR(void){
                 State.link_lost_prev = State.link_lost_now; // TODO: That's said to report a name of the lost device (What's about wireless extenders?)
                 if(InPack.COMMAND & IN_COMMAND_CHL){
                     State.link_lost_now = 1;
-                    if(!State.link_lost_prev && State.link_lost_now){
+                    if(!State.link_lost_prev && State.link_lost_now && !State.link_lost_flag_timeout){
                         u8 TelNum[SMS_TELNUM_LEN];
                         TelDir_Iterator_Init();
                         while(TelDir_GetNextTelNum(TelNum)){
                             SMS_Queue_Push(TelNum, SIM900_DMD_REPORT_LINK_LOST, SMS_LIFETIME);
                         }
+                        State.link_lost_flag_timeout = LINK_LOST_FLAG_TIMEOUT;
                     }
                 }else{
                     State.link_lost_now = 0;
@@ -224,7 +225,6 @@ __interrupt void USCI_A0_ISR(void){
 
                 // If there is a some pending flag to execute user's request than
                 // send proper command to the WaterLeak controller.
-
                 if(State.request_close_valves){
                     if(strcmp((const char *)State.current_valves_group, "all") == 0){
                          OutPack.Length = 4; // Excluding DevID & Length

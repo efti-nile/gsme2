@@ -53,17 +53,19 @@
 // 1 == 150 ms
 #ifndef __DBG__
 
-#define CLOSE_VALVES_TIMEOUT 50
-#define OPEN_VALVES_TIMEOUT  50
-#define OK_TIMEOUT           50
-#define LEAK_FLAG_TIMEOUT    400 // Min. time between two alarm SMSs
+#define CLOSE_VALVES_TIMEOUT   50
+#define OPEN_VALVES_TIMEOUT    50
+#define OK_TIMEOUT             50
+#define LEAK_FLAG_TIMEOUT      400 // Min. time between two alarm SMSs
+#define LINK_LOST_FLAG_TIMEOUT 100
 
 #else
 
-#define CLOSE_VALVES_TIMEOUT 50
-#define OPEN_VALVES_TIMEOUT  50
-#define OK_TIMEOUT           50
-#define LEAK_FLAG_TIMEOUT    30
+#define CLOSE_VALVES_TIMEOUT   50
+#define OPEN_VALVES_TIMEOUT    50
+#define OK_TIMEOUT             50
+#define LEAK_FLAG_TIMEOUT      30
+#define LINK_LOST_FLAG_TIMEOUT 30
 
 #endif
 
