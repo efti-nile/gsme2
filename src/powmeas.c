@@ -37,10 +37,7 @@ u8 PowMeas_BatteryStatus(void){
 
     ENBAT_SET;
 
-    // TODO: Check if is it necessary to introduce some delay here. It may
-    // allow to charge the ADC input capacitor fully.
-
-    Delay_DelayMs(2);
+    __delay_cycles(125); // 125 = 5 us @ 25MHz
 
     retval = (
             PowMeas_AdcGet(INBAT_ADC_CH)

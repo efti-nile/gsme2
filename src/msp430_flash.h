@@ -10,4 +10,5 @@
 
 u8 flash_write(u8 *src, u16 num);
 u8 flash_read(u8 *dst, u16 num);
+
 #endif

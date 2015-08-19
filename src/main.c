@@ -3,7 +3,6 @@
 struct State_TypeDef State;
 struct InPack_TypeDef InPack;
 struct OutPack_TypeDef OutPack;
-volatile s8 tmp;
 
 int main(void)
 {
@@ -156,6 +155,8 @@ void SysTimer_Start(){
     3. OK Timeout
     This timeout is reset each time WaterLeak controller riches us. If timeout
     eventually expired that's concerned as the WaterLeak controller lost.
+
+    Etc.
 */
 #pragma vector=TIMER1_A1_VECTOR
 __interrupt void TIMER1_A1_ISR(void){
@@ -213,7 +214,7 @@ void SendCmd(void){
 
     RxTx_RS485_TxEnable;
 	
-    __delay_cycles(175); // 175 = 7us @ 25MHz
+    __delay_cycles(40000); // 175 = 7us @ 25MHz
 
     // Send the head of the outgoing packet - address byte
     MSP430_UART_SendAddress(UART_RS485, OutPack.DevID);
@@ -221,46 +222,9 @@ void SendCmd(void){
     // Send the rest of the outgoing packet - data bytes
     MSP430_UART_Send(UART_RS485, (u8 *)&OutPack + 1, OutPack.Length + 1);
 
-    __delay_cycles(175); // 175 = 7us @ 25MHz
+    __delay_cycles(40000); // 175 = 7us @ 25MHz
 
     RxTx_RS485_RxEnable;
-}
-
-/*!
-    \brief MCU peripheral initialization
-
-    The function configures the following modules:
-    1. USCI_AO for RS-485 communication
-    2. USCI_A1 for SIM900 communication
-    3. GPIO
-        3.1 Power switch pin for SIM900
-        3.2 Off/on SIM900 pin
-        3.3 Input pin to obtain SIM900 status
-        3.4 R\E\ RS485 (Toggling between Rx and Tx)
-        3.5 LED pin initialization
-    4. Delay module initialization
-    5. SMS Queue module initialization
-    6. Talephone Directory module initialzation
-    7. Power measurements initialization
-    8. SIM900 Start
-    9. Main timer start
-*/
-void Init(void){
-    // TODO: USCI_A0 initialization call
-    // TODO: USCI_A1 initialization call
-
-    //////////////////////// GPIO ////////////////////////////////////
-    g_HPWR_INIT;
-    g_PWR_INIT;
-
-    RxTx_RS485_INIT;
-    LED_INIT;
-
-    Delay_Init();
-    SMS_Queue_Init();
-    // TelDir_Init(); TODO: Port it.
-    PowMeas_Init();
-    SIM900_ReInit();
 }
 
 /*!

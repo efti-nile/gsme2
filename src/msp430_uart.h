@@ -13,8 +13,6 @@
 #define RxTx_RS485_RxEnable P3OUT &= ~BIT2
 #define RxTx_RS485_TxEnable P3OUT |= BIT2
 
-extern u8 ControllerSMS[70*4]; // This is a buffer for SMS that should be send to everyone
-
 // Circular buffer for USART connected to SIM900 /////////////////////
 
 void MSP430_UART_Init(void);

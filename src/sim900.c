@@ -114,7 +114,7 @@ void SIM900_ReadSms(void){
     // Extract telephone number which sent the SMS
     SIM900_CircularBuffer_ExtractTelNum(TelNum);
 
-    TelNum[3] = '8'; // Change '7' to '8' TODO: WTF?
+    TelNum[3] = '8';
 
     // Add the telephone number to the telephone dictionary
     if(SIM900_CircularBuf_Search(SIM900_SMS_CMD_ADD) != -1){
@@ -246,7 +246,6 @@ void SIM900_ReadSms(void){
         // Check if user set the telephone number for balance check
         if(TelDir_isBalanceNumberSet()){
             // Make up command to request balance
-            // TODO: Why do not send this long command seperately?
             u8 CMD[sizeof("AT+CUSD=1,\"AAAABBBBCCCCDDDDEEEE\"\r") + 8] = "AT+CUSD=1,\""; // 8 for just in case
             strcat((char *)CMD, (char const *)TelDir_GetBalanceNumber());
             strcat((char *)CMD, "\"\r");
@@ -594,7 +593,7 @@ u8 SIM900_CircularBuffer_ExtractBalanceNum(const u8 Pattern[], u8 *Dst, u16 Num)
 }
 
 u8 SIM900_WaitForResponse(u8 *pos_resp, u8 *neg_resp){
-    u32 timeout = SIM900_WAIT_FOR_RESPONSE_TIMEOUT; // TODO: may be not u42?
+    u32 timeout = SIM900_WAIT_FOR_RESPONSE_TIMEOUT;
     while(timeout--){
         Delay_DelayMs(100);
         if(SIM900_CircularBuf_Search(pos_resp) != -1){

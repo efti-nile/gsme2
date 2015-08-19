@@ -14,4 +14,6 @@ enum Load_CmdTypeDef{
 
 void Loads_Init(void);
 void Loads_Command(enum Load_CmdTypeDef cmd);
+
 #endif
+

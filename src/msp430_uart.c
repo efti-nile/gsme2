@@ -177,7 +177,7 @@ __interrupt void USCI_A0_ISR(void){
                 // Check the new state of the low battery flag.
                 // If it has been just risen than send a warning to everyone in
                 // the telephone directory.
-                State.check_battery_prev = State.check_battery_now; // TODO: That's said to report a type of the low battery device
+                State.check_battery_prev = State.check_battery_now;
                 if(InPack.COMMAND & IN_COMMAND_CHB){
                     State.check_battery_now = 1;
                     if(!State.check_battery_prev && State.check_battery_now){
@@ -194,7 +194,7 @@ __interrupt void USCI_A0_ISR(void){
                 // Check the new state of the some-device-lost flag.
                 // If it has been just risen than send a warning to everyone in
                 // the telephone directory.
-                State.link_lost_prev = State.link_lost_now; // TODO: That's said to report a name of the lost device (What's about wireless extenders?)
+                State.link_lost_prev = State.link_lost_now;
                 if(InPack.COMMAND & IN_COMMAND_CHL){
                     State.link_lost_now = 1;
                     if(!State.link_lost_prev && State.link_lost_now && !State.link_lost_flag_timeout){
@@ -243,7 +243,7 @@ __interrupt void USCI_A0_ISR(void){
                          OutPack.Length = 4 + strlen((const char *)State.current_valves_group) + 1; // Excluding DevID & Length & '\0'
                     }
                     OutPack.COMMAND = RESPONSE_OPEN_ALL;
-                    SendCmd();
+                     SendCmd();
                 }
             }
 

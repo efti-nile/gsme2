@@ -20,7 +20,7 @@ extern u16 CirBuf_Head;
 extern u16 CirBuf_NumBytes;
 
 
-// Simple buffer for SMS with information about balance //////////////
+// Simple buffer for SMS with information about balance ////////////////////////
 
 // Power SIM900
 #define g_HPWR_INIT {P2OUT &= BIT0^0xFF; P2DIR |= BIT0; P2REN &= BIT0^0xFF; P2SEL &= BIT0^0xFF; P2DS &= BIT0^0xFF;}
@@ -127,6 +127,5 @@ u8 SIM900_CircularBuffer_ExtractBalanceNum(const u8 Pattern[], u8 *Dst, u16 Num)
 u8 SIM900_WaitForResponse(u8 *pos_resp, u8 *neg_resp);
 u8 IsTelNumberSymbol(const u8 symbol[]);
 void SIM900_SendStr(u8* str);
-
 
 #endif

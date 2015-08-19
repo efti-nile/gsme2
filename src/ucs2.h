@@ -19,4 +19,5 @@ u8 *toUCS2(u8 c);
 u8 toCP1251(u8 *c);
 static u8 hextodig(u8 c);
 static u8 digtohex(u8 n);
+
 #endif
