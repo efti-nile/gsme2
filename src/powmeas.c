@@ -62,12 +62,17 @@ u8 PowMeas_ExternSupplyStatus(void){
     \brief Returns ADC value of specified channel.
 */
 u16 PowMeas_AdcGet(u8 channel){
-  ADC10CTL0 &= ~ADC10ENC; // Disable conversion
-  ADC10MCTL0 = (ADC10MCTL0 & 0xF0) | (channel & 0x0F); // Set channel
-  ADC10CTL0 |= ADC10ENC; // Enable conversion
-  ADC10CTL0 |= ADC10SC; // Start the conversion
-  while(!(ADC10IFG & ADC10IFG0)); // Wait until conversion completion
-  return ADC10MEM0; // Return the conversion value
+    u16 s = 0x0000;
+    for(u8 i = 0; i < NUM_SMPLS_PER_ONE_MEASUREMENT; ++i){
+        ADC10CTL0 &= ~ADC10ENC; // Disable conversion
+        ADC10MCTL0 = (ADC10MCTL0 & 0xF0) | (channel & 0x0F); // Set channel
+        ADC10CTL0 |= ADC10ENC; // Enable conversion
+        ADC10CTL0 |= ADC10SC; // Start the conversion
+        while(!(ADC10IFG & ADC10IFG0)); // Wait until conversion completion
+        s += ADC10MEM0;
+
+    }
+    return s /= NUM_SMPLS_PER_ONE_MEASUREMENT;
 }
 
 /*!

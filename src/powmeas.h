@@ -5,8 +5,11 @@
 #include "types.h"
 #include "delay.h"
 
+// Samples per 1 measurement
+#define NUM_SMPLS_PER_ONE_MEASUREMENT 20
+
 // Voltage levels
-#define BATTERY_CRYT_VOLTAGE            366 // 366 = 4.4V
+#define BATTERY_CRYT_VOLTAGE            433 // 366 = 4.4V 433 = 5.2V
 #define BATTERY_HYSTERESIS              8 // 8 = 0.1V
 #define EXTERNAL_SUPPLY_CRYT_VOLTAGE    501 // 491 = 4.8V
 #define EXTERNAL_SUPPLY_HYSTERESIS      10
