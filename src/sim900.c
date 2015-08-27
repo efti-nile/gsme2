@@ -74,7 +74,9 @@ func_begin:
     // Delete all SMS
     SIM900_SendStr("AT+CMGD=1,4\r");
     if(!SIM900_WaitForResponse("OK", "ERROR")){
-        goto func_begin;
+        if(SIM900_CircularBuf_Search("SMS res") == -1){ // If we received +CMS ERROR: SMS reserved, it's OK
+            goto func_begin;
+        }
     }
     SIM900_CircularBuffer_Purge();
 
