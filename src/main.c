@@ -28,6 +28,31 @@ int main(void)
     SysTimer_Start();
     SIM900_ReInit();
 
+    if(!PowMeas_ExternSupplyStatus()){
+        u8 TelNum[SMS_TELNUM_LEN];
+
+        TelDir_Iterator_Init();
+        while(TelDir_GetNextTelNum(TelNum)){
+            SMS_Queue_Push(TelNum, SIM900_SMS_REPORT_EXTERNAL_SUPPLY_LOST, SMS_LIFETIME);
+        }
+
+        SIM900_SendSms();
+
+        SIM900_PowerOff();
+
+        __bic_SR_register(GIE);
+
+        LED_OFF;
+
+        while(!PowMeas_ExternSupplyStatus()){
+            WDTCTL = WDTPW + WDTCNTCL;
+        }
+
+        __bis_SR_register(GIE);
+
+        SIM900_ReInit();
+    }
+
     State.initialization_in_progress = 0;
 
     while(1){
@@ -79,11 +104,31 @@ int main(void)
         if( State.ext_supply_ok_prev &&
             !State.ext_supply_ok_now )
         {
+            // Normally MCU is reset when external pwr disappear, so
+            // that code is not executed.
+
             u8 TelNum[SMS_TELNUM_LEN];
+
             TelDir_Iterator_Init();
             while(TelDir_GetNextTelNum(TelNum)){
                 SMS_Queue_Push(TelNum, SIM900_SMS_REPORT_EXTERNAL_SUPPLY_LOST, SMS_LIFETIME);
             }
+
+            SIM900_SendSms();
+
+            SIM900_PowerOff();
+
+            __bic_SR_register(GIE);
+
+            LED_OFF;
+
+            while(!PowMeas_ExternSupplyStatus()){
+                WDTCTL = WDTPW + WDTCNTCL;
+            }
+
+            __bis_SR_register(GIE);
+
+            SIM900_ReInit();
         }
 #endif
 

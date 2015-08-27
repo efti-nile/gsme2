@@ -18,15 +18,7 @@ void SIM900_ReInit(void){
 func_begin:
     SIM900_PowerOff(); // Power-off SIM900
 
-    /*
-    BUG: System timer ISR turns of the led right after switched on.
-    */
-
-    LED_OFF;
-    Delay_DelayMs(500);
-    LED_ON;
-    Delay_DelayMs(500);
-    LED_OFF;
+    Delay_DelayMs(1000);
 
     SIM900_PowerOn(); // Start SIM900
 

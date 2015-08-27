@@ -33,19 +33,27 @@ void PowMeas_Init(void){
     \brief Returns 1 if battery is OK
 */
 u8 PowMeas_BatteryStatus(void){
+    // The function actually makes measurement with BATMEAS_PER period
+    static u16 cnt = 0;
     u8 retval;
 
-    ENBAT_SET;
+    if(cnt++ > BATMEAS_PER){
+        ENBAT_SET;
 
-    __delay_cycles(125); // 125 = 5 us @ 25MHz
+        __delay_cycles(125); // 125 = 5 us @ 25MHz
 
-    retval = (
-            PowMeas_AdcGet(INBAT_ADC_CH)
-             >
-            BATTERY_CRYT_VOLTAGE + (State.battery_ok_in_gsm_extender_prev ? -BATTERY_HYSTERESIS : +BATTERY_HYSTERESIS)
-    );
+        retval = (
+                PowMeas_AdcGet(INBAT_ADC_CH)
+                 >
+                BATTERY_CRYT_VOLTAGE + (State.battery_ok_in_gsm_extender_prev ? -BATTERY_HYSTERESIS : +BATTERY_HYSTERESIS)
+        );
 
-    ENBAT_CLR;
+        ENBAT_CLR;
+
+        cnt = 0;
+    }else{
+        retval = State.battery_ok_in_gsm_extender_now;
+    }
 
     return retval;
 }
