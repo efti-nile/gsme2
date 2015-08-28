@@ -105,8 +105,22 @@ void SIM900_ReadSms(void){
         return;
     }
 
-    // Extract telephone number which sent the SMS
-    SIM900_CircularBuffer_ExtractTelNum(TelNum);
+    // Extract telephone number SMS was sent by wich
+    if(!SIM900_CircularBuffer_ExtractTelNum(TelNum)){
+        // If the telephone number wasn't extracted
+        // Such case occurs if a telephone number doesn't begin with '+7'
+        SIM900_CircularBuffer_Purge();
+
+        SIM900_SendStr("AT+CMGD=1,4\r");
+        if(!SIM900_WaitForResponse("OK", "ERROR")){
+            SIM900_SendStr("ERROR: 8");
+            ErrorHandler(8);
+        }
+
+        SIM900_CircularBuffer_Purge();
+
+        return;
+    }
 
     TelNum[3] = '8';
 
@@ -197,7 +211,8 @@ void SIM900_ReadSms(void){
         }
     }else
     // Request to close all valves
-    if(SIM900_CircularBuf_Search(SIM900_SMS_CMD_CLOSE) != -1 && TelDir_FindTelNumber(TelNum) != -1){
+    if(SIM900_CircularBuf_Search(SIM900_SMS_CMD_CLOSE) != -1 && TelDir_FindTelNumber(TelNum) != -1
+       && !State.request_close_valves && !State.request_open_valves){
         u8 valveNameBuffer[VALVE_NAME_MAXLEN * 4];
         valveNameBuffer[0] = 0; // Clear the buffer
         // Get the name of the group which open command will be executed on
@@ -212,7 +227,8 @@ void SIM900_ReadSms(void){
         State.close_valves_timeout = CLOSE_VALVES_TIMEOUT; // Timeout
     }else
     // Request to open all valves
-    if(SIM900_CircularBuf_Search(SIM900_SMS_CMD_OPEN) != -1 && TelDir_FindTelNumber(TelNum) != -1){
+    if(SIM900_CircularBuf_Search(SIM900_SMS_CMD_OPEN) != -1 && TelDir_FindTelNumber(TelNum) != -1
+       && !State.request_close_valves && !State.request_open_valves){
         u8 valveNameBuffer[VALVE_NAME_MAXLEN * 4];
         valveNameBuffer[0] = 0; // Clear the buffer
         // Get the name of the group which open command will be executed on
@@ -240,7 +256,7 @@ void SIM900_ReadSms(void){
         // Check if user set the telephone number for balance check
         if(TelDir_isBalanceNumberSet()){
             // Make up command to request balance
-            u8 CMD[sizeof("AT+CUSD=1,\"AAAABBBBCCCCDDDDEEEE\"\r") + 8] = "AT+CUSD=1,\""; // 8 for just in case
+            u8 CMD[sizeof("AT+CUSD=1,\"AAAABBBBCCCCDDDDEEEE\"\r") + 8] = "AT+CUSD=1,\""; // +8 for just in case
             strcat((char *)CMD, (char const *)TelDir_GetBalanceNumber());
             strcat((char *)CMD, "\"\r");
 

@@ -29,28 +29,7 @@ int main(void)
     SIM900_ReInit();
 
     if(!PowMeas_ExternSupplyStatus()){
-        u8 TelNum[SMS_TELNUM_LEN];
-
-        TelDir_Iterator_Init();
-        while(TelDir_GetNextTelNum(TelNum)){
-            SMS_Queue_Push(TelNum, SIM900_SMS_REPORT_EXTERNAL_SUPPLY_LOST, SMS_LIFETIME);
-        }
-
-        SIM900_SendSms();
-
-        SIM900_PowerOff();
-
-        __bic_SR_register(GIE);
-
-        LED_OFF;
-
-        while(!PowMeas_ExternSupplyStatus()){
-            WDTCTL = WDTPW + WDTCNTCL;
-        }
-
-        __bis_SR_register(GIE);
-
-        SIM900_ReInit();
+        PowerDisappeared();
     }
 
     State.initialization_in_progress = 0;
@@ -106,29 +85,7 @@ int main(void)
         {
             // Normally MCU is reset when external pwr disappear, so
             // that code is not executed.
-
-            u8 TelNum[SMS_TELNUM_LEN];
-
-            TelDir_Iterator_Init();
-            while(TelDir_GetNextTelNum(TelNum)){
-                SMS_Queue_Push(TelNum, SIM900_SMS_REPORT_EXTERNAL_SUPPLY_LOST, SMS_LIFETIME);
-            }
-
-            SIM900_SendSms();
-
-            SIM900_PowerOff();
-
-            __bic_SR_register(GIE);
-
-            LED_OFF;
-
-            while(!PowMeas_ExternSupplyStatus()){
-                WDTCTL = WDTPW + WDTCNTCL;
-            }
-
-            __bis_SR_register(GIE);
-
-            SIM900_ReInit();
+            PowerDisappeared();
         }
 #endif
 
@@ -144,6 +101,41 @@ int main(void)
             SMS_Queue_Push(State.TelNumOfSourceOfRequest, SIM900_SMS_REPORT_CLOSE_NOT_ALL, SMS_LIFETIME);
         }
     }
+}
+
+/*!
+    \brief Exetues some action on external power fault
+
+    Sends SMSs for every user in the dictionary that ext. pwr
+    disappeared.
+
+    Swithes off the GSM-module
+
+    Waits for ext. pwr resume.
+*/
+void PowerDisappeared(void){
+    u8 TelNum[SMS_TELNUM_LEN];
+
+    TelDir_Iterator_Init();
+    while(TelDir_GetNextTelNum(TelNum)){
+        SMS_Queue_Push(TelNum, SIM900_SMS_REPORT_EXTERNAL_SUPPLY_LOST, SMS_LIFETIME);
+    }
+
+    SIM900_SendSms();
+
+    SIM900_PowerOff();
+
+    __bic_SR_register(GIE);
+
+    LED_OFF;
+
+    while(!PowMeas_ExternSupplyStatus()){
+        WDTCTL = WDTPW + WDTCNTCL;
+    }
+
+    __bis_SR_register(GIE);
+
+    SIM900_ReInit();
 }
 
 /*!
